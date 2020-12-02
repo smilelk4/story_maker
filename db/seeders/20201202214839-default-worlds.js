@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bullkInset('Worlds', [
+    return queryInterface.bulkInsert('Worlds', [
       {
         name: "Programmer World",
         createdAt: new Date(),
