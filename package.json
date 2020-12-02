@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "per-env",
+    "start:development": "dotenv nodemon ./bin/www",
+    "start:production": "./bin/www",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   "homepage": "https://github.com/smilelk4/story_maker#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "per-env": "^1.0.2",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
   },
