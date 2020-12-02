@@ -1,27 +1,30 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Hero extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+  const Hero = sequelize.define('Hero', {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    world_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    level: {
+      type: DataTypes.INTEGER,
+      default: 0
+    },
+    hp: {
+      type: DataTypes.INTEGER,
+      default: 100,
+      max: 100
+    },
+    xp: {
+      type: DataTypes.INTEGER,
+      default: 0
+    },
+  }, {});
+  Hero.associate = function(models) {
+    // associations can be defined here
   };
-  Hero.init({
-    user_id: DataTypes.INTEGER,
-    world_id: DataTypes.INTEGER,
-    level: DataTypes.INTEGER,
-    hp: DataTypes.INTEGER,
-    xp: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Hero',
-  });
   return Hero;
 };
