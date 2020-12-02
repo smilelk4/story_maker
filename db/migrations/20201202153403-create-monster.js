@@ -1,37 +1,29 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Heros', {
+    return queryInterface.createTable('Monsters', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      story_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users'
+          model: "Stories"
         }
       },
-      world_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Worlds'
-        }
+      name: {
+        type: Sequelize.STRING(150),
+        allowNull: false
       },
-      level: {
-        type: Sequelize.INTEGER,
-        default: 0
+      strength: {
+        type: Sequelize.FLOAT(4),
+        allowNull: false
       },
-      hp: {
-        type: Sequelize.INTEGER,
-        default: 100,
-        max: 100
-      },
-      xp: {
+      times_defeated: {
         type: Sequelize.INTEGER,
         default: 0
       },
@@ -46,6 +38,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Heros');
+    return queryInterface.dropTable('Monsters');
   }
 };
