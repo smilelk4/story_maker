@@ -1,7 +1,9 @@
+import Splash from './splash/Splash';
+
 function App() {
   return (
-    <div className="App">
-      Hi
+    <div className="app">
+      <Splash />
     </div>
   );
 }
