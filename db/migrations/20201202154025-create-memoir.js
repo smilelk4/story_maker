@@ -31,10 +31,13 @@ module.exports = {
       },
       hours_fought: {
         type: Sequelize.INTEGER,
-        default: 0
+        default: 0,
+        max: 24
       },
       accomplishment_level: {
-        type: Sequelize.FLOAT(4)
+        type: Sequelize.FLOAT(4),
+        allowNull: false,
+        max: 10
       },
       date: {
         type: Sequelize.DATE
