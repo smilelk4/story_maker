@@ -22,6 +22,10 @@ module.exports = {
           model: 'Worlds'
         }
       },
+      name: {
+        type: Sequelize.STRING(100),
+        default: 'New Hero'
+      },
       level: {
         type: Sequelize.INTEGER,
         default: 0
