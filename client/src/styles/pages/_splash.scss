@@ -1,5 +1,25 @@
 .splash {
-  background-color: black;
-  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 10% 1fr 10%;
+
+  background-image: url('https://story-maker-app.s3.amazonaws.com/map_image1');
+  background-size: cover;
+  width: 100vw;
   height: 100vh;
+  z-index: -1;
+
+  &__form {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+
+    display: flex;
+  }
+
+  &__scroll {
+    width: 100%;
+    background-image: url('https://story-maker-app.s3.amazonaws.com/scroll_splash');
+    background-size: auto 100% ;
+    background-repeat: no-repeat;
+  }
 }
