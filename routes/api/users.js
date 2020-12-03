@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const { generateToken } = require('../../auth');
 const { hashPassword } = require('../../utils');
+const { usernameValidation } = require('../../validators/userValidator');
+const { handleValidationErrors } = require('../../utils');
 
 const createError = () => {
   const err = new Error('Invalid login information.');
@@ -39,7 +41,7 @@ router.post('/auth', async (req, res, next) => {
   });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', usernameValidation, handleValidationErrors, async (req, res) => {
   const { username, email, password, profileImage } = req.body;
   const user = await User.create({
     username: username.trim(),
