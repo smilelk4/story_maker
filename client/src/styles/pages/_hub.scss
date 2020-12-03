@@ -3,9 +3,11 @@
   grid-template-columns: 15rem repeat(5, 1fr) 15rem;
   grid-template-rows: 20rem 20rem 80rem;
   grid-gap: 5rem;
+  background-color: $color-light;
 
   & > * {
     border: 1px solid black;
+    background-color: white;
   }
 
   &__header {
@@ -35,11 +37,10 @@
   }
 
   &__activity {
-    background-color: lightgrey;
     height: $basic-item-height;
   }
 
-  &__upcoming {
+  &__destination-container {
     @include calc("height", "100% - #{$basic-item-height}");
   }
 
@@ -48,17 +49,14 @@
   }
 
   &__icon-holder {
-    background-color: grey;
     @include calc("height", "100% / 2");
   }
 
   &__hero-container {
-    background-color: grey;
     height: $basic-item-height;
   }
 
   &__story-container {
-    background-color: lightgrey;
     height: $basic-item-height;
   }
 }

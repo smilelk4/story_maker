@@ -1,0 +1,17 @@
+.destination {
+  background-color: lightgrey;
+  @include calc("height", "100% - #{$basic-item-height}");
+  overflow-y: scroll;
+
+  & > * {
+    border: 1px solid black;
+
+    &:not(:first-child):not(:last-child) {
+      margin: 5rem 0;
+    }
+  }
+
+  &__container {
+    height: 20rem;
+  }
+}
