@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import InputField from '../InputField';
 
 const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return ( 
+    <>
+    <h4>Login</h4>
     <form method="post" action="/my-hub">
-      <h4>Login</h4>
-      <p>
-        <label for="name" />
-        <input type="text" name="name" />
-      </p>
-      <p>
-        <label for="password" />
-        <input type="password" name="password" />
-      </p>
+      <InputField 
+        type="text" 
+        placeholder="username"
+        currentState={username}
+        updateState={setUsername}
+      />
+      <InputField 
+        type="password" 
+        placeholder="password"
+        currentState={password}
+        updateState={setPassword}
+      />
       <input type='submit' value="Submit" />
     </form>
+    </>
   );
 }
  

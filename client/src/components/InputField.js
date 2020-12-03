@@ -1,11 +1,13 @@
 import React from 'react';
 
-const InputField = () => {
+const InputField = ({type, placeholder, currentState, updateState}) => {
   return ( 
     <div>
       <input
         type={type}
-        value={value}
+        value={currentState}
+        placeholder={placeholder}
+        onChange={e => updateState(e.target.value)}
       />
     </div>
   );
