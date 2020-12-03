@@ -1,0 +1,41 @@
+.hub {
+  display: grid;
+  grid-template-columns: 15rem repeat(5, 1fr) 15rem;
+  grid-template-rows: 20rem 20rem 80rem;
+  grid-gap: 5rem;
+
+  & > * {
+    border: 1px solid black;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    // height: 100%;
+    // width: 100%;
+    background-color: $color-blue-light;
+    position: relative;
+  }
+
+  &__navbar {
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    bottom: 0;
+    background-color: $color-green;
+  }
+
+  &__main {
+    grid-column: 2 / span 3;
+    grid-row: 2 / -1;
+  }
+
+  &__sidebar {
+    grid-column: 5 / span 2;
+    grid-row: 2 / -1;
+  }
+
+  &__activity {
+    background-color: lightgrey;
+    height: 20rem;
+  }
+}
