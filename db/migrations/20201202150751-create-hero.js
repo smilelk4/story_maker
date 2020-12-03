@@ -24,20 +24,20 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING(100),
-        default: 'New Hero'
+        defaultValue: 'New Hero'
       },
       level: {
         type: Sequelize.INTEGER,
-        default: 0
+        defaultValue: 0
       },
       hp: {
         type: Sequelize.INTEGER,
-        default: 100,
+        defaultValue: 100,
         max: 100
       },
       xp: {
         type: Sequelize.INTEGER,
-        default: 0
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

@@ -33,7 +33,7 @@ module.exports = {
       },
       accomplished: {
         type: Sequelize.BOOLEAN,
-        default: false
+        defaultValue: false
       },
       importance: {
         type: Sequelize.FLOAT(4),

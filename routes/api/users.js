@@ -50,8 +50,7 @@ router.post('/',
   const user = await User.create({
     username: username.trim(),
     email: email.trim(),
-    hashed_password: await hashPassword(password.trim()),
-    profile_image: profileImage.trim()
+    hashed_password: await hashPassword(password.trim())
   });
 
   const { token } = generateToken(user.id, user.username);

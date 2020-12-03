@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     times_defeated: {
       type: DataTypes.INTEGER,
-      default: 0
+      defaultValue: 0
     },
   }, {});
   Monster.associate = function(models) {

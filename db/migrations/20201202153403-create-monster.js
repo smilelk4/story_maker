@@ -25,7 +25,7 @@ module.exports = {
       },
       times_defeated: {
         type: Sequelize.INTEGER,
-        default: 0
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

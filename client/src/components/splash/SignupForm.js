@@ -10,13 +10,12 @@ const SignupForm = () => {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [profileImage, setProfileImage] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const HandleSignup = async e => {
     e.preventDefault();
-    const data = await dispatch(createUser({ username, email, password, confirmPassword, profileImage }));
+    const data = await dispatch(createUser({ username, email, password, confirmPassword }));
     
     if(!data.errors) {
       history.push('/my-hub');
@@ -38,12 +37,6 @@ const SignupForm = () => {
           placeholder="Email"
           currentState={email}
           updateState={setEmail}
-        />
-        <InputField 
-          type="text" 
-          placeholder="Profile Image Url"
-          currentState={profileImage}
-          updateState={setProfileImage}
         />
         <InputField 
           type="password" 

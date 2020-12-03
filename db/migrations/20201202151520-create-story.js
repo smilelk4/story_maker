@@ -28,7 +28,7 @@ module.exports = {
       },
       label: {
         type: Sequelize.INTEGER(),
-        default: 0
+        defaultValue: 0
       },
       start_date: {
         type: Sequelize.DATE

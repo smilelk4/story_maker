@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     hours_fought: {
       type: DataTypes.INTEGER,
-      default: 0,
+      defaultValue: 0,
       max: 24
     },
     accomplishment_level: {

@@ -11,20 +11,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING(100),
-      default: 'New Hero'
+      defaultValue: 'New Hero'
     },
     level: {
       type: DataTypes.INTEGER,
-      default: 0
+      defaultValue: 0
     },
     hp: {
       type: DataTypes.INTEGER,
-      default: 100,
+      defaultValue: 100,
       max: 100
     },
     xp: {
       type: DataTypes.INTEGER,
-      default: 0
+      defaultValue: 0
     },
   }, {});
   Hero.associate = function(models) {
