@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
+    hashed_password: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false
+    },
     profile_image: {
       type: DataTypes.STRING(500)
     },

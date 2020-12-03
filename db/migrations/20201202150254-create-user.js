@@ -18,6 +18,10 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      hashed_password: {
+        type: Sequelize.STRING.BINARY,
+        allowNull: false
+      },
       profile_image: {
         type: Sequelize.STRING(500)
       },

@@ -26,6 +26,10 @@ module.exports = {
           model: 'Worlds'
         }
       },
+      label: {
+        type: Sequelize.INTEGER(),
+        default: 0
+      },
       start_date: {
         type: Sequelize.DATE
       },

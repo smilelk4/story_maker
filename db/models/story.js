@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Worlds'
       }
     },
+    label: {
+      type: DataTypes.INTEGER,
+      default: 0
+    },
     start_date: {
       type: DataTypes.DATE
     },
