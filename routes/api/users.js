@@ -12,7 +12,7 @@ router.post('/auth', async (req, res) => {
     next(e);
   }
 
-  const user = res.locals;
+  const { user } = res.locals;
 
   const isValidPassword = bcrypt.compareSync(password, res.locals.user.hashed_password.toString());
   if (!isValidPassword) {
@@ -22,12 +22,13 @@ router.post('/auth', async (req, res) => {
     next(err);
   }
 
-  const { token } = generateToken(res.locals.user.id, res.locals.user.username);
+  const { token } = generateToken(user.id, user.username);
   return res.json({
     token,
     user: {
       id: user.id,
-      username: user.username
+      username: user.username,
+      profileImage: user.profile_image
     }
   });
 });

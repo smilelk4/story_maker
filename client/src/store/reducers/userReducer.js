@@ -6,8 +6,8 @@ const userReducer = (state = {}, action) => {
     case LOAD_USER: {
       return {
         id: action.user.id,
-        username: action.user.email,
-        profileImage: action.user.profile_image
+        username: action.user.username,
+        profileImage: action.user.profileImage
       };
     }
     case LOGOUT_USER:
