@@ -2,6 +2,7 @@ const router = require('express-promise-router')();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const { generateToken } = require('../../auth');
+const { hashPassword } = require('../../utils');
 
 const createError = () => {
   const err = new Error('Invalid login information.');
@@ -39,13 +40,17 @@ router.post('/auth', async (req, res, next) => {
 });
 
 router.post('/', async (req, res) => {
-  const { username, email, profile_image } = req.body;
+  const { username, email, password, profileImage } = req.body;
   const user = await User.create({
-    username,
-    email,
-    profile_image
+    username: username.trim(),
+    email: email.trim(),
+    hashed_password: await hashPassword(password.trim()),
+    profile_image: profileImage.trim()
   });
-  res.json({ user });
+
+  const { token } = generateToken(user.id, user.username);
+
+  res.status(201).json({ token, user });
 });
 
 router.get('/:id(\\d+)', async (req, res) => {
@@ -53,6 +58,5 @@ router.get('/:id(\\d+)', async (req, res) => {
   const user = await User.findByPk(id);
   res.json({ user });
 });
-
 
 module.exports = router;

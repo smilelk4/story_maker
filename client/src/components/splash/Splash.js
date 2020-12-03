@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 const Splash = () => {
   return ( 
@@ -9,6 +10,7 @@ const Splash = () => {
         </div>
       </div>
       <LoginForm />
+      <SignupForm />
     </div>
   );
 }
