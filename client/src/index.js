@@ -6,9 +6,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import configureStore from './store/configureStore';
 
-const userInfo = localStorage.getItem('user-info');
+const token = localStorage.getItem('token');
 let store;
-if (userInfo) store = configureStore({ token: JSON.parse(userInfo).token });
+if (token) store = configureStore({ token });
 else store = configureStore();
 
 ReactDOM.render(
