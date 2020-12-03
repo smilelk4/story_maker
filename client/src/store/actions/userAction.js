@@ -15,7 +15,8 @@ export const validateUser = inputtedInfo => {
     const data = await res.json();
 
     if (!res.ok) {
-      dispatch({
+      console.log('errors', data)
+      return dispatch({
         type: LOAD_ERRORS,
         errors: data.errors
       });

@@ -3,7 +3,15 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const { generateToken } = require('../../auth');
 
-router.post('/auth', async (req, res) => {
+const createError = () => {
+  const err = new Error('Invalid login information.');
+  err.title = 'Invalid Login';
+  err.status = 401;
+  err.errors = [err.message];
+  return err;
+}
+
+router.post('/auth', async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
@@ -13,14 +21,11 @@ router.post('/auth', async (req, res) => {
   }
 
   const { user } = res.locals;
+  if (!user) next(createError());
 
-  const isValidPassword = bcrypt.compareSync(password, res.locals.user.hashed_password.toString());
-  if (!isValidPassword) {
-    const err = new Error('Invalid login information.');
-    err.title = 'Invalid Login';
-    err.status = 401;
-    next(err);
-  }
+  const isValidPassword = bcrypt.compareSync(password, user.hashed_password.toString());
+  
+  if (!isValidPassword) next(createError());
 
   const { token } = generateToken(user.id, user.username);
   return res.json({
