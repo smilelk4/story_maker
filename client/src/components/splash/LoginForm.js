@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../InputField';
 import { validateUser } from '../../store/actions/userAction';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = e => {
+  const handleLogin = async e => {
     e.preventDefault();
-    dispatch(validateUser({ email, password }));
+    const data = await dispatch(validateUser({ email, password }));
+    
+    if(!data.errors) {
+      history.push('/my-hub');
+    }
   };
 
   return ( 
     <>
       <h4>Login</h4>
-      <form method="post">
+      <form onSubmit={handleLogin}>
         <InputField 
           type="text" 
           placeholder="email"
@@ -32,7 +38,6 @@ const LoginForm = () => {
         <input 
           type='submit' 
           value="Submit" 
-          onClick={handleLogin}
         />
       </form>
     </>
