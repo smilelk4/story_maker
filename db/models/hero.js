@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
+    image_id: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1
+    },
   }, {});
   Hero.associate = function(models) {
     // associations can be defined here
