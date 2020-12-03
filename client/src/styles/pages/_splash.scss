@@ -13,18 +13,19 @@
     background-color: rgba(255, 255, 255, .4);
   }
 
-  & > * {
-    z-index: 1;
-  }
-
-  &__form {
+  &__container {
     width: 50%;
     height: 100vh;
     position: fixed;
     right: 0;
+  }
+
+  &__scroll {
+    margin: 7% 0;
+    width: 85rem;
+    height: 80rem;
     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll_splash');
     background-size: 90% auto;
     background-repeat: no-repeat;
   }
-  
 }
