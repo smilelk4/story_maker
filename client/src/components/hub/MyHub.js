@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const MyHub = () => {
   return ( 
@@ -11,12 +12,22 @@ const MyHub = () => {
           Activity bar graph
         </div>
         <div className="hub__upcoming">
-          Activity bar graph
+          Upcoming destinations
         </div>
       </main>
 
       <aside className="hub__sidebar">
-
+        <div className="hub__top-container">
+          <div className="hub__icon-holder">
+            <NavLink to='/new-adventure'>Start a New Adventure</NavLink>
+          </div>
+        </div>
+        <div className="hub__hero-container">
+          Hero
+        </div>
+        <div className="hub__story-container">
+          Stories
+        </div>
       </aside>
     </div>
   );

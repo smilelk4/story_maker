@@ -40,7 +40,25 @@
   }
 
   &__upcoming {
-    background-color: lightblue;
     @include calc("height", "100% - #{$basic-item-height}");
+  }
+
+  &__top-container {
+    height: $basic-item-height;
+  }
+
+  &__icon-holder {
+    background-color: grey;
+    @include calc("height", "100% / 2");
+  }
+
+  &__hero-container {
+    background-color: grey;
+    height: $basic-item-height;
+  }
+
+  &__story-container {
+    background-color: lightgrey;
+    height: $basic-item-height;
   }
 }
