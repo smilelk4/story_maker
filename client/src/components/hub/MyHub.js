@@ -10,6 +10,9 @@ const MyHub = () => {
         <div className="hub__activity">
           Activity bar graph
         </div>
+        <div className="hub__upcoming">
+          Activity bar graph
+        </div>
       </main>
 
       <aside className="hub__sidebar">

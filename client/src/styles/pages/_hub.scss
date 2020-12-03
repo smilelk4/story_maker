@@ -36,6 +36,11 @@
 
   &__activity {
     background-color: lightgrey;
-    height: 20rem;
+    height: $basic-item-height;
+  }
+
+  &__upcoming {
+    background-color: lightblue;
+    @include calc("height", "100% - #{$basic-item-height}");
   }
 }
