@@ -1,10 +1,11 @@
-const router = require('express-promise-router')();
+// const router = require('express-promise-router')();
+const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const { generateToken } = require('../../auth');
 const { hashPassword } = require('../../utils');
-const { usernameValidation } = require('../../validators/userValidator');
-const { handleValidationErrors } = require('../../utils');
+const userValidation = require('../../validators/userValidator');
+const { handleValidationErrors, asyncHandler } = require('../../utils');
 
 const createError = () => {
   const err = new Error('Invalid login information.');
@@ -14,7 +15,7 @@ const createError = () => {
   return err;
 }
 
-router.post('/auth', async (req, res, next) => {
+router.post('/auth', asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
@@ -39,9 +40,12 @@ router.post('/auth', async (req, res, next) => {
       profileImage: user.profile_image
     }
   });
-});
+}));
 
-router.post('/', usernameValidation, handleValidationErrors, async (req, res) => {
+router.post('/', 
+  userValidation, 
+  handleValidationErrors,
+  asyncHandler(async (req, res) => {
   const { username, email, password, profileImage } = req.body;
   const user = await User.create({
     username: username.trim(),
@@ -53,12 +57,12 @@ router.post('/', usernameValidation, handleValidationErrors, async (req, res) =>
   const { token } = generateToken(user.id, user.username);
 
   res.status(201).json({ token, user });
-});
+}));
 
-router.get('/:id(\\d+)', async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
   const { id } = req.params;
   const user = await User.findByPk(id);
   res.json({ user });
-});
+}));
 
 module.exports = router;

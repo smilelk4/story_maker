@@ -19,7 +19,14 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
+const asyncHandler = func => {
+  return (req, res, next) => {
+    func(req, res, next).catch(next);
+  }
+}
+
 module.exports = {
   hashPassword,
-  handleValidationErrors
+  handleValidationErrors,
+  asyncHandler
 }

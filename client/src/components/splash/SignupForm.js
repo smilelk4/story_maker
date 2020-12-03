@@ -18,7 +18,7 @@ const SignupForm = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      dispatch({
+      return dispatch({
         type: LOAD_ERRORS,
         errors: ['Password fields must match.']
       });
