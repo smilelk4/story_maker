@@ -9,7 +9,6 @@ const Splash = () => {
         </div>
       </div>
       <LoginForm />
-      Hiii
     </div>
   );
 }
