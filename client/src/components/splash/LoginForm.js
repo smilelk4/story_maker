@@ -5,12 +5,12 @@ import { validateUser } from '../../store/actions/userAction';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = e => {
     e.preventDefault();
-    dispatch(validateUser({ username, password }));
+    dispatch(validateUser({ email, password }));
   };
 
   return ( 
@@ -19,9 +19,9 @@ const LoginForm = () => {
       <form method="post">
         <InputField 
           type="text" 
-          placeholder="username"
-          currentState={username}
-          updateState={setUsername}
+          placeholder="email"
+          currentState={email}
+          updateState={setEmail}
         />
         <InputField 
           type="password" 
