@@ -1,25 +1,30 @@
 .splash {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 10% 1fr 10%;
-
+  width: 100vw;
+  height: 200rem;
   background-image: url('https://story-maker-app.s3.amazonaws.com/map_image1');
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+  background-position: center;
+
+  &::before {
+    content: '';
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .4);
+  }
+
+  & > * {
+    z-index: 1;
+  }
 
   &__form {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
-
-    display: flex;
-  }
-
-  &__scroll {
-    width: 100%;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll_splash');
-    background-size: auto 100% ;
+    background-size: 90% auto;
     background-repeat: no-repeat;
   }
+  
 }
