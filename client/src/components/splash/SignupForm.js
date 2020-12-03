@@ -16,15 +16,7 @@ const SignupForm = () => {
 
   const HandleSignup = async e => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['Password fields must match.']
-      });
-    }
-
-    const data = await dispatch(createUser({ username, email, password, profileImage }));
+    const data = await dispatch(createUser({ username, email, password, confirmPassword, profileImage }));
     
     if(!data.errors) {
       history.push('/my-hub');
@@ -42,7 +34,7 @@ const SignupForm = () => {
           updateState={setUsername}
         />
         <InputField 
-          type="text" 
+          type="email" 
           placeholder="Email"
           currentState={email}
           updateState={setEmail}
