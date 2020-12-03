@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import Splash from './splash/Splash';
+import Splash from './components/splash/Splash';
 
 function App() {
   return (

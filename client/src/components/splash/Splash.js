@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginForm from './LoginForm';
 
 const Splash = () => {
   return ( 
@@ -7,6 +8,8 @@ const Splash = () => {
         <div className="splash__scroll">
         </div>
       </div>
+      <LoginForm />
+      Hiii
     </div>
   );
 }
