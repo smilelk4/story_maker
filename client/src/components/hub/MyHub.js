@@ -1,5 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ActivityScroll from '../svg/ActivityScroll';
+import DestinationScroll from '../svg/DestinationScroll';
+import HeroScroll from '../svg/HeroScroll';
+import StoryScroll from '../svg/StoryScroll';
 
 const MyHub = () => {
   return ( 
@@ -9,10 +13,10 @@ const MyHub = () => {
       </header>
       <main className="hub__main">
         <div className="hub__activity">
-          Activity bar graph
+          <ActivityScroll />
         </div>
         <div className="hub__upcoming">
-          Upcoming destinations
+          <DestinationScroll />
         </div>
       </main>
 
@@ -23,10 +27,10 @@ const MyHub = () => {
           </div>
         </div>
         <div className="hub__hero-container">
-          Hero
+          <HeroScroll />
         </div>
         <div className="hub__story-container">
-          Stories
+          <StoryScroll />
         </div>
       </aside>
     </div>
