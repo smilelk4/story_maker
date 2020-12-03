@@ -1,5 +1,26 @@
 const router = require('express-promise-router')();
+const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
+
+router.post('/auth', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    res.locals.user = await User.findOne({ where: { email } });
+  } catch (e) {
+    next(e);
+  }
+
+  const isValidPassword = bcrypt.compareSync(password, res.locals.user.hashed_password.toString());
+  if (!isValidPassword) {
+    const err = new Error('Invalid login information.');
+    err.title = 'Invalid Login';
+    err.status = 401;
+    next(err);
+  }
+
+  
+});
 
 router.post('/', async (req, res) => {
   const { username, email, profile_image } = req.body;
