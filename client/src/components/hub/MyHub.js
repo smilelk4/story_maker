@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import NewAdventure from './NewAdventure';
 import DestinationContainer from './DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
@@ -27,7 +28,8 @@ const MyHub = () => {
       <aside className="hub__sidebar">
         <div className="hub__section">
           <div className="hub__icon-holder">
-            <NavLink to='/new-adventure'>Start a New Adventure</NavLink>
+            <NewAdventure />
+            {/* <NavLink to='/new-adventure'>Start a New Adventure</NavLink> */}
           </div>
         </div>
         <div className="hub__section">

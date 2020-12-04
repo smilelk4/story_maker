@@ -1,0 +1,37 @@
+.modal {
+  // position: absolute;
+  // width: 80rem;
+  // height: 80rem;
+  
+  width: 40vw;
+  min-width: 45rem;
+  height: 69rem;
+  position: fixed;
+  opacity: 1;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  box-shadow: $shadow-1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: .2s ease-in-out;
+
+  &__overlay {
+    // background-color: salmon;
+    // width: 100vw;
+    // height: 100vh;
+    // left: 0;
+    // top: 0;
+    // position: absolute;
+    // z-index: 1;
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: .5;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: .2s ease-in-out;
+  }
+}
