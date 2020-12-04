@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import DestinationContainer from './DestinationContainer';
 import HeroContainer from './HeroContainer';
+import StoryContainer from './StoryContainer';
 import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import HeroScroll from '../svg/HeroScroll';
@@ -35,6 +36,7 @@ const MyHub = () => {
         </div>
         <div className="hub__section">
           <StoryScroll />
+          <StoryContainer />
         </div>
       </aside>
     </div>
