@@ -31,7 +31,8 @@ module.exports = {
         defaultValue: 0
       },
       start_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       createdAt: {
         allowNull: false,

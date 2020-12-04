@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
@@ -8,12 +8,14 @@ const StoryCreator = () => {
   const dispatch = useDispatch();
   const worldContainer = useRef();
   const heroContainer = useRef();
+  const userId = useSelector(state => state.user);
+  const heroes = useSelector(state => state.hero);
 
   const [page, setPage] = useState(1);
   const [worlds, setWorlds] = useState([]);
   const [worldId, setWorldId] = useState(null);
   const [heroId, setHeroId] = useState(null);
-  const [heroes, setHeroes] = useState([]);
+  // const [heroes, setHeroes] = useState([]);
   const [title, setTitle] = useState('');
   const [goal, setGoal] = useState('');
   const [pageTitle, setPageTitle] = useState('');
@@ -31,9 +33,9 @@ const StoryCreator = () => {
   useEffect(() => {
     (async () => {
       if (!heroes.length) {
-        const res = await fetch(`${baseUrl}/heroes`);
-        const data = await res.json();
-        setHeroes(data.heroImages);
+        // const res = await fetch(`${baseUrl}/users/${userId}/heroes`);
+        // const data = await res.json();
+        // setHeroes(data.heroImages);
       }
     })();
   }, [heroes])
@@ -73,12 +75,7 @@ const StoryCreator = () => {
         errors: ['There is a field with missing values.']
       });
     }
-    const data = {
-      worldId,
-      heroId,
-      title,
-      goal
-    };
+    const data = { worldId, heroId, title, goal };
     dispatch(createStory(data));
   }
 
@@ -114,7 +111,8 @@ const StoryCreator = () => {
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes.length && heroes.map(hero => (
             <div className="hero" onClick={() => setHeroId(hero.id)}>
-              <img src={hero.image_url} alt={hero.id} />
+              <img src={hero.image} alt={hero.id} />
+              <p>{hero.name}</p>
             </div>
           ))}
         </div>

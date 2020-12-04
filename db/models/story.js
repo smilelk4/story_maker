@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0
     },
     start_date: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: new Date()
     },
   }, {});
   Story.associate = function(models) {
