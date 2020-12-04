@@ -13,8 +13,6 @@ const verifyData = async (res, dispatch) => {
     return data;
   }
 
-  console.log(data, "DATAAA")
-
   if (data.token) {
     localStorage.setItem('token', data.token);
   }

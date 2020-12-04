@@ -1,16 +1,17 @@
-export const LOAD_HERO = 'LOAD_HERO';
+export const LOAD_HEROES = 'LOAD_HERO';
 
-const heroReducer = (state = {}, action) => {
+const heroReducer = (state = [], action) => {
   switch(action.type) {
-    case LOAD_HERO: {
-      return {
-        id: action.hero.id,
-        world_id: action.hero.world_id,
-        name: action.hero.name,
-        level: action.hero.level,
-        hp: action.hero.hp,
-        xp: action.hero.xp
-      };
+    case LOAD_HEROES: {
+      console.log('!!HEYHHAY', action.heroes)
+      return action.heroes.map(hero => ({
+        id: hero.id,
+        world_id: hero.world_id,
+        name: hero.name,
+        level: hero.level,
+        hp: hero.hp,
+        xp: hero.xp
+      }));
     }
     default:
       return state;

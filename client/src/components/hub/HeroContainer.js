@@ -8,12 +8,14 @@ const HeroContainer = () => {
   const userId = useSelector(state => state.user.id);
 
   useEffect(() => {
-    dispatch(getHeroes)
-  });
+    if (userId) {
+      dispatch(getHeroes(userId));
+    }
+  }, [userId, dispatch]);
 
   return ( 
     <div className="hero__container">
-      <Hero />
+      {/* <Hero /> */}
     </div>
   );
 }

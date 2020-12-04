@@ -1,14 +1,14 @@
 // const router = require('express-promise-router')();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../../db/models');
+const { User, Hero } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
 const userValidation = require('../../validators/userValidator');
 const { handleValidationErrors, asyncHandler } = require('../../utils');
 
-const createError = () => {
-  const err = new Error('Invalid login information.');
+const createError = msg => {
+  const err = new Error(msg);
   err.title = 'Invalid Login';
   err.status = 401;
   err.errors = [err.message];
@@ -25,11 +25,11 @@ router.post('/auth', asyncHandler(async (req, res, next) => {
   }
 
   const { user } = res.locals;
-  if (!user) next(createError());
+  if (!user) next(createError('Invalid login.'));
 
   const isValidPassword = bcrypt.compareSync(password, user.hashed_password.toString());
   
-  if (!isValidPassword) next(createError());
+  if (!isValidPassword) next(createError('Invalid login.'));
 
   const { token } = generateToken(user.id, user.username);
   return res.json({
@@ -70,10 +70,16 @@ router.post('/',
   res.status(201).json({ token, user });
 }));
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findByPk(id);
-  res.json({ user });
+// router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+//   const { id } = req.params;
+//   const user = await User.findByPk(id);
+//   res.json({ user });
+// }));
+
+router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
+  const heroes = await Hero.findAll({ where: { user_id: req.params.id } });
+  if (!heroes) next(createError('No heroes found.'));
+  res.json({ heroes });
 }));
 
 module.exports = router;
