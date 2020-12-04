@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import Modal from '../Modal';
+import ModalContainer from '../ModalContainer';
 
 const NewAdventure = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clickHandler = () => {
     setIsModalOpen(!isModalOpen);
-    console.log(isModalOpen)
   };
 
   return (
     <>
-    {isModalOpen ? <Modal clickHandler={clickHandler} />
+    {isModalOpen ? <ModalContainer clickHandler={clickHandler} />
     : <input value="Start a New Adventure" onClick={clickHandler}/>}
     </>
   );

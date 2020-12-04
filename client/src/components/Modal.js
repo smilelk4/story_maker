@@ -1,12 +1,13 @@
 import React from 'react';
+import StoryCreator from './hub/StoryCreator';
 
 const Modal = ({clickHandler}) => {
   return ( 
     <>
       <div className="modal">
-        Modal
+        <StoryCreator />
       </div>
-      <div className="modal__overlay"></div>
+      <div className="modal__overlay" onClick={clickHandler}></div>
     </>
   );
 }

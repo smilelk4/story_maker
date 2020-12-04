@@ -1,4 +1,3 @@
-// const router = require('express-promise-router')();
 const router = require('express').Router();
 const { Story, World } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
