@@ -32,7 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Hero.associate = function(models) {
+    Hero.belongsTo(models.User, { foreignKey: 'user_id' });
+    Hero.belongsTo(models.World, { foreignKey: 'world_id' });
     Hero.belongsTo(models.HeroImage, { foreignKey: 'image_id' });
+
+    Hero.hasMany(models.Story, { foreignKey: 'hero_id' });
   };
   return Hero;
 };

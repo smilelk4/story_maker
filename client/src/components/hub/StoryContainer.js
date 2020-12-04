@@ -9,22 +9,15 @@ const StoryContainer = () => {
   const stories = useSelector(state => state.story);
 
   useEffect(() => {
-    console.log(stories, 'stories')
-    // if (!stories.length) {
-      heroes.forEach(hero => {
-        dispatch(getStories(hero.id));
-      });
-    // }
-
-    // if (heroIds.length) {
-    // }
+    heroes.forEach(hero => {
+      dispatch(getStories(hero.id));
+    });
   }, [heroes, dispatch]);
 
   return (
-    // <div className="hero__container">
-    //   {heroes.map(hero => <Hero {...hero} />)}
-    // </div>
-    <h3>Hi</h3>
+    <div className="story__container">
+      {stories.map(story => <Story {...story} />)}
+    </div>
   );
 }
  

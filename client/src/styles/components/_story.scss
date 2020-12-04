@@ -1,0 +1,22 @@
+.story {
+  width: 15rem;
+  
+  &__container {
+    display: flex;
+    height: 100%;
+    overflow-x: scroll;
+  }
+
+  &__label {
+
+    &-1 {
+      border-color: red;
+    }
+    &-2 {
+      border-color: blue;
+    }
+    &-3 {
+      border-color: yellow;
+    }
+  }
+}

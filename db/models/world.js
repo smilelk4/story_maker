@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   World.associate = function(models) {
-    // associations can be defined here
+    World.hasMany(models.Story, { foreignKey: 'world_id' });
+    World.hasMany(models.Hero, { foreignKey: 'world_id' });
   };
   return World;
 };
