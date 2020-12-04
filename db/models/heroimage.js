@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   HeroImage.associate = function(models) {
-    // associations can be defined here
+    HeroImage.hasMany(models.Hero, { foreignKey: 'image_id' });
   };
   return HeroImage;
 };

@@ -1,7 +1,7 @@
 // const router = require('express-promise-router')();
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Hero } = require('../../db/models');
+const { User, Hero, HeroImage } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
 const userValidation = require('../../validators/userValidator');
@@ -77,7 +77,17 @@ router.post('/',
 // }));
 
 router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
-  const heroes = await Hero.findAll({ where: { user_id: req.params.id } });
+  const heroes = await Hero.findAll({ 
+    where: { 
+      user_id: req.params.id,
+    },
+    include: [HeroImage]
+  });
+
+  heroes.forEach(hero => {
+    console.log(hero.toJSON())
+  })
+
   if (!heroes) next(createError('No heroes found.'));
   res.json({ heroes });
 }));

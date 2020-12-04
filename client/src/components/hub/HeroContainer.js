@@ -6,6 +6,7 @@ import { getHeroes } from '../../store/actions/heroAction';
 const HeroContainer = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.id);
+  const heroes = useSelector(state => state.hero);
 
   useEffect(() => {
     if (userId) {
@@ -13,9 +14,9 @@ const HeroContainer = () => {
     }
   }, [userId, dispatch]);
 
-  return ( 
+  return (
     <div className="hero__container">
-      {/* <Hero /> */}
+      {heroes.map(hero => <Hero {...hero} />)}
     </div>
   );
 }

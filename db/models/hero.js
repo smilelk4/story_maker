@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Hero.associate = function(models) {
-    // associations can be defined here
+    Hero.belongsTo(models.HeroImage, { foreignKey: 'image_id' });
   };
   return Hero;
 };
