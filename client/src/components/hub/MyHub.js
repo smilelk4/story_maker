@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import DestinationContainer from './DestinationContainer';
+import HeroContainer from './HeroContainer';
 import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import HeroScroll from '../svg/HeroScroll';
@@ -23,15 +24,16 @@ const MyHub = () => {
       </main>
 
       <aside className="hub__sidebar">
-        <div className="hub__top-container">
+        <div className="hub__section">
           <div className="hub__icon-holder">
             <NavLink to='/new-adventure'>Start a New Adventure</NavLink>
           </div>
         </div>
-        <div className="hub__hero-container">
+        <div className="hub__section">
           <HeroScroll />
+          <HeroContainer />
         </div>
-        <div className="hub__story-container">
+        <div className="hub__section">
           <StoryScroll />
         </div>
       </aside>

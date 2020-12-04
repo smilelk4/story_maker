@@ -41,7 +41,7 @@ module.exports = {
       },
       image_id: {
         type: Sequelize.INTEGER,
-        defaultValue: 1,
+        defaultValue: 14,
         references: {
           model: 'HeroImages'
         }

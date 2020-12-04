@@ -9,7 +9,14 @@ module.exports = {
         name: "Programmer Hero",
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        user_id: 1,
+        world_id: 2,
+        name: "Art Hero",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
   },
 

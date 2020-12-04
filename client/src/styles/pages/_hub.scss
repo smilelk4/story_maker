@@ -5,7 +5,7 @@
   grid-gap: 5rem;
   background-color: $color-light;
 
-  & > * {
+  & * {
     border: 1px solid black;
     background-color: white;
   }
@@ -31,9 +31,17 @@
     grid-row: 2 / -1;
   }
 
+  
   &__sidebar {
     grid-column: 5 / span 2;
     grid-row: 2 / -1;
+  }
+  
+  &__main,
+  &__sidebar {
+    & > *:not(:first-child) {
+      margin: 5rem 0;
+    }
   }
 
   &__activity {
@@ -44,19 +52,19 @@
     @include calc("height", "100% - #{$basic-item-height}");
   }
 
-  &__top-container {
-    height: $basic-item-height;
-  }
-
   &__icon-holder {
     @include calc("height", "100% / 2");
   }
 
-  &__hero-container {
+  &__section {
     height: $basic-item-height;
-  }
+    position: relative;
 
-  &__story-container {
-    height: $basic-item-height;
+    svg {
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: -3rem;
+    }
   }
 }

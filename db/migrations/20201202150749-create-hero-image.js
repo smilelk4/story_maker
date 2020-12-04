@@ -9,7 +9,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       image_url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(500),
+        allowNull: false,
+        unique: true
       },
       createdAt: {
         allowNull: false,
