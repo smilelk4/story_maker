@@ -8,21 +8,27 @@ module.exports = {
         world_id: 1,
         title: "Obtain a job as full-stack programmer.",
         label: 1,
-        start_date: new Date(2020, 7, 13);
+        start_date: new Date(2020, 7, 13),
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         hero_id: 1,
         world_id: 1,
         title: "Startup web app business.",
         label: 2,
-        start_date: new Date(2020, 10, 15);
+        start_date: new Date(2020, 10, 15),
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         hero_id: 1,
         world_id: 1,
         title: "Get an inquiry to develop full-stack application for a company.",
         label: 3,
-        start_date: new Date(2020, 8, 22);
+        start_date: new Date(2020, 8, 22),
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ], {});
   },
