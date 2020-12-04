@@ -1,8 +1,4 @@
 .modal {
-  // position: absolute;
-  // width: 80rem;
-  // height: 80rem;
-  
   width: 40vw;
   min-width: 45rem;
   height: 69rem;
@@ -16,14 +12,6 @@
   transition: .2s ease-in-out;
 
   &__overlay {
-    // background-color: salmon;
-    // width: 100vw;
-    // height: 100vh;
-    // left: 0;
-    // top: 0;
-    // position: absolute;
-    // z-index: 1;
-
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -33,5 +21,9 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     transition: .2s ease-in-out;
+  }
+
+  .selected {
+    border: 3px solid salmon;
   }
 }
