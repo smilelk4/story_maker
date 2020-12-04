@@ -26,4 +26,18 @@
   .selected {
     border: 3px solid salmon;
   }
+
+  &__page-container {
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: contain;
+  }
 }

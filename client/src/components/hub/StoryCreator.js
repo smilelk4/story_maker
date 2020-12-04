@@ -8,7 +8,9 @@ const StoryCreator = () => {
   const [worlds, setWorlds] = useState([]);
   const [world, setWorld] = useState(null);
   const [hero, setHero] = useState(null);
+  const [heroes, setHeroes] = useState([]);
   const [title, setTitle] = useState('');
+  const [pageTitle, setPageTitle] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -21,17 +23,30 @@ const StoryCreator = () => {
   }, [worlds]);
 
   useEffect(() => {
-    console.log(world, 'world')
+    (async () => {
+      if (!heroes.length) {
+        const res = await fetch(`${baseUrl}/heroes`);
+        const data = await res.json();
+        console.log(data, '!!!!')
+        setHeroes(data.heroImages);
+      }
+    })();
+  }, [heroes])
+
+  useEffect(() => {
     if (container.current.children.length) {
       container.current.childNodes.forEach(child => child.classList.remove('selected'));
       container.current.childNodes[world - 1].classList.add('selected');
     }
   }, [world])
 
-  const handleSelect = e => {
-    e.target.classList.add('selected')
-    console.log(e.target.classList)
-  }
+  useEffect(() => {
+    if (page === 1) {
+      setPageTitle('Select Your World');
+    } else if (page === 2) {
+      setPageTitle('Select Your Hero');
+    }
+  }, [page])
 
   const handleBack = () => {
     setPage(page - 1);
@@ -43,14 +58,25 @@ const StoryCreator = () => {
 
   return ( 
     <>
-      <h2>Select Your World</h2>
+      <h2>{pageTitle}</h2>
       {page === 1 && (
-        <div className="world__container" ref={container}> 
+        <div className="modal__page-container" ref={container}> 
           {worlds.length && worlds.map(world => (
             <div className="world" onClick={() => setWorld(world.id)}>
               <div className="world__name">{world.name}</div>
             </div>
           ))}
+        </div>
+      )}
+      {page === 2 && (
+        <div>
+          <div className="modal__page-container" ref={container}> 
+            {heroes.length && heroes.map(hero => (
+              <div className="hero" onClick={() => setHero(hero.id)}>
+                <img src={hero.image_url} alt={hero.id} />
+              </div>
+            ))}
+          </div>
         </div>
       )}
       <button disabled={page < 2} onClick={handleBack}>Back</button>
