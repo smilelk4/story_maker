@@ -25,3 +25,16 @@ export const getStories = heroId => {
     verifyData(res, dispatch);
   }
 };
+
+export const createStory = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/stories`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+    // verifyData(res, dispatch);
+  }
+};
