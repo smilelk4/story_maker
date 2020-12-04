@@ -13,7 +13,11 @@ const verifyData = async (res, dispatch) => {
     return data;
   }
 
-  localStorage.setItem('token', data.token);
+  console.log(data, "DATAAA")
+
+  if (data.token) {
+    localStorage.setItem('token', data.token);
+  }
   localStorage.setItem('user_id', data.user.id);
 
   dispatch({ type: CLEAR_ERRORS });
@@ -49,5 +53,17 @@ export const createUser = inputtedInfo => {
     });
 
     return await verifyData(res, dispatch);
+  }
+}
+
+export const getUser = token => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/users/token`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    verifyData(res, dispatch);
   }
 }

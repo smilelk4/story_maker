@@ -1,11 +1,10 @@
 import React from 'react';
-import HeroContainer from './HeroContainer';
 
-const Hero = ({children}) => {
+const Hero = () => {
   return ( 
-    <HeroContainer>
-      Hii!!!
-    </HeroContainer>
+    <div className="hero">
+      Hero
+    </div>
   );
 }
  

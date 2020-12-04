@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
-const { generateToken } = require('../../auth');
+const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
 const userValidation = require('../../validators/userValidator');
 const { handleValidationErrors, asyncHandler } = require('../../utils');
@@ -41,6 +41,18 @@ router.post('/auth', asyncHandler(async (req, res, next) => {
     }
   });
 }));
+
+router.get('/token', checkIfAuthenticated, (req, res) => {
+  const { id, username, profile_image: profileImage } = res.locals.user;
+
+  res.json({
+    user: {
+      id,
+      username,
+      profileImage
+    }
+  });
+});
 
 router.post('/', 
   userValidation, 
