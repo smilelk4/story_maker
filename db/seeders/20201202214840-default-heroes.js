@@ -7,6 +7,7 @@ module.exports = {
         user_id: 1,
         world_id: 1,
         name: "Programmer Hero",
+        image_id: 17,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -14,6 +15,7 @@ module.exports = {
         user_id: 1,
         world_id: 2,
         name: "Art Hero",
+        image_id: 20,
         createdAt: new Date(),
         updatedAt: new Date()
       },

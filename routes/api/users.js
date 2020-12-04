@@ -84,10 +84,6 @@ router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
     include: [HeroImage]
   });
 
-  heroes.forEach(hero => {
-    console.log(hero.toJSON())
-  })
-
   if (!heroes) next(createError('No heroes found.'));
   res.json({ heroes });
 }));
