@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const NewDestination = () => {
   const [destinationTitle, setDestinationTitle] = useState('');
-  const [destinationSubTitle, setDestinationSubTitle] = useState('');
   const [description, setDescription] = useState('');
   const [targetDate, setTargetDate] = useState('');
   const [importance, setImportance] = useState('');
@@ -17,13 +16,6 @@ const NewDestination = () => {
               value={destinationTitle} 
               name="destination-title"
               onChange={e => setDestinationTitle(e.target.value)} />
-          </div>
-         <div>
-            <label for="destination-subtitle">Destination Subtitle</label>
-            <input type="text" 
-              value={destinationSubTitle} 
-              name="destination-subtitle"
-              onChange={e => setDestinationSubTitle(e.target.value)} />
           </div>
          <div>
             <label for="description">Description</label>

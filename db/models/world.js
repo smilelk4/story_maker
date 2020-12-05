@@ -3,8 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const World = sequelize.define('World', {
     name: {
       type: DataTypes.STRING(50),
-      allowNull: false, 
-      unique: true
     },
   }, {});
   World.associate = function(models) {

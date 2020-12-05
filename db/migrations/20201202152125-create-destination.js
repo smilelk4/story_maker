@@ -22,9 +22,6 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false
       },
-      subtitle: {
-        type: Sequelize.STRING(150)
-      },
       description: {
         type: Sequelize.STRING(500)
       },
@@ -37,7 +34,6 @@ module.exports = {
       },
       importance: {
         type: Sequelize.FLOAT(4),
-        allowNull: false,
         max: 10
       },
       createdAt: {

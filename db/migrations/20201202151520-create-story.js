@@ -26,7 +26,7 @@ module.exports = {
           model: 'Worlds'
         }
       },
-      label: {
+      difficulty: {
         type: Sequelize.INTEGER(),
         defaultValue: 1
       },

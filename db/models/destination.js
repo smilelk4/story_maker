@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Destination = sequelize.define('Destination', {
     story_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'Story'
       }
@@ -13,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: {
       type: DataTypes.STRING(150),
-      allowNull: false
-    },
-    subtitle: {
-      type: DataTypes.STRING(150)
     },
     description: {
       type: DataTypes.STRING(500)
@@ -29,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     importance: {
       type: DataTypes.FLOAT(4),
-      allowNull: false,
       max: 10
     },
   }, {});

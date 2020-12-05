@@ -6,9 +6,9 @@ module.exports = {
       {
         hero_id: 1,
         world_id: 1,
-        title: "Obtain a job as full-stack programmer.",
-        label: 1,
-        start_date: new Date(2020, 7, 13),
+        title: "Job-seeking Adventure",
+        difficulty: 1,
+        start_date: new Date(2020, 12, 1),
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -16,7 +16,7 @@ module.exports = {
         hero_id: 1,
         world_id: 1,
         title: "Startup web app business.",
-        label: 2,
+        difficulty: 2,
         start_date: new Date(2020, 10, 15),
         createdAt: new Date(),
         updatedAt: new Date()
@@ -25,7 +25,7 @@ module.exports = {
         hero_id: 1,
         world_id: 1,
         title: "Get an inquiry to develop full-stack application for a company.",
-        label: 3,
+        difficulty: 3,
         start_date: new Date(2020, 8, 22),
         createdAt: new Date(),
         updatedAt: new Date()

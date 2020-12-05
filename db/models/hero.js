@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Hero = sequelize.define('Hero', {
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     world_id: {
       type: DataTypes.INTEGER,
