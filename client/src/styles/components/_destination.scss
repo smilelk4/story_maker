@@ -1,7 +1,6 @@
 .destination {
-  background-color: lightgrey;
-  @include calc("height", "100% - #{$basic-item-height}");
-  overflow-y: scroll;
+  height: $basic-item-height;
+
 
   & > * {
     border: 1px solid black;
@@ -13,5 +12,8 @@
 
   &__container {
     height: 20rem;
+    background-color: lightgrey;
+    overflow-y: scroll;
+    height: 100%;
   }
 }

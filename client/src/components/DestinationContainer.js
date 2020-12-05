@@ -6,6 +6,7 @@ import { getDestinations } from '../store/actions/destinationActions';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
+  const destinations = useSelector(state => state.destination);
   const { id } = useParams();  
 
   useEffect(() => {
@@ -13,10 +14,8 @@ const DestinationContainer = () => {
   }, [id, dispatch]);
 
   return ( 
-    <div className="destination">
-      <Destination />
-      <Destination />
-      <Destination />
+    <div className="destination__container">
+      {destinations.map(destination => <Destination {...destination} />)}
     </div>
   );
 }
