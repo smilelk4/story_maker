@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
+import MyStory from './components/story/MyStory';
 import Header from './components/Header';
 import { getUser } from './store/actions/userAction';
 
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path='/my-hub'>
           <MyHub />
+        </Route>
+        <Route path='/stories/:id'>
+          <MyStory />
         </Route>
         <Route to='*'>
           "Error"
