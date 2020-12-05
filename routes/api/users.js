@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Hero, HeroImage } = require('../../db/models');
+const { User, Hero, HeroImage, Story } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
 const userValidation = require('../../validators/userValidator');

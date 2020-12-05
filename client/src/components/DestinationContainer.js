@@ -7,11 +7,21 @@ import { getDestinations } from '../store/actions/destinationActions';
 const DestinationContainer = () => {
   const dispatch = useDispatch();
   const destinations = useSelector(state => state.destination);
+  const stories = useSelector(state => state.story);
+  const userId = useSelector(state => state.user.id);
   const { id } = useParams();  
 
   useEffect(() => {
-    dispatch(getDestinations(id));
-  }, [id, dispatch]);
+    if (id) {
+      return dispatch(getDestinations(id));
+    }
+  }, [id, userId, dispatch]);
+
+  useEffect(() => {
+    for (let story of stories) {
+      dispatch(getDestinations(story.id));
+    }
+  }, [stories, dispatch]);
 
   return ( 
     <div className="destination__container">

@@ -9,9 +9,9 @@ const StoryContainer = () => {
   const stories = useSelector(state => state.story);
 
   useEffect(() => {
-    heroes.forEach(hero => {
+    for (let hero of heroes) {
       dispatch(getStories(hero.id));
-    });
+    }
   }, [heroes, dispatch]);
 
   return (

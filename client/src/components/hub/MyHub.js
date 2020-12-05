@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
@@ -25,7 +25,6 @@ const MyHub = () => {
         <div className="hub__section">
           <div className="hub__icon-holder">
             <NewAdventure />
-            {/* <NavLink to='/new-adventure'>Start a New Adventure</NavLink> */}
           </div>
         </div>
         <div className="hub__section">

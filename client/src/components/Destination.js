@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Destination = ({...props}) => {
-  console.log('PROPS', props)
   const { id, parent_destination_id: parentDestinationId,
         title, description, target_date: targetDate, importance } = props;
   return ( 
