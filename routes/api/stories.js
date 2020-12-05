@@ -37,9 +37,6 @@ asyncHandler(async (req, res) => {
     order: [['target_date', 'DESC']]
   });
 
-  console.log('param', req.params.id)
-  console.log(destinations)
-  
     // if (!destinations.length) next(createError('No destinations found.'));
     res.json({ destinations })
 }));

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
+import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
 import { createDestination } from '../../store/actions/destinationActions';
 
 const NewDestination = () => {
@@ -12,7 +12,8 @@ const NewDestination = () => {
   });
 
   const [destinationTitle, setDestinationTitle] = useState('');
-  const [subDestinationId, setSubDestinationId] = useState('');
+  const [subDestinationId, setSubDestinationId] = useState(subDestinations[0] ?
+                                                  subDestinations[0].id : null);
   const [description, setDescription] = useState('');
   const [targetDate, setTargetDate] = useState('');
   const [importance, setImportance] = useState('');
@@ -28,14 +29,14 @@ const NewDestination = () => {
       });
     }
 
-  const data = await dispatch(createDestination({
-    destinationTitle, description, targetDate,
-    storyId: id,
-    importance: destinationType === 'majorDestination'
-                ? importance : null,
-    parentDestinationId: destinationType === 'majorDestination'
-                ? null : subDestinationId
-  }));
+    await dispatch(createDestination({
+      destinationTitle, description, targetDate,
+      storyId: id,
+      importance: destinationType === 'majorDestination'
+                  ? importance : null,
+      parentDestinationId: destinationType === 'majorDestination'
+                  ? null : subDestinationId
+    }));
 
   };
 

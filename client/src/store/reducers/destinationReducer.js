@@ -7,6 +7,8 @@ const destinationReducer = (state = [], action) => {
       const newDestinations = action.destinations.filter(d => {
         return !(d.id in ids);
       });
+
+      // newDestinations.forEach(d => )
       
       return [...state, ...newDestinations];
     }

@@ -11,12 +11,6 @@ const MyStory = () => {
          <Scroll2 text="Upcoming destinations" className="mystory__scroll" 
                   width="40rem" fontSize=".5rem" />
          <div className="mystory__destination-container">
-          {/* <div className="mystory__destination"> */}
-            {/* <h3>Destination</h3>
-          </div>
-          <div className="mystory__destination">
-            <h3>Destination</h3>
-          </div> */}
           <DestinationContainer />
          </div>
        </div>
