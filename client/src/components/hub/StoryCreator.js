@@ -10,9 +10,7 @@ const StoryCreator = () => {
   const history = useHistory();
   const worldContainer = useRef();
   const heroContainer = useRef();
-  const userId = useSelector(state => state.user);
   const heroes = useSelector(state => state.hero);
-  const stories = useSelector(state => state.story);
 
   const [page, setPage] = useState(1);
   const [worlds, setWorlds] = useState([]);
@@ -66,7 +64,7 @@ const StoryCreator = () => {
     if (!worldId || !heroId || !title || !destinationTitle || !targetDate || !importance) {
       return dispatch({
         type: LOAD_ERRORS,
-        errors: ['There is a field with missing values.']
+        errors: ['There is at least one field with missing value.']
       });
     }
     const data = await dispatch(createStory({ worldId, heroId, title, 

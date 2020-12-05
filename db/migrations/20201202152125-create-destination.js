@@ -26,7 +26,8 @@ module.exports = {
         type: Sequelize.STRING(500)
       },
       target_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       accomplished: {
         type: Sequelize.BOOLEAN,
