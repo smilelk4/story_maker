@@ -21,11 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     label: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
     },
     start_date: {
       type: DataTypes.DATE,
-      defaultValue: new Date()
     },
   }, {});
   Story.associate = function(models) {

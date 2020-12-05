@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     accomplished: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
     },
     importance: {
       type: DataTypes.FLOAT(4),

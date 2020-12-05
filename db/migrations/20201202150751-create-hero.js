@@ -28,7 +28,7 @@ module.exports = {
       },
       level: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 1
       },
       hp: {
         type: Sequelize.INTEGER,
