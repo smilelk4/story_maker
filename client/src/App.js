@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
+import Header from './components/Header';
 import { getUser } from './store/actions/userAction';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className="app">
+      <Header />
 
       <Switch>
         <Route exact path='/'>
