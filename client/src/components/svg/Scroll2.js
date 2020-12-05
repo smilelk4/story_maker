@@ -1,9 +1,9 @@
 import React from 'react';
 
-const HeroScroll = () => {
+const Scroll2 = ({text, width="250"}) => {
   return ( 
 <svg version="1.2" baseProfile="tiny" x="0px"
-	 y="0px" viewBox="0 0 127.9 30" overflow="visible" width="250">
+	 y="0px" viewBox="0 0 127.9 30" overflow="visible" width={width}>
 <g id="Layer_1" display="none">
 	<rect x="-99" y="-15" fill="#FFFFFF" width="244.9" height="100"/>
 	<g display="inline">
@@ -23426,22 +23426,12 @@ const HeroScroll = () => {
 		</g>
 	</g>
 </g>
-<g id="Hero">
-	<text transform="matrix(0.9923 0 0 1 42.9844 13.0176)" font-family="'Zapfino'" font-size="6.4386px">Y</text>
-	<text transform="matrix(0.9923 0 0 1 48.3506 13.0176)" font-family="'Zapfino'" font-size="6.4386px">o</text>
-	<text transform="matrix(0.9923 0 0 1 52.3438 13.0176)" font-family="'Zapfino'" font-size="6.4386px">u</text>
-	<text transform="matrix(0.9923 0 0 1 56.4492 13.0176)" font-family="'Zapfino'" font-size="6.4386px">r</text>
-	<text transform="matrix(0.9923 0 0 1 59.5635 13.0176)" font-family="'Zapfino'" font-size="6.4386px"> </text>
-	<text transform="matrix(0.9923 0 0 1 62.7578 13.0176)" font-family="'Zapfino'" font-size="6.4386px">h</text>
-	<text transform="matrix(0.9923 0 0 1 67.0059 13.0176)" font-family="'Zapfino'" font-size="6.4386px">e</text>
-	<text transform="matrix(0.9923 0 0 1 70.2803 13.0176)" font-family="'Zapfino'" font-size="6.4386px">r</text>
-	<text transform="matrix(0.9923 0 0 1 73.2354 13.0176)" font-family="'Zapfino'" font-size="6.4386px">o</text>
-	<text transform="matrix(0.9923 0 0 1 77.3398 13.0176)" font-family="'Zapfino'" font-size="6.4386px">e</text>
-	<text transform="matrix(0.9923 0 0 1 80.6143 13.0176)" font-family="'Zapfino'" font-size="6.4386px">s</text>
+<g id="scroll">
+	<text x="50%" y="42%" font-family="'Zapfino'">{text}</text>
 </g>
 </svg>
 
   );
 }
  
-export default HeroScroll;
+export default Scroll2;

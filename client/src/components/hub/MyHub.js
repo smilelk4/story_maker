@@ -6,8 +6,7 @@ import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
 import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
-import HeroScroll from '../svg/HeroScroll';
-import StoryScroll from '../svg/StoryScroll';
+import Scroll2 from '../svg/Scroll2';
 
 const MyHub = () => {
   return ( 
@@ -30,11 +29,11 @@ const MyHub = () => {
           </div>
         </div>
         <div className="hub__section">
-          <HeroScroll />
+          <Scroll2 text="Your heroes"/>
           <HeroContainer />
         </div>
         <div className="hub__section">
-          <StoryScroll />
+        <Scroll2 text="Stories"/>
           <StoryContainer />
         </div>
       </aside>
