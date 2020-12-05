@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
+import { createDestination } from '../../store/actions/destinationActions';
 
 const NewDestination = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
   const subDestinations = useSelector(state => {
     return state.destination.filter(d => d.parent_destination_id);
   });
 
   const [destinationTitle, setDestinationTitle] = useState('');
+  const [subDestinationId, setSubDestinationId] = useState('');
   const [description, setDescription] = useState('');
   const [targetDate, setTargetDate] = useState('');
   const [importance, setImportance] = useState('');
@@ -24,10 +28,14 @@ const NewDestination = () => {
       });
     }
 
-  // const data = await dispatch(createDestination({
-  //   destinationTitle, description, targetDate, importance, 
-  //   destinationType = 
-  // }));
+  const data = await dispatch(createDestination({
+    destinationTitle, description, targetDate,
+    storyId: id,
+    importance: destinationType === 'majorDestination'
+                ? importance : null,
+    parentDestinationId: destinationType === 'majorDestination'
+                ? null : subDestinationId
+  }));
 
   };
 
@@ -82,19 +90,19 @@ const NewDestination = () => {
             <input type="number" 
               value={importance} 
               name="importance"
+              min = "0"
+              max = "10"
               onChange={e => setImportance(e.target.value)} />
             </div>
           )}
           {destinationType === 'subDestination' && (
             <div>
               <label for="parent-destination">Sub-destination of</label>
-              <select name="parent-destination">
+              <select name="parent-destination" onChange={e =>(
+                                                setSubDestinationId(e.target.value))}>
                 {subDestinations.map(subDestination => (
                   <option value={subDestination.id}>{subDestination.title}</option>
                 ))}
-                {/* <option value="">Data</option>
-                <option value="">Data</option>
-                <option value="">Data</option> */}
               </select>
             </div>
           )}

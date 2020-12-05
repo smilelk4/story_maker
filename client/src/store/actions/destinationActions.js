@@ -29,3 +29,17 @@ export const getDestinations = storyId => {
     verifyData(res, dispatch);
   }
 };
+
+export const createDestination = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/destinations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+
+    return await verifyData(res, dispatch);
+  }
+};
