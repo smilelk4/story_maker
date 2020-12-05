@@ -17,7 +17,7 @@ const verifyData = async (res, dispatch) => {
 
   dispatch({
     type: LOAD_DESTINATIONS,
-    stories: data.destinations
+    destinations: data.destinations
   });
   
   return data;

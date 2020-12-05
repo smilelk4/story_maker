@@ -17,7 +17,7 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res) => {
     include: [World]
     });
 
-  if (!stories) next(createError('No stories found.'));
+  if (!stories.length) next(createError('No stories found.'));
   res.json({ stories });
 }));
 

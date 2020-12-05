@@ -3,6 +3,7 @@ import token from './tokenReducer';
 import user from './userReducer';
 import hero from './heroReducer';
 import story from './storyReducer';
+import destination from './destinationReducer';
 import errors from './errorReducer';
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   user,
   hero,
   story,
+  destination,
   errors
 });
 

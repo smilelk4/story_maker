@@ -9,7 +9,7 @@ const DestinationContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    dispatch(getDestinations(+id));
+    dispatch(getDestinations(id));
   }, [id, dispatch]);
 
   return ( 

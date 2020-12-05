@@ -28,4 +28,17 @@ router.post('/',
   res.status(201).json({ stories: [story] });
 }));
 
+router.get('/:id(\\d+)/destinations',
+asyncHandler(async (req, res) => {
+  const destinations = await Destination.findAll({
+    where: {
+      story_id: req.params.id
+    },
+    order_by: [['target_date', 'DESC']]
+  });
+  
+    if (!destinations.length) next(createError('No destinations found.'));
+    res.json({ destinations })
+}));
+
 module.exports = router;

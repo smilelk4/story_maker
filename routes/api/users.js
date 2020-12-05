@@ -83,7 +83,7 @@ router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
     include: [HeroImage]
   });
 
-  if (!heroes) next(createError('No heroes found.'));
+  if (!heroes.length) next(createError('No heroes found.'));
   res.json({ heroes });
 }));
 
