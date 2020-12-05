@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NewAdventure from './NewAdventure';
-import DestinationContainer from './DestinationContainer';
+import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
 import ActivityScroll from '../svg/ActivityScroll';

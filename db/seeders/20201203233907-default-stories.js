@@ -8,7 +8,7 @@ module.exports = {
         world_id: 1,
         title: "Job-seeking Adventure",
         difficulty: 1,
-        start_date: new Date(2020, 12, 1),
+        start_date: new Date(2020, 11, 1),
         createdAt: new Date(),
         updatedAt: new Date()
       },
