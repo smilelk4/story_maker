@@ -1,12 +1,21 @@
 import React from 'react';
-import DestinationScroll2 from '../svg/DestinationScroll';
+import Scroll2 from '../svg/Scroll2';
 
 const MyStory = () => {
   return (  
     <div className="mystory">
        <div className="mystory__progress">Progress</div>
        <div className="mystory__main">
-         <DestinationScroll2 className="mystory__destination-scroll"/>
+         <Scroll2 text="Upcoming destinations" className="mystory__scroll" 
+                  width="40rem" fontSize=".5rem" />
+         <div className="mystory__destination-container">
+          <div className="mystory__destination">
+            <h3>Destination</h3>
+          </div>
+          <div className="mystory__destination">
+            <h3>Destination</h3>
+          </div>
+         </div>
        </div>
        <div className="mystory__sidebar-left">Aside</div>
        <div className="mystory__sidebar-right">Aside</div>
