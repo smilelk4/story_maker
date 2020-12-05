@@ -1,9 +1,10 @@
 import React from 'react';
-import Modal from './Modal';
 
-const ModalContainer = ({clickHandler}) => {
+const ModalContainer = ({clickHandler, children}) => {
   return ( 
-    <Modal clickHandler={clickHandler}/>
+    <>
+      {children}
+    </>
   );
 }
  

@@ -33,7 +33,7 @@ const MyHub = () => {
           <HeroContainer />
         </div>
         <div className="hub__section">
-        <Scroll2 text="Stories"/>
+          <Scroll2 text="Stories"/>
           <StoryContainer />
         </div>
       </aside>

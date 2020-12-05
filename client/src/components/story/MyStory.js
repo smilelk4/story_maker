@@ -1,5 +1,6 @@
 import React from 'react';
 import Scroll2 from '../svg/Scroll2';
+import NewDestination from './NewDestination';
 
 const MyStory = () => {
   return (  
@@ -17,8 +18,11 @@ const MyStory = () => {
           </div>
          </div>
        </div>
-       <div className="mystory__sidebar-left">Aside</div>
-       <div className="mystory__sidebar-right">Aside</div>
+       <div className="mystory__sidebar-left">
+       </div>
+       <div className="mystory__sidebar-right">
+        <NewDestination />
+       </div>
     </div>
   );
 }

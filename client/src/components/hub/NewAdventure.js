@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalContainer from '../ModalContainer';
+import NewStoryModal from './NewStoryModal';
 
 const NewAdventure = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,7 +10,7 @@ const NewAdventure = () => {
 
   return (
     <>
-    {isModalOpen ? <ModalContainer clickHandler={clickHandler} />
+    {isModalOpen ? <NewStoryModal clickHandler={clickHandler} />
     : <input value="Start a New Adventure" onClick={clickHandler}/>}
     </>
   );
