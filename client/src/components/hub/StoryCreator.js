@@ -1,23 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
 
 const StoryCreator = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const worldContainer = useRef();
   const heroContainer = useRef();
   const userId = useSelector(state => state.user);
   const heroes = useSelector(state => state.hero);
+  const stories = useSelector(state => state.story);
 
   const [page, setPage] = useState(1);
   const [worlds, setWorlds] = useState([]);
   const [worldId, setWorldId] = useState(null);
   const [heroId, setHeroId] = useState(null);
-  // const [heroes, setHeroes] = useState([]);
   const [title, setTitle] = useState('');
-  const [goal, setGoal] = useState('');
+  const [destinationTitle, setDestinationTitle] = useState('');
+  const [targetDate, setTargetDate] = useState('');
+  const [importance, setImportance] = useState('');
   const [pageTitle, setPageTitle] = useState('');
 
   useEffect(() => {
@@ -29,16 +33,6 @@ const StoryCreator = () => {
       }
     })();
   }, [worlds]);
-
-  useEffect(() => {
-    (async () => {
-      if (!heroes.length) {
-        // const res = await fetch(`${baseUrl}/users/${userId}/heroes`);
-        // const data = await res.json();
-        // setHeroes(data.heroImages);
-      }
-    })();
-  }, [heroes])
 
   useEffect(() => {
     if (page === 1) {
@@ -68,18 +62,21 @@ const StoryCreator = () => {
     }
   }, [page])
 
-  const handleSubmit = e => {
-    if (!worldId || !heroId || !title || !goal) {
+  const handleSubmit = async e => {
+    if (!worldId || !heroId || !title || !destinationTitle || !targetDate || !importance) {
       return dispatch({
         type: LOAD_ERRORS,
         errors: ['There is a field with missing values.']
       });
     }
-    const data = { worldId, heroId, title, goal };
-    dispatch(createStory(data));
+    const data = await dispatch(createStory({ worldId, heroId, title, 
+                                destinationTitle, targetDate, importance  }));
+
+    if(!data.errors) {
+      history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
+    }
   }
 
-  
   const handleNext = () => {
     if ((page === 1 && !worldId) || (page === 2 && !heroId)) {
       return dispatch({
@@ -127,11 +124,25 @@ const StoryCreator = () => {
               onChange={e => setTitle(e.target.value)} />
           </div>
           <div>
-            <label for="goal">Final Goal</label>
+            <label for="destination-title">Final Goal</label>
             <input type="text" 
-              value={goal} 
-              name="goal"
-              onChange={e => setGoal(e.target.value)} />
+              value={destinationTitle} 
+              name="destination-title"
+              onChange={e => setDestinationTitle(e.target.value)} />
+          </div>
+          <div>
+            <label for="target-date">Target Date</label>
+            <input type="date" 
+              value={targetDate} 
+              name="target-date"
+              onChange={e => setTargetDate(e.target.value)} />
+          </div>
+          <div>
+            <label for="importance">Importance</label>
+            <input type="number" 
+              value={importance} 
+              name="importance"
+              onChange={e => setImportance(e.target.value)} />
           </div>
           <button onClick={handleSubmit}>Create Story</button>
         </>

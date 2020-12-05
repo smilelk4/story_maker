@@ -10,13 +10,17 @@ const verifyData = async (res, dispatch) => {
       type: LOAD_ERRORS,
       errors: data.errors
     });
+    return data;
   }
 
   dispatch({ type: CLEAR_ERRORS });
+
   dispatch({
     type: LOAD_STORIES,
     stories: data.stories
   });
+  
+  return data;
 };
 
 export const getStories = heroId => {
@@ -35,6 +39,7 @@ export const createStory = inputtedInfo => {
       },
       body: JSON.stringify(inputtedInfo)
     });
-    // verifyData(res, dispatch);
+
+    return await verifyData(res, dispatch);
   }
 };
