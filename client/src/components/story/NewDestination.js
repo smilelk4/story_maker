@@ -11,13 +11,13 @@ const NewDestination = () => {
     return state.destination.filter(d => d.parent_destination_id);
   });
 
-  const [destinationTitle, setDestinationTitle] = useState('');
+  const [destinationTitle, setDestinationTitle] = useState(null);
   const [subDestinationId, setSubDestinationId] = useState(subDestinations[0] ?
                                                   subDestinations[0].id : null);
-  const [description, setDescription] = useState('');
-  const [targetDate, setTargetDate] = useState('');
-  const [importance, setImportance] = useState('');
-  const [destinationType, setDestinationType] = useState('');
+  const [description, setDescription] = useState(null);
+  const [targetDate, setTargetDate] = useState(null);
+  const [importance, setImportance] = useState(0);
+  const [destinationType, setDestinationType] = useState(null);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const NewDestination = () => {
       });
     }
 
-    await dispatch(createDestination({
+    const data = await dispatch(createDestination({
       destinationTitle, description, targetDate,
       storyId: id,
       importance: destinationType === 'majorDestination'
@@ -38,6 +38,14 @@ const NewDestination = () => {
                   ? null : subDestinationId
     }));
 
+    if (!data.errors) {
+      setDestinationTitle('');
+      setSubDestinationId('');
+      setDescription('');
+      setTargetDate('');
+      setImportance('');
+      setDestinationType('');
+    }
   };
 
   return (

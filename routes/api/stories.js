@@ -34,7 +34,7 @@ asyncHandler(async (req, res) => {
     where: {
       story_id: req.params.id,
     },
-    order: [['target_date', 'DESC']]
+    order: [['target_date', 'ASC']]
   });
 
     // if (!destinations.length) next(createError('No destinations found.'));
