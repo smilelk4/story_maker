@@ -18,9 +18,19 @@ router.get('/', asyncHandler(async (_req, res) => {
 }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-  const hero = await Hero.findByPk(req.params.id);
+  const hero = await Hero.findByPk(req.params.id, {
+    include: [HeroImage]
+  });
 
-  res.json({ hero });
+  res.json({ hero: {
+    id: hero.id,
+    worldId: hero.world_id,
+    name: hero.name,
+    level: hero.level,
+    hp: hero.hp,
+    xp: hero.xp,
+    image: hero.HeroImage.image_url
+  }});
 }));
 
 router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
