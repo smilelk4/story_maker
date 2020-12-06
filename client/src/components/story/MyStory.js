@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
+import SideMenuField from './SideMenuField';
+import NewMemoir from './NewMemoir';
 
 const MyStory = () => {
+  const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
+
   return (  
     <div className="mystory">
        <div className="mystory__progress">Progress</div>
        <div className="mystory__main">
          <Scroll2 text="Upcoming destinations" className="mystory__scroll" 
                   width="40rem" fontSize=".5rem" />
-         <div className="mystory__destination-container">
-          <DestinationContainer />
+         <div className="mystory__container">
+          {currentDisplay}
          </div>
        </div>
        <div className="mystory__sidebar-left">
-       View Upcoming Destinations
-       Write a Memoir
+       <SideMenuField>
+        <div onClick={() => setCurrentDisplay(<DestinationContainer />)}>
+          View Upcoming Destinations
+        </div>
+       </SideMenuField>
+       <SideMenuField>
+        <div onClick={() => setCurrentDisplay(<NewMemoir />)}>
+          Write a Memoir
+        </div>
+       </SideMenuField>
+
        </div>
        <div className="mystory__sidebar-right">
         <NewDestination />

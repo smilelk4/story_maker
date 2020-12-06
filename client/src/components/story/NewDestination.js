@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
 import { createDestination } from '../../store/actions/destinationActions';
+import dateFormatter from '../../utils/dateFormatter';
 
 const NewDestination = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const NewDestination = () => {
   const [subDestinationId, setSubDestinationId] = useState(subDestinations[0] ?
                                                   subDestinations[0].id : null);
   const [description, setDescription] = useState(null);
-  const [targetDate, setTargetDate] = useState(null);
+  const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
   const [importance, setImportance] = useState(0);
   const [destinationType, setDestinationType] = useState(null);
 
