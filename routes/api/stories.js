@@ -30,9 +30,8 @@ router.post('/',
 
 router.get('/:id(\\d+)',
 asyncHandler(async (req, res) => {
-  const story = await Story.findByPk(id);
-
-    res.json({ story })
+  const story = await Story.findByPk(req.params.id);
+  res.json({ story })
 }));
 
 router.get('/:id(\\d+)/destinations',

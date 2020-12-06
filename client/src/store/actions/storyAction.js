@@ -1,4 +1,4 @@
-import { loadStoriesAction } from '../reducers/storyReducer';
+import { loadStoryAction, loadStoriesAction } from '../reducers/storyReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -30,12 +30,17 @@ export const getStories = heroId => {
   }
 };
 
-// export const getStory = heroId => {
-//   return async dispatch => {
-//     const res = await fetch(`${baseUrl}/heroes/${heroId}/stories`);
-//     verifyData(res, dispatch);
-//   }
-// };
+export const getStory = storyId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/stories/${storyId}`);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadStoryAction(data.story));
+    }
+    return data;
+  }
+};
 
 export const createStory = inputtedInfo => {
   return async dispatch => {

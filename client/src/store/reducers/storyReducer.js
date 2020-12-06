@@ -1,4 +1,10 @@
+const LOAD_STORY = 'LOAD_STORY';
 const LOAD_STORIES = 'LOAD_STORIES';
+
+export const loadStoryAction = data => ({
+  type: LOAD_STORY,
+  story: data
+});
 
 export const loadStoriesAction = data => ({
   type: LOAD_STORIES,
@@ -7,6 +13,9 @@ export const loadStoriesAction = data => ({
 
 const storyReducer = (state = [], action) => {
   switch(action.type) {
+    case LOAD_STORY: {
+      return [action.story]
+    }
     case LOAD_STORIES: {
       return [...state, ...action.stories];
     }

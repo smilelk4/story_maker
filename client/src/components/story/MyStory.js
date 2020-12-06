@@ -7,6 +7,7 @@ import DestinationContainer from '../DestinationContainer';
 import SideMenuField from './SideMenuField';
 import ProgressContainer from './ProgressContainer';
 import NewMemoir from './NewMemoir';
+import { getStory } from '../../store/actions/storyAction';
 
 const MyStory = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const MyStory = () => {
   const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
 
   useEffect(() => {
-
+    dispatch(getStory(id));
   }, []);
 
   return (  
