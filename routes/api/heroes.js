@@ -17,6 +17,12 @@ router.get('/', asyncHandler(async (_req, res) => {
   res.json({ heroImages });
 }));
 
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const hero = await Hero.findByPk(req.params.id);
+
+  res.json({ hero });
+}));
+
 router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
   const stories = await Story.findAll({
     where: {

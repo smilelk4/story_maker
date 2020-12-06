@@ -47,13 +47,4 @@ asyncHandler(async (req, res) => {
     res.json({ destinations })
 }));
 
-// router.get('/:id(\\d+)/heroes',
-// // asyncHandler(async (req, res) => {
-// //   const hero = await Hero.findOne({
-// //     where: {  } 
-// //   });
-
-//     // res.json({ destinations })
-// ));
-
 module.exports = router;
