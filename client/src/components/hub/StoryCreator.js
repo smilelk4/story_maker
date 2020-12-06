@@ -33,15 +33,6 @@ const StoryCreator = () => {
   }, [worlds]);
 
   useEffect(() => {
-    if (page === 1) {
-      if (worldContainer.current.children.length && worldId) {
-        worldContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-        worldContainer.current.childNodes[worldId - 1].classList.add('selected');
-      }
-    }
-  }, [worldId, page])
-
-  useEffect(() => {
     if (page === 2) {
       if (heroContainer.current.children.length && heroId) {
         heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
@@ -52,16 +43,16 @@ const StoryCreator = () => {
 
   useEffect(() => {
     if (page === 1) {
-      setPageTitle('Select Your World');
+      setPageTitle('Set Your Story Name');
     } else if (page === 2) {
       setPageTitle('Select Your Hero');
     } else {
-      setPageTitle('Decide on Your Story');
+      setPageTitle('Set Your Destination');
     }
   }, [page])
 
   const handleSubmit = async e => {
-    if (!worldId || !heroId || !title || !destinationTitle || !targetDate || !importance) {
+    if ( !heroId || !title || !destinationTitle || !targetDate || !importance) {
       return dispatch({
         type: LOAD_ERRORS,
         errors: ['There is at least one field with missing value.']
@@ -76,10 +67,10 @@ const StoryCreator = () => {
   }
 
   const handleNext = () => {
-    if ((page === 1 && !worldId) || (page === 2 && !heroId)) {
+    if ((page === 1 && !title) || (page === 2 && !heroId)) {
       return dispatch({
         type: LOAD_ERRORS,
-        errors: ['Please select to proceed.']
+        errors: ['Please select/fill out to proceed.']
       });
     }
     dispatch({ type: CLEAR_ERRORS });
@@ -94,18 +85,20 @@ const StoryCreator = () => {
     <>
       <h2>{pageTitle}</h2>
       {page === 1 && (
-        <div className="modal__page-container" ref={worldContainer}> 
-          {worlds.length && worlds.map(world => (
-            <div className="world" onClick={() => setWorldId(world.id)}>
-              <div className="world__name">{world.name}</div>
-            </div>
-          ))}
-        </div>
+        <div>
+            <label for="title">Story Title</label>
+            <input type="text" 
+              value={title} 
+              name="title"
+              onChange={e => setTitle(e.target.value)} />
+          </div>
       )}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes.length && heroes.map(hero => (
-            <div className="hero" onClick={() => setHeroId(hero.id)}>
+            <div className="hero" onClick={() => {
+              setHeroId(hero.id);
+              setWorldId(hero.worldId) }}>
               <img src={hero.image} alt={hero.id} />
               <p>{hero.name}</p>
             </div>
@@ -114,13 +107,6 @@ const StoryCreator = () => {
       )}
       {page === 3 && (
         <>
-          <div>
-            <label for="title">Story Title</label>
-            <input type="text" 
-              value={title} 
-              name="title"
-              onChange={e => setTitle(e.target.value)} />
-          </div>
           <div>
             <label for="destination-title">Final Goal</label>
             <input type="text" 
