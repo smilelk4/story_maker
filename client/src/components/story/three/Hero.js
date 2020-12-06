@@ -5,7 +5,7 @@ import { useTexture } from '@react-three/drei';
 const Hero = ({hero, active, setActive, ...props}) => {
   const [ref] = useBox(() => ({ mass: 1, ...props }));
   // const texture = useTexture('https://story-maker-app.s3.amazonaws.com/bungalo.png')
-  const texture = useTexture(hero.image)
+  const texture = useTexture(hero ? hero.image : '')
 
   return ( 
     <Suspense fallback={null}>

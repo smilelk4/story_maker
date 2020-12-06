@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
+import { Sky } from 'drei';
+import { Vector3 } from 'three';
 
 import Plane from './three/Plane';
 import Node from './three/Node';
@@ -18,6 +20,7 @@ const ProgressContainer = () => {
   const destinations = useSelector(state => state.destination);
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(null);
+  const container = useRef();
   let x = -10;
 
   useEffect(() => {
@@ -25,12 +28,15 @@ const ProgressContainer = () => {
   }, [heroId, dispatch]);
 
   return ( 
-    <div className="progress__container">
+    <div ref={container} className="progress__container">
       <Canvas
+        onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
-        <Camera position={[0, 0, 20]} />
+        <Camera position={[0, 1, 20]}
+                reference={container.current}/>
         <ambientLight intensity={0.5} />
-        <spotLight position={[10, 15, 10]} angle={0.3} />
+        <spotLight position={[10, 15, 10]} angle={3} />
+        <Sky sunPosition={new Vector3(10, 20, 100)}/>
         <Physics
           velocity={0}
           gravity={[0, -5, 0]} >
