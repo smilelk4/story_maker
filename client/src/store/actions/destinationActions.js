@@ -1,4 +1,4 @@
-import { LOAD_DESTINATIONS } from '../reducers/destinationReducer';
+import { loadDestinationsAction } from '../reducers/destinationReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -10,23 +10,21 @@ const verifyData = async (res, dispatch) => {
       type: LOAD_ERRORS,
       errors: data.errors
     });
-    return data;
+  } else {
+    dispatch({ type: CLEAR_ERRORS });
   }
-
-  dispatch({ type: CLEAR_ERRORS });
-
-  dispatch({
-    type: LOAD_DESTINATIONS,
-    destinations: data.destinations
-  });
-  
   return data;
 };
 
 export const getDestinations = storyId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/stories/${storyId}/destinations`);
-    verifyData(res, dispatch);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadDestinationsAction(data.destinations));
+    }
+    return data;
   }
 };
 
@@ -40,6 +38,11 @@ export const createDestination = inputtedInfo => {
       body: JSON.stringify(inputtedInfo)
     });
 
-    return await verifyData(res, dispatch);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadDestinationsAction(data.destinations));
+    }
+    return data;
   }
 };

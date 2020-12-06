@@ -1,4 +1,9 @@
-export const LOAD_DESTINATIONS = 'LOAD_DESTINATIONS';
+const LOAD_DESTINATIONS = 'LOAD_DESTINATIONS';
+
+export const loadDestinationsAction = data => ({
+  type: LOAD_DESTINATIONS,
+  destinations: data
+});
 
 const destinationReducer = (state = [], action) => {
   switch(action.type) {
