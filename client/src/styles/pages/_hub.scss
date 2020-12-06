@@ -35,6 +35,16 @@
     @include calc("height", "100% - #{$basic-item-height}");
   }
 
+  .left-section {
+    position: relative;
+
+    svg {
+      position: absolute;
+      left: -7rem;
+      top: -5rem;
+    }
+  }
+
   &__icon-holder {
     @include calc("height", "100% / 2");
   }

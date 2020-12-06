@@ -12,10 +12,10 @@ const MyHub = () => {
   return ( 
     <div className="hub">
       <main className="hub__main">
-        <div className="hub__activity">
+        <div className="hub__activity left-section">
           <ActivityScroll />
         </div>
-        <div className="hub__destination-container">
+        <div className="hub__destination-container left-section">
           <DestinationScroll />
           <DestinationContainer />
         </div>

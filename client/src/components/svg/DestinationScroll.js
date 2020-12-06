@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DestinationScroll = ({className}) => {
+const DestinationScroll = () => {
   return ( 
 <svg version="1.2" baseProfile="tiny" x="0px"
-	 y="0px" viewBox="0 0 127.9 48" overflow="visible" width="350" className={className}>
+	 y="0px" viewBox="0 0 127.9 48" overflow="visible" width="350">
 <g id="Layer_1" display="none">
 	<rect x="-99" y="-6" fill="#FFFFFF" width="244.9" height="100"/>
 	<g display="inline">
