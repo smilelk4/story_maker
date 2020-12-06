@@ -1,22 +1,26 @@
 const router = require('express').Router();
-const { Story, World, Destination } = require('../../db/models');
+const { Story, World, Memoir } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
-  const { destinationTitle, description, targetDate,
-        importance, storyId, parentDestinationId } = req.body;
+  const { heroId, 
+          storyId, 
+          title, 
+          description, 
+          hoursFought, 
+          accomplishmentLevel } = req.body;
         
-  let destination = await Destination.create({
+  const memoir = await Memoir.create({
+    hero_id: heroId,
     story_id: storyId,
-    parent_destination_id: parentDestinationId,
-    title: destinationTitle,
+    title,
     description,
-    target_date: targetDate,
-    importance
+    hours_fought: hoursFought,
+    accomplishment_level: accomplishmentLevel
   });
 
-  res.status(201).json({ destinations: [destination] });
+  res.status(201).json({ memoirs: [memoir] });
 }));
 
 module.exports = router;

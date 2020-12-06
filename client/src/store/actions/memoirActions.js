@@ -20,7 +20,7 @@ const verifyData = async (res, dispatch) => {
 
 export const createMemoir = inputtedInfo => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/destinations`, {
+    const res = await fetch(`${baseUrl}/memoirs`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

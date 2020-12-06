@@ -26,10 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     accomplishment_level: {
       type: DataTypes.FLOAT(4),
       max: 10
-    },
-    date: {
-      type: DataTypes.DATE
-    },
+    }
   }, {});
   Memoir.associate = function(models) {
     // associations can be defined here
