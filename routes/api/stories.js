@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, World, Destination } = require('../../db/models');
+const { Story, World, Destination, Hero } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
@@ -28,6 +28,13 @@ router.post('/',
   res.status(201).json({ stories: [story] });
 }));
 
+router.get('/:id(\\d+)',
+asyncHandler(async (req, res) => {
+  const story = await Story.findByPk(id);
+
+    res.json({ story })
+}));
+
 router.get('/:id(\\d+)/destinations',
 asyncHandler(async (req, res) => {
   const destinations = await Destination.findAll({
@@ -40,5 +47,14 @@ asyncHandler(async (req, res) => {
     // if (!destinations.length) next(createError('No destinations found.'));
     res.json({ destinations })
 }));
+
+// router.get('/:id(\\d+)/heroes',
+// // asyncHandler(async (req, res) => {
+// //   const hero = await Hero.findOne({
+// //     where: {  } 
+// //   });
+
+//     // res.json({ destinations })
+// ));
 
 module.exports = router;

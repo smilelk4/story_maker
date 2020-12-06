@@ -1,4 +1,4 @@
-import { LOAD_STORIES } from '../reducers/storyReducer';
+import { loadStoriesAction } from '../reducers/storyReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -11,14 +11,9 @@ const verifyData = async (res, dispatch) => {
       errors: data.errors
     });
     return data;
+  } else {
+    dispatch({ type: CLEAR_ERRORS });
   }
-
-  dispatch({ type: CLEAR_ERRORS });
-
-  dispatch({
-    type: LOAD_STORIES,
-    stories: data.stories
-  });
   
   return data;
 };
@@ -26,9 +21,21 @@ const verifyData = async (res, dispatch) => {
 export const getStories = heroId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/stories`);
-    verifyData(res, dispatch);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadStoriesAction(data.stories));
+    }
+    return data;
   }
 };
+
+// export const getStory = heroId => {
+//   return async dispatch => {
+//     const res = await fetch(`${baseUrl}/heroes/${heroId}/stories`);
+//     verifyData(res, dispatch);
+//   }
+// };
 
 export const createStory = inputtedInfo => {
   return async dispatch => {
@@ -40,6 +47,11 @@ export const createStory = inputtedInfo => {
       body: JSON.stringify(inputtedInfo)
     });
 
-    return await verifyData(res, dispatch);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadStoriesAction(data.stories));
+    }
+    return data;
   }
 };

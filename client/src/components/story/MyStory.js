@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
@@ -7,8 +9,14 @@ import ProgressContainer from './ProgressContainer';
 import NewMemoir from './NewMemoir';
 
 const MyStory = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
   const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
+
+  useEffect(() => {
+
+  }, []);
 
   return (  
     <div className="mystory">
