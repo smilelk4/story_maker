@@ -1,4 +1,4 @@
-import { loadMemoirsAction } from '../reducers/memoirReducer';
+import { loadMemoirsAction, addMemoirAction } from '../reducers/memoirReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -43,7 +43,7 @@ export const createMemoir = inputtedInfo => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      dispatch(loadMemoirsAction(data.memoirs));
+      dispatch(addMemoirAction(data.memoir));
     }
     return data;
   }

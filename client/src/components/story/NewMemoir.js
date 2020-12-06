@@ -13,16 +13,24 @@ const NewMemoir = () => {
   const [hoursFought, setHoursFought] = useState(0);
   const [accomplishmentLevel, setAccomplishmentLevel] = useState(0);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    dispatch(createMemoir({
+    const data = await dispatch(createMemoir({
       heroId, storyId, title, description, hoursFought, accomplishmentLevel
     }));
+
+
+    if (!data.errors) {
+      setTitle('');
+      setDescription('');
+      setHoursFought(0);
+      setAccomplishmentLevel(0);
+    }
   }
 
   return ( 
-    <form >
+    <form onSubmit={handleSubmit}>
         <div>
           <label for="title">Title</label>
           <input type="text" 

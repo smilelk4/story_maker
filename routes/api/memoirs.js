@@ -20,7 +20,15 @@ router.post('/',
     accomplishment_level: accomplishmentLevel
   });
 
-  res.status(201).json({ memoirs: [memoir] });
+  res.status(201).json({ memoir: {
+    id: memoir.id,
+    heroId: memoir.hero_id,
+    storyId: memoir.story_id,
+    title: memoir.title,
+    description: memoir.description,
+    hoursFought: memoir.hours_fought,
+    accomplishmentLevel: memoir.accomplishment_level
+  }});
 }));
 
 module.exports = router;

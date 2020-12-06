@@ -1,8 +1,14 @@
 const LOAD_MEMOIRS = 'LOAD_MEMOIRS';
+const ADD_MEMOIR = 'ADD_MEMOIR';
 
 export const loadMemoirsAction = data => ({
   type: LOAD_MEMOIRS,
   memoirs: data
+});
+
+export const addMemoirAction = data => ({
+  type: ADD_MEMOIR,
+  memoir: data
 });
 
 const memoirReducer = (state = [], action) => {
@@ -17,6 +23,11 @@ const memoirReducer = (state = [], action) => {
         hoursFought: memoir.hours_fought,
         accomplishmentLevel: memoir.accomplishment_level
       }));
+    }
+    case ADD_MEMOIR: {
+      const newState = [...state];
+      newState.unshift(action.memoir);
+      return newState;
     }
     default:
       return state;
