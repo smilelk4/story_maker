@@ -45,4 +45,31 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
   res.json({ stories });
 }));
 
+router.post('/', 
+  asyncHandler(async (req, res) => {
+  const { name,
+          userId,
+          worldId,
+          heroId } = req.body;
+        
+  const hero = await Hero.create({
+    user_id: userId,
+    world_id: worldId,
+    name,
+    image_id: heroId
+  });
+
+  const heroImage = await HeroImage.findByPk(heroId);
+
+  res.status(201).json({ hero: {
+    id: hero.id,
+    worldId: hero.world_id,
+    name: hero.name,
+    level: hero.level,
+    hp: hero.hp,
+    xp: hero.xp,
+    image: heroImage.image_url
+  }});
+}));
+
 module.exports = router;

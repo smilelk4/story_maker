@@ -1,5 +1,6 @@
 const LOAD_HERO = 'LOAD_HERO';
 const LOAD_HEROES = 'LOAD_HEROES';
+const ADD_HERO = 'ADD_HERO';
 
 export const loadHeroAction = data => ({
   type: LOAD_HERO,
@@ -11,6 +12,11 @@ export const loadHeroesAction = data => ({
   heroes: data
 });
 
+export const addHeroAction = data => ({
+  type: ADD_HERO,
+  hero: data
+});
+
 const heroReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_HERO: {
@@ -19,13 +25,18 @@ const heroReducer = (state = [], action) => {
     case LOAD_HEROES: {
       return action.heroes.map(hero => ({
         id: hero.id,
-        world_id: hero.world_id,
+        worldId: hero.world_id,
         name: hero.name,
         level: hero.level,
         hp: hero.hp,
         xp: hero.xp,
         image: hero.HeroImage.image_url
       }));
+    }
+    case ADD_HERO: {
+      const newState = [...state];
+      newState.push(action.hero);
+      return newState;
     }
     default:
       return state;

@@ -28,7 +28,7 @@ const MyHub = () => {
           </div>
         </div>
         <div className="hub__section">
-          <Scroll2 text="Your heroes"/>
+          <Scroll2 text="Your Heroes"/>
           <HeroContainer />
         </div>
         <div className="hub__section">
