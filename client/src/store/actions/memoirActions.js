@@ -18,6 +18,18 @@ const verifyData = async (res, dispatch) => {
   return data;
 };
 
+export const getMemoirs = storyId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/stories/${storyId}/memoirs`);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadMemoirsAction(data.memoirs));
+    }
+    return data;
+  }
+};
+
 export const createMemoir = inputtedInfo => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/memoirs`, {

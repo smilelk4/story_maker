@@ -9,13 +9,13 @@ const memoirReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_MEMOIRS: {
       return action.memoirs.map(memoir => ({
-        // id: hero.id,
-        // world_id: hero.world_id,
-        // name: hero.name,
-        // level: hero.level,
-        // hp: hero.hp,
-        // xp: hero.xp,
-        // image: hero.HeroImage.image_url
+        id: memoir.id,
+        heroId: memoir.hero_id,
+        storyId: memoir.story_id,
+        title: memoir.title,
+        description: memoir.description,
+        hoursFought: memoir.hours_fought,
+        accomplishmentLevel: memoir.accomplishment_level
       }));
     }
     default:

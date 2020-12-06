@@ -6,7 +6,7 @@ import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
 import SideMenuField from './SideMenuField';
 import ProgressContainer from './ProgressContainer';
-import NewMemoir from './NewMemoir';
+import MemoirContainer from './MemoirContainer';
 import { getStory } from '../../store/actions/storyAction';
 
 const MyStory = () => {
@@ -35,17 +35,17 @@ const MyStory = () => {
        <SideMenuField>
         <div onClick={() => {
           setCurrentDisplay(<DestinationContainer />);
-          setCurrentTitle("Upcoming destinations");
+          setCurrentTitle("Upcoming Destinations");
         }}>
           View Upcoming Destinations
         </div>
        </SideMenuField>
        <SideMenuField>
        <div onClick={() => {
-          setCurrentDisplay(<NewMemoir />);
-          setCurrentTitle("Write a Memoir");
+          setCurrentDisplay(<MemoirContainer />);
+          setCurrentTitle("View Memoirs");
         }}>
-          Write a Memoir
+          Memoirs
         </div>
        </SideMenuField>
 
