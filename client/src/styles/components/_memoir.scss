@@ -1,5 +1,8 @@
 .memoir {
+  height: $basic-item-height;
+
   &__container {
     height: 100%;
+    overflow-y: scroll;
   }
 }
