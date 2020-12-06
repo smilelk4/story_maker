@@ -3,6 +3,7 @@ import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
 import SideMenuField from './SideMenuField';
+import ProgressContainer from './ProgressContainer';
 import NewMemoir from './NewMemoir';
 
 const MyStory = () => {
@@ -11,7 +12,9 @@ const MyStory = () => {
 
   return (  
     <div className="mystory">
-       <div className="mystory__progress">Progress</div>
+       <div className="mystory__progress">
+         <ProgressContainer />
+       </div>
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
                   width="40rem" fontSize=".5rem" />
