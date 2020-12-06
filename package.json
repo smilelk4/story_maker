@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/smilelk4/story_maker#readme",
   "dependencies": {
+    "@react-spring/three": "^9.0.0-rc.3",
+    "@react-three/cannon": "^0.5.3",
+    "@react-three/drei": "^2.2.7",
     "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -32,8 +35,11 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
+    "react-three-fiber": "^5.3.7",
+    "react-use-gesture": "^8.0.1",
     "sequelize": "^5.22.3",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "three": "^0.123.0"
   },
   "devDependencies": {
     "debug": "^4.3.1",
