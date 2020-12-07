@@ -19,7 +19,9 @@ const DestinationContainer = () => {
 
   useEffect(() => {
     for (let story of stories) {
-      dispatch(getDestinations(story.id));
+      if (story) {
+        dispatch(getDestinations(story.id));
+      }
     }
   }, [stories, dispatch]);
 

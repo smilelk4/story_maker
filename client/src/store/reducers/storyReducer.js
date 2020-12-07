@@ -17,7 +17,13 @@ const storyReducer = (state = [], action) => {
       return [action.story]
     }
     case LOAD_STORIES: {
-      return [...state, ...action.stories];
+      const ids = state.map(s => s.id);
+      
+      const newStories = action.stories.filter(d => {
+        return !(d.id in ids);
+      });
+      
+      return [...state, ...newStories];
     }
     default:
       return state;

@@ -4,7 +4,7 @@ import { useFrame, useThree } from 'react-three-fiber';
 import CanvasScroll from './CanvasScroll';
 
 const Camera = (props) => {
-  const [x] = CanvasScroll([0, 100], { domTarget: props.reference });
+  const [x] = CanvasScroll([1, 100], { domTarget: props.reference });
   const ref = useRef()
   const { setDefaultCamera } = useThree()
   useEffect(() => void setDefaultCamera(ref.current), [])
