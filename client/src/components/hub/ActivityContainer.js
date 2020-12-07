@@ -18,7 +18,7 @@ const ActivityContainer = () => {
 
   return ( 
     <div className="activity__container">
-        <Activity memoirs={activities}/>
+        <Activity activities={activities}/>
     </div>
   );
 }

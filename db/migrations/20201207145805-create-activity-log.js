@@ -10,7 +10,8 @@ module.exports = {
       },
       point: {
         type: Sequelize.INTEGER,
-        defaultValue: 1
+        defaultValue: 1,
+        max: 10
       },
       hero_id: {
         type: Sequelize.INTEGER,
