@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMemoirs } from '../../store/actions/memoirActions';
 import Activity from './Activity';
@@ -6,6 +6,7 @@ import Activity from './Activity';
 const ActivityContainer = () => {
   const dispatch = useDispatch();
   const stories = useSelector(state => state.story);
+  const memoirs = useSelector(state => state.memoir);
 
   useEffect(() => {
     if (stories.length) {
@@ -13,11 +14,11 @@ const ActivityContainer = () => {
         dispatch(getMemoirs(story.id));
       }
     }
-  }, [stories]);
+  }, [stories, dispatch]);
 
   return ( 
     <div className="activity__container">
-        <Activity />
+        <Activity memoirs={memoirs}/>
     </div>
   );
 }

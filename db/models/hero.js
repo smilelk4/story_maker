@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     Hero.belongsTo(models.HeroImage, { foreignKey: 'image_id' });
 
     Hero.hasMany(models.Story, { foreignKey: 'hero_id' });
+    Hero.hasMany(models.ActivityLog, { foreignKey: 'hero_id' });
   };
   return Hero;
 };
