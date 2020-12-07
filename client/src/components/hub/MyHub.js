@@ -4,6 +4,7 @@ import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
+import ActivityContainer from './ActivityContainer';
 import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import Scroll2 from '../svg/Scroll2';
@@ -13,7 +14,8 @@ const MyHub = () => {
     <div className="hub">
       <main className="hub__main">
         <div className="hub__activity left-section">
-          <ActivityScroll />
+          {/* <ActivityScroll /> */}
+          <ActivityContainer />
         </div>
         <div className="hub__destination-container left-section">
           <DestinationScroll />
