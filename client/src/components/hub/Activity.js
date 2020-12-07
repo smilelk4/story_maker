@@ -2,33 +2,46 @@ import React, { useState, useEffect, useRef } from 'react';
 import { select, line, curveCardinal, axisBottom, scaleLinear } from 'd3';
 
 const Activity = ({activities}) => {
-  const [points, setPoints] = useState([]);
+  const [points, setPoints] = useState({});
   const chart = useRef();
 
   useEffect(() => {
-    (async () => {
-      if (!points.length && activities) {
-       setPoints(activities.map(activity => activity.point));
+    console.log('CONTAINER')
+    console.log(activities)
+
+    if (!points.length && activities) {
+      for (let heroId in activities) {
+        // if (!(heroId in points)) {
+        //   setPoints(points[heroId] = activities[heroId].map(activity => (
+        //     activity.point
+        //   )));
+        // }
       }
 
-      const svg = select(chart.current);
-      const xScale = scaleLinear().domain([0, points.length - 1])
-                                  .range([0, 100]);
+    //  setPoints(activities.map(activity => activity.point));
+    }
 
-      const yScale = scaleLinear().domain([0, 10])
-                                  .range([150, 0])
+    const svg = select(chart.current);
+    const xScale = scaleLinear().domain([0, points.length - 1])
+                                .range([0, 100]);
 
-      const xAxis = axisBottom(xScale);
+    const yScale = scaleLinear().domain([0, 10])
+                                .range([150, 0])
 
-      const dataLine = line().x((value, index) => xScale(index))
-                             .y(yScale)
-                             .curve(curveCardinal);
-      
-      svg.selectAll('path').data([points]).join('path')
-                           .attr('d', dataLine)
-                           .attr('fill', 'none')
-                           .attr('stroke', 'blue');
-    })();
+    // const xAxis = axisBottom(xScale);
+
+    console.log('!!!!!')
+    console.log(points)
+    console.log('!!!!!')
+
+    const dataLine = line().x((value, index) => xScale(index))
+                            .y(yScale)
+                            .curve(curveCardinal);
+    
+    svg.selectAll('path').data([points]).join('path')
+                          .attr('d', dataLine)
+                          .attr('fill', 'none')
+                          .attr('stroke', 'blue');
   }, [activities, points]);
 
   return ( 

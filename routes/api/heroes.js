@@ -52,11 +52,42 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
     },
     attributes: {
       exclude: ['id', 'updatedAt']
-    }
+    },
+
   });
 
-  // if (!stories.length) next(createError('No stories found.'));
-  res.json({ activities });
+  const memo = {};
+
+  activities.forEach(activity => {
+    let month = activity.createdAt.getMonth() + 1;
+    let heroId = activity.hero_id;
+    // let key = `${month}_${heroId}`;
+
+    console.log(month, '!!!!!')
+
+    if (!(heroId in memo)) {
+      memo[heroId] = {
+        [month]: [activity.point]
+      };
+    } else {
+      if (!(month in memo[heroId])) {
+        memo[heroId][month] = [activity.point];
+      } else {
+        memo[heroId][month].push(activity.point);
+      }
+
+      // memo[heroId].push(activity.point);
+    }
+
+    // if (!(heroId in memo)) {
+      //   memo[heroId] = [activity];
+      // } else {
+        //   memo[heroId].push(activity);
+        // }
+      });
+      
+  console.log(memo)
+  res.json({ activities: memo });
 }));
 
 router.post('/', 
