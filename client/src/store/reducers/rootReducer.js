@@ -5,6 +5,7 @@ import hero from './heroReducer';
 import story from './storyReducer';
 import memoir from './memoirReducer';
 import destination from './destinationReducer';
+import activity from './activityReducer';
 import errors from './errorReducer';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   story,
   destination,
   memoir,
+  activity,
   errors
 });
 
