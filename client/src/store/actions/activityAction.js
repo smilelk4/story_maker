@@ -23,6 +23,8 @@ export const getActivities = heroId => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/activities`);
     const data = await verifyData(res, dispatch);
 
+    console.log('DATA', data)
+
     if (!data.errors) {
       dispatch(loadActivitiesAction(data.activities));
     }

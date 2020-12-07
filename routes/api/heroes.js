@@ -51,7 +51,7 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
       hero_id: req.params.id
     },
     attributes: {
-      include: ['points', 'createdAt']
+      exclude: ['id', 'updatedAt']
     }
   });
 

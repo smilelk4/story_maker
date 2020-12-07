@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMemoirs } from '../../store/actions/memoirActions';
+import { getActivities } from '../../store/actions/activityAction';
 import Activity from './Activity';
 
 const ActivityContainer = () => {
   const dispatch = useDispatch();
-  const stories = useSelector(state => state.story);
-  const memoirs = useSelector(state => state.memoir);
+  const heroes = useSelector(state => state.hero);
+  const activities = useSelector(state => state.activity);
 
   useEffect(() => {
-    if (stories.length) {
-      for (let story of stories) {
-        dispatch(getMemoirs(story.id));
+    if (heroes.length) {
+      for (let hero of heroes) {
+        dispatch(getActivities(hero.id));
       }
     }
-  }, [stories, dispatch]);
+  }, [heroes, dispatch]);
 
   return ( 
     <div className="activity__container">
-        <Activity memoirs={memoirs}/>
+        <Activity memoirs={activities}/>
     </div>
   );
 }
