@@ -42,7 +42,7 @@ module.exports = {
       {
         point: 3,
         hero_id: 2,
-        createdAt: new Date(2020, 10, 10),
+        createdAt: new Date(2020, 10, 11),
         updatedAt: new Date()
       },
       {

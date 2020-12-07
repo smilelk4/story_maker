@@ -46,45 +46,81 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
 }));
 
 router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
+  let heroId = req.params.id;
   const activities = await ActivityLog.findAll({
     where: {
-      hero_id: req.params.id
+      hero_id: heroId
     },
     attributes: {
       exclude: ['id', 'updatedAt']
     },
-
+    order: [['createdAt', 'ASC']]
   });
 
+  if (!activities.length) next(createError('No activities found.'));
+
   const memo = {};
+  let lastActiveDate = 1;
 
   activities.forEach(activity => {
     let month = activity.createdAt.getMonth() + 1;
-    let heroId = activity.hero_id;
+    let date = activity.createdAt.getDate();
     // let key = `${month}_${heroId}`;
 
-    console.log(month, '!!!!!')
+    // console.log(lastActiveDate, '?????')
+    // console.log(date, '!!!!!')
 
     if (!(heroId in memo)) {
       memo[heroId] = {
         [month]: [activity.point]
       };
+
+      for (i=1; i<date; i++) {
+        memo[heroId][month].unshift(0);
+      }
+
+      lastActiveDate = date;
     } else {
       if (!(month in memo[heroId])) {
+        lastActiveDate = 1;
         memo[heroId][month] = [activity.point];
+
+        for (i=1; i<date; i++) {
+          memo[heroId][month].unshift(0);
+        }
+
+        lastActiveDate = date;
       } else {
+        for (i=lastActiveDate; i<date - 1; i++) {
+          memo[heroId][month].push(0);
+        }
+
         memo[heroId][month].push(activity.point);
+
+        lastActiveDate = date;
       }
 
       // memo[heroId].push(activity.point);
     }
+  });
 
-    // if (!(heroId in memo)) {
-      //   memo[heroId] = [activity];
-      // } else {
-        //   memo[heroId].push(activity);
-        // }
-      });
+  for (let month in memo[heroId]) {
+    let monthArrayLength = memo[heroId][month].length;
+
+    if ([1, 3, 5, 7, 8, 10, 12].includes(+month)) {
+      for (i=monthArrayLength; i<31; i++) {
+        memo[heroId][month].push(0);
+      }
+    } else if (+month === 2) {
+        for (i=monthArrayLength; i<=28; i++) {
+          memo[heroId][month].push(0);
+        }
+    } else {
+      for (i=monthArrayLength; i<=30; i++) {
+        memo[heroId][month].push(0);
+      }
+    }
+  }
       
   console.log(memo)
   res.json({ activities: memo });
