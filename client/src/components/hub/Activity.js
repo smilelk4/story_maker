@@ -9,20 +9,20 @@ const Activity = ({activities}) => {
     console.log('CONTAINER')
     console.log(activities)
 
-    if (!points.length && activities) {
-      for (let heroId in activities) {
+    // if (!points.length && activities) {
+    //   for (let heroId in activities) {
         // if (!(heroId in points)) {
         //   setPoints(points[heroId] = activities[heroId].map(activity => (
         //     activity.point
         //   )));
         // }
-      }
+      // }
 
     //  setPoints(activities.map(activity => activity.point));
-    }
+    // }
 
     const svg = select(chart.current);
-    const xScale = scaleLinear().domain([0, points.length - 1])
+    const xScale = scaleLinear().domain([0, 31])
                                 .range([0, 100]);
 
     const yScale = scaleLinear().domain([0, 10])
@@ -30,18 +30,28 @@ const Activity = ({activities}) => {
 
     // const xAxis = axisBottom(xScale);
 
-    console.log('!!!!!')
-    console.log(points)
-    console.log('!!!!!')
-
-    const dataLine = line().x((value, index) => xScale(index))
-                            .y(yScale)
-                            .curve(curveCardinal);
     
-    svg.selectAll('path').data([points]).join('path')
-                          .attr('d', dataLine)
-                          .attr('fill', 'none')
-                          .attr('stroke', 'blue');
+    const colors = ['red', 'blue', 'green'];
+    
+    if (Object.keys(activities).length) {
+      for (let heroData in activities) {
+        for (let monthData in activities[heroData]) {
+          let dataLine = line().x((value, index) => xScale(index))
+                                  .y(yScale)
+                                  .curve(curveCardinal);
+          console.log(activities[heroData][monthData])
+          svg.selectAll('path').data([activities[heroData][monthData]]).join('path')
+                      .attr('d', dataLine)
+                      .attr('fill', 'none')
+                      .attr('stroke', colors[Math.floor(Math.random() * 3)]);
+        }
+      }
+    }
+    
+    // svg.selectAll('path').data([points]).join('path')
+    //                       .attr('d', dataLine)
+    //                       .attr('fill', 'none')
+    //                       .attr('stroke', 'blue');
   }, [activities, points]);
 
   return ( 

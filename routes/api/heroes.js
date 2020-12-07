@@ -65,11 +65,7 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
   activities.forEach(activity => {
     let month = activity.createdAt.getMonth() + 1;
     let date = activity.createdAt.getDate();
-    // let key = `${month}_${heroId}`;
-
-    // console.log(lastActiveDate, '?????')
-    // console.log(date, '!!!!!')
-
+    
     if (!(heroId in memo)) {
       memo[heroId] = {
         [month]: [activity.point]
@@ -99,8 +95,6 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
 
         lastActiveDate = date;
       }
-
-      // memo[heroId].push(activity.point);
     }
   });
 
@@ -122,7 +116,6 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
     }
   }
       
-  console.log(memo)
   res.json({ activities: memo });
 }));
 
