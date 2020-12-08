@@ -3,3 +3,12 @@
   #{$key}: -moz-calc(#{$value});
   #{$key}: calc(#{$value});
 }
+
+@mixin label-1($color) {
+  align-self: flex-end;
+  font-size: 1.8rem;
+  background-color: $color;
+  color: $color-light;
+  border-radius: 3px;
+  padding: 1rem;
+}

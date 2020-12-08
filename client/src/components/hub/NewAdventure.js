@@ -10,8 +10,10 @@ const NewAdventure = () => {
 
   return (
     <>
-    {isModalOpen ? <NewStoryModal clickHandler={clickHandler} />
-    : <input value="Start a New Adventure" onClick={clickHandler}/>}
+    {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
+    <h3 
+      className="hub__new-adventure"
+      onClick={clickHandler}>Start a New Adventure</h3>
     </>
   );
 }

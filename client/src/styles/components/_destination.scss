@@ -2,7 +2,7 @@
   height: $basic-item-height;
   padding: 3rem;
   // border: 1px solid black;
-  // line-height: .1rem;
+  line-height: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -23,16 +23,10 @@
   }
 
   &__description {
-    background-color: $color-blue-light;
   }
 
   &__days-left {
-    align-self: flex-end;
-    font-size: 1.8rem;
-    background-color: $color-dark;
-    color: $color-light;
-    border-radius: 3px;
-    padding: 1rem;
+    @include label-1($color-blue-light);
   }
 
   &__target-date {

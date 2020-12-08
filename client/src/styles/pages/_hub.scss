@@ -2,15 +2,14 @@
   background-color: $color-grey;
   
   display: grid;
-  grid-template-columns: 15rem repeat(5, 1fr) 15rem;
+  grid-template-columns: 15rem 1fr 15rem;
 
   &__contents {
     grid-column: 2 / -2;
     display: grid;
     grid-template-columns: 5rem repeat(5, 1fr) 5rem;
-    grid-template-rows: 8rem 20rem 80rem;
+    grid-template-rows: 8rem 100rem;
     grid-gap: 5rem;
-    // background-color: pink;
     background-color: white;
   }
 
@@ -22,6 +21,7 @@
   &__sidebar {
     grid-column: 5 / span 2;
     grid-row: 2 / -1;
+    box-shadow: $shadow-2;
   }
   
   &__main,
@@ -42,7 +42,7 @@
   .left-section {
     position: relative;
     padding: 5rem 3rem;
-    box-shadow: 0 0 1.4rem rgba(226, 226, 226, .8);
+    box-shadow: $shadow-2;
     // border: 2px solid $color-border;
 
     .scroll_svg {
@@ -54,6 +54,9 @@
 
   &__icon-holder {
     @include calc("height", "100% / 2");
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__section {
@@ -66,5 +69,10 @@
       left: 50%;
       top: -3rem;
     }
+  }
+
+  &__new-adventure {
+    @include label-1($color-dark);
+    cursor: pointer;
   }
 }
