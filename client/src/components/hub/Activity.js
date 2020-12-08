@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { select, line, curveCardinal, axisBottom, scaleLinear } from 'd3';
-import {nest} from 'd3-collection';
 
 const Activity = ({activities}) => {
   const [points, setPoints] = useState({});

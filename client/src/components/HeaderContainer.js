@@ -20,7 +20,11 @@ const HeaderContainer = () => {
   return ( 
     <div ref={container} className="header__container">
       <Canvas>
-      <Stars />
+      <Stars 
+        radius={200}
+        depth={500}
+        count={3000}
+      />
       <OrbitControls
           enablePan={false}
           enableZoom={false}

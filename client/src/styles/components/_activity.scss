@@ -1,5 +1,12 @@
 .activity {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    height: max-content;
+  }
 
   &__container {
     height: 100%;

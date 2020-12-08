@@ -5,10 +5,10 @@ import { Physics } from "@react-three/cannon";
 import { Sky } from 'drei';
 import { Vector3 } from 'three';
 
-import Plane from './three/Plane';
-import Node from './three/Node';
-import Camera from './three/Camera';
-import Hero from './three/Hero';
+import Plane from '../three/Plane';
+import Node from '../three/Node';
+import Camera from '../three/Camera';
+import Hero from '../three/Hero';
 
 import { getHero } from '../../store/actions/heroAction';
 

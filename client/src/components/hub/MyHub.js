@@ -14,7 +14,7 @@ const MyHub = () => {
     <div className="hub">
       <main className="hub__main">
         <div className="hub__activity left-section">
-          {/* <ActivityScroll /> */}
+          <ActivityScroll />
           <ActivityContainer />
         </div>
         <div className="hub__destination-container left-section">
