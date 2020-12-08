@@ -18,7 +18,6 @@ const ProgressContainer = () => {
                   state.story[0].hero_id : null);
   const hero = useSelector(state => state.hero[0]);
   const destinations = useSelector(state => state.destination);
-  const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(null);
   const container = useRef();
   let x = -10;
