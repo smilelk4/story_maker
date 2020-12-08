@@ -11,6 +11,7 @@
   transform: translate(-50%, -50%) scale(1);
   transition: .2s ease-in-out;
   overflow-y: scroll;
+  background-color: white;
 
   &__overlay {
     width: 100vw;

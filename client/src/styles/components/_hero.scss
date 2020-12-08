@@ -1,10 +1,15 @@
 .hero {
   min-width: 15rem;
+  line-height: 2rem;
+  padding: 1rem;
 
   &__container {
     display: flex;
     height: 100%;
-    overflow-x: scroll;
+
+    &:not(h4) {
+      overflow-x: scroll;
+    }
   }
 
   &__avatar {
@@ -12,7 +17,12 @@
 
     img {
       height: 100%;
+      object-fit: cover;
     }
+  }
+
+  &__name {
+    font-weight: bolder;
   }
 
   &__avatar,
@@ -21,5 +31,11 @@
   &__hp {
     display: flex;
     justify-content: center;
+  }
+
+  &__new-hero {
+    height: 100%;
+    @include label-1($color-blue-light);
+    cursor: pointer;
   }
 }

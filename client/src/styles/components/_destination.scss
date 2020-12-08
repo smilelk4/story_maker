@@ -27,6 +27,7 @@
 
   &__days-left {
     @include label-1($color-blue-light);
+    align-self: flex-end;
   }
 
   &__target-date {

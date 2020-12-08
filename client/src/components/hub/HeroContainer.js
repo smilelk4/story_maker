@@ -22,8 +22,10 @@ const HeroContainer = () => {
 
   return (
     <div className="hero__container">
-      {isModalOpen ? <NewHeroModal clickHandler={clickHandler} />
-       : <input value="Create a New Hero" onClick={clickHandler}/>}
+      {isModalOpen && <NewHeroModal clickHandler={clickHandler} />}
+      <h4 
+        className="hero__new-hero"
+        onClick={clickHandler}>Create a New Hero</h4>
       {heroes.map(hero => <Hero {...hero} />)}
     </div>
   );
