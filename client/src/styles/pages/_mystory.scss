@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 15rem repeat(5, 1fr) 15rem;
   grid-template-rows: 20rem 20rem 80rem;
-  grid-gap: 5rem;
+  grid-gap: 7rem;
 
   & * {
     border: 1px solid black;

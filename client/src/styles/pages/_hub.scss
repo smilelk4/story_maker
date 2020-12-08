@@ -24,7 +24,7 @@
   &__main,
   &__sidebar {
     & > *:not(:first-child) {
-      margin: 5rem 0;
+      margin: 7rem 0;
     }
   }
 
@@ -38,9 +38,9 @@
 
   .left-section {
     position: relative;
-    padding: 5rem;
-    // box-shadow: 0 0 1.4rem rgba(226, 226, 226, .5);
-    border: 5px double $color-border;
+    padding: 5rem 3rem;
+    box-shadow: 0 0 1.4rem rgba(226, 226, 226, .8);
+    // border: 2px solid $color-border;
 
     .scroll_svg {
       position: absolute;

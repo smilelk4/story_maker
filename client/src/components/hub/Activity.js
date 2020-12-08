@@ -43,6 +43,16 @@ const Activity = ({activities}) => {
            <path d={point} fill='none' stroke={lineColors[i]} />
         ))}
       </svg>
+      <div className="activity__filter-container">
+          <div className="activity__category">
+            <label for="filter">Filter By: </label>
+            <select>
+              <option>Last 1 Month</option>
+              <option>Last 3 Months</option>
+              <option>Last 12 Months</option>
+            </select>
+          </div>
+      </div>
     </div>
   );
 }

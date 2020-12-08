@@ -6,9 +6,16 @@
 
   svg {
     height: max-content;
+    // height: 100%;
   }
 
   &__container {
     height: 100%;
+  }
+
+  &__filter-container {
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
   }
 }

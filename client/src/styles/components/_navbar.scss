@@ -4,13 +4,13 @@
   height: 5rem;
   position: absolute;
   bottom: 0;
-  background-color: black;
+  background-color: $color-dark;
   // background-image: url(https://story-maker-app.s3.amazonaws.com/header_map.jpeg);
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3rem;
+  padding: 0 20rem;
 
   a,
   a::before,
