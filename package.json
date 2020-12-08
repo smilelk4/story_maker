@@ -29,6 +29,7 @@
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
     "d3": "^6.3.0",
+    "d3-collection": "^1.0.7",
     "drei": "^1.5.7",
     "express": "^4.17.1",
     "express-bearer-token": "^2.4.0",
