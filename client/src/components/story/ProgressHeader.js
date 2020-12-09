@@ -12,7 +12,7 @@ import Hero from '../three/Hero';
 
 import { getHero } from '../../store/actions/heroAction';
 
-const ProgressContainer = () => {
+const ProgressHeader = () => {
   const dispatch = useDispatch();
   const heroId = useSelector(state => state.story[0] ? 
                   state.story[0].hero_id : null);
@@ -27,7 +27,6 @@ const ProgressContainer = () => {
   }, [heroId, dispatch]);
 
   return ( 
-    <div ref={container} className="progress__container">
       <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
@@ -59,8 +58,7 @@ const ProgressContainer = () => {
           </Html>
         )} */}
       </Canvas>
-    </div>
   );
 }
 
-export default ProgressContainer;
+export default ProgressHeader;

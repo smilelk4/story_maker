@@ -2,7 +2,7 @@ import React from 'react';
 
 const SideMenuField = ({children}) => {
   return ( 
-    <div className="side-menu-field">
+    <div className="mystory__side-menu-field">
       {children}
     </div>
   );

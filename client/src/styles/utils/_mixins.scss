@@ -11,3 +11,12 @@
   border-radius: 3px;
   padding: 1rem;
 }
+
+@mixin hide-scroll() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -25,7 +25,8 @@ const memoirReducer = (state = [], action) => {
           title: memoir.title,
           description: memoir.description,
           hoursFought: memoir.hours_fought,
-          accomplishmentLevel: memoir.accomplishment_level
+          accomplishmentLevel: memoir.accomplishment_level,
+          date: memoir.createdAt
         }));
 
       return [...state, ...newMemoirs];

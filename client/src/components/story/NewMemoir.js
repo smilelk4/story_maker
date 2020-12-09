@@ -30,7 +30,7 @@ const NewMemoir = () => {
   }
 
   return ( 
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="memoir__form">
         <div>
           <label for="title">Title</label>
           <input type="text" 

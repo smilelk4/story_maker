@@ -6,7 +6,7 @@ import { useGLTF } from '@react-three/drei';
 import NavBar from './NavBar';
 
 import HubHeader from './hub/HubHeader';
-import ProgressContainer from './story/ProgressContainer';
+import ProgressHeader from './story/ProgressHeader';
 
 const Tavern = () => {
   const gltf = useGLTF('/scene.gltf', true);
@@ -35,7 +35,7 @@ const HeaderContainer = () => {
     <div ref={container} className="header__container">
       {currentGraphic === 'myhub' ? (
         <HubHeader />
-      ) : <ProgressContainer />}
+      ) : <ProgressHeader />}
       <NavBar />
     </div>
   );

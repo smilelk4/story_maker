@@ -5,7 +5,6 @@ import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
 import SideMenuField from './SideMenuField';
-import ProgressContainer from './ProgressContainer';
 import MemoirContainer from './MemoirContainer';
 import { getStory } from '../../store/actions/storyAction';
 
@@ -22,9 +21,6 @@ const MyStory = () => {
   return (  
     <div className="mystory">
       <div className="mystory__contents">
-       {/* <div className="mystory__progress">
-         <ProgressContainer />
-       </div> */}
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
                   width="40rem" fontSize=".5rem" />
@@ -33,7 +29,7 @@ const MyStory = () => {
          </div>
        </div>
        <div className="mystory__sidebar-left">
-       <SideMenuField>
+       <SideMenuField >
         <div onClick={() => {
           setCurrentDisplay(<DestinationContainer />);
           setCurrentTitle("Upcoming Destinations");

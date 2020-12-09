@@ -1,8 +1,53 @@
 .memoir {
   height: $basic-item-height;
+  background-color: $color-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 2rem;
+  overflow-y: scroll;
 
+  @include hide-scroll;
+  
   &__container {
     height: 100%;
     overflow-y: scroll;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+  }
+
+  &__description {
+    color: $color-dark-lighter;
+    overflow-y: scroll;
+    max-height: 10rem;
+    @include hide-scroll;
+  }
+
+  &__extra-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: $color-dark-lighter;
+  }
+
+  &__form {
+    background-color: $color-dark-light;
+    color: white;
+    margin: 2rem;
+    height: max-content;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    & > div {
+      margin: .5rem;
+      display: flex;
+      justify-content: space-between;
+      width: 50rem;
+    }
   }
 }
