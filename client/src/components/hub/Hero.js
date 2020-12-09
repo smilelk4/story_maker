@@ -10,7 +10,6 @@ const Hero = (...props) => {
       <p className="hero__stat">
           <span>{level}</span><span>{hp}</span>
       </p>
-      {/* <p className="hero__hp">HP: {hp}</p> */}
       <p className="hero__name">{name}</p>
     </div>
   );

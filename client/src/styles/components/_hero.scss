@@ -3,6 +3,10 @@
   line-height: 2rem;
   padding: 1rem;
   margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 
   &__container {
     display: flex;
@@ -31,6 +35,7 @@
     // width: 2rem;
     // height: 2rem;
     // border-radius: 50%;
+    width: 100%;
     color: $color-light;
     display: flex;
     justify-content: space-between;

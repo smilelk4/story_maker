@@ -85,7 +85,7 @@ const StoryCreator = () => {
     <>
       <h2>{pageTitle}</h2>
       {page === 1 && (
-        <div>
+        <div className="modal__field">
             <label for="title">Story Title</label>
             <input type="text" 
               value={title} 
@@ -107,21 +107,21 @@ const StoryCreator = () => {
       )}
       {page === 3 && (
         <>
-          <div>
+          <div className="modal__field">
             <label for="destination-title">Final Goal</label>
             <input type="text" 
               value={destinationTitle} 
               name="destination-title"
               onChange={e => setDestinationTitle(e.target.value)} />
           </div>
-          <div>
+          <div className="modal__field">
             <label for="target-date">Target Date</label>
             <input type="date" 
               value={targetDate} 
               name="target-date"
               onChange={e => setTargetDate(e.target.value)} />
           </div>
-          <div>
+          <div className="modal__field">
             <label for="importance">Importance</label>
             <input type="number" 
               value={importance} 
@@ -131,8 +131,10 @@ const StoryCreator = () => {
           <button onClick={handleSubmit}>Create Story</button>
         </>
       )}
-      <button hidden={page < 2} onClick={handleBack}>Back</button>
-      <button hidden={page > 2} onClick={handleNext}>Next</button>
+      <div className="modal__button-container">
+        <button hidden={page < 2} onClick={handleBack}>Back</button>
+        <button hidden={page > 2} onClick={handleNext}>Next</button>
+      </div>
     </>
   );
 }

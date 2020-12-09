@@ -100,7 +100,7 @@ const HeroCreator = ({clickHandler}) => {
       <h2>{pageTitle}</h2>
       {page === 1 && (
         <>
-        <div>
+        <div className="modal__field">
           <label for="name">Hero Name</label>
           <input type="text" 
               value={name} 
@@ -119,6 +119,7 @@ const HeroCreator = ({clickHandler}) => {
         </div>
       )}
       {page === 3 && (
+        <>
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes && heroes.length && heroes.map(hero => (
             <div className="hero" onClick={() => setHeroId(hero.id)}>
@@ -126,11 +127,14 @@ const HeroCreator = ({clickHandler}) => {
               <p>{hero.name}</p>
             </div>
           ))}
-          <button onClick={handleSubmit}>Create Hero</button>
         </div>
+        <button onClick={handleSubmit}>Create Hero</button>
+        </>
       )}
-      <button hidden={page < 2} onClick={handleBack}>Back</button>
-      <button hidden={page > 2} onClick={handleNext}>Next</button>
+      <div className="modal__button-container">
+        <button hidden={page < 2} onClick={handleBack}>Back</button>
+        <button hidden={page > 2} onClick={handleNext}>Next</button>
+      </div>
     </>
   );
 }
