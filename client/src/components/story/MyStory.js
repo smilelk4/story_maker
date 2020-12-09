@@ -17,13 +17,14 @@ const MyStory = () => {
 
   useEffect(() => {
     dispatch(getStory(id));
-  }, []);
+  }, [id, dispatch]);
 
   return (  
     <div className="mystory">
-       <div className="mystory__progress">
+      <div className="mystory__contents">
+       {/* <div className="mystory__progress">
          <ProgressContainer />
-       </div>
+       </div> */}
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
                   width="40rem" fontSize=".5rem" />
@@ -53,6 +54,7 @@ const MyStory = () => {
        <div className="mystory__sidebar-right">
         <NewDestination />
        </div>
+      </div>
     </div>
   );
 }
