@@ -19,6 +19,7 @@
 
   &__main {
     grid-column: 3 / -3;
+    grid-row: 3;
     display: flex;
     justify-content: center;
     position: relative;
@@ -41,7 +42,7 @@
   &__main,
   &__sidebar-left,
   &__sidebar-right {
-    grid-row: 2 / -1;
+    grid-row: 2 / -2;
   }
 
   &__scroll {
