@@ -33,7 +33,7 @@ const Activity = ({activities}) => {
       // }
     } else if (+filter === 3) {
       // let combinedMonthData = [];
-      debugger
+      // debugger
       for (let heroId in activities) {
         memo[heroId] = dataLine([
           // ...activities[heroId][currentMonth - 2],
@@ -56,7 +56,7 @@ const Activity = ({activities}) => {
     .y(yScale)
     .curve(curveCardinal)
 
-    debugger
+    // debugger
     console.log(filter, '!!!!!!!!!!!!!!!!!!')
     filterActivities(dataLine)
   }, [filter])
