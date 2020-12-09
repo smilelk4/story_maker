@@ -50,7 +50,7 @@ const NewDestination = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="destination__form">
         <div>
           <label for="destination-title">Destination title</label>
           <input type="text" 
