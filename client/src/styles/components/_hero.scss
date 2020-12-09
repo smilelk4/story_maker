@@ -1,20 +1,20 @@
 .hero {
-  min-width: 15rem;
+  width: 15rem;
   line-height: 2rem;
   padding: 1rem;
+  margin: 0 1rem;
 
   &__container {
     display: flex;
     height: 100%;
-
-    &:not(h4) {
-      overflow-x: scroll;
-    }
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 
   &__avatar {
     height: 10rem;
-
+    margin-bottom: 1rem;
+    
     img {
       height: 100%;
       object-fit: cover;
@@ -25,9 +25,40 @@
     font-weight: bolder;
   }
 
+  &__stat {
+    position: relative;
+    top: -2rem;
+    // width: 2rem;
+    // height: 2rem;
+    // border-radius: 50%;
+    color: $color-light;
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      background-color: $color-blue-light;
+      font-size: 1.2rem;
+      width: 2rem;
+      height: 2rem;
+      display: block;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+
+  &__hp {
+    position: relative;
+    right: -8rem;
+    top: -2rem;
+    background-color: $color-blue-light;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: $color-light;
+  }
+
   &__avatar,
   &__name,
-  &__level,
   &__hp {
     display: flex;
     justify-content: center;

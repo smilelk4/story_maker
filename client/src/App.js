@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
 import MyStory from './components/story/MyStory';
+import Footer from './components/Footer';
 import HeaderContainer from './components/HeaderContainer';
 import { getUser } from './store/actions/userAction';
 
@@ -36,6 +37,7 @@ function App() {
           "Error"
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
 import ActivityContainer from './ActivityContainer';
+import ToDoContainer from './ToDoContainer';
 import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import Scroll2 from '../svg/Scroll2';
@@ -28,6 +29,11 @@ const MyHub = () => {
           <div className="hub__section">
             <div className="hub__icon-holder">
               <NewAdventure />
+            </div>
+          </div>
+          <div className="hub__section">
+            <div className="hub__icon-holder">
+              <ToDoContainer />
             </div>
           </div>
           <div className="hub__section">
