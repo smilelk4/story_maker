@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { select, line, curveCardinal, axisBottom, scaleLinear } from 'd3';
+import randomColor from 'randomcolor';
 
 const Activity = ({activities}) => {
-  const [points, setPoints] = useState({});
+  const [lines, setLines] = useState({});
   const [filter, setFilter] = useState(1);
-  const lineColors = {
-    0: 'red',
-    1: 'blue'
-  }
-
-  // const points = [];
 
   const filterActivities = () => {
     let maxRange;
@@ -22,10 +17,10 @@ const Activity = ({activities}) => {
     }
 
     const xScale = scaleLinear().domain([0, maxRange])
-                                .range([0, 150]);
+                                .range([0, 800]);
 
     const yScale = scaleLinear().domain([0, 10])
-        .range([150, 0]);
+        .range([150, 10]);
 
     let dataLine = line().x((value, index) => xScale(index))
     .y(yScale)
@@ -59,7 +54,7 @@ const Activity = ({activities}) => {
         memo[heroId] = dataLine(memo[heroId]);
       }
     }
-    setPoints(memo);
+    setLines(memo);
   }
 
   useEffect(() => {
@@ -68,27 +63,18 @@ const Activity = ({activities}) => {
   
   useEffect(() => {
 
-    if (Object.keys(points).length !== Object.keys(activities).length) {
+    if (Object.keys(lines).length !== Object.keys(activities).length) {
       
-      // const xScale = scaleLinear().domain([0, 31])
-      //                             .range([0, 150]);
-    
-      // const yScale = scaleLinear().domain([0, 10])
-      //                             .range([150, 0]);
-  
-      // let dataLine = line().x((value, index) => xScale(index))
-      //                       .y(yScale)
-      //                       .curve(curveCardinal)
 
       filterActivities();
     }
-  }, [activities, points]);
+  }, [activities, lines]);
 
   return ( 
     <div className="activity">
       <svg>
-        {Object.values(points).map((point, i) => (
-           <path d={point} fill='none' stroke={lineColors[i]} />
+        {Object.values(lines).map((point, i) => (
+           <path d={point} fill='none' stroke={randomColor()} />
         ))}
       </svg>
       <div className="activity__filter-container">
