@@ -49,7 +49,13 @@ router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
   const tasks = await DailyTask.findAll({
     where: {
       hero_id: req.params.id
-    }    
+    },
+    include: {
+      model: Hero,
+      attributes: {
+        exclude: ['id', 'user_id', 'level', 'hp', 'xp', 'createdAt', 'updatedAt']
+      },
+    }
   });
 
   res.json({ tasks });

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   DailyTask.associate = function(models) {
-    // associations can be defined here
+    DailyTask.belongsTo(models.Hero, { foreignKey: 'hero_id' });
   };
   return DailyTask;
 };

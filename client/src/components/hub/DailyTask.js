@@ -1,10 +1,11 @@
 import React from 'react';
 
-const DailyTask = (...props) => {
-  const { title } = props;
+const DailyTask = ({task}) => {
+  const { title, Hero } = task;
   return ( 
     <div className="task">
       <p className="task__title">{title}</p>
+      <p className="task__hero-name">{Hero.name}</p>
     </div>
   );
 }

@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Hero.hasMany(models.Story, { foreignKey: 'hero_id' });
     Hero.hasMany(models.ActivityLog, { foreignKey: 'hero_id' });
+    Hero.hasMany(models.DailyTask, { foreignKey: 'hero_id' });
   };
   return Hero;
 };

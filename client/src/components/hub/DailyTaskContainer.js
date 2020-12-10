@@ -18,7 +18,9 @@ const DailyTaskContainer = () => {
 
   return ( 
     <div className="task__container">
-        <DailyTask tasks={tasks}/>
+      {tasks && tasks.map(task => (
+        <DailyTask task={task} />
+      ))}
     </div>
   );
 }

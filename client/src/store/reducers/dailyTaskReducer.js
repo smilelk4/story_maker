@@ -8,7 +8,13 @@ export const loadTasksAction = data => ({
 const taskReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_TASKS: {    
-      return [...state, ...action.tasks];
+      const ids = state.map(s => s.id);
+      
+      const newTasks = action.tasks.filter(d => {
+        return !(d.id in ids);
+      });
+
+      return [...state, ...newTasks];
     }
     default:
       return state;

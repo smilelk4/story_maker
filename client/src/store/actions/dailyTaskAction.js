@@ -22,7 +22,6 @@ export const getDailyTasks = heroId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/tasks`);
     const data = await verifyData(res, dispatch);
-    console.log('HEYAAA', data)
 
     if (!data.errors) {
       dispatch(loadTasksAction(data.tasks));

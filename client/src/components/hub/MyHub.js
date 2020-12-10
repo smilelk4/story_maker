@@ -32,9 +32,7 @@ const MyHub = () => {
             </div>
           </div>
           <div className="hub__section">
-            <div className="hub__icon-holder">
-              <DailyTaskContainer />
-            </div>
+            <DailyTaskContainer />
           </div>
           <div className="hub__section">
             <Scroll2 text="Your Heroes"/>

@@ -1,10 +1,12 @@
-.todo {
+.task {
   width: 100%;
   padding: 1rem;
-  margin: 0 1rem;
+  margin: .5rem;
+  background-color: $color-dark-light;
   
   &__container {
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
