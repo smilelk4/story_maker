@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, World, Hero, HeroImage, ActivityLog } = require('../../db/models');
+const { Story, World, Hero, HeroImage, ActivityLog, DailyTask } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 const createError = msg => {
@@ -43,6 +43,16 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
 
   // if (!stories.length) next(createError('No stories found.'));
   res.json({ stories });
+}));
+
+router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
+  const tasks = await DailyTask.findAll({
+    where: {
+      hero_id: req.params.id
+    }    
+  });
+
+  res.json({ tasks });
 }));
 
 router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
