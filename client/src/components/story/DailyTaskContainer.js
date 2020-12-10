@@ -1,26 +1,24 @@
 import React, { useEffect } from 'react'
-import NewMemoir from './NewMemoir';
+import DailyTask from './DailyTask';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getMemoirs } from '../../store/actions/memoirActions';
-import Memoir from './Memoir';
+import { getDailyTasks } from '../../store/actions/dailyTaskAction';
 
-const MemoirContainer = () => {
+const DailyTaskContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const memoirs = useSelector(state => state.memoir);
+  const tasks = useSelector(state => state.task);
 
   useEffect(() => {
-    dispatch(getMemoirs(id));
+    dispatch(getDailyTasks(id));
   },[id, dispatch]);
 
   return ( 
-    <div className="memoir__container">
-      <NewMemoir />
-      {memoirs.map(memoir => <Memoir {...memoir} />)}
+    <div className="daily-task__container">
+      {tasks.map(task => <DailyTask {...task} />)}
     </div>
   );
 }
  
-export default MemoirContainer;
+export default DailyTaskContainer;

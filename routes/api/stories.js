@@ -53,10 +53,7 @@ router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
       story_id: req.params.id
     },
     include: {
-      model: Story,
-      // attributes: {
-      //   exclude: ['id', 'user_id', 'level', 'hp', 'xp', 'createdAt', 'updatedAt']
-      // },
+      model: Story
     }
   });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DailyTask = ({...props}) => {
-  const { title, description, hoursFought, accomplishmentLevel, date } = props;
+  const { title } = props;
 
   return ( 
     <div className="daily-task">

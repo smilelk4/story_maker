@@ -6,6 +6,7 @@ import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
 import SideMenuField from './SideMenuField';
 import MemoirContainer from './MemoirContainer';
+import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
 
 const MyStory = () => {
@@ -47,7 +48,7 @@ const MyStory = () => {
        </SideMenuField>
        <SideMenuField>
        <div onClick={() => {
-          setCurrentDisplay(<MemoirContainer />);
+          setCurrentDisplay(<DailyTaskContainer />);
           setCurrentTitle("Daily Tasks");
         }}>
           Daily Tasks
