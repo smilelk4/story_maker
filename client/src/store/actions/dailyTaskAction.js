@@ -1,4 +1,4 @@
-import { loadTasksAction } from '../reducers/dailyTaskReducer';
+import { loadTasksAction, addTaskAction } from '../reducers/dailyTaskReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -25,6 +25,25 @@ export const getDailyTasks = storyId => {
 
     if (!data.errors) {
       dispatch(loadTasksAction(data.tasks));
+    }
+    return data;
+  }
+};
+
+export const createDailyTask = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(addTaskAction(data.task));
     }
     return data;
   }

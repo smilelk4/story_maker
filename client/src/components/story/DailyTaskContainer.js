@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import DailyTask from './DailyTask';
+import NewDailyTask from './NewDailyTask';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDailyTasks } from '../../store/actions/dailyTaskAction';
@@ -16,6 +17,7 @@ const DailyTaskContainer = () => {
 
   return ( 
     <div className="daily-task__container">
+      <NewDailyTask />
       {tasks.map(task => <DailyTask {...task} />)}
     </div>
   );
