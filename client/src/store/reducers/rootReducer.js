@@ -6,6 +6,7 @@ import story from './storyReducer';
 import memoir from './memoirReducer';
 import destination from './destinationReducer';
 import activity from './activityReducer';
+import task from './dailyTaskReducer';
 import errors from './errorReducer';
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   destination,
   memoir,
   activity,
+  task,
   errors
 });
 
