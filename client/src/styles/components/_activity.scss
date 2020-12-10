@@ -18,4 +18,11 @@
     right: 3rem;
     top: 3rem;
   }
+
+  &__category {
+    svg {
+      position: absolute; 
+      transform: scale(0.1);
+    }
+  }
 }

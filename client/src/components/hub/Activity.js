@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { select, line, curveCardinal, axisBottom, scaleLinear } from 'd3';
 import randomColor from 'randomcolor';
 
 const Activity = ({activities}) => {
   const [lines, setLines] = useState({});
   const [filter, setFilter] = useState(1);
+  const [colors, setColors] = useState({});
+  const heroes = useSelector(state => state.hero);
 
   const filterActivities = () => {
     let maxRange;
@@ -27,7 +30,8 @@ const Activity = ({activities}) => {
     .curve(curveCardinal)
 
     const currentMonth = new Date().getMonth() + 1;
-    const memo = {};
+    const pathData = {};
+    const colorData = {};
     
     for (let heroId in activities) {
       let combinedData = [];
@@ -38,23 +42,27 @@ const Activity = ({activities}) => {
       for (let month = 1; month <= currentMonth; month++) {
         combinedData.push(...activities[heroId][month]);
       }
-      memo[heroId] = combinedData;
+      pathData[heroId] = combinedData;
     }
 
     if (+filter === 1) {
       for (let heroId in activities) {
-        memo[heroId] = dataLine(memo[heroId].slice(-30));
+        pathData[heroId] = dataLine(pathData[heroId].slice(-30));
+        colorData[heroId] = randomColor();
       }
     } else if (+filter === 3) {
       for (let heroId in activities) {
-        memo[heroId] = dataLine(memo[heroId].slice(-90));
+        pathData[heroId] = dataLine(pathData[heroId].slice(-90));
+        colorData[heroId] = randomColor();
       }
     } else {
       for (let heroId in activities) {
-        memo[heroId] = dataLine(memo[heroId]);
+        pathData[heroId] = dataLine(pathData[heroId]);
+        colorData[heroId] = randomColor();
       }
     }
-    setLines(memo);
+    setLines(pathData);
+    setColors(colorData);
   }
 
   useEffect(() => {
@@ -73,12 +81,20 @@ const Activity = ({activities}) => {
   return ( 
     <div className="activity">
       <svg>
-        {Object.values(lines).map((point, i) => (
-           <path d={point} fill='none' stroke={randomColor()} />
+        {Object.entries(lines).map((line, i) => (
+          <path d={line[1]} fill='none' stroke={colors[line[0]]} />
         ))}
       </svg>
       <div className="activity__filter-container">
           <div className="activity__category">
+            {heroes.map(hero => (
+              <p>
+                <svg viewBox="0 0 10 10">
+                  <circle cx="5" cy="5" r="5" fill={colors[hero.id]}/>
+                </svg>
+                <span>{hero.name}</span>
+              </p>
+            ))}
             <label for="activity-filter">Filter By: </label>
             <select name="activity-filter"
                     onChange={e => setFilter(e.target.value)}>
