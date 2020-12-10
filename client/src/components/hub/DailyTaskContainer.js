@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDailyTasks } from '../../store/actions/dailyTaskAction';
+import { getDailyTasks, updateDailyTask } from '../../store/actions/dailyTaskAction';
 import DailyTask from './DailyTask';
 
 const DailyTaskContainer = () => {
@@ -19,11 +19,15 @@ const DailyTaskContainer = () => {
     }
   }, [stories, dispatch]);
 
+  const onChecked = id => {
+    dispatch(updateDailyTask(id));
+  };
+
   return ( 
     <div className="task__container">
       {tasks && tasks.map(task => (
         stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
-          <DailyTask task={task} />
+          <DailyTask task={task} handleClick={onChecked}/>
         )
       ))}
     </div>

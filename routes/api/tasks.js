@@ -26,7 +26,7 @@ router.put('/:id(\\d+)',
   await task.update({
     last_accomplished: new Date()
   });
-    res.status(204).json({task});
+  res.json({task});
 }));
 
 router.delete('/:id(\\d+)', 

@@ -3,6 +3,7 @@ import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
+  debugger;
   const data = await res.json();
 
   if (!res.ok) {
@@ -54,7 +55,7 @@ export const updateDailyTask = id => {
     const res = await fetch(`${baseUrl}/tasks/${id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     });
 
