@@ -7,6 +7,9 @@ const DailyTaskContainer = () => {
   const dispatch = useDispatch();
   const heroes = useSelector(state => state.hero);
   const tasks = useSelector(state => state.task);
+  const today = new Date();
+
+  const stringifyDate = date => date.toDateString();
 
   useEffect(() => {
     if (heroes.length) {
@@ -19,7 +22,9 @@ const DailyTaskContainer = () => {
   return ( 
     <div className="task__container">
       {tasks && tasks.map(task => (
-        <DailyTask task={task} />
+        stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
+          <DailyTask task={task} />
+        )
       ))}
     </div>
   );

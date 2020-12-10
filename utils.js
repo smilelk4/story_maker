@@ -25,16 +25,16 @@ const asyncHandler = func => {
   }
 }
 
-const activityLogsDataAutomator = () => {
+const activityLogsDataAutomator = (heroId) => {
   let dateCount = 1;
   let data = [];
 
-  for (let i = 0; i < 365; i++) {
-    let date = ( d => new Date(d.setDate(d.getDate()-dateCount)) )(new Date);
+  for (let i = 0; i < 730; i++) {
+    let date = ( d => new Date(d.setDate(d.getDate() + 365 - dateCount)) )(new Date);
 
     data.push({
       point: Math.ceil(Math.random() * 10),
-      hero_id: 1,
+      hero_id: heroId,
       createdAt: date,
       updatedAt: date
     });
