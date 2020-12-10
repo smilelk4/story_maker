@@ -8,7 +8,7 @@ const Story = (...props) => {
       <div className="story">
         <p className="story__title">{title}</p>
         <div className={`story__label-${difficulty}`}></div>
-        <p className={"story__world-name"}>World Name: {World.name}</p>
+        {World && <p className={"story__world-name"}>World Name: {World.name}</p>}
       </div>
     </Link>
   );

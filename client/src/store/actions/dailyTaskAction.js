@@ -1,4 +1,4 @@
-import { loadTasksAction, addTaskAction } from '../reducers/dailyTaskReducer';
+import { loadTasksAction, addTaskAction, removeTaskAction } from '../reducers/dailyTaskReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -44,6 +44,24 @@ export const createDailyTask = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(addTaskAction(data.task));
+    }
+    return data;
+  }
+};
+
+export const updateDailyTask = id => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeTaskAction(data.task));
     }
     return data;
   }
