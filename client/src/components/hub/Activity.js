@@ -88,20 +88,20 @@ const Activity = ({activities}) => {
       <div className="activity__filter-container">
           <div className="activity__category">
             {heroes.map(hero => (
-              <p>
-                <svg viewBox="0 0 10 10">
-                  <circle cx="5" cy="5" r="5" fill={colors[hero.id]}/>
-                </svg>
+              <p className="activity__tag">
+                <span className="circle" style={{color:colors[hero.id]}}>&#9673;</span>
                 <span>{hero.name}</span>
               </p>
             ))}
-            <label for="activity-filter">Filter By: </label>
-            <select name="activity-filter"
-                    onChange={e => setFilter(e.target.value)}>
-              <option value={1}>Last 1 Month</option>
-              <option value={3}>Last 3 Months</option>
-              <option value={12}>Last 12 Months</option>
-            </select>
+            <div>
+              <label for="activity-filter">Filter By: </label>
+              <select name="activity-filter"
+                      onChange={e => setFilter(e.target.value)}>
+                <option value={1}>Last 1 Month</option>
+                <option value={3}>Last 3 Months</option>
+                <option value={12}>Last 12 Months</option>
+              </select>
+            </div>
           </div>
       </div>
     </div>

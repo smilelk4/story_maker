@@ -20,9 +20,18 @@
   }
 
   &__category {
-    svg {
-      position: absolute; 
-      transform: scale(0.1);
+    position: absolute;
+    right: 0;
+    width: 50rem;
+    background-color: rgba(255, 255, 255, .6);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tag {
+    display: flex;
+    & > * {
+      margin: 0 .2rem;
     }
   }
 }
