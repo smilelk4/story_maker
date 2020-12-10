@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDailyTasks, updateDailyTask } from '../../store/actions/dailyTaskAction';
 import DailyTask from './DailyTask';
 
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
+  const container = useRef();
+  const [allCompleted, setAllCompleted] = useState(false);
   const stories = useSelector(state => state.story);
   const tasks = useSelector(state => state.task);
   const today = new Date();
@@ -19,17 +21,22 @@ const DailyTaskContainer = () => {
     }
   }, [stories, dispatch]);
 
-  const onChecked = id => {
-    dispatch(updateDailyTask(id));
+  const onChecked = async id => {
+    await dispatch(updateDailyTask(id));
+
+    if (!container.current.children.length) {
+      setAllCompleted(true);
+    }
   };
 
   return ( 
-    <div className="task__container">
+    <div ref={container} className="task__container">
       {tasks && tasks.map(task => (
         stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
           <DailyTask task={task} handleClick={onChecked}/>
         )
       ))}
+      {allCompleted && <p className="task__all-completed">All done!</p>}
     </div>
   );
 }

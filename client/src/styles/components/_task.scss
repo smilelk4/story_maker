@@ -31,7 +31,12 @@
     }
   }
 
-
+  &__all-completed {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .daily-task {
