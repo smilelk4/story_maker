@@ -3,6 +3,9 @@
   padding: 1rem;
   margin: .5rem;
   background-color: $color-dark-light;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
   
   &__container {
     display: flex;
@@ -12,6 +15,22 @@
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
+  &__complete {
+    border-radius: 50%;
+    border: 1.5px solid $color-light;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    color: $color-light;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+
 
 }
 

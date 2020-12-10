@@ -23,7 +23,7 @@ const taskReducer = (state = [], action) => {
       const ids = state.map(s => s.id);
       
       const newTasks = action.tasks.filter(t => {
-        return !(t.id in ids);
+        return !(ids.includes(t.id));
       });
 
       return [...state, ...newTasks];

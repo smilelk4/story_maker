@@ -5,8 +5,8 @@ const DailyTask = ({task, handleClick}) => {
   return ( 
     <div className="task">
       <p className="task__title">{title}</p>
-      <p className="daily-task__complete"
-        onClick={() => handleClick(id)}>Complete</p>
+      <p className="task__complete"
+        onClick={() => handleClick(id)}>&#10003;</p>
     </div>
   );
 }

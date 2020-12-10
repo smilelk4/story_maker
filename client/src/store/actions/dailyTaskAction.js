@@ -3,7 +3,6 @@ import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
-  debugger;
   const data = await res.json();
 
   if (!res.ok) {

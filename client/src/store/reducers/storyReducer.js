@@ -20,7 +20,7 @@ const storyReducer = (state = [], action) => {
       const ids = state.map(s => s.id);
       
       const newStories = action.stories.filter(d => {
-        return !(d.id in ids);
+        return !(ids.includes(d.id));
       });
       
       return [...state, ...newStories];
