@@ -34,15 +34,23 @@ const MyStory = () => {
           setCurrentDisplay(<DestinationContainer />);
           setCurrentTitle("Upcoming Destinations");
         }}>
-          View Upcoming Destinations
+          Upcoming Destinations
         </div>
        </SideMenuField>
        <SideMenuField>
        <div onClick={() => {
           setCurrentDisplay(<MemoirContainer />);
-          setCurrentTitle("View Memoirs");
+          setCurrentTitle("Memoirs");
         }}>
           Memoirs
+        </div>
+       </SideMenuField>
+       <SideMenuField>
+       <div onClick={() => {
+          setCurrentDisplay(<MemoirContainer />);
+          setCurrentTitle("Daily Tasks");
+        }}>
+          Daily Tasks
         </div>
        </SideMenuField>
 

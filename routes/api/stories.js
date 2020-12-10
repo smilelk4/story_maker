@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, World, Destination, Memoir } = require('../../db/models');
+const { Story, World, Destination, Memoir, DailyTask } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
@@ -45,6 +45,22 @@ asyncHandler(async (req, res) => {
 
     // if (!destinations.length) next(createError('No destinations found.'));
     res.json({ destinations })
+}));
+
+router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
+  const tasks = await DailyTask.findAll({
+    where: {
+      story_id: req.params.id
+    },
+    include: {
+      model: Story,
+      // attributes: {
+      //   exclude: ['id', 'user_id', 'level', 'hp', 'xp', 'createdAt', 'updatedAt']
+      // },
+    }
+  });
+
+  res.json({ tasks });
 }));
 
 router.get('/:id(\\d+)/memoirs', asyncHandler(async (req, res) => {

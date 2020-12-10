@@ -18,9 +18,9 @@ const verifyData = async (res, dispatch) => {
   return data;
 };
 
-export const getDailyTasks = heroId => {
+export const getDailyTasks = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}/tasks`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/tasks`);
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {

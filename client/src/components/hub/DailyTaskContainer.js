@@ -5,19 +5,19 @@ import DailyTask from './DailyTask';
 
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
-  const heroes = useSelector(state => state.hero);
+  const stories = useSelector(state => state.story);
   const tasks = useSelector(state => state.task);
   const today = new Date();
 
   const stringifyDate = date => date.toDateString();
 
   useEffect(() => {
-    if (heroes.length) {
-      for (let hero of heroes) {
-        dispatch(getDailyTasks(hero.id));
+    if (stories.length) {
+      for (let story of stories) {
+        dispatch(getDailyTasks(story.id));
       }
     }
-  }, [heroes, dispatch]);
+  }, [stories, dispatch]);
 
   return ( 
     <div className="task__container">

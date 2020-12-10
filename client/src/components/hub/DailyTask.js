@@ -5,7 +5,6 @@ const DailyTask = ({task}) => {
   return ( 
     <div className="task">
       <p className="task__title">{title}</p>
-      <p className="task__hero-name">{Hero.name}</p>
     </div>
   );
 }

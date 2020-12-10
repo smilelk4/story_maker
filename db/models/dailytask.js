@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const DailyTask = sequelize.define('DailyTask', {
-    hero_id: {
+    story_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Heros'
+        model: 'Stories'
       }
     },
     title: {
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   DailyTask.associate = function(models) {
-    DailyTask.belongsTo(models.Hero, { foreignKey: 'hero_id' });
+    DailyTask.belongsTo(models.Story, { foreignKey: 'story_id' });
   };
   return DailyTask;
 };
