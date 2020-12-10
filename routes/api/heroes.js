@@ -85,7 +85,7 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
         12: [...initialMonthData, 0, 0, 0],
       }
     } 
-    memo[heroId][month].splice(date - 1, 1, activity.point);
+    memo[heroId][month].splice(date - 1, 1, activity.action);
   });
 
   res.json({ activities: memo });

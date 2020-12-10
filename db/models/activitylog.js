@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const ActivityLog = sequelize.define('ActivityLog', {
-    point: DataTypes.INTEGER,
+    action: DataTypes.INTEGER,
     hero_id: DataTypes.INTEGER
   }, {});
   ActivityLog.associate = function(models) {

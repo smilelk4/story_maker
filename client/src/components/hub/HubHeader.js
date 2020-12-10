@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Canvas } from 'react-three-fiber';
 import { Stars, OrbitControls } from 'drei';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Loader } from '@react-three/drei';
 
 const Tavern = () => {
   const gltf = useGLTF('/scene.gltf', true);
@@ -35,6 +35,7 @@ const HubHeader = () => {
           <Tavern />
         </Suspense>
       </Canvas>
+      <Loader />
     </header>
   );
 }

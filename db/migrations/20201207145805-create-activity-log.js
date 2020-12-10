@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      point: {
+      action: {
         type: Sequelize.INTEGER,
         defaultValue: 1,
         max: 10

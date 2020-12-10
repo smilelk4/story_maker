@@ -33,7 +33,7 @@ const activityLogsDataAutomator = (heroId) => {
     let date = ( d => new Date(d.setDate(d.getDate() + 365 - dateCount)) )(new Date);
 
     data.push({
-      point: Math.ceil(Math.random() * 10),
+      action: Math.ceil(Math.random() * 10),
       hero_id: heroId,
       createdAt: date,
       updatedAt: date

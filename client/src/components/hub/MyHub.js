@@ -4,6 +4,7 @@ import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
+import StatusContainer from './StatusContainer';
 import ActivityContainer from './ActivityContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import ActivityScroll from '../svg/ActivityScroll';
@@ -29,6 +30,9 @@ const MyHub = () => {
           <div className="hub__section">
             <div className="hub__icon-holder">
               <NewAdventure />
+            </div>
+            <div className="hub__icon-holder">
+              <StatusContainer />
             </div>
           </div>
           <div className="hub__section">
