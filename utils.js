@@ -25,8 +25,27 @@ const asyncHandler = func => {
   }
 }
 
+const activityLogsDataAutomator = () => {
+  let dateCount = 1;
+  let data = [];
+
+  for (let i = 0; i < 365; i++) {
+    let date = ( d => new Date(d.setDate(d.getDate()-dateCount)) )(new Date);
+
+    data.push({
+      point: Math.ceil(Math.random() * 10),
+      hero_id: 1,
+      createdAt: date,
+      updatedAt: date
+    });
+    dateCount += 1;
+  }
+  return data;
+};
+
 module.exports = {
   hashPassword,
   handleValidationErrors,
-  asyncHandler
+  asyncHandler,
+  activityLogsDataAutomator
 }
