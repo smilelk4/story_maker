@@ -31,8 +31,17 @@
     align-self: flex-end;
   }
 
+  &__alert {
+    @include label-1($color-dark);
+    align-self: flex-end;
+  }
+
   &__target-date {
     align-self: flex-end;
+
+    &.alert {
+      color: red;
+    }
   }
 
   &__form {
