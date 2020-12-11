@@ -1,4 +1,5 @@
-import { loadHeroesAction, loadHeroAction, addHeroAction } from '../reducers/heroReducer';
+import { loadHeroesAction, loadHeroAction, addHeroAction,
+         updateHeroAction } from '../reducers/heroReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -56,6 +57,25 @@ export const createHero = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(addHeroAction(data.hero));
+    }
+    return data;
+  }
+};
+
+export const raiseXP = xp => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/heroes/stats`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(xp)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(updateHeroAction(data.hero));
     }
     return data;
   }

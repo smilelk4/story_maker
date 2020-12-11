@@ -67,7 +67,7 @@ router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
     await hero.update({
       level: heroLV + 1,
       xp: xpDifference
-    })
+    });
   }
 
   res.json({ hero });
