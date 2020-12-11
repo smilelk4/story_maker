@@ -25,6 +25,14 @@ const asyncHandler = func => {
   }
 }
 
+const createError = msg => {
+  const err = new Error(msg);
+  err.title = msg;
+  err.status = 401;
+  err.errors = [err.message];
+  return err;
+}
+
 const activityLogsDataAutomator = (heroId) => {
   let dateCount = 1;
   let data = [];
@@ -47,5 +55,6 @@ module.exports = {
   hashPassword,
   handleValidationErrors,
   asyncHandler,
+  createError,
   activityLogsDataAutomator
 }
