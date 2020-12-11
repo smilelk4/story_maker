@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHeroes } from '../../store/actions/heroAction';
+import Scroll2 from '../svg/Scroll2';
 
 const StatusContainer = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,11 @@ const StatusContainer = () => {
 
   return (
     <div className="status__container">
+      <p className="status__title title">Today's activities</p>
       {status && Object.entries(status).map(s => (
-        <div>
+        <div className="status__field">
           <p>{s[0]}</p>
-          <p>{s[1]} points</p>
+          <p>{s[1]} actions</p>
         </div>
       ))}
     </div>

@@ -1,0 +1,12 @@
+.status {
+  &__field {
+    display: flex;
+    width: 30rem;
+    justify-content: space-between;
+  }
+
+  &__title {
+    justify-self: center;
+    background-color: $color-light;
+  }
+}

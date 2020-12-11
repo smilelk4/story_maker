@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, World, Destination, Memoir, DailyTask } = require('../../db/models');
+const { Story, Hero, World, Destination, Memoir, DailyTask } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
@@ -53,7 +53,7 @@ router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
       story_id: req.params.id
     },
     include: {
-      model: Story
+      model: Story,
     }
   });
 

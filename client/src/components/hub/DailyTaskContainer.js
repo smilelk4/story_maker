@@ -21,9 +21,12 @@ const DailyTaskContainer = () => {
     }
   }, [stories, dispatch]);
 
-  const onChecked = async id => {
-    await dispatch(updateDailyTask(id));
+  const onChecked = async storyId => {
+    const data = await dispatch(updateDailyTask(storyId));
 
+    // if (!data.errors) {
+      // dispatch();
+    // }
     if (!container.current.children.length) {
       setAllCompleted(true);
     }

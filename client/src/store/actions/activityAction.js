@@ -29,3 +29,22 @@ export const getActivities = heroId => {
     return data;
   }
 };
+
+// export const updateActivity = heroId => {
+//   return async dispatch => {
+//     const res = await fetch(`${baseUrl}/heroes/${heroId}`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       }
+//     });
+
+//     const data = await verifyData(res, dispatch);
+
+//     if (!data.errors) {
+//       dispatch(removeTaskAction(data.task));
+//     }
+//     return data;
+//   }
+// };
+
