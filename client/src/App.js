@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
 import MyStory from './components/story/MyStory';
+import RoutesContainer from './components/RoutesContainer';
 import Footer from './components/Footer';
 import HeaderContainer from './components/HeaderContainer';
 import { getUser } from './store/actions/userAction';
@@ -21,23 +22,14 @@ function App() {
 
   return (
     <div className="app">
-      <HeaderContainer />
-
       <Switch>
         <Route exact path='/'>
           <Splash />
         </Route>
-        <Route path='/my-hub'>
-          <MyHub />
-        </Route>
-        <Route path='/stories/:id'>
-          <MyStory />
-        </Route>
         <Route to='*'>
-          "Error"
+          <RoutesContainer />
         </Route>
       </Switch>
-      <Footer />
     </div>
   );
 }

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHeroes } from '../../store/actions/heroAction';
 import Scroll2 from '../svg/Scroll2';
 
 const StatusContainer = () => {
-  const dispatch = useDispatch();
   const activities = useSelector(state => state.activity);
   const heroes = useSelector(state => state.hero);
   const today = new Date();
@@ -19,8 +18,9 @@ const StatusContainer = () => {
       heroes.forEach(hero => {
         statusData[hero.name] = activities[hero.id][month][date - 1];
       });
-      setStatus(statusData)
+      setStatus(statusData);
     }
+
   }, [activities, heroes]);
 
   return (
@@ -29,7 +29,8 @@ const StatusContainer = () => {
       {status && Object.entries(status).map(s => (
         <div className="status__field">
           <p>{s[0]}</p>
-          <p>{s[1]} actions</p>
+          {s[1] === 10 ? <p className='alert'>{s[1]} actions</p> 
+                       : <p>{s[1]} actions</p>}
         </div>
       ))}
     </div>

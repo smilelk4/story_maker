@@ -1,31 +1,31 @@
-// .splash {
-//   width: 100vw;
-//   height: 200rem;
-//   background-image: url('https://story-maker-app.s3.amazonaws.com/map_image1');
-//   background-size: cover;
-//   background-position: center;
+.splash {
+  width: 100vw;
+  height: 200rem;
+  background-image: url('https://story-maker-app.s3.amazonaws.com/map_image1');
+  background-size: cover;
+  background-position: center;
 
-//   &::before {
-//     content: '';
-//     width: inherit;
-//     height: inherit;
-//     position: absolute;
-//     background-color: rgba(255, 255, 255, .4);
-//   }
+  &::before {
+    content: '';
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .4);
+  }
 
-//   &__container {
-//     width: 50%;
-//     height: 100vh;
-//     position: fixed;
-//     right: 0;
-//   }
+  &__container {
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+  }
 
-//   &__scroll {
-//     margin: 7% 0;
-//     width: 85rem;
-//     height: 80rem;
-//     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll_splash');
-//     background-size: 90% auto;
-//     background-repeat: no-repeat;
-//   }
-// }
+  &__scroll {
+    margin: 7% 0;
+    width: 85rem;
+    height: 80rem;
+    background-image: url('https://story-maker-app.s3.amazonaws.com/scroll_splash');
+    background-size: 90% auto;
+    background-repeat: no-repeat;
+  }
+}

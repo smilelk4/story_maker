@@ -3,6 +3,10 @@
     display: flex;
     width: 30rem;
     justify-content: space-between;
+
+    .alert {
+      color: red;
+    }
   }
 
   &__title {
