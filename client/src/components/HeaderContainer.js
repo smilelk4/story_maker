@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Canvas } from 'react-three-fiber';
 import { Stars, OrbitControls } from 'drei';
 import { useGLTF } from '@react-three/drei';
-import NavBar from './NavBar';
+import NavBarContainer from './NavBarContainer';
 
 import HubHeader from './hub/HubHeader';
 import ProgressHeader from './story/ProgressHeader';
@@ -36,7 +36,7 @@ const HeaderContainer = () => {
       {currentGraphic === 'myhub' ? (
         <HubHeader />
       ) : <ProgressHeader />}
-      <NavBar />
+      <NavBarContainer />
     </div>
   );
 }
