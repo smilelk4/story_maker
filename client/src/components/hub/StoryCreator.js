@@ -19,7 +19,7 @@ const StoryCreator = () => {
   const [title, setTitle] = useState('');
   const [destinationTitle, setDestinationTitle] = useState('');
   const [targetDate, setTargetDate] = useState('');
-  const [importance, setImportance] = useState('');
+  const [importance, setImportance] = useState('0');
   const [pageTitle, setPageTitle] = useState('');
 
   useEffect(() => {
@@ -123,10 +123,17 @@ const StoryCreator = () => {
           </div>
           <div className="modal__field">
             <label for="importance">Importance</label>
-            <input type="number" 
+            <input type="range" 
+              value={importance}
+              min="0" 
+              max="10" 
+              name="importance"
+              step=".01"
+              onChange={e => setImportance(e.target.value)} />
+            {/* <input type="number" 
               value={importance} 
               name="importance"
-              onChange={e => setImportance(e.target.value)} />
+              onChange={e => setImportance(e.target.value)} /> */}
           </div>
           <button onClick={handleSubmit}>Create Story</button>
         </>
