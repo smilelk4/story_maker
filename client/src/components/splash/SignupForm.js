@@ -23,8 +23,8 @@ const SignupForm = () => {
   };
 
   return ( 
-    <>
-      <h4>Sign Up</h4>
+    <div className="splash__form">
+      <h4 className="title">Sign Up</h4>
       <form onSubmit={HandleSignup}>
         <InputField 
           type="text" 
@@ -55,7 +55,7 @@ const SignupForm = () => {
           value="Submit" 
         />
       </form>
-    </>
+    </div>
   );
 }
  

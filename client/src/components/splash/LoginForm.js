@@ -20,8 +20,8 @@ const LoginForm = () => {
   };
 
   return ( 
-    <>
-      <h4>Login</h4>
+    <div className="splash__form">
+      <h4 className="title">Login</h4>
       <form onSubmit={handleLogin}>
         <InputField 
           type="text" 
@@ -40,7 +40,7 @@ const LoginForm = () => {
           value="Submit" 
         />
       </form>
-    </>
+    </div>
   );
 }
  
