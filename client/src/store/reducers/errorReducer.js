@@ -1,10 +1,14 @@
 export const LOAD_ERRORS = 'ERROR';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+});
+
 const errorReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_ERRORS:
-      return [...action.errors];
+      return action.errors;
     case CLEAR_ERRORS:
       return [];
     default:

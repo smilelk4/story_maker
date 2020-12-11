@@ -87,6 +87,16 @@
     }
   }
 
+  &__error-container {
+    position: absolute;
+    top: 60rem;
+    left: 17rem;
+    width: 45rem;
+    max-height: 8rem;
+    overflow-y: scroll;
+    @include hide-scroll();
+  }
+
   &__footer {
     background-color: rgba(0, 0, 0, .2);
     height: max-content;

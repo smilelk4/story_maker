@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import { clearErrors } from '../../store/reducers/errorReducer';
 
 const Splash = () => {
   const [form, setForm] = useState(<LoginForm />);
+  const errors = useSelector(state => state.errors);
+  const [displayErrors, setDisplayErrors] = useState([]);
+  const dispatch = useDispatch();
 
   const changeForm = (component) => {
     setForm(component);
+    dispatch(clearErrors());
   };
+
+  useEffect(() => {
+    setDisplayErrors(errors);
+  }, [errors, dispatch]);
 
   return ( 
     <div className="splash">
@@ -31,6 +41,11 @@ const Splash = () => {
             <span onClick={() => changeForm(<LoginForm />)}>Log In</span>
           </p>
           {form}
+          <div className="splash__error-container">
+            {displayErrors.map(error => (
+              <div>{error}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
