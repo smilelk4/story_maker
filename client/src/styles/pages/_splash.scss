@@ -13,6 +13,27 @@
     background-color: rgba(255, 255, 255, .4);
   }
 
+  &__title {
+    font-size: 10rem;
+  }
+
+  &__main {
+    position: absolute;
+    left: 20rem;
+    top: 15rem;
+    width: 60rem;
+    height: 170rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+  &__description {
+    font-size: 2rem;
+    line-height: 5rem;
+  }
+
   &__container {
     width: 50%;
     height: 100vh;
@@ -64,5 +85,15 @@
       margin: 0 1rem;
       color: $color-dark-lighter;
     }
+  }
+
+  &__footer {
+    background-color: rgba(0, 0, 0, .2);
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: $color-light;
+    padding: 1rem;
   }
 }
