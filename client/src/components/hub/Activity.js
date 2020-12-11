@@ -67,13 +67,10 @@ const Activity = ({activities}) => {
 
   useEffect(() => {
     filterActivities()
-  }, [filter])
+  }, [filter]);
   
   useEffect(() => {
-
     if (Object.keys(lines).length !== Object.keys(activities).length) {
-      
-
       filterActivities();
     }
   }, [activities, lines]);

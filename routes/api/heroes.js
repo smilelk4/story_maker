@@ -57,34 +57,30 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
     order: [['createdAt', 'ASC']]
   });
 
-  if (!activities.length) next(createError('No activities found.'));
   const memo = {};
+  const initialMonthData = [];
+  for (let i=0; i<28; i++) {
+    initialMonthData.push(0);
+  }
+
+  memo[heroId] = {
+    1: [...initialMonthData, 0, 0, 0],
+    2: initialMonthData,
+    3: [...initialMonthData, 0, 0, 0],
+    4: [...initialMonthData, 0, 0],
+    5: [...initialMonthData, 0, 0, 0],
+    6: [...initialMonthData, 0, 0],
+    7: [...initialMonthData, 0, 0, 0],
+    8: [...initialMonthData, 0, 0, 0],
+    9: [...initialMonthData, 0, 0],
+    10: [...initialMonthData, 0, 0, 0],
+    11: [...initialMonthData, 0, 0],
+    12: [...initialMonthData, 0, 0, 0],
+  }
 
   activities.forEach(activity => {
     let month = activity.createdAt.getMonth() + 1;
     let date = activity.createdAt.getDate();
-
-    const initialMonthData = [];
-    for (let i=0; i<28; i++) {
-      initialMonthData.push(0);
-    }
-    
-    if (!(heroId in memo)) {
-      memo[heroId] = {
-        1: [...initialMonthData, 0, 0, 0],
-        2: initialMonthData,
-        3: [...initialMonthData, 0, 0, 0],
-        4: [...initialMonthData, 0, 0],
-        5: [...initialMonthData, 0, 0, 0],
-        6: [...initialMonthData, 0, 0],
-        7: [...initialMonthData, 0, 0, 0],
-        8: [...initialMonthData, 0, 0, 0],
-        9: [...initialMonthData, 0, 0],
-        10: [...initialMonthData, 0, 0, 0],
-        11: [...initialMonthData, 0, 0],
-        12: [...initialMonthData, 0, 0, 0],
-      }
-    } 
     memo[heroId][month].splice(date - 1, 1, activity.action);
   });
 

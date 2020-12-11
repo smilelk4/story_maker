@@ -21,6 +21,10 @@ const DailyTaskContainer = () => {
         dispatch(getDailyTasks(story.id));
       }
     }
+    
+    if (!container.current.children.length) {
+      setAllCompleted(true);
+    }
   }, [stories, dispatch]);
 
   const onChecked = async (storyId, heroId) => {

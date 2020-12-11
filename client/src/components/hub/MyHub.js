@@ -36,6 +36,7 @@ const MyHub = () => {
             </div>
           </div>
           <div className="hub__section">
+            <Scroll2 text="Daily Tasks"/>
             <DailyTaskContainer />
           </div>
           <div className="hub__section">

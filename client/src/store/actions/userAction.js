@@ -1,7 +1,6 @@
 import { LOAD_USER } from '../reducers/userReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
-import { useHistory } from 'react-router-dom';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
