@@ -49,9 +49,9 @@ export const createDailyTask = inputtedInfo => {
   }
 };
 
-export const updateDailyTask = id => {
+export const updateDailyTask = (storyId) => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/tasks/${id}`, {
+    const res = await fetch(`${baseUrl}/tasks/${storyId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

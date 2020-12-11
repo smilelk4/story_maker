@@ -1,4 +1,4 @@
-import { loadActivitiesAction } from '../reducers/activityReducer';
+import { loadActivitiesAction, updateActivityAction } from '../reducers/activityReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -30,21 +30,42 @@ export const getActivities = heroId => {
   }
 };
 
-// export const updateActivity = heroId => {
-//   return async dispatch => {
-//     const res = await fetch(`${baseUrl}/heroes/${heroId}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       }
-//     });
+export const createActivity = heroId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/activities`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({heroId})
+    });
 
-//     const data = await verifyData(res, dispatch);
+    const data = await verifyData(res, dispatch);
 
-//     if (!data.errors) {
-//       dispatch(removeTaskAction(data.task));
-//     }
-//     return data;
-//   }
-// };
+    if (!data.errors) {
+      console.log(data)
+      // dispatch(removeTaskAction(data.task));
+    }
+    return data;
+  }
+};
+
+export const updateActivity = heroId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/activities`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({heroId})
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(updateActivityAction(data.activity));
+    }
+    return data;
+  }
+};
 
