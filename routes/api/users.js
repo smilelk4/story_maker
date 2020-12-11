@@ -69,18 +69,13 @@ router.post('/',
   res.status(201).json({ token, user });
 }));
 
-// router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-//   const { id } = req.params;
-//   const user = await User.findByPk(id);
-//   res.json({ user });
-// }));
-
 router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
   const heroes = await Hero.findAll({ 
     where: { 
       user_id: req.params.id,
     },
-    include: [HeroImage]
+    include: [HeroImage],
+    order: ['id']
   });
 
   if (!heroes.length) next(createError('No heroes found.'));

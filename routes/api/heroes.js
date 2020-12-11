@@ -51,7 +51,8 @@ router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
   const hero = await Hero.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include: [HeroImage]
   });
 
   let heroXP = hero.xp;
@@ -75,7 +76,16 @@ router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
     });
   }
 
-  res.json({ hero });
+  res.json({ hero: {
+    id: hero.id,
+    worldId: hero.world_id,
+    name: hero.name,
+    level: hero.level,
+    hp: hero.hp,
+    xp: hero.xp,
+    image: hero.HeroImage.image_url  
+  }
+  });
 }));
 
 router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
