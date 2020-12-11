@@ -43,8 +43,7 @@ export const createActivity = heroId => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      console.log(data)
-      // dispatch(removeTaskAction(data.task));
+      dispatch(updateActivityAction(data.activity));
     }
     return data;
   }

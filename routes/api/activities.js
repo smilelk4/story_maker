@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Story, World, ActivityLog } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 const { createError } = require('../../utils');
+const { sequelize } = require('../../db/models');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
@@ -19,6 +20,7 @@ router.put('/',
   const { heroId } = req.body;
 
   const today = new Date();
+  today.setMinutes(today.getMinutes() + today.getTimezoneOffset());
   const year = today.getFullYear()
   const month = today.getMonth() + 1;
   const date = today.getDate();
@@ -37,6 +39,8 @@ router.put('/',
     await activity.update({
       action: activity.action + 1
     });
+  } else {
+    next(createError('Already reached 10 actions today, so no actions added.'));
   }
   
   res.json({activity});

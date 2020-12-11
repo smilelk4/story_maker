@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { ActivityLog, DailyTask } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
-// const { sequelize } = require('../../db/models');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
