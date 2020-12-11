@@ -8,7 +8,7 @@ const verifyData = async (res, dispatch) => {
   if (!res.ok) {
     dispatch({
       type: LOAD_ERRORS,
-      errors: data.errors
+      errors: data.errors || [data.title]
     });
   } else {
     dispatch({ type: CLEAR_ERRORS });
@@ -23,7 +23,7 @@ export const getHeroes = userId => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      dispatch(loadHeroesAction(data.heroes));
+      dispatch(loadHeroesAction(data.heroes || []));
     }
     return data;
   }
