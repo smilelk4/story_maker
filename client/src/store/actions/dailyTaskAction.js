@@ -55,6 +55,7 @@ export const updateDailyTask = (storyId) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       }
     });
 

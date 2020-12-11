@@ -46,21 +46,26 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
 }));
 
 router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
-  const xpRaise = req.body;
+  const xpRaise = req.body.xp;
 
   const hero = await Hero.findOne({
     where: {
-      hero_id: req.params.id
+      id: req.params.id
     }
   });
 
   let heroXP = hero.xp;
   let heroLV = hero.level;
-  const maxXP = Math.floor(100 ** (heroLv / 50) * 10);
+  const maxXP = Math.floor(100 ** (heroLV / 50) * 10);
 
-  if ((heroXP + xpRaise) <= maxXP) {
+  if ((heroXP + xpRaise) < maxXP) {
     await hero.update({
       xp: heroXP + xpRaise
+    });
+  } else if ((heroXP + xpRaise) === maxXP) {
+    await hero.update({
+      level: heroLV + 1,
+      xp: 0
     });
   } else {
     let xpDifference = (heroXP + xpRaise) - maxXP;

@@ -18,7 +18,6 @@ router.post('/',
 router.put('/:id(\\d+)', 
   asyncHandler(async (req, res) => {
   const { id } = req.params;
-  // const { heroId } = req.body;
         
   const task = await DailyTask.findOne({
     where: { id }
@@ -27,22 +26,6 @@ router.put('/:id(\\d+)',
   await task.update({
     last_accomplished: new Date()
   });
-
-  // to update activity
-  // const today = new Date();
-  // const year = today.getFullYear()
-  // const month = today.getMonth() + 1;
-  // const date = today.getDate()
-
-  // const activity = await ActivityLog.findOne({
-  // where: [
-  //   {hero_id: id},
-  //   sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
-  //                                     '=', `${year}-${month}-${date}`)
-  // ]
-  // });
-
-  // console.log(activity, '!!!!!!')
 
   res.json({task});
 }));
@@ -56,7 +39,7 @@ router.delete('/:id(\\d+)',
   });
 
   await task.destroy();
-  res.status(204);
+  res.status(200);
 }));
 
 module.exports = router;

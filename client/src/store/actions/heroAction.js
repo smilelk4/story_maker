@@ -62,14 +62,14 @@ export const createHero = inputtedInfo => {
   }
 };
 
-export const raiseXP = xp => {
+export const raiseXP = (xp, heroId) => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/stats`, {
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/stats`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(xp)
+      body: JSON.stringify({xp})
     });
 
     const data = await verifyData(res, dispatch);

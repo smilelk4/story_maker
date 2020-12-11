@@ -33,14 +33,12 @@ router.put('/',
   ]
   });
 
-  if (!activity) next(createError('No activity found'));
+  // if (!activity) next(createError('No activity found'));
 
   if (activity.action < 10) {
     await activity.update({
       action: activity.action + 1
     });
-  } else {
-    next(createError('Already reached 10 actions today, so no actions added.'));
   }
   
   res.json({activity});

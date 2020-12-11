@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDailyTasks, updateDailyTask } from '../../store/actions/dailyTaskAction';
 import { createActivity, updateActivity } from '../../store/actions/activityAction';
+import { raiseXP } from '../../store/actions/heroAction';
 import DailyTask from './DailyTask';
 
 const DailyTaskContainer = () => {
@@ -21,6 +22,10 @@ const DailyTaskContainer = () => {
         dispatch(getDailyTasks(story.id));
       }
     }
+
+    if (container.current.children.length) {
+      setAllCompleted(false);
+    }
     
     if (!container.current.children.length) {
       setAllCompleted(true);
@@ -30,6 +35,8 @@ const DailyTaskContainer = () => {
   const onChecked = async (storyId, heroId) => {
     const data = await dispatch(updateDailyTask(storyId));
     if (data.errors) return;
+
+    dispatch(raiseXP(1, heroId));
     
     const today = new Date();
     const month = today.getMonth() + 1;
