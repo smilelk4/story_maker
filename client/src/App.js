@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
@@ -13,11 +13,18 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token);
   const user = useSelector(state => state.user);
+  const history = useHistory();
 
   useEffect(() => {
-    if (token && !user.id) {
-      dispatch(getUser(token));
-    }
+    (async () => {
+      if (token && !user.id) {
+        const data = await dispatch(getUser(token));
+        if (data.errors || data.stack) {
+          history.push('/');
+          localStorage.removeItem('token');
+          localStorage.removeItem('user_id');
+        }
+    }})()
   }, [token, user, dispatch]); 
 
   return (

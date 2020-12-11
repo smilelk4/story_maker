@@ -1,6 +1,7 @@
 import { LOAD_USER } from '../reducers/userReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
+import { useHistory } from 'react-router-dom';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
@@ -8,7 +9,7 @@ const verifyData = async (res, dispatch) => {
   if (!res.ok) {
     dispatch({
       type: LOAD_ERRORS,
-      errors: data.errors
+      errors: data.errors || [data.title]
     });
     return data;
   }
@@ -62,6 +63,6 @@ export const getUser = token => {
       }
     });
 
-    verifyData(res, dispatch);
+    return await verifyData(res, dispatch);
   }
 }
