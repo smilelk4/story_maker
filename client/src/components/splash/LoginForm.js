@@ -25,20 +25,17 @@ const LoginForm = () => {
       <form onSubmit={handleLogin}>
         <InputField 
           type="text" 
-          placeholder="email"
+          placeholder="Email"
           currentState={email}
           updateState={setEmail}
         />
         <InputField 
           type="password" 
-          placeholder="password"
+          placeholder="Password"
           currentState={password}
           updateState={setPassword}
         />
-        <input 
-          type='submit' 
-          value="Submit" 
-        />
+        <button type='submit'>Log In</button>
       </form>
     </div>
   );

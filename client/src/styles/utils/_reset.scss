@@ -18,6 +18,7 @@ html {
 body {
   font-size: 1.4rem;
   font-family: 'Open Sans', sans-serif;
+  color: $color-dark-lighter;
   // background-color: $color-blue-light;
 }
 
@@ -38,7 +39,8 @@ a:visited {
   font-family: 'Merriweather', serif;
 }
 
-input:not([type=range]) {
+input:not([type=range]):not([type="submit"]) {
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid $color-green;
   &:focus {
@@ -115,3 +117,24 @@ input[type=range]::-ms-fill-upper  {
   background: $color-green;
   border-radius: 2.6px;
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+// *::-webkit-scrollbar {
+//   width: 12px;
+// }
+
+// *::-webkit-scrollbar-track {
+//   background: orange;
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   background-color: blue;
+//   border-radius: 20px;
+//   border: 3px solid orange;
+// }

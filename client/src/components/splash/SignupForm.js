@@ -50,10 +50,7 @@ const SignupForm = () => {
           currentState={confirmPassword}
           updateState={setConfirmPassword}
         />
-        <input 
-          type='submit' 
-          value="Submit" 
-        />
+        <button type='submit'>Sign Up</button>
       </form>
     </div>
   );

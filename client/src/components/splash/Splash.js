@@ -18,7 +18,7 @@ const Splash = ({...props}) => {
     const observer = new IntersectionObserver(entries => {
       if (entries[0].intersectionRatio > 0) {
       setIsVisible(true);
-    } else if (entries[0].intersectionRatio <= 0){
+    } else {
       setIsVisible(false);
     }});
 
@@ -50,7 +50,7 @@ const Splash = ({...props}) => {
           <h1 className="splash__title title">Story Maker</h1>
         </section>
         <section
-          // ref={descriptionContainer} 
+          ref={descriptionContainer} 
           className="splash__description">
           <motion.p
             animate={{ x: isVisible ? 0 : -100,
@@ -67,25 +67,6 @@ const Splash = ({...props}) => {
                       opacity: isVisible ? 1 : 0 }}
             transition={{ ease: "easeOut", duration: 1, delay: .6 }}
           >Achieve your goals.</motion.p>
-        </section>
-        <section
-          ref={descriptionContainer} 
-          className="splash__description">
-          {/* <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .2 }}
-          >Create your own story.</motion.p>
-          <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .4 }}
-          >Build habits.</motion.p>
-          <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .6 }}
-          >Achieve your goals.</motion.p> */}
         </section>
         <footer className="splash__footer">
           Developed by Yuka Moribe
