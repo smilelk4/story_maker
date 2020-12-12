@@ -31,8 +31,9 @@ const StatusContainer = () => {
       {status && Object.entries(status).map(s => (
         <div className="status__field">
           <p>{s[0]}</p>
-          {s[1] === 10 ? <p className='alert'>{s[1]} actions</p> 
-                       : <p>{s[1]} actions</p>}
+          {s[1] === 10 && <p className='alert'>{s[1]} actions</p>}
+          {s[1] === 0 && <p>{s[1]} action</p>}
+          {s[1] !== 0 && s[1] !== 10 && <p>{s[1]} actions</p>}
         </div>
       ))}
     </div>

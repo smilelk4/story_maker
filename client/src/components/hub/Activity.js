@@ -55,11 +55,14 @@ const Activity = ({activities}) => {
         pathData[heroId] = dataLine(pathData[heroId].slice(-90));
         colorData[heroId] = randomColor();
       }
-    } else {
+    } else if (+filter === 12) {
       for (let heroId in activities) {
         pathData[heroId] = dataLine(pathData[heroId]);
         colorData[heroId] = randomColor();
       }
+    } else {
+      pathData[0] = dataLine([]);
+      colorData[0] = null;
     }
     setLines(pathData);
     setColors(colorData);
