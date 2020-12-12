@@ -67,9 +67,9 @@
   &__side-menu-field {
     display: flex;
     height: max-content;
-    cursor: pointer;
-    @include label-1($color-blue-light);
     margin: 1rem;
+    cursor: pointer;
+    @include label-1($color-blue-light, $color-light);
 
     div {
       width: 100%;

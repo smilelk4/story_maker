@@ -63,7 +63,7 @@
     @include calc("height", "100% / 2");
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
   }
 
   &__section {
@@ -79,7 +79,9 @@
   }
 
   &__new-adventure {
-    @include label-1($color-dark);
+    @include label-1($gradient-green-radial, white);
     cursor: pointer;
+    width: 30rem;
+    text-align: center;
   }
 }

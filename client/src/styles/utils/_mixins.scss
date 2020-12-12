@@ -4,12 +4,13 @@
   #{$key}: calc(#{$value});
 }
 
-@mixin label-1($color) {
+@mixin label-1($bg-color, $font-color) {
   font-size: 1.8rem;
-  background-color: $color;
-  color: $color-light;
+  background: $bg-color;
+  color: $font-color;
   border-radius: 3px;
   padding: 1rem;
+  height: max-content;
 }
 
 @mixin hide-scroll() {
@@ -50,5 +51,42 @@
 
   &:hover {
     opacity: .75;
+  }
+}
+
+@mixin popup-on-hover($message) {
+  &:hover {
+    position: relative;
+    
+    &::before {
+      content: $message;
+      background-color: rgba(255, 255, 255, .5);
+      position: absolute;
+      font-size: 1rem;
+      right: 2.5rem;
+      top: -.2rem;
+      width: max-content;
+      padding: .3rem;
+      color: $color-pink;
+    }
+  }
+}
+
+@mixin default-title() {
+  letter-spacing: .5px;
+  font-weight: bolder;
+  text-align: center;
+  padding: .5rem;
+}
+
+@mixin default-items() {
+  margin: .5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }

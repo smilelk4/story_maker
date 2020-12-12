@@ -95,7 +95,7 @@
 
   &__new-hero {
     height: 100%;
-    @include label-1($color-blue-light);
+    @include label-1($color-blue-light, $color-light);
     cursor: pointer;
   }
 }

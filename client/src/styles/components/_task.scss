@@ -3,16 +3,8 @@
   background: $gradient-grey;
   display: flex;
   justify-content: space-between;
-  margin: .5rem 0;
   border-radius: 2px;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  @include default-items();
 
   &__title {
     width: 90%;
@@ -41,23 +33,7 @@
     opacity: 1;
     transition: opacity .2s ease-in;
     @include opacity-change-on-hover();
-
-    &:hover {
-      opacity: .75;
-      position: relative;
-      
-      &::before {
-        content: 'Mark Complete';
-        background-color: rgba(255, 255, 255, .5);
-        position: absolute;
-        font-size: 1rem;
-        right: 3rem;
-        top: -.2rem;
-        width: max-content;
-        padding: .3rem;
-        color: $color-pink;
-      }
-    }
+    @include popup-on-hover('Mark Complete');
   }
 
   &__all-completed {

@@ -36,8 +36,7 @@
 
   &__title {
     @include hide-overflowing-words();
+    @include default-title();
     width: 100%;
-    letter-spacing: .5px;
-    font-weight: bolder;
   }
 }

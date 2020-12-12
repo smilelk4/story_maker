@@ -1,8 +1,20 @@
 .status {
+
+  &__container {
+    overflow-y: scroll;
+    @include custom-scroll();
+  }
+
   &__field {
     display: flex;
     width: 30rem;
     justify-content: space-between;
+    @include default-items();
+
+    & > p:first-child {
+      width: 75%;
+      @include hide-overflowing-words();
+    }
 
     .alert {
       color: red;
@@ -12,5 +24,6 @@
   &__title {
     justify-self: center;
     background-color: $color-light;
+    @include default-title();
   }
 }

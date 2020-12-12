@@ -23,12 +23,12 @@
   }
 
   &__days-left {
-    @include label-1($color-blue-light);
+    @include label-1($color-blue-light, $color-light);
     align-self: flex-end;
   }
 
   &__alert {
-    @include label-1($color-dark);
+    @include label-1($color-dark, $color-light);
     align-self: flex-end;
   }
 
