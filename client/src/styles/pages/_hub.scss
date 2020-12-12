@@ -64,7 +64,6 @@
     @include calc("height", "100% / 2");
     display: flex;
     justify-content: center;
-    // align-items: center;
   }
 
   &__section {
@@ -83,7 +82,14 @@
   &__new-adventure {
     @include label-1($gradient-green-radial, white);
     cursor: pointer;
-    width: 30rem;
+    width: 100%;
     text-align: center;
+  }
+
+  &__greet {
+    width: 31rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

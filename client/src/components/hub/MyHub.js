@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
 import StoryContainer from './StoryContainer';
+import Greeting from './Greeting';
 import StatusContainer from './StatusContainer';
 import ActivityContainer from './ActivityContainer';
 import DailyTaskContainer from './DailyTaskContainer';
@@ -13,6 +15,8 @@ import DestinationScroll from '../svg/DestinationScroll';
 import Scroll2 from '../svg/Scroll2';
 
 const MyHub = ({...props}) => {
+  const user = useSelector(state => state.user);
+
   return ( 
     <motion.div className="hub" 
                 initial="out"
@@ -30,11 +34,13 @@ const MyHub = ({...props}) => {
             <DestinationContainer />
           </div>
         </main>
-
         <aside className="hub__sidebar">
           <div className="hub__section">
             <div className="hub__icon-holder">
-              <NewAdventure />
+              <div className="hub__greet">
+                <Greeting {...user}/>
+                <NewAdventure />
+              </div>
             </div>
             <div className="hub__icon-holder">
               <StatusContainer />

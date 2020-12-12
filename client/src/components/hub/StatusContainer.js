@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getHeroes } from '../../store/actions/heroAction';
-import Scroll2 from '../svg/Scroll2';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const StatusContainer = () => {
   const activities = useSelector(state => state.activity);
