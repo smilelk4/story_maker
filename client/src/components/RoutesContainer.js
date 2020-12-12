@@ -4,16 +4,16 @@ import MyStory from './story/MyStory';
 import HeaderContainer from './HeaderContainer';
 import Footer from './Footer';
 
-const RoutesContainer = () => {
+const RoutesContainer = ({...props}) => {
   return (
   <>
     <HeaderContainer />
     <Switch>
       <Route path='/my-hub'>
-        <MyHub />
+        <MyHub {...props}/>
       </Route>
       <Route path='/stories/:id'>
-        <MyStory />
+        <MyStory {...props}/>
       </Route>
       <Route to='*'>
         "Error"

@@ -12,8 +12,6 @@
   padding: 1rem;
 }
 
-// background-image: url(https://story-maker-app.s3.amazonaws.com/antique_map.jpeg);
-// background-size: cover;
 @mixin hide-scroll() {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -21,4 +19,14 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+@mixin hide-overflowing-words() {
+  display: inline-block;
+  font-weight: bolder;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+  height: max-content;
+  width: 100%;
 }

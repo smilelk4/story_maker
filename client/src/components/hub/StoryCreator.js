@@ -122,6 +122,7 @@ const StoryCreator = () => {
           </div>
           <div className="modal__field">
             <label for="importance">Importance</label>
+            <p>{importance}</p>
             <input type="range" 
               value={importance}
               min="0" 
@@ -129,10 +130,6 @@ const StoryCreator = () => {
               name="importance"
               step=".01"
               onChange={e => setImportance(e.target.value)} />
-            {/* <input type="number" 
-              value={importance} 
-              name="importance"
-              onChange={e => setImportance(e.target.value)} /> */}
           </div>
           <button onClick={handleSubmit}>Create Story</button>
         </>

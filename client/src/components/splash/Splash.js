@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { motion } from 'framer-motion';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { clearErrors } from '../../store/reducers/errorReducer';
 
-const Splash = () => {
+const Splash = ({...props}) => {
   const [form, setForm] = useState(<LoginForm />);
   const errors = useSelector(state => state.errors);
   const [displayErrors, setDisplayErrors] = useState([]);
@@ -20,7 +21,11 @@ const Splash = () => {
   }, [errors, dispatch]);
 
   return ( 
-    <div className="splash">
+    <motion.div className="splash"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={props}>
       <main className="splash__main">
         <section className="splash__section">
           <h1 className="splash__title title">Story Maker</h1>
@@ -48,7 +53,7 @@ const Splash = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
  

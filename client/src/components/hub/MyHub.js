@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
@@ -11,9 +12,13 @@ import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import Scroll2 from '../svg/Scroll2';
 
-const MyHub = () => {
+const MyHub = ({...props}) => {
   return ( 
-    <div className="hub">
+    <motion.div className="hub" 
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={props}>
       <div className="hub__contents">
         <main className="hub__main">
           <div className="hub__activity left-section">
@@ -49,7 +54,7 @@ const MyHub = () => {
           </div>
         </aside>
       </div>
-    </div>
+    </motion.div>
   );
 }
  

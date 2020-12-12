@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
@@ -9,7 +10,7 @@ import MemoirContainer from './MemoirContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
 
-const MyStory = () => {
+const MyStory = ({...props}) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
@@ -20,7 +21,11 @@ const MyStory = () => {
   }, [id, dispatch]);
 
   return (  
-    <div className="mystory">
+    <motion.div className="mystory"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={props}>
       <div className="mystory__contents">
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
@@ -60,7 +65,7 @@ const MyStory = () => {
         <NewDestination />
        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
  

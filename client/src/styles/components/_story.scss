@@ -35,6 +35,7 @@
   }
 
   &__title {
-    font-weight: bolder;
+    @include hide-overflowing-words();
+    letter-spacing: .5px;
   }
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
 import MyStory from './components/story/MyStory';
@@ -14,6 +15,15 @@ function App() {
   const token = useSelector(state => state.token);
   const user = useSelector(state => state.user);
   const history = useHistory();
+
+  const pageVariants = {
+    in: {
+      opacity: 1
+    },
+    out: {
+      opacity: 0
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -29,14 +39,16 @@ function App() {
 
   return (
     <div className="app">
-      <Switch>
-        <Route exact path='/'>
-          <Splash />
-        </Route>
-        <Route to='*'>
-          <RoutesContainer />
-        </Route>
-      </Switch>
+      <AnimatePresence>
+        <Switch>
+          <Route exact path='/'>
+            <Splash {...pageVariants}/>
+          </Route>
+          <Route to='*'>
+            <RoutesContainer {...pageVariants}/>
+          </Route>
+        </Switch>
+      </AnimatePresence>
     </div>
   );
 }
