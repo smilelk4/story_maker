@@ -91,9 +91,9 @@ const Activity = ({activities}) => {
               </p>
             ))}
             <div>
-              <label for="activity-filter">Filter By: </label>
               <select name="activity-filter"
                       onChange={e => setFilter(e.target.value)}>
+                <option>Filter By</option>
                 <option value={1}>Last 1 Month</option>
                 <option value={3}>Last 3 Months</option>
                 <option value={12}>Last 12 Months</option>

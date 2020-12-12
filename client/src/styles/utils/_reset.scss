@@ -48,6 +48,14 @@ input:not([type=range]):not([type="submit"]) {
   }
 }
 
+select {
+  border: none;
+  box-shadow: $shadow-2;
+  &:focus {
+    outline: none;
+  }
+}
+
 button {
   border: none;
   background-color: $color-dark-lighter;

@@ -25,7 +25,9 @@ const StatusContainer = () => {
 
   return (
     <div className="status__container">
-      <p className="status__title title">Today's activities</p>
+    <div className="status__field">
+      <span className="status__title title">Today's activities</span>
+    </div>
       {status && Object.entries(status).map(s => (
         <div className="status__field">
           <p>{s[0]}</p>

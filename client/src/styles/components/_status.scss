@@ -9,6 +9,7 @@
     display: flex;
     width: 30rem;
     justify-content: space-between;
+    padding-right: 2rem;
     @include default-items();
 
     & > p:first-child {
@@ -23,6 +24,9 @@
 
   &__title {
     justify-self: center;
+    width: 100%;
+    border-radius: 2px;
+    padding-right: 2rem;
     background-color: $color-light;
     @include default-title();
   }

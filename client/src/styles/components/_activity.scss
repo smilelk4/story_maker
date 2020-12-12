@@ -7,6 +7,7 @@
   svg {
     height: max-content;
     width: 100%;
+    pointer-events: none;
   }
 
   &__container {
@@ -17,15 +18,23 @@
     position: absolute;
     right: 3rem;
     top: 3rem;
+    background-color: skyblue;
   }
 
   &__category {
     position: absolute;
+    overflow-x: scroll;
     right: 0;
-    width: 50rem;
+    min-width: 10rem;
+    max-width: 70rem;
     background: rgba(255, 255, 255, .5);
     display: flex;
     justify-content: space-between;
+    @include hide-scroll();
+
+    & > * {
+      padding: 0 1rem;
+    }
   }
 
   &__tag {
