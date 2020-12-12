@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll, useTransform, 
+         useMotionValue } from 'framer-motion';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { clearErrors } from '../../store/reducers/errorReducer';
@@ -10,6 +11,24 @@ const Splash = ({...props}) => {
   const errors = useSelector(state => state.errors);
   const [displayErrors, setDisplayErrors] = useState([]);
   const dispatch = useDispatch();
+  const descriptionContainer = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].intersectionRatio > 0) {
+      setIsVisible(true);
+    } else if (entries[0].intersectionRatio <= 0){
+      setIsVisible(false);
+    }});
+
+    if (descriptionContainer.current) {
+      observer.observe(descriptionContainer.current);
+    }
+  
+    return () => observer.disconnect();
+  }, []);
+
 
   const changeForm = (component) => {
     setForm(component);
@@ -30,10 +49,43 @@ const Splash = ({...props}) => {
         <section className="splash__section">
           <h1 className="splash__title title">Story Maker</h1>
         </section>
-        <section className="splash__description">
-          <p>Create your own story.</p>
-          <p>Build habits.</p>
-          <p>Achieve your goals.</p>
+        <section
+          // ref={descriptionContainer} 
+          className="splash__description">
+          <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .2 }}
+          >Create your own story.</motion.p>
+          <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .4 }}
+          >Build habits.</motion.p>
+          <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .6 }}
+          >Achieve your goals.</motion.p>
+        </section>
+        <section
+          ref={descriptionContainer} 
+          className="splash__description">
+          {/* <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .2 }}
+          >Create your own story.</motion.p>
+          <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .4 }}
+          >Build habits.</motion.p>
+          <motion.p
+            animate={{ x: isVisible ? 0 : -100,
+                      opacity: isVisible ? 1 : 0 }}
+            transition={{ ease: "easeOut", duration: 1, delay: .6 }}
+          >Achieve your goals.</motion.p> */}
         </section>
         <footer className="splash__footer">
           Developed by Yuka Moribe
