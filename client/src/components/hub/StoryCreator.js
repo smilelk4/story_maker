@@ -8,7 +8,6 @@ import { createStory } from '../../store/actions/storyAction';
 const StoryCreator = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const worldContainer = useRef();
   const heroContainer = useRef();
   const heroes = useSelector(state => state.hero);
 
