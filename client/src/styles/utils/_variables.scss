@@ -8,9 +8,12 @@ $color-lime: rgb(230, 249, 175);
 $color-brown: rgb(163, 147, 117);
 $color-light: rgb(233, 230, 226);
 $color-grey: rgb(219, 219, 219);
+$color-pink: rgb(255, 147, 147);
 $basic-item-height: 20rem;
 
 $shadow-1: 3px 3px 5px rgba(13, 6, 48, .3);
 $shadow-2: 0 0 1.4rem rgba(226, 226, 226, .8);
 
 $gradient-green: linear-gradient(to right, $color-lime, $color-green);
+$gradient-green-radial: radial-gradient(ellipse at 500%, $color-lime, $color-green);
+$gradient-grey: linear-gradient(45deg, rgba(219, 219, 219, .5) 100%, rgba(219, 219, 219, 1) 10%);

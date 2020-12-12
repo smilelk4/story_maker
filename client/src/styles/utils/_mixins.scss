@@ -31,19 +31,17 @@
   }
   
   &::-webkit-scrollbar-thumb {
-    background: $color-green;
+    background: $gradient-green-radial;
     border-radius: 1px;
   }
 }
 
 @mixin hide-overflowing-words() {
   display: inline-block;
-  font-weight: bolder;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space:nowrap;
   height: max-content;
-  width: 100%;
 }
 
 @mixin opacity-change-on-hover() {
