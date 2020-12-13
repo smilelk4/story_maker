@@ -5,12 +5,14 @@
 }
 
 @mixin label-1($bg-color, $font-color) {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   background: $bg-color;
   color: $font-color;
   border-radius: 3px;
   padding: 1rem;
   height: max-content;
+  width: 10rem;
+  text-align: center;
 }
 
 @mixin hide-scroll() {

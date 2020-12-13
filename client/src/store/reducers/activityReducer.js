@@ -12,6 +12,7 @@ export const updateActivityAction = data => ({
 });
 
 const activityReducer = (state = {}, action) => {
+  // debugger
   switch(action.type) {
     case LOAD_ACTIVITIES: {    
       return {...state, ...action.activities};

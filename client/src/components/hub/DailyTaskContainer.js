@@ -43,7 +43,7 @@ const DailyTaskContainer = () => {
     const date = today.getDate();
     const todaysActivity = activities[heroId][month][date - 1];
 
-    if (todaysActivity) {
+    if (todaysActivity || todaysActivity === 0) {
       dispatch(updateActivity(heroId));
     } else {
       dispatch(createActivity(heroId));

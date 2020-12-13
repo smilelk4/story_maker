@@ -41,7 +41,7 @@
   }
 
   &__alert {
-    @include label-1($color-dark, $color-light);
+    @include label-1($color-blue-dark, $color-light);
     align-self: flex-end;
   }
 
