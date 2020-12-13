@@ -15,10 +15,14 @@ const DailyTaskContainer = () => {
     dispatch(getDailyTasks(id));
   },[id, dispatch]);
 
+  const updateTitle = () => {
+    // dispatch();
+  };
+
   return ( 
     <div className="daily-task__container">
       <NewDailyTask />
-      {tasks.map(task => <DailyTask {...task} />)}
+      {tasks.map(task => <DailyTask updateTitle={updateTitle} {...task} />)}
     </div>
   );
 }

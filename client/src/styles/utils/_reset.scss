@@ -64,6 +64,11 @@ button {
   }
 }
 
+input[type=text] {
+  height: 2.5rem;
+  padding: 1rem;
+}
+
 input:not([type=range]):not([type="submit"]),
 textarea {
   border: none;
