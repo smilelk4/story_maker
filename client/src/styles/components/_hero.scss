@@ -19,6 +19,38 @@
     height: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
+    @include hide-scroll();
+    scroll-behavior: smooth;
+
+    &-left-scroll {
+      content: '<';
+      background-color: rgba(255, 255, 255, .5);
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      left: 0;
+      text-align: center;
+      transform: translateY(-50%);
+      z-index: 1;
+      user-select: none;
+    }
+
+    &-right-scroll {
+      content: '>';
+      background-color: rgba(255, 255, 255, .5);
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      right: 0;
+      text-align: center;
+      transform: translateY(-50%);
+      z-index: 1;
+      user-select: none;
+    }
   }
 
   &__avatar {
@@ -95,16 +127,12 @@
     color: $color-light;
   }
 
-  &__avatar,
-  &__name,
-  &__hp {
-    // display: flex;
-    // justify-content: center;
-  }
-
   &__new-hero {
     height: 100%;
-    @include label-1($color-blue-light, $color-light);
+    // @include label-1($color-blue-light, $color-light);
     cursor: pointer;
+    background-color: $color-blue-light;
+    color: $color-light;
+    padding: 1rem;
   }
 }

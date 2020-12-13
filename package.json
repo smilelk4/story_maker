@@ -39,6 +39,7 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "randomcolor": "^0.6.2",
+    "react-spring": "^8.0.27",
     "react-three-fiber": "^5.3.7",
     "react-use-gesture": "^8.0.1",
     "sequelize": "^5.22.3",
