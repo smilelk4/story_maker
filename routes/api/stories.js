@@ -40,6 +40,7 @@ asyncHandler(async (req, res) => {
   const destinations = await Destination.findAll({
     where: {
       story_id: req.params.id,
+      accomplished: false
     },
     order: [['target_date', 'ASC']]
   });

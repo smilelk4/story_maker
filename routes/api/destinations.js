@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, World, Destination } = require('../../db/models');
+const { Destination } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
@@ -17,6 +17,24 @@ router.post('/',
   });
 
   res.status(201).json({ destinations: [destination] });
+}));
+
+router.put('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { accomplished } = req.body;
+        
+  const destination = await Destination.findOne({
+    where: { id }
+  });
+
+  if (accomplished) {
+    await destination.update({
+      accomplished
+    });
+  }
+
+  res.json({destination});
 }));
 
 module.exports = router;

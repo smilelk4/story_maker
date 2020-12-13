@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import dateFormatter from '../utils/dateFormatter';
 
-const Destination = ({...props}) => {
+const Destination = ({handleClick, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
         title, description, target_date: targetDate, importance } = props;
   const [isOverdue, setIsOverDue] = useState(false);
@@ -30,6 +30,8 @@ const Destination = ({...props}) => {
           <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
         </>
       )}
+      <p onClick={() => handleClick(id)} 
+         className="destination__complete">Complete</p>
     </div>
   );
 }

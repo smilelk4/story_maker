@@ -1,8 +1,14 @@
 const LOAD_DESTINATIONS = 'LOAD_DESTINATIONS';
+const REMOVE_DESTINATION = 'REMOVE_DESTINATION';
 
 export const loadDestinationsAction = data => ({
   type: LOAD_DESTINATIONS,
   destinations: data
+});
+
+export const removeDestinationAction = data => ({
+  type: REMOVE_DESTINATION,
+  task: data
 });
 
 const destinationReducer = (state = [], action) => {
@@ -18,6 +24,10 @@ const destinationReducer = (state = [], action) => {
       newState.sort((a, b) => Date.parse(a.target_date) - Date.parse(b.target_date));
       
       return [...newState];
+    }
+    case REMOVE_DESTINATION: {
+      const newState = state.filter(destination => destination.id !== action.destination.id);
+      return newState;
     }
     default:
       return state;

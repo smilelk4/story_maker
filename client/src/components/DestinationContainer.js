@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Destination from './Destination';
-import { getDestinations } from '../store/actions/destinationActions';
+import { getDestinations, 
+         completeDestination } from '../store/actions/destinationActions';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,32 @@ const DestinationContainer = () => {
     }
   }, [stories, dispatch]);
 
+  const onCompleted = async (destinationId) => {
+    const data = await dispatch(completeDestination(destinationId));
+    if (data.errors) return;
+
+    // dispatch(raiseXP(1, heroId));
+    
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+    // const todaysActivity = activities[heroId][month][date - 1];
+
+    // if (todaysActivity || todaysActivity === 0) {
+      // dispatch(updateActivity(heroId));
+    // } else {
+      // dispatch(createActivity(heroId));
+    // }
+
+    // if (!container.current.children.length) {
+      // setAllCompleted(true);
+    // }
+  };
+
   return ( 
     <div className="destination__container">
-      {destinations.map(destination => <Destination {...destination} />)}
+      {destinations.map(destination => (
+          <Destination handleClick={onCompleted} {...destination} />))}
     </div>
   );
 }

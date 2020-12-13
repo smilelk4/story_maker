@@ -1,4 +1,5 @@
-import { loadDestinationsAction } from '../reducers/destinationReducer';
+import { loadDestinationsAction, 
+         removeDestinationAction } from '../reducers/destinationReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -42,6 +43,26 @@ export const createDestination = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(loadDestinationsAction(data.destinations));
+    }
+    return data;
+  }
+};
+
+export const completeDestination = (id) => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/destinations/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ accomplished: true })
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeDestinationAction(data.task));
     }
     return data;
   }

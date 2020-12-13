@@ -21,27 +21,12 @@ router.put('/',
   asyncHandler(async (req, res, next) => {
   const { heroId } = req.body;
 
-  const today = new Date();
-  // today.setMinutes(today.getMinutes() + today.getTimezoneOffset());
-  const year = today.getFullYear()
-  const month = today.getMonth() + 1;
-  const date = today.getDate();
-  const time = today.getTime();
-  // console.log('TODAY', today.toLocaleDateString())
-  const t = new Date()
-  t.setMinutes(t.getMinutes() - t.getTimezoneOffset())
-  const y = t.getFullYear()
-  const m = t.getMonth() + 1;
-  const d = t.getDate()
-  const h = t.getHours();
-  const min = t.getMinutes();
-  // console.log(t.getTimezoneOffset())
-  console.log('TTTTTT')
-  console.log(t)
-  // console.log(y, m, d, h, min)
-  // console.log(new Date(y, m, d, h, min))
+  const today = new Date()
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  const y = today.getFullYear();
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
 
-  console.log('--------------------------------------------')
   const activity = await ActivityLog.findOne({
     where: [
       {hero_id: heroId},
@@ -50,12 +35,6 @@ router.put('/',
       '=', `${y}-${m}-${d}`)
     ]
   });
-  
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.log(activity.toJSON());
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.log('--------------------------------------------')
-  // if (!activity) next(createError('No activity found'));
 
   if (activity.action < 10) {
     await activity.update({
