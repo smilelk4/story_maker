@@ -44,32 +44,42 @@
 
 .daily-task {
   height: $basic-item-height;
-  background-color: $color-light;
+  background: $gradient-grey;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 2rem;
   padding: 2rem;
   overflow-y: scroll;
+  margin: 2rem;
+  border-radius: 2px;
 
   @include hide-scroll;
-
 
   &__container {
     height: 100%;
     overflow-y: scroll;
+    @include custom-scroll();
   }
 
   &__form {
-    background-color: $color-dark-light;
+    background: $gradient-darker-grey;
     color: white;
-    margin: 2rem;
+    margin: 0 2rem;
     height: max-content;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    border-radius: 2px;
     align-items: center;
     justify-content: space-around;
+
+    &-section {
+      position: relative;
+      margin: 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 50rem;
+    }
 
     input {
       width: 35rem;
@@ -80,6 +90,9 @@
       display: flex;
       justify-content: space-between;
       width: 50rem;
+    }
+    button {
+      margin-top: 1rem;
     }
   }
 }

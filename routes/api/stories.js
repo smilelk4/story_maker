@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { sequelize } = require('../../db/models');
 const { Story, Hero, World, Destination, Memoir, DailyTask } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
@@ -62,9 +63,11 @@ router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
 
 router.get('/:id(\\d+)/memoirs', asyncHandler(async (req, res) => {
   const memoirs = await Memoir.findAll({
-    where: { 
-      story_id: req.params.id
-    },
+    where: [ 
+      {story_id: req.params.id},
+      sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
+                    '<=', new Date())
+    ],
     order: [['createdAt', 'DESC']]
   });
 

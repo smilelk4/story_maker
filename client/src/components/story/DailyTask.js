@@ -5,7 +5,7 @@ const DailyTask = ({...props}) => {
 
   return ( 
     <div className="daily-task">
-      <p className="daily-task__title title">{title}</p>
+      <p className="daily-task__title">{title}</p>
     </div>
   );
 }
