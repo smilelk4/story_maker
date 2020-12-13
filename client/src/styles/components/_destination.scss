@@ -44,6 +44,7 @@
   }
 
   &__target-date {
+    margin-top: 1rem;
     align-self: flex-end;
 
     &.alert {
@@ -54,7 +55,6 @@
   &__days {
     display: flex;
     flex-direction: column;
-    // background: white;
     flex-wrap: wrap;
     text-align: end;
   }
@@ -65,7 +65,7 @@
   }
 
   &__complete {
-    // background-color: pink;
+    font-weight: bolder;
     text-align: end;
     font-size: 1.2rem;
     @include opacity-change-on-hover();

@@ -45,7 +45,7 @@ function App() {
             <Splash {...pageVariants}/>
           </Route>
           <Route to='*'>
-            <RoutesContainer {...pageVariants}/>
+            <RoutesContainer user={user.id} { ...pageVariants}/>
           </Route>
         </Switch>
       </AnimatePresence>
