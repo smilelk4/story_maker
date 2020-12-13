@@ -8,7 +8,7 @@ export const loadDestinationsAction = data => ({
 
 export const removeDestinationAction = data => ({
   type: REMOVE_DESTINATION,
-  task: data
+  destination: data
 });
 
 const destinationReducer = (state = [], action) => {
@@ -26,7 +26,9 @@ const destinationReducer = (state = [], action) => {
       return [...newState];
     }
     case REMOVE_DESTINATION: {
-      const newState = state.filter(destination => destination.id !== action.destination.id);
+      const newState = state.filter(destination => {
+        return destination.id !== action.destination.id
+      });
       return newState;
     }
     default:

@@ -19,19 +19,23 @@ const Destination = ({handleClick, ...props}) => {
     <div className="destination">
       <p className="destination__title title">{title}</p>
       <p className="destination__description">{description}</p>
-      {isOverdue ? (
-        <>
-          <p className="destination__alert">Overdue</p>
-          <p className="destination__target-date alert">Target Date: {dateFormatter(targetDate)}</p>
-        </>
-      ) : (
-        <>
-          <p className="destination__days-left">{dayDiff} Days Left</p>
-          <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
-        </>
-      )}
-      <p onClick={() => handleClick(id)} 
-         className="destination__complete">Complete</p>
+      <div className="destination__stats">
+        <div className="destination__days">
+          {isOverdue ? (
+            <>
+              <p className="destination__alert">Overdue</p>
+              <p className="destination__target-date alert">Target Date: {dateFormatter(targetDate)}</p>
+            </>
+          ) : (
+            <>
+              <p className="destination__days-left">{dayDiff} Days Left</p>
+              <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
+            </>
+          )}
+          <p onClick={() => handleClick(id)} 
+            className="destination__complete">Mark as Accomplished</p>
+        </div>
+      </div>
     </div>
   );
 }

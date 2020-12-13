@@ -62,7 +62,7 @@ export const completeDestination = (id) => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      dispatch(removeDestinationAction(data.task));
+      dispatch(removeDestinationAction(data.destination));
     }
     return data;
   }

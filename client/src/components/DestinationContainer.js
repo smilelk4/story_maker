@@ -28,13 +28,16 @@ const DestinationContainer = () => {
 
   const onCompleted = async (destinationId) => {
     const data = await dispatch(completeDestination(destinationId));
+    console.log(data, "DATAAA")
     if (data.errors) return;
+
+    console.log('HEYYYYYU!WHWIU~H')
 
     // dispatch(raiseXP(1, heroId));
     
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const date = today.getDate();
+    // const today = new Date();
+    // const month = today.getMonth() + 1;
+    // const date = today.getDate();
     // const todaysActivity = activities[heroId][month][date - 1];
 
     // if (todaysActivity || todaysActivity === 0) {
