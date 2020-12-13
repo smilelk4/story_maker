@@ -37,6 +37,53 @@
   }
 }
 
+@mixin horizontal-scroll() {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  @include hide-scroll();
+  scroll-behavior: smooth;
+
+  &-left-scroll {
+    content: '<';
+    width: 2rem;
+    height: max-content;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 1;
+    user-select: none;
+    font-size: 2rem;
+    transition: color .2s ease-in;
+
+    &:hover {
+      color: $color-blue-light;
+    }
+  }
+
+  &-right-scroll {
+    content: '>';
+    width: 2rem;
+    height: max-content;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 1;
+    user-select: none;
+    font-size: 2rem;
+    transition: color .2s ease-in;
+
+    &:hover {
+      color: $color-blue-light;
+    }
+  }
+}
+
 @mixin hide-overflowing-words() {
   display: inline-block;
   text-overflow: ellipsis;

@@ -11,8 +11,6 @@ const HeroContainer = () => {
   const heroes = useSelector(state => state.hero);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const container = useRef(null);
-  const arrowRight = useRef();
-  const arrowLeft = useRef();
 
   const handleLeftScroll = () => {
     container.current.scrollLeft -= 100;
@@ -34,10 +32,10 @@ const HeroContainer = () => {
 
   return (
     <div className="hero__container" ref={container}>
-        <div className="hero__container-left-scroll" ref={arrowLeft} 
-             onClick={handleLeftScroll}>&#9001;</div>
-        <div className="hero__container-right-scroll" ref={arrowRight} 
-             onClick={handleRightScroll}>&#9002;</div>
+      <div className="hero__container-left-scroll" 
+            onClick={handleLeftScroll}>&#9001;</div>
+      <div className="hero__container-right-scroll"
+            onClick={handleRightScroll}>&#9002;</div>
       {isModalOpen && <NewHeroModal clickHandler={clickHandler} />}
       <h4 
         className="hero__new-hero"

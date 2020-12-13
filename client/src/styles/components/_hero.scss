@@ -17,40 +17,7 @@
   &__container {
     display: flex;
     height: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    @include hide-scroll();
-    scroll-behavior: smooth;
-
-    &-left-scroll {
-      content: '<';
-      background-color: rgba(255, 255, 255, .5);
-      width: 2rem;
-      height: 2rem;
-      position: absolute;
-      cursor: pointer;
-      top: 50%;
-      left: 0;
-      text-align: center;
-      transform: translateY(-50%);
-      z-index: 1;
-      user-select: none;
-    }
-
-    &-right-scroll {
-      content: '>';
-      background-color: rgba(255, 255, 255, .5);
-      width: 2rem;
-      height: 2rem;
-      position: absolute;
-      cursor: pointer;
-      top: 50%;
-      right: 0;
-      text-align: center;
-      transform: translateY(-50%);
-      z-index: 1;
-      user-select: none;
-    }
+    @include horizontal-scroll();
   }
 
   &__avatar {
@@ -101,7 +68,7 @@
         height: 100%;
       }
       .xp-meter {
-        background-color: $color-lime;
+        background-color: $color-blue-light;
         display: block;
         height: 100%;
       }
@@ -111,9 +78,10 @@
   &__status-bars-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     justify-content: flex-end;
     align-items: center;
-    max-width: 3rem; 
+    max-width: 3rem;
   }
 
   &__hp {

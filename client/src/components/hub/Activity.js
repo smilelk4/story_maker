@@ -55,15 +55,12 @@ const Activity = ({activities}) => {
         pathData[heroId] = dataLine(pathData[heroId].slice(-90));
         colorData[heroId] = randomColor();
       }
-    } else if (+filter === 12) {
+    } else {
       for (let heroId in activities) {
         pathData[heroId] = dataLine(pathData[heroId]);
         colorData[heroId] = randomColor();
       }
-    } else {
-      pathData[0] = dataLine([]);
-      colorData[0] = null;
-    }
+    } 
     setLines(pathData);
     setColors(colorData);
   }
@@ -96,7 +93,6 @@ const Activity = ({activities}) => {
             <div>
               <select name="activity-filter"
                       onChange={e => setFilter(e.target.value)}>
-                <option>Filter By</option>
                 <option value={1}>Last 1 Month</option>
                 <option value={3}>Last 3 Months</option>
                 <option value={12}>Last 12 Months</option>

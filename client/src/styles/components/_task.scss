@@ -30,8 +30,6 @@
     text-align: center;
     color: $color-dark-lighter;
     cursor: pointer;
-    opacity: 1;
-    transition: opacity .2s ease-in;
     @include opacity-change-on-hover();
     @include popup-on-hover('Mark Complete');
   }
