@@ -18,6 +18,19 @@
     @include custom-scroll;
   }
 
+  &__section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1rem;
+    
+    label {
+      // margin-bottom: 1rem;
+    }
+  }
+
   &__title {
     font-size: 2.5rem;
   }
@@ -41,24 +54,27 @@
   }
 
   &__form {
-    background-color: $color-dark-light;
-    color: white;
+    background: $gradient-grey;
     height: max-content;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    border-radius: 3px;
 
-    input {
+    input:not([type="submit"]):not([type=radio]),
+    textarea {
+      background-color: transparent;
       width: 100%;
+      
+      &:focus {
+        outline: none;
+      }
     }
 
-    & > div {
-      margin: .5rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+    button {
+      margin-top: 1rem;
     }
   }
 }

@@ -51,7 +51,7 @@ const NewDestination = () => {
 
   return (
     <form onSubmit={handleSubmit} className="destination__form">
-        <div>
+        <div className="destination__section">
           <label for="destination-title">Destination title</label>
           <input type="text" 
             value={destinationTitle} 
@@ -59,14 +59,14 @@ const NewDestination = () => {
             required
             onChange={e => setDestinationTitle(e.target.value)} />
         </div>
-        <div>
+        <div className="destination__section">
           <label for="description">Description</label>
-          <input type="textarea" 
+          <textarea
             value={description} 
             name="description"
             onChange={e => setDescription(e.target.value)} />
         </div>
-        <div>
+        <div className="destination__section">
           <label for="target-date">Target Date</label>
           <input type="date" 
             value={targetDate} 
@@ -74,8 +74,7 @@ const NewDestination = () => {
             required
             onChange={e => setTargetDate(e.target.value)} />
         </div>
-        Destination Type
-        <div>
+        <div className="destination__section">
           <label for="major-destination">Major Destination</label>
           <input type="radio" 
             value="majorDestination"
@@ -84,7 +83,7 @@ const NewDestination = () => {
             required
             onChange={e => setDestinationType(e.target.value)} />
         </div>
-        <div>
+        <div className="destination__section">
           <label for="sub-destination">Sub Destination</label>
           <input type="radio" 
             value="subDestination"
@@ -94,18 +93,20 @@ const NewDestination = () => {
             onChange={e => setDestinationType(e.target.value)} />
         </div>
         {destinationType === 'majorDestination' && (
-          <div>
+          <div className="destination__section">
           <label for="importance">Importance</label>
-          <input type="number" 
-            value={importance} 
-            name="importance"
-            min = "0"
-            max = "10"
+          <input type="range" 
+              value={importance}
+              min="0" 
+              max="10" 
+              name="importance"
+              step=".01"
+              className="small"
             onChange={e => setImportance(e.target.value)} />
           </div>
         )}
         {destinationType === 'subDestination' && (
-          <div>
+          <div className="destination__section">
             <label for="parent-destination">Sub-destination of</label>
             <select name="parent-destination" onChange={e =>(
                                               setSubDestinationId(e.target.value))}>

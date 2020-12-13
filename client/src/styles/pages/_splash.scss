@@ -5,6 +5,12 @@
   background-size: cover;
   background-position: center;
 
+  input[type=text],
+  input[type=email],
+  input[type=password] {
+    background-color: transparent;
+  }
+
   &::before {
     content: '';
     width: inherit;

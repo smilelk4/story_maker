@@ -67,9 +67,20 @@
   &__side-menu-field {
     display: flex;
     height: max-content;
-    margin: 1rem;
     cursor: pointer;
-    @include label-1($color-blue-light, $color-light);
+    background: $gradient-grey;
+    border-radius: 2px;
+    padding: 1rem;
+    transition: all .3s ease-out;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    &:hover {
+      background: $color-blue-light;
+      color: $color-light;
+    }
 
     div {
       width: 100%;
