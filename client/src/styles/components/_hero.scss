@@ -7,10 +7,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-justify-content: center;
+  justify-content: center;
 
   img {
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   &__container {

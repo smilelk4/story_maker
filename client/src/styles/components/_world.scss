@@ -2,4 +2,8 @@
   width: 20rem;
   margin: 3rem;
   text-align: center;
+
+  &__name {
+    cursor: pointer;
+  }
 }

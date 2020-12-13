@@ -61,14 +61,18 @@
   }
 
   &__icon-holder {
-    @include calc("height", "100% / 2");
-    display: flex;
-    justify-content: center;
-  }
+    &:first-child {
+      margin-right: 1rem;
+    }
 
+    &:nth-child(2) {
+      margin-left: 1rem;
+    }
+  }
   &__section {
     height: $basic-item-height;
     position: relative;
+    display: flex;
 
     svg {
       position: absolute;
@@ -84,10 +88,11 @@
     cursor: pointer;
     width: 100%;
     text-align: center;
+    margin: 1rem;
   }
 
   &__greet {
-    width: 31rem;
+    // width: 31rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

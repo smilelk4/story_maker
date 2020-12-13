@@ -2,6 +2,7 @@
 
   &__container {
     overflow-y: scroll;
+    height: 100%;
     @include custom-scroll();
   }
 
