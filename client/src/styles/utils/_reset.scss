@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: 'Open Sans', sans-serif;
   color: $color-dark-lighter;
   // background-color: $color-blue-light;
@@ -40,9 +40,11 @@ a:visited {
 }
 
 input:not([type=range]):not([type="submit"]) {
-  background-color: transparent;
+  background-color: white;
   border: none;
-  border-bottom: 1px solid $color-green;
+  border-bottom: 1.5px solid $color-green;
+  border-radius: 2px;
+  
   &:focus {
     outline: none;
   }

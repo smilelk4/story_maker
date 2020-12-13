@@ -4,12 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
+import dateFormatter from '../../utils/dateFormatter';
 
 const StoryCreator = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const heroContainer = useRef();
   const heroes = useSelector(state => state.hero);
+  const errors = useSelector(state => state.errors);
 
   const [page, setPage] = useState(1);
   const [worlds, setWorlds] = useState([]);
@@ -17,7 +19,7 @@ const StoryCreator = () => {
   const [heroId, setHeroId] = useState(null);
   const [title, setTitle] = useState('');
   const [destinationTitle, setDestinationTitle] = useState('');
-  const [targetDate, setTargetDate] = useState('');
+  const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
   const [importance, setImportance] = useState('0');
   const [pageTitle, setPageTitle] = useState('');
 
@@ -78,19 +80,22 @@ const StoryCreator = () => {
   
   const handleBack = () => {
     setPage(page - 1);
+    dispatch({ type: CLEAR_ERRORS });
   }
 
   return ( 
     <>
-      <h2>{pageTitle}</h2>
+      <h2 className="modal__title title">{pageTitle}</h2>
       {page === 1 && (
-        <div className="modal__field">
+        <>
+          <div className="modal__field">
             <label for="title">Story Title</label>
             <input type="text" 
               value={title} 
               name="title"
               onChange={e => setTitle(e.target.value)} />
           </div>
+        </>
       )}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
@@ -99,7 +104,7 @@ const StoryCreator = () => {
               setHeroId(hero.id);
               setWorldId(hero.worldId) }}>
               <img src={hero.image} alt={hero.id} />
-              <p>{hero.name}</p>
+              <p className="hero__name">{hero.name}</p>
             </div>
           ))}
         </div>
@@ -134,9 +139,14 @@ const StoryCreator = () => {
           <button onClick={handleSubmit}>Create Story</button>
         </>
       )}
+      <div className="modal__errors-container">
+        {errors.map(error => (
+          <div>{error}</div>
+        ))}
+      </div>
       <div className="modal__button-container">
-        <button hidden={page < 2} onClick={handleBack}>Back</button>
-        <button hidden={page > 2} onClick={handleNext}>Next</button>
+        <button disabled={page < 2} onClick={handleBack}>Back</button>
+        <button disabled={page > 2} onClick={handleNext}>Next</button>
       </div>
     </>
   );
