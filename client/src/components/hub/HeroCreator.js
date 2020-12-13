@@ -9,6 +9,7 @@ const HeroCreator = ({clickHandler}) => {
   const worldContainer = useRef();
   const heroContainer = useRef();
   const userId = useSelector(state => state.user.id);
+  const errors = useSelector(state => state.errors);
 
   const [page, setPage] = useState(1);
   const [heroes, setHeroes] = useState([]);
@@ -131,9 +132,14 @@ const HeroCreator = ({clickHandler}) => {
         <button onClick={handleSubmit}>Create Hero</button>
         </>
       )}
+      <div className="modal__errors-container">
+        {errors.map(error => (
+          <div>{error}</div>
+        ))}
+      </div>
       <div className="modal__button-container">
-        <button hidden={page < 2} onClick={handleBack}>Back</button>
-        <button hidden={page > 2} onClick={handleNext}>Next</button>
+        <button disabled={page < 2} onClick={handleBack}>Back</button>
+        <button disabled={page > 2} onClick={handleNext}>Next</button>
       </div>
     </>
   );

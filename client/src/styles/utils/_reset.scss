@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: 'Open Sans', sans-serif;
   color: $color-dark-lighter;
   // background-color: $color-blue-light;
@@ -39,16 +39,6 @@ a:visited {
   font-family: 'Merriweather', serif;
 }
 
-input:not([type=range]):not([type="submit"]) {
-  background-color: white;
-  border: none;
-  border-bottom: 1.5px solid $color-green;
-  border-radius: 2px;
-  
-  &:focus {
-    outline: none;
-  }
-}
 
 select {
   border: none;
@@ -67,10 +57,25 @@ button {
   cursor: pointer;
   letter-spacing: 1px;
   transition: background-color .2s ease-in;
-
+  
   &:hover {
     background-color: $color-dark;
   }
+}
+
+input:not([type=range]):not([type="submit"]) {
+  background-color: white;
+  border: none;
+  border-bottom: 1.5px solid $color-green;
+  border-radius: 2px;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type=date]::-webkit-datetime-edit {
+  font-family: 'Open Sans';
 }
 
 input[type=range] {
