@@ -78,7 +78,6 @@ router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
     order: ['id']
   });
 
-  if (!heroes.length) next(createError('No heroes found.'));
   res.json({ heroes });
 }));
 

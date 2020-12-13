@@ -7,16 +7,6 @@ import NavBarContainer from './NavBarContainer';
 
 import HubHeader from './hub/HubHeader';
 import ProgressHeader from './story/ProgressHeader';
-
-const Tavern = () => {
-  const gltf = useGLTF('/scene.gltf', true);
-
-  return (
-    <group position={[0, -10, 0]} scale={[.1, .1, .1]}>
-      <primitive object={gltf.scene} dispose={null}></primitive>
-    </group>
-  )
-}
   
 const HeaderContainer = () => {
   const container = useRef();
