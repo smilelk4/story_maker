@@ -27,7 +27,8 @@ router.post('/',
     title: memoir.title,
     description: memoir.description,
     hoursFought: memoir.hours_fought,
-    accomplishmentLevel: memoir.accomplishment_level
+    accomplishmentLevel: memoir.accomplishment_level,
+    date: memoir.createdAt
   }});
 }));
 

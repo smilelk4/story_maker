@@ -31,7 +31,7 @@ const NewMemoir = () => {
 
   return ( 
     <form onSubmit={handleSubmit} className="memoir__form">
-        <div>
+        <div className="memoir__form-section">
           <label for="title">Title</label>
           <input type="text" 
             value={title} 
@@ -39,30 +39,36 @@ const NewMemoir = () => {
             required
             onChange={e => setTitle(e.target.value)} />
         </div>
-        <div>
+        <div className="memoir__form-section">
           <label for="description">Description</label>
-          <input type="textarea" 
+          <textarea
             value={description} 
             name="description"
             onChange={e => setDescription(e.target.value)} />
         </div>
-        <div>
+        <div className="memoir__form-section">
           <label for="hours">Hours Fought</label>
-          <input type="number" 
-            value={hoursFought} 
-            name="hours"
-            min = "0"
-            max = "24"
+          <input type="range" 
+              value={hoursFought} 
+              min="0" 
+              max="24" 
+              name="hours"
+              step="1"
+              className="small"
             onChange={e => setHoursFought(e.target.value)} />
+            <span className="memoir__form-number-display">{hoursFought}</span>
         </div>
-        <div>
+        <div className="memoir__form-section">
           <label for="accomplishment">Accomplishment</label>
-          <input type="number" 
-            value={accomplishmentLevel} 
-            name="accomplishment"
-            min = "0"
-            max = "10"
-            onChange={e => setAccomplishmentLevel(e.target.value)} />
+          <input type="range" 
+              value={accomplishmentLevel}
+              min="0" 
+              max="10" 
+              name="accomplishment"
+              step=".1"
+              className="small"
+              onChange={e => setAccomplishmentLevel(e.target.value)} />
+            <span className="memoir__form-number-display">{accomplishmentLevel}</span>
         </div>
         <button type="submit">Create a New Memoir</button>
     </form>

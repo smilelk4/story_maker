@@ -41,6 +41,8 @@ a:visited {
 
 select {
   border: none;
+  border-radius: 2px;
+  background-color: white;
   box-shadow: $shadow-2;
   &:focus {
     outline: none;
@@ -73,13 +75,15 @@ textarea {
   }
 }
 
-input[type=date]::-webkit-datetime-edit {
+input[type=date]::-webkit-datetime-edit,
+textarea {
   font-family: 'Open Sans';
 }
 
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
+  background: transparent;
 
   &.small {
     height: 1rem;

@@ -1,18 +1,20 @@
 .memoir {
   height: $basic-item-height;
-  background-color: $color-light;
+  background: $gradient-grey;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 2rem;
   padding: 2rem;
   overflow-y: scroll;
+  margin: 2rem;
+  border-radius: 2px;
 
   @include hide-scroll;
   
   &__container {
     height: 100%;
     overflow-y: scroll;
+    @include custom-scroll();
   }
 
   &__title {
@@ -20,10 +22,10 @@
   }
 
   &__description {
-    color: $color-dark-lighter;
     overflow-y: scroll;
     max-height: 10rem;
     @include hide-scroll;
+    color: $color-dark-lighter;
   }
 
   &__extra-info {
@@ -31,28 +33,43 @@
     justify-content: space-between;
     font-size: 1.2rem;
     color: $color-dark-lighter;
+    opacity: .85;
   }
 
   &__form {
-    background-color: $color-dark-light;
+    background: $gradient-darker-grey;
     color: white;
-    margin: 2rem;
+    margin: 0 2rem;
     height: max-content;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    border-radius: 2px;
     align-items: center;
     justify-content: space-around;
 
-    input {
+    input, textarea {
       width: 35rem;
     }
 
-    & > div {
-      margin: .5rem;
+    &-section {
+      position: relative;
+      margin: 1rem;
       display: flex;
       justify-content: space-between;
       width: 50rem;
+
+      .memoir__form-number-display {
+        position: absolute;
+        right: -4rem;
+        top: -.3rem;
+        width: 3rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    button {
+      margin-top: 1rem;
     }
   }
 }
