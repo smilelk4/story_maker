@@ -23,7 +23,9 @@ const ProgressHeader = () => {
   let x = -10;
 
   useEffect(() => {
-    dispatch(getHero(heroId));
+    if (heroId) {
+      dispatch(getHero(heroId));
+    }
   }, [heroId, dispatch]);
 
   return ( 

@@ -1,9 +1,11 @@
-import { loadTasksAction, addTaskAction, removeTaskAction } from '../reducers/dailyTaskReducer';
+import { loadTasksAction, addTaskAction, 
+         editTaskAction, removeTaskAction } from '../reducers/dailyTaskReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
+  console.log(data, 'DATATAAAAHAIHAUI')
 
   if (!res.ok) {
     dispatch({
@@ -49,9 +51,9 @@ export const createDailyTask = inputtedInfo => {
   }
 };
 
-export const updateDailyTask = (storyId) => {
+export const completeDailyTask = taskId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/tasks/${storyId}`, {
+    const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -63,6 +65,26 @@ export const updateDailyTask = (storyId) => {
 
     if (!data.errors) {
       dispatch(removeTaskAction(data.task));
+    }
+    return data;
+  }
+};
+
+export const editDailyTask = (taskId, inputtedIInfo) => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({inputtedIInfo})
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(editTaskAction(data.task));
     }
     return data;
   }

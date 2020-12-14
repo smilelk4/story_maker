@@ -1,5 +1,6 @@
 const LOAD_TASKS = 'LOAD_TASKS';
 const ADD_TASK = 'ADD_TASK';
+const EDIT_TASK = 'EDIT_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
 
 export const loadTasksAction = data => ({
@@ -9,6 +10,11 @@ export const loadTasksAction = data => ({
 
 export const addTaskAction = data => ({
   type: ADD_TASK,
+  task: data
+});
+
+export const editTaskAction = data => ({
+  type: EDIT_TASK,
   task: data
 });
 
@@ -31,6 +37,14 @@ const taskReducer = (state = [], action) => {
     case ADD_TASK: {
       const newState = [...state];
       newState.push(action.task);
+      return newState;
+    }
+    case EDIT_TASK: {
+      const newState = [...state];
+      const indexOfEdittedTask = newState.findIndex(task => (
+            task.id === action.task.id));
+      newState.splice(indexOfEdittedTask, 1, action.task);
+      debugger;
       return newState;
     }
     case REMOVE_TASK: {

@@ -3,7 +3,8 @@ import DailyTask from './DailyTask';
 import NewDailyTask from './NewDailyTask';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getDailyTasks } from '../../store/actions/dailyTaskAction';
+import { getDailyTasks, 
+         editDailyTask } from '../../store/actions/dailyTaskAction';
 
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,8 @@ const DailyTaskContainer = () => {
     dispatch(getDailyTasks(id));
   },[id, dispatch]);
 
-  const updateTitle = () => {
-    // dispatch();
+  const updateTitle = async(id, newTitle) => {
+    return await dispatch(editDailyTask(id, newTitle));
   };
 
   return ( 

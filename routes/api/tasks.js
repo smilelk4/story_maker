@@ -16,16 +16,22 @@ router.post('/',
 }));
 
 router.put('/:id(\\d+)', 
-  asyncHandler(async (req, res) => {
+asyncHandler(async (req, res) => {
   const { id } = req.params;
         
   const task = await DailyTask.findOne({
     where: { id }
   });
 
-  await task.update({
-    last_accomplished: new Date()
-  });
+  if (req.body.inputtedIInfo) {
+    await task.update({
+      title: req.body.inputtedIInfo
+    });
+  } else {
+    await task.update({
+      last_accomplished: new Date()
+    });
+  }
 
   res.json({task});
 }));

@@ -64,7 +64,8 @@ button {
   }
 }
 
-input[type=text] {
+input[type=text],
+input[type=date] {
   height: 2.5rem;
   padding: 1rem;
 }
