@@ -31,7 +31,7 @@
     color: $color-dark-lighter;
     cursor: pointer;
     @include opacity-change-on-hover();
-    @include popup-on-hover('Mark Complete');
+    @include popup-on-hover('Mark as complete');
   }
 
   &__all-completed {

@@ -8,7 +8,7 @@ module.exports = {
         story_id: 1,
         title: 'Learned about const and let.',
         description: `I learned about const and let and how their scopes are different.`,
-        hours_fought: 4,
+        hours_fought: 4.1,
         accomplishment_level: 7,
         createdAt: new Date(2020, 11, 5),
         updatedAt: new Date(2020, 11, 5)
@@ -16,9 +16,9 @@ module.exports = {
       {
         hero_id: 1,
         story_id: 1,
-        title: 'Interesting stuff',
+        title: 'Learned some good stuff today',
         description: null,
-        hours_fought: 4,
+        hours_fought: 4.4,
         accomplishment_level: 5.5,
         createdAt: new Date(2020, 11, 7),
         updatedAt: new Date(2020, 11, 7)
@@ -38,7 +38,7 @@ module.exports = {
         story_id: 1,
         title: 'Well-worked.',
         description: `I learned some new things today. Feeling pretty accomplished.`,
-        hours_fought: 5,
+        hours_fought: 5.4,
         accomplishment_level: 9.6,
         createdAt: new Date(2020, 11, 9),
         updatedAt: new Date(2020, 11, 9)
@@ -56,8 +56,8 @@ module.exports = {
       {
         hero_id: 1,
         story_id: 1,
-        title: `So tired but fullfilled.`,
-        description: `My brain is about to explode. Learned a lot about the fundamentals of JS today.`,
+        title: `So tired but feeling accomplished.`,
+        description: `My brain is about to explode.`,
         hours_fought: 6.5,
         accomplishment_level: 8,
         createdAt: new Date(2020, 11, 13),
@@ -66,7 +66,7 @@ module.exports = {
       {
         hero_id: 1,
         story_id: 1,
-        title: 'Loops are fun.',
+        title: 'Feeling okay with loops.',
         description: `Still get sometimes confused, but loops aren't too bad.`,
         hours_fought: 3,
         accomplishment_level: 5.4,
@@ -76,7 +76,7 @@ module.exports = {
       {
         hero_id: 1,
         story_id: 1,
-        title: `It's going`,
+        title: `Learned a lot about fundamentals today.`,
         description: null,
         hours_fought: 5,
         accomplishment_level: 5.8,
@@ -96,9 +96,9 @@ module.exports = {
       {
         hero_id: 1,
         story_id: 1,
-        title: 'Principles of OOP',
-        description: `Things are getting more complicated.
-        I gotta go back to the ideas of OOP because I'm not totally clear yet.`,
+        title: 'Object Oriented Programming?',
+        description: `Things are getting a bit more complicated.
+        I gotta go back to some readings because I'm not totally clear yet.`,
         hours_fought: 5.7,
         accomplishment_level: 6.2,
         createdAt: new Date(2020, 11, 26),
@@ -108,6 +108,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('People', null, {});
+    return queryInterface.bulkDelete('Memoirs', null, {});
   }
 };

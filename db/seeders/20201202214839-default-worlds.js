@@ -14,7 +14,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        name: "Enthusiast World",
+        name: "Lazy World",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -29,27 +29,12 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        name: "Caring World",
+        name: "Risky World",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: "Determined World",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: "Dangerous World",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: "Cozy World",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: "Adventure World",
+        name: "Adventurous World",
         createdAt: new Date(),
         updatedAt: new Date()
       },

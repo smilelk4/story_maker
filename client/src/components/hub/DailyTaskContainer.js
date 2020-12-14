@@ -22,10 +22,6 @@ const DailyTaskContainer = () => {
         dispatch(getDailyTasks(story.id));
       }
     }
-
-    if (container.current.children.length) {
-      setAllCompleted(false);
-    }
     
     if (!container.current.children.length) {
       setAllCompleted(true);

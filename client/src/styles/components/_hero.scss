@@ -97,10 +97,10 @@
 
   &__new-hero {
     height: 100%;
-    // @include label-1($color-blue-light, $color-light);
     cursor: pointer;
     background-color: $color-blue-light;
     color: $color-light;
     padding: 1rem;
+    @include opacity-change-on-hover();
   }
 }

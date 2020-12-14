@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300;1,400&display=swap');
 
 *,
@@ -38,7 +37,6 @@ a:visited {
   font-family: 'Merriweather', serif;
 }
 
-
 select {
   border: none;
   border-radius: 2px;
@@ -65,9 +63,12 @@ button {
 }
 
 input[type=text],
-input[type=date] {
+input[type=email],
+input[type=password],
+input[type=date], {
   height: 2.5rem;
   padding: 1rem;
+  background-color: white;
 }
 
 input:not([type=range]):not([type="submit"]),

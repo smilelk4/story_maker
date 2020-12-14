@@ -17,7 +17,7 @@ const destinationReducer = (state = [], action) => {
       const ids = state.map(s => s.id);
       
       const newDestinations = action.destinations.filter(d => {
-        return !(d.id in ids);
+        return !(ids.includes(d.id));
       });
       
       const newState = [...state, ...newDestinations];
