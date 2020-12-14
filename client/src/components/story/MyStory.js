@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
+import StoryHomeContainer from './StoryHomeContainer';
 import SideMenuField from './SideMenuField';
 import MemoirContainer from './MemoirContainer';
 import DailyTaskContainer from './DailyTaskContainer';
@@ -35,6 +36,22 @@ const MyStory = ({...props}) => {
          </div>
        </div>
        <div className="mystory__sidebar-left">
+       <SideMenuField >
+        <div onClick={() => {
+          setCurrentDisplay(<StoryHomeContainer />);
+          setCurrentTitle("Story Home");
+        }}>
+          Story Home
+        </div>
+       </SideMenuField>
+       <SideMenuField >
+        <div onClick={() => {
+          setCurrentDisplay(<DestinationContainer />);
+          setCurrentTitle("Past Accomplishments");
+        }}>
+          Past Accomplishments
+        </div>
+       </SideMenuField>
        <SideMenuField >
         <div onClick={() => {
           setCurrentDisplay(<DestinationContainer />);

@@ -36,6 +36,11 @@
   &__description {
     font-size: 2rem;
     line-height: 5rem;
+    height: 20%;
+
+    p {
+      margin: 3rem 0;
+    }
   }
 
   &__container {
@@ -96,10 +101,10 @@
 
   &__error-container {
     position: absolute;
-    top: 60rem;
+    top: 63rem;
     left: 17rem;
     width: 45rem;
-    max-height: 8rem;
+    max-height: 6rem;
     overflow-y: scroll;
     @include hide-scroll();
   }
@@ -111,6 +116,18 @@
     flex-direction: column;
     justify-content: flex-end;
     color: $color-light;
-    padding: 1rem;
+    padding: 2rem;
+    line-height: 3rem;
+
+    a,
+    a:active,
+    a:visited {
+      color: $color-light;
+      margin-right: .5rem;
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 1.8rem;
+    }
   }
 }

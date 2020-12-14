@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion, useViewportScroll, useTransform, 
          useMotionValue } from 'framer-motion';
-import LoginForm from './LoginForm';
+import GitHubIcon from '@material-ui/icons/GitHub';import LoginForm from './LoginForm';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import SignupForm from './SignupForm';
 import { clearErrors } from '../../store/reducers/errorReducer';
 
@@ -69,7 +70,15 @@ const Splash = ({...props}) => {
           >Achieve your goals.</motion.p>
         </section>
         <footer className="splash__footer">
-          Developed by Yuka Moribe
+          <div>
+              <a target="_blank" href="https://github.com/smilelk4">
+                <GitHubIcon />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/yuka-moribe-485962157/">
+                <LinkedInIcon />
+              </a>
+          </div>
+          <p>Developed by Yuka Moribe</p>
         </footer>
       </main>
       <div className="splash__container">

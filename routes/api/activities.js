@@ -12,8 +12,6 @@ router.post('/',
     action: 1,
     hero_id: heroId
   });
-  console.log('CREATED')
-  console.log(object)
   res.status(201).json({activity});
 }));
 
@@ -31,7 +29,6 @@ router.put('/',
     where: [
       {hero_id: heroId},
       sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
-      // 'regex', `${year}-${month}-${date}`)
       '=', `${y}-${m}-${d}`)
     ]
   });
