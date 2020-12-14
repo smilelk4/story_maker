@@ -45,7 +45,7 @@ router.delete('/:id(\\d+)',
   });
 
   await task.destroy();
-  res.status(200);
+  res.status(200).json({ task: { id } });
 }));
 
 module.exports = router;

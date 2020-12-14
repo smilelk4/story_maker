@@ -5,7 +5,6 @@ import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
-  console.log(data, 'DATATAAAAHAIHAUI')
 
   if (!res.ok) {
     dispatch({
@@ -85,6 +84,25 @@ export const editDailyTask = (taskId, inputtedIInfo) => {
 
     if (!data.errors) {
       dispatch(editTaskAction(data.task));
+    }
+    return data;
+  }
+};
+
+export const deleteDailyTask = taskId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeTaskAction(data.task));
     }
     return data;
   }

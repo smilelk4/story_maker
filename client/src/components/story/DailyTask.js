@@ -1,27 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const DailyTask = ({updateTitle, ...props}) => {
+const DailyTask = ({updateTitle, deleteTask, ...props}) => {
   const { id, title } = props;
   const [newTitle, setNewTitle] = useState(title);
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [viewMode, setViewMode] = useState('default');
 
-  const handleSubmit = async e => {
+  const handleEdit = async e => {
     e.preventDefault();
-    const data = await updateTitle(id, newTitle, setIsEditMode);
+    const data = await updateTitle(id, newTitle);
 
     if (!data.errors) {
-      setIsEditMode(false);
+      setViewMode('default');
+    }
+  };
+
+  const handleDelete = async e => {
+    e.preventDefault();
+    const data = await deleteTask(id);
+
+    if (!data.errors) {
+      setViewMode('default');
     }
   };
 
   return ( 
     <div className="daily-task">
-      {isEditMode ? (
+      {viewMode === 'edit' && (
         <>
           <p className="daily-task__menu" 
-            onClick={() => setIsEditMode(false)}>Close</p>
+            onClick={() => {setViewMode('default')}}>Close</p>
           <form className="daily-task__edit-form" 
-                onSubmit={handleSubmit}>
+                onSubmit={handleEdit}>
             <input 
               type="text"
               value={newTitle}
@@ -29,10 +38,25 @@ const DailyTask = ({updateTitle, ...props}) => {
             <button type="submit">Save Change</button>
           </form>
         </>
-      ) : (
+      )}
+      {viewMode === 'delete' && (
         <>
           <p className="daily-task__menu" 
-             onClick={() => setIsEditMode(true)}>Edit</p>
+            onClick={() => {setViewMode('default')}}>Close</p>
+          <form className="daily-task__delete-form" 
+                onSubmit={handleDelete}>
+            <p>Are you sure?</p>
+            <p className="title">{title}</p>
+            <button type="submit">Delete Task</button>
+          </form>
+        </>
+      )}
+      {viewMode === 'default' && (
+        <>
+          <div className="daily-task__menu">
+            <p onClick={() => setViewMode('edit')}>Edit</p>
+            <p onClick={() => setViewMode('delete')}>Delete</p>
+          </div>
           <p className="daily-task__title">{title}</p>
         </>
       )}

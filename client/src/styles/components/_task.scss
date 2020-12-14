@@ -109,11 +109,30 @@
     }
   }
 
+  &__delete-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+    input {
+      width: 50rem;
+      background: transparent;
+    }
+  }
+
   &__menu {
     position: absolute;
     right: 2rem;
     top: 2rem;
     cursor: pointer;
+    display: flex;
     @include opacity-change-on-hover();
+    font-size: 1.2rem;
+
+    & > p {
+      margin: 0 .5rem;
+    }
   }
 }
