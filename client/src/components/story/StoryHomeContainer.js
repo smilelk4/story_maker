@@ -8,15 +8,16 @@ import Memoir from './Memoir';
 
 const StoryHomeContainer = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const hero = useSelector(state => state.hero[0]);
+  const story = useSelector(state => state.story[0]);
 
   // useEffect(() => {
   //   dispatch(getMemoirs(id));
   // },[id, dispatch]);
 
   return ( 
-    <div className="memoir__container">
-      <StoryHome />
+    <div className="storyhome__container">
+      <StoryHome hero={hero} story={story}/>
       {/* {memoirs.map(memoir => <Memoir {...memoir} />)} */}
     </div>
   );
