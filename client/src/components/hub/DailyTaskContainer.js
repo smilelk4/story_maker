@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import bodymovin from 'lottie-web';
 import { getDailyTasks, completeDailyTask } from '../../store/actions/dailyTaskAction';
 import { createActivity, updateActivity } from '../../store/actions/activityAction';
 import { raiseXP } from '../../store/actions/heroAction';
@@ -29,6 +30,12 @@ const DailyTaskContainer = () => {
   }, [stories, dispatch]);
 
   const onChecked = async (storyId, heroId) => {
+    // const a = bodymovin.loadAnimation({
+    //   wrapper: container.current,
+    //   animType: 'svg',
+    //   loop: false,
+    //   path: '/data.json'
+    // });
     const data = await dispatch(completeDailyTask(storyId));
     if (data.errors) return;
 
@@ -44,6 +51,7 @@ const DailyTaskContainer = () => {
     } else {
       dispatch(createActivity(heroId));
     }
+
 
     if (!container.current.children.length) {
       setAllCompleted(true);

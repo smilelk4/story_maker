@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import dateFormatter from '../utils/dateFormatter';
-// import Crown from './svg/Crown';
 
 const Destination = ({handleClick, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,

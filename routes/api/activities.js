@@ -3,6 +3,7 @@ const { Story, World, ActivityLog } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 const { createError } = require('../../utils');
 const { sequelize } = require('../../db/models');
+const moment = require('moment');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
@@ -19,7 +20,10 @@ router.put('/',
   asyncHandler(async (req, res, next) => {
   const { heroId } = req.body;
 
-  const today = new Date()
+  const today = new Date();
+  // console.log(today, '!!!!!!')
+  // console.log(moment(), 'MOMENT')
+  // console.log(moment().format(), 'FORMAT')
   today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   const y = today.getFullYear();
   const m = today.getMonth() + 1;

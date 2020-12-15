@@ -97,7 +97,8 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
     attributes: {
       exclude: ['id', 'updatedAt']
     },
-    order: [['createdAt', 'ASC']]
+    order: [['createdAt', 'ASC']],
+    limit: 365
   });
 
   const memo = {};
@@ -124,8 +125,13 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
   activities.forEach(activity => {
     let month = activity.createdAt.getMonth() + 1;
     let date = activity.createdAt.getDate();
+    console.log('month', month)
+    console.log('date', date);
     memo[heroId][month].splice(date - 1, 1, activity.action);
   });
+
+  console.log('-----------------')
+  console.log(memo)
 
   res.json({ activities: memo });
 }));

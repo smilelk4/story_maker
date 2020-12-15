@@ -10,12 +10,21 @@ import SideMenuField from './SideMenuField';
 import MemoirContainer from './MemoirContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
+import bodymovin from 'lottie-web';
 
 const MyStory = ({...props}) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
   const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
+
+  var svgContainer = document.getElementById('svgContainer');
+// var animItem = bodymovin.loadAnimation({
+//   wrapper: svgContainer,
+//   animType: 'svg',
+//   loop: true,
+//   path: '/data.json'
+// });
 
   useEffect(() => {
     dispatch(getStory(id));
@@ -56,6 +65,7 @@ const MyStory = ({...props}) => {
               <p>
           <img className="icon"
             src='/icons/castle.png' alt={id}/>
+            <div id="svgContainer"></div>
           Upcoming Destinations
         </p>
         </div>
