@@ -41,15 +41,11 @@ const MyStory = ({...props}) => {
           setCurrentDisplay(<StoryHomeContainer />);
           setCurrentTitle("Story Home");
         }}>
-          Story Home
-        </div>
-       </SideMenuField>
-       <SideMenuField >
-        <div onClick={() => {
-          setCurrentDisplay(<DestinationContainer />);
-          setCurrentTitle("Past Accomplishments");
-        }}>
-          Past Accomplishments
+        <p>
+          <img className="icon"
+            src='/icons/map.png' alt={id}/>
+          Story Detail
+        </p>
         </div>
        </SideMenuField>
        <SideMenuField >
@@ -57,7 +53,23 @@ const MyStory = ({...props}) => {
           setCurrentDisplay(<DestinationContainer />);
           setCurrentTitle("Upcoming Destinations");
         }}>
+              <p>
+          <img className="icon"
+            src='/icons/castle.png' alt={id}/>
           Upcoming Destinations
+        </p>
+        </div>
+       </SideMenuField>
+       <SideMenuField >
+        <div onClick={() => {
+          setCurrentDisplay(<DestinationContainer />);
+          setCurrentTitle("Past Accomplishments");
+        }}>
+        <p>
+          <img className="icon"
+            src='/icons/scroll.png' alt={id}/>
+          Past Accomplishments
+        </p>
         </div>
        </SideMenuField>
        <SideMenuField>
@@ -65,7 +77,11 @@ const MyStory = ({...props}) => {
           setCurrentDisplay(<MemoirContainer />);
           setCurrentTitle("Memoirs");
         }}>
+        <p>
+          <img className="icon"
+            src='/icons/moon.png' alt={id}/>
           Memoirs
+        </p>
         </div>
        </SideMenuField>
        <SideMenuField>
@@ -73,7 +89,23 @@ const MyStory = ({...props}) => {
           setCurrentDisplay(<DailyTaskContainer />);
           setCurrentTitle("Daily Tasks");
         }}>
+        <p>
+          <img className="icon"
+            src='/icons/star-stick.png' alt={id}/>
           Daily Tasks
+        </p>
+        </div>
+       </SideMenuField>
+       <SideMenuField>
+       <div onClick={() => {
+          setCurrentDisplay(<DailyTaskContainer />);
+          setCurrentTitle("Daily Tasks");
+        }}>
+        <p>
+          <img className="icon"
+            src='/icons/monster.png' alt={id}/>
+          Monsters
+        </p>
         </div>
        </SideMenuField>
 
