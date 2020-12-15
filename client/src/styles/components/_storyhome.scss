@@ -33,6 +33,25 @@
   &__hero-info {
     border: 1px solid black;
     width: 20rem;
+
+    .status-bar {
+      background-color: white;
+      display: inline-block;
+      width: 100%;
+      height: 1rem;
+      box-shadow: $shadow-2;
+
+      .hp-meter {
+        background-color: $color-green;
+        display: block;
+        height: 100%;
+      }
+      .xp-meter {
+        background-color: $color-blue-light;
+        display: block;
+        height: 100%;
+      }
+    }
   }
 
   &__hero-stats {

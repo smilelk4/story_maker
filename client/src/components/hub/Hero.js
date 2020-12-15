@@ -10,7 +10,7 @@ const Hero = (...props) => {
   useEffect(() => {
     setHPPercentage(`${(hp / maxHP) * 100}%`);
     setXPPercentage(`${(xp / maxXP) * 100}%`);
-  }, [hp, xp]);
+  }, [hp, xp, maxHP, maxXP]);
 
   return ( 
     <div className="hero">
@@ -22,8 +22,8 @@ const Hero = (...props) => {
           <p className="hero__status-bars-container">
             <span className="status-bar">
               <span 
-              style={{width: hpPercentage }}
-              className="hp-meter"></span>
+                style={{width: hpPercentage }}
+                className="hp-meter"></span>
             </span>
             <span className="status-bar">
               <span 
