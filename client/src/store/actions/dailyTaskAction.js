@@ -5,6 +5,7 @@ import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
+  debugger
 
   if (!res.ok) {
     dispatch({

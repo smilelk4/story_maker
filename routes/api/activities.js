@@ -28,10 +28,7 @@ router.put('/',
     userTime.length - 6, userTime.length - 3);
   // console.log(today)
   // console.log(timezoneOffset)
-  console.log(userTime)
-  console.log(timezoneOffset)
-  console.log(today)
-  console.log('-------------')
+
   // console.log(req.body.userTime)
 
   // console.log(req.get(headerName))
@@ -75,9 +72,6 @@ router.put('/',
       // }
   //   ],
   // });
-
-  console.log('-------------')
-  console.log(activity)
 
   if (activity[0][0].action < 10) {
     const data = await ActivityLog.findByPk(activity[0][0].id);

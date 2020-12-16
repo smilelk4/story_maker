@@ -44,7 +44,6 @@ const taskReducer = (state = [], action) => {
       const indexOfEdittedTask = newState.findIndex(task => (
             task.id === action.task.id));
       newState.splice(indexOfEdittedTask, 1, action.task);
-      debugger;
       return newState;
     }
     case REMOVE_TASK: {

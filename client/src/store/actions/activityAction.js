@@ -20,7 +20,7 @@ const verifyData = async (res, dispatch) => {
 
 export const getActivities = heroId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}/activities`);
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/activities/?tz=${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {

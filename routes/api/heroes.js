@@ -3,6 +3,7 @@ const { Story, World, Hero, HeroImage, ActivityLog } = require('../../db/models'
 const { asyncHandler } = require('../../utils');
 const { sequelize } = require('../../db/models');
 const moment = require('moment');
+const url = require('url');
 
 const createError = msg => {
   const err = new Error(msg);
@@ -90,20 +91,22 @@ router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
   });
 }));
 
-router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)/activities/?', asyncHandler(async (req, res, next) => {
   let heroId = req.params.id;
+  const { tz } = req.query;  
 
   const activities = await ActivityLog.findAll({
     where: [
       {hero_id: heroId},
-      sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
-      '<=', moment().format().split('T')[0])
+      // sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
+      // '<=', moment().format().split('T')[0])
+      // '<=', '2020-12-16')
     ],
     attributes: {
-      exclude: ['id', 'updatedAt']
+      exclude: ['updatedAt']
     },
     order: [['createdAt', 'ASC']],
-    // limit: 365
+    limit: 365
   });
 
   const memo = {};
@@ -128,13 +131,11 @@ router.get('/:id(\\d+)/activities', asyncHandler(async (req, res, next) => {
   }
 
   activities.forEach(activity => {
-    let month = activity.createdAt.getMonth() + 1;
-    let date = activity.createdAt.getDate();
+    const today = moment(activity.createdAt).tz(tz);
+    let month = today.month() + 1;
+    let date = today.date();
     memo[heroId][month].splice(date - 1, 1, activity.action);
   });
-
-  // console.log('-----------------')
-  // console.log(memo)
 
   res.json({ activities: memo });
 }));
