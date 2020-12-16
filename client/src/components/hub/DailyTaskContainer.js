@@ -32,15 +32,15 @@ const DailyTaskContainer = () => {
   }, [stories, dispatch]);
 
   const onChecked = async (storyId, heroId) => {
-    const a = bodymovin.loadAnimation({
+    const checkmarkAnimation = bodymovin.loadAnimation({
       wrapper: document.querySelector('.svg-container'),
       animType: 'svg',
       loop: false,
-      path: '/data.json',
+      path: '/svg/check-mark.json',
     });
 
-    a.addEventListener('complete', function(){
-      a.destroy()
+    checkmarkAnimation.addEventListener('complete', function(){
+      checkmarkAnimation.destroy()
     });
 
     const data = await dispatch(completeDailyTask(storyId));

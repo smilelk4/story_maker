@@ -14,7 +14,8 @@
     @include default-items();
 
     & > p:first-child {
-      width: 75%;
+      // width: 75%;
+      justify-self: flex-start;
       @include hide-overflowing-words();
     }
 
@@ -30,5 +31,17 @@
     padding-right: 2rem;
     background-color: $color-light;
     @include default-title();
+  }
+
+  &__action {
+    display: flex;
+  }
+
+  &__svg-container {
+    max-height: inherit;
+    max-height: 2rem;
+    width: 2rem;
+    overflow: hidden;
+    margin-right: .5rem;
   }
 }
