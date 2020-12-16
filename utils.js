@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
-const moment = require('moment');
 
 const hashPassword = async password => {
   return await bcrypt.hash(password, 10);
@@ -38,7 +37,7 @@ const activityLogsDataAutomator = (heroId) => {
   let dateCount = 0;
   let data = [];
 
-  for (let i = 0; i < 365; i++) {
+  for (let i = 0; i < 730; i++) {
     let date = (d => new Date(d.setDate(d.getDate() + 365 - dateCount)) )(new Date);
     date.setMinutes(0, 0, 0);
 

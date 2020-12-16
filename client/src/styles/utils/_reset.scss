@@ -171,21 +171,21 @@ input[type=range]::-ms-fill-upper  {
   border-radius: 2.6px;
 }
 
-@keyframes play30 {
-  0% {
-    background-position: 0px 0px;
+.svg-container {
+  // background: grey;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  margin: 0 auto;
+  pointer-events: none;
+  
+  svg {
+    background: rgba(255, 255, 255, .5);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50rem;
+    width: 100%;
   }
-  100% {
-    background-position: -1950px 0px;
-  }
-}
-.shapeshifter {
-  animation-duration: 1000ms;
-  animation-timing-function: steps(30);
-  width: 65px;
-  height: 65px;
-  background-repeat: no-repeat;
-}
-.shapeshifter.play {
-  animation-name: play30;
 }

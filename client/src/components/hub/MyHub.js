@@ -47,15 +47,15 @@ const MyHub = ({...props}) => {
             </div>
           </div>
           <div className="hub__section">
-            <Scroll2 text="Daily Tasks"/>
+            <Scroll2 text="Daily Tasks" className="scroll-svg"/>
             <DailyTaskContainer />
           </div>
           <div className="hub__section">
-            <Scroll2 text="Your Heroes"/>
+            <Scroll2 text="Your Heroes" className="scroll-svg"/>
             <HeroContainer />
           </div>
           <div className="hub__section">
-            <Scroll2 text="Stories"/>
+            <Scroll2 text="Stories" className="scroll-svg"/>
             <StoryContainer />
           </div>
         </aside>
