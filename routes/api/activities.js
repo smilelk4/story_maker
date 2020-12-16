@@ -8,36 +8,51 @@ const moment = require('moment');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
-  const { heroId } = req.body;
+  const { heroId, userTime } = req.body;
   
   const activity = await ActivityLog.create({
     action: 1,
-    hero_id: heroId
+    hero_id: heroId,
+    createdAt: new Date(userTime),
+    updatedAt: new Date(userTime)
   });
   res.status(201).json({activity});
 }));
 
 router.put('/', 
   asyncHandler(async (req, res, next) => {
-  const { heroId } = req.body;
-  // const day = req.
+  const { heroId, userTime } = req.body;
+  const today = userTime.split('T')[0];
+
+  const timezoneOffset = userTime.slice(
+    userTime.length - 6, userTime.length - 3);
+  // console.log(today)
+  // console.log(timezoneOffset)
+  console.log(userTime)
+  console.log(timezoneOffset)
+  console.log(today)
   console.log('-------------')
-  console.log(moment().format())
+  // console.log(req.body.userTime)
+
   // console.log(req.get(headerName))
 
-  const today = new Date();
-  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  // const today = new Date();
+  // today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   // console.log('TODAY', today)
-  const y = today.getFullYear();
-  const m = today.getMonth() + 1;
-  const d = today.getDate();
+  // const y = today.getFullYear();
+  // const m = today.getMonth() + 1;
+  // const d = today.getDate();
   // console.log(y, m, d)
+
+  // const today = moment().format().split('T')[0];
+  // const tz = moment().format().split(':')[2].slice(3);
 
   const activity =  await sequelize.query(`
   SELECT * FROM "ActivityLogs" AS "ActivityLog" 
   WHERE "ActivityLog"."hero_id" = ${heroId}
-  AND (date("createdAt") BETWEEN '2020-12-15 00:00:00' AND '2020-12-15 23:59:59'
-  AT TIME ZONE 'America/New_York')
+  AND (date("createdAt") BETWEEN 
+    '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
+  AT TIME ZONE 'UTC')
   LIMIT 1;`)
 
   // console.log('------------')
@@ -64,8 +79,8 @@ router.put('/',
   console.log('-------------')
   console.log(activity)
 
-  if (activity.action < 10) {
-    // const data = await ActivityLog.findByPk(activity[0][0].id);
+  if (activity[0][0].action < 10) {
+    const data = await ActivityLog.findByPk(activity[0][0].id);
     await data.update({
       action: data.action + 1
     });

@@ -30,14 +30,14 @@ export const getActivities = heroId => {
   }
 };
 
-export const createActivity = heroId => {
+export const createActivity = (heroId, userTime) => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/activities`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({heroId})
+      body: JSON.stringify({heroId, userTime: userTime.format()})
     });
 
     const data = await verifyData(res, dispatch);
@@ -49,14 +49,14 @@ export const createActivity = heroId => {
   }
 };
 
-export const updateActivity = heroId => {
+export const updateActivity = (heroId, userTime) => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/activities`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({heroId})
+      body: JSON.stringify({heroId, userTime: userTime.format()})
     });
 
     const data = await verifyData(res, dispatch);

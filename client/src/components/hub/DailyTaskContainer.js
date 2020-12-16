@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import bodymovin from 'lottie-web';
+import moment from 'moment';
 import { getDailyTasks, completeDailyTask } from '../../store/actions/dailyTaskAction';
 import { createActivity, updateActivity } from '../../store/actions/activityAction';
 import { raiseXP } from '../../store/actions/heroAction';
@@ -41,15 +42,19 @@ const DailyTaskContainer = () => {
 
     dispatch(raiseXP(1, heroId));
     
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const date = today.getDate();
+    // const today = new Date();
+    const today = moment();
+    const month = today.month() + 1;
+    const date = today.date();
     const todaysActivity = activities[heroId][month][date - 1];
+    const timezoneOffset = today.format().slice(
+                           today.format().length - 6, today.format().length - 3);
+    today.timezoneOffset = timezoneOffset;
 
-    if (todaysActivity || todaysActivity === 0) {
-      dispatch(updateActivity(heroId));
+    if (todaysActivity) {
+      dispatch(updateActivity(heroId, today));
     } else {
-      dispatch(createActivity(heroId));
+      dispatch(createActivity(heroId, today));
     }
 
 
