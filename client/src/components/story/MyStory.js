@@ -19,13 +19,6 @@ const MyStory = ({...props}) => {
   const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
 
   var svgContainer = document.getElementById('svgContainer');
-// var animItem = bodymovin.loadAnimation({
-//   wrapper: svgContainer,
-//   animType: 'svg',
-//   loop: true,
-//   path: '/data.json'
-// });
-
   useEffect(() => {
     dispatch(getStory(id));
   }, [id, dispatch]);
@@ -46,76 +39,76 @@ const MyStory = ({...props}) => {
        </div>
        <div className="mystory__sidebar-left">
        <SideMenuField >
-        <div onClick={() => {
-          setCurrentDisplay(<StoryHomeContainer />);
-          setCurrentTitle("Story Home");
+        <div
+          className="mystory__sidebar-menu" 
+          onClick={() => {
+            setCurrentDisplay(<StoryHomeContainer />);
+            setCurrentTitle("Story Home");
         }}>
-        <p>
           <img className="icon"
             src='/icons/map.png' alt={id}/>
-          Story Detail
-        </p>
+          <p>Story Detail</p>
         </div>
        </SideMenuField>
        <SideMenuField >
-        <div onClick={() => {
-          setCurrentDisplay(<DestinationContainer />);
-          setCurrentTitle("Upcoming Destinations");
+        <div 
+          className="mystory__sidebar-menu"
+          onClick={() => {
+            setCurrentDisplay(<DestinationContainer />);
+            setCurrentTitle("Upcoming Destinations");
         }}>
-              <p>
           <img className="icon"
             src='/icons/castle.png' alt={id}/>
             <div id="svgContainer"></div>
-          Upcoming Destinations
-        </p>
+          <p>Upcoming Destinations</p>
         </div>
        </SideMenuField>
        <SideMenuField >
-        <div onClick={() => {
-          setCurrentDisplay(<DestinationContainer />);
-          setCurrentTitle("Past Accomplishments");
+        <div 
+          className="mystory__sidebar-menu"
+          onClick={() => {
+            setCurrentDisplay(<DestinationContainer />);
+            setCurrentTitle("History");
         }}>
-        <p>
           <img className="icon"
             src='/icons/scroll.png' alt={id}/>
-          Past Accomplishments
-        </p>
+          <p>History</p>
         </div>
        </SideMenuField>
        <SideMenuField>
-       <div onClick={() => {
-          setCurrentDisplay(<MemoirContainer />);
-          setCurrentTitle("Memoirs");
+       <div 
+          className="mystory__sidebar-menu"
+          onClick={() => {
+            setCurrentDisplay(<MemoirContainer />);
+            setCurrentTitle("Memoirs");
         }}>
-        <p>
           <img className="icon"
             src='/icons/moon.png' alt={id}/>
-          Memoirs
-        </p>
+          <p>Memoirs</p>
         </div>
        </SideMenuField>
        <SideMenuField>
-       <div onClick={() => {
-          setCurrentDisplay(<DailyTaskContainer />);
-          setCurrentTitle("Daily Tasks");
+       <div 
+          className="mystory__sidebar-menu"  
+          onClick={() => {
+            setCurrentDisplay(<DailyTaskContainer />);
+            setCurrentTitle("Daily Tasks");
         }}>
-        <p>
           <img className="icon"
             src='/icons/star-stick.png' alt={id}/>
-          Daily Tasks
-        </p>
+          <p>Daily Tasks</p>
         </div>
        </SideMenuField>
        <SideMenuField>
-       <div onClick={() => {
-          setCurrentDisplay(<DailyTaskContainer />);
-          setCurrentTitle("Daily Tasks");
+       <div 
+          className="mystory__sidebar-menu"
+          onClick={() => {
+            setCurrentDisplay(<DailyTaskContainer />);
+            setCurrentTitle("Daily Tasks");
         }}>
-        <p>
           <img className="icon"
             src='/icons/monster.png' alt={id}/>
-          Monsters
-        </p>
+          <p>Monsters</p>
         </div>
        </SideMenuField>
 
