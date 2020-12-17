@@ -59,7 +59,6 @@ const DailyTaskContainer = () => {
       dispatch(createActivity(heroId, today));
     }
 
-
     if (!container.current.children.length) {
       setAllCompleted(true);
     }

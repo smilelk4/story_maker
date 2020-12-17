@@ -27,12 +27,12 @@ router.put('/',
     userTime.length - 6, userTime.length - 3);
 
   const activity =  await sequelize.query(`
-  SELECT * FROM "ActivityLogs" AS "ActivityLog" 
-  WHERE "ActivityLog"."hero_id" = ${heroId}
-  AND (date("createdAt") BETWEEN 
-    '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
-  AT TIME ZONE 'UTC')
-  LIMIT 1;`)
+    SELECT * FROM "ActivityLogs" AS "ActivityLog" 
+    WHERE "ActivityLog"."hero_id" = ${heroId}
+    AND (date("createdAt") BETWEEN 
+      '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
+    AT TIME ZONE 'UTC')
+    LIMIT 1;`)
 
   // const activity = await ActivityLog.findOne({
   //   where: [

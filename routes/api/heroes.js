@@ -106,7 +106,7 @@ router.get('/:id(\\d+)/activities/?', asyncHandler(async (req, res, next) => {
       exclude: ['updatedAt']
     },
     order: [['createdAt', 'ASC']],
-    limit: 365
+    limit: 370
   });
 
   const memo = {};
