@@ -1,6 +1,6 @@
 import React from 'react'
 import StoryHome from './StoryHome';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 
 const StoryHomeContainer = () => {

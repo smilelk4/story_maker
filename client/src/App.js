@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import PageAnimationWrapper from './components/PageAnimationWrapper';
 import Splash from './components/splash/Splash';
 import MyHub from './components/hub/MyHub';
 import MyStory from './components/story/MyStory';
@@ -31,14 +32,16 @@ function App() {
   return (
     <div className="app">
       <AnimatePresence>
-        <Switch>
-          <Route exact path='/'>
-            <Splash/>
-          </Route>
-          <Route to='*'>
-            <RoutesContainer user={user.id} />
-          </Route>
-        </Switch>
+        <PageAnimationWrapper>
+          <Switch>
+            <Route exact path='/'>
+              <Splash/>
+            </Route>
+            <Route to='*'>
+                <RoutesContainer user={user.id} />
+            </Route>
+          </Switch>
+        </PageAnimationWrapper>
       </AnimatePresence>
     </div>
   );

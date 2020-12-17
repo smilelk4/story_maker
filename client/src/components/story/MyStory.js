@@ -10,7 +10,6 @@ import SideMenuField from './SideMenuField';
 import MemoirContainer from './MemoirContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
-import bodymovin from 'lottie-web';
 
 const MyStory = () => {
   const dispatch = useDispatch();
@@ -18,10 +17,9 @@ const MyStory = () => {
   const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
   const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
 
-  var svgContainer = document.getElementById('svgContainer');
   useEffect(() => {
-    dispatch(getStory(id));
-  }, [id, dispatch]);
+    dispatch(getStory(id))
+  }, [id, dispatch])
 
   return (  
     <div className="mystory">
