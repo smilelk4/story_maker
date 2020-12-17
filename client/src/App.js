@@ -16,15 +16,6 @@ function App() {
   const user = useSelector(state => state.user);
   const history = useHistory();
 
-  const pageVariants = {
-    in: {
-      opacity: 1
-    },
-    out: {
-      opacity: 0
-    }
-  }
-
   useEffect(() => {
     (async () => {
       if (token && !user.id) {
@@ -42,10 +33,10 @@ function App() {
       <AnimatePresence>
         <Switch>
           <Route exact path='/'>
-            <Splash {...pageVariants}/>
+            <Splash/>
           </Route>
           <Route to='*'>
-            <RoutesContainer user={user.id} { ...pageVariants}/>
+            <RoutesContainer user={user.id} />
           </Route>
         </Switch>
       </AnimatePresence>

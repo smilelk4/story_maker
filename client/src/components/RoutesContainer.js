@@ -1,12 +1,14 @@
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import PageAnimationWrapper from './PageAnimationWrapper';
 import MyHub from './hub/MyHub';
 import MyStory from './story/MyStory';
 import HeaderContainer from './HeaderContainer';
 import Footer from './Footer';
-import { useSelector } from 'react-redux';
 
-const RoutesContainer = ({user, ...props}) => {
+
+const RoutesContainer = ({user}) => {
   const token = useSelector(state => state.token);
 
   return (
@@ -15,11 +17,15 @@ const RoutesContainer = ({user, ...props}) => {
     <Switch>
       <Route path='/my-hub'>
         {user && !token && <Redirect to='/' />}
-        <MyHub />
+        <PageAnimationWrapper>
+          <MyHub />
+        </PageAnimationWrapper>
       </Route>
       <Route path='/stories/:id'>
         {user && !token && <Redirect to='/' />}
-        {<MyStory {...props}/>}
+        <PageAnimationWrapper>
+          <MyStory/>
+        </PageAnimationWrapper>
       </Route>
       <Route to='*'>
         "Error"

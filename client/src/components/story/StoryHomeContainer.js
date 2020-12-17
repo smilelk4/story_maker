@@ -1,6 +1,7 @@
 import React from 'react'
 import StoryHome from './StoryHome';
 import { useSelector } from 'react-redux';
+import PageAnimationWrapper from '../PageAnimationWrapper';
 
 const StoryHomeContainer = () => {
   const hero = useSelector(state => state.hero[0]);
@@ -8,9 +9,11 @@ const StoryHomeContainer = () => {
   const destinations = useSelector(state => state.destination);
 
   return ( 
-    <div className="storyhome__container">
-      <StoryHome hero={hero} story={story} destinations={destinations}/>
-    </div>
+    <PageAnimationWrapper>
+      <div className="storyhome__container">
+        <StoryHome hero={hero} story={story} destinations={destinations}/>
+      </div>
+    </PageAnimationWrapper>
   );
 }
  

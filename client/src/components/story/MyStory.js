@@ -12,7 +12,7 @@ import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
 import bodymovin from 'lottie-web';
 
-const MyStory = ({...props}) => {
+const MyStory = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
@@ -24,11 +24,7 @@ const MyStory = ({...props}) => {
   }, [id, dispatch]);
 
   return (  
-    <motion.div className="mystory"
-                initial="out"
-                animate="in"
-                exit="out"
-                variants={props}>
+    <div className="mystory">
       <div className="mystory__contents">
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
@@ -117,7 +113,7 @@ const MyStory = ({...props}) => {
         <NewDestination />
        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
  

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import NewAdventure from './NewAdventure';
 import DestinationContainer from '../DestinationContainer';
 import HeroContainer from './HeroContainer';
@@ -14,15 +13,11 @@ import ActivityScroll from '../svg/ActivityScroll';
 import DestinationScroll from '../svg/DestinationScroll';
 import Scroll2 from '../svg/Scroll2';
 
-const MyHub = ({...props}) => {
+const MyHub = () => {
   const user = useSelector(state => state.user);
 
   return ( 
-    <motion.div className="hub" 
-                initial="out"
-                animate="in"
-                exit="out"
-                variants={props}>
+    <div className="hub">
       <div className="hub__contents">
         <main className="hub__main">
           <div className="hub__activity left-section">
@@ -60,7 +55,7 @@ const MyHub = ({...props}) => {
           </div>
         </aside>
       </div>
-    </motion.div>
+    </div>
   );
 }
  

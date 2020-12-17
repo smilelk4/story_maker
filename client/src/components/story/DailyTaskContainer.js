@@ -3,6 +3,7 @@ import DailyTask from './DailyTask';
 import NewDailyTask from './NewDailyTask';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import PageAnimationWrapper from '../PageAnimationWrapper';
 import { getDailyTasks, deleteDailyTask,
          editDailyTask } from '../../store/actions/dailyTaskAction';
 
@@ -24,12 +25,14 @@ const DailyTaskContainer = () => {
     return await dispatch(editDailyTask(id, newTitle));
   };
 
-  return ( 
-    <div className="daily-task__container">
-      <NewDailyTask />
-      {tasks.map(task => <DailyTask updateTitle={updateTitle} 
-                 deleteTask={deleteTask} {...task} />)}
-    </div>
+  return (
+    <PageAnimationWrapper>
+      <div className="daily-task__container">
+        <NewDailyTask />
+        {tasks.map(task => <DailyTask updateTitle={updateTitle} 
+                  deleteTask={deleteTask} {...task} />)}
+      </div>
+    </PageAnimationWrapper>
   );
 }
  

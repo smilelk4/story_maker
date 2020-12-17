@@ -13,12 +13,6 @@ const StoryHome = ({hero, story, destinations}) => {
     setXPPercentage(`${(xp / maxXP) * 100}%`);
   }, [hp, xp, maxHP, maxXP]);
 
-  console.log('----------')
-  if (destinations) {
-    console.log(moment(destinations[destinations.length - 1].target_date))
-  }
-  console.log('----------')
-
   const skullIcons = () => {
     const skulls = [];
     for (let i = 0; i < story.difficulty; i++) {
@@ -37,13 +31,13 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
           <p className='storyhome__field'>
             <span>On adventure since: 
-              <span>{moment(story.start_date).format("MMM Do YYYY")}
+              <span>{moment(story.start_date).format("MMM Do YYYY") + ' '}
                     ({moment(story.start_date).startOf('day').fromNow()})</span>
             </span>
           </p>
           <p className='storyhome__field'>
             <span>Expected completion date: 
-              <span>{moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY")}
+              <span>{moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
                     ({moment(destinations[destinations.length - 1].target_date).endOf('day').fromNow()})</span>
             </span>
           </p>

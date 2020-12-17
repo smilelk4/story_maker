@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import PageAnimationWrapper from './PageAnimationWrapper';
 import Destination from './Destination';
 import { getDestinations, 
          completeDestination } from '../store/actions/destinationActions';
@@ -28,10 +29,7 @@ const DestinationContainer = () => {
 
   const onCompleted = async (destinationId) => {
     const data = await dispatch(completeDestination(destinationId));
-    console.log(data, "DATAAA")
     if (data.errors) return;
-
-    console.log('HEYYYYYU!WHWIU~H')
 
     // dispatch(raiseXP(1, heroId));
     
@@ -52,10 +50,12 @@ const DestinationContainer = () => {
   };
 
   return ( 
-    <div className="destination__container">
-      {destinations.map(destination => (
-          <Destination handleClick={onCompleted} {...destination} />))}
-    </div>
+    <PageAnimationWrapper>
+      <div className="destination__container">
+        {destinations.map(destination => (
+            <Destination handleClick={onCompleted} {...destination} />))}
+      </div>
+    </PageAnimationWrapper>
   );
 }
  
