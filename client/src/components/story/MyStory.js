@@ -8,6 +8,7 @@ import DestinationContainer from '../DestinationContainer';
 import StoryHomeContainer from './StoryHomeContainer';
 import SideMenuField from './SideMenuField';
 import MemoirContainer from './MemoirContainer';
+import MonsterContainer from './MonsterContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
 
@@ -97,8 +98,8 @@ const MyStory = () => {
        <div 
           className="mystory__sidebar-menu"
           onClick={() => {
-            setCurrentDisplay(<DailyTaskContainer />);
-            setCurrentTitle("Daily Tasks");
+            setCurrentDisplay(<MonsterContainer />);
+            setCurrentTitle("Monsters");
         }}>
           <img className="icon"
             src='/icons/monster.png' alt={id}/>

@@ -1,29 +1,28 @@
 import React, { useEffect } from 'react'
-import NewMemoir from './NewMemoir';
+import NewMonster from './NewMonster';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getMemoirs } from '../../store/actions/memoirActions';
 import Memoir from './Memoir';
 
-const MemoirContainer = () => {
+const MonsterContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const memoirs = useSelector(state => state.memoir);
 
   useEffect(() => {
-    dispatch(getMemoirs(id));
   },[id, dispatch]);
+
 
   return ( 
     <PageAnimationWrapper>
-      <NewMemoir />
-      <div className="memoir__container">
-        {memoirs.map(memoir => <Memoir {...memoir} />)}
+      <NewMonster />
+      <div className="monster__container">
       </div>
     </PageAnimationWrapper>
   );
 }
  
-export default MemoirContainer;
+export default MonsterContainer;
