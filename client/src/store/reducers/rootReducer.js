@@ -7,6 +7,7 @@ import memoir from './memoirReducer';
 import destination from './destinationReducer';
 import activity from './activityReducer';
 import task from './dailyTaskReducer';
+import monster from './monsterReducer';
 import errors from './errorReducer';
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   memoir,
   activity,
   task,
+  monster,
   errors
 });
 
