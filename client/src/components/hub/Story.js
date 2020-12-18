@@ -9,8 +9,11 @@ const Story = (...props) => {
         <p className="story__title title">{title}</p>
         <div className={`story__label-${difficulty}`}></div>
         {World && <p className="story__world-name">
-          <p>World Name:</p><br /> 
-          <p>{World.name}</p>
+          <img src='/icons/flag.png' alt={id}/>
+          <div>
+            <p>World Name:</p><br /> 
+            <p>{World.name}</p>
+          </div>
         </p>}
       </div>
     </Link>
