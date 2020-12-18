@@ -1,4 +1,4 @@
-import { loadMonstersAction, addMonsterAction } from '../reducers/monsterReducer';
+import { loadMonsterAction, addMonsterAction } from '../reducers/monsterReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -24,7 +24,7 @@ export const getMonsters = storyId => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      dispatch(loadMonstersAction(data.monsters));
+      dispatch(loadMonsterAction(data.monsters));
     }
     return data;
   }

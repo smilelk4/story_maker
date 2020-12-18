@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createMemoir } from '../../store/actions/memoirActions';
+import { createMonster } from '../../store/actions/monsterAction';
 
 const NewMonster = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const NewMonster = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const data = await dispatch(createMemoir({
+    const data = await dispatch(createMonster({
       storyId, name, strength
     }));
 
@@ -26,8 +26,8 @@ const NewMonster = () => {
   }
 
   return ( 
-    <form onSubmit={handleSubmit} className="memoir__form">
-        <div className="memoir__form-section">
+    <form onSubmit={handleSubmit} className="monster__form">
+        <div className="monster__form-section">
           <label for="name">Name</label>
           <input type="text" 
             value={name} 
@@ -35,7 +35,7 @@ const NewMonster = () => {
             required
             onChange={e => setName(e.target.value)} />
         </div>
-        <div className="memoir__form-section">
+        <div className="monster__form-section">
           <label for="strength">Strength</label>
           <input type="range" 
               value={strength} 
@@ -45,7 +45,7 @@ const NewMonster = () => {
               step="1"
               className="small"
             onChange={e => setStrength(e.target.value)} />
-            <span className="memoir__form-number-display">{strength}</span>
+            <span className="monster__form-number-display">{strength}</span>
         </div>
         <button type="submit">Create a New Monster</button>
     </form>

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { sequelize } = require('../../db/models');
-const { Story, Hero, World, Destination, Memoir, DailyTask } = require('../../db/models');
+const { Story, Hero, World, Destination, 
+        Memoir, DailyTask, Monster } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
@@ -75,6 +76,15 @@ router.get('/:id(\\d+)/memoirs', asyncHandler(async (req, res) => {
   res.json({ memoirs });
 }));
 
+router.get('/:id(\\d+)/monsters', asyncHandler(async (req, res) => {
+  const monsters = await Monster.findAll({
+    where: [ 
+      {story_id: req.params.id},
+    ],
+    order: [['createdAt', 'DESC']]
+  });
 
+  res.json({ monsters });
+}));
 
 module.exports = router;
