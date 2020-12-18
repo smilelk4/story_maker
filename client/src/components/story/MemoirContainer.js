@@ -27,8 +27,8 @@ const MemoirContainer = () => {
 
   return ( 
     <PageAnimationWrapper>
+      <NewMemoir />
       <div className="memoir__container">
-        <NewMemoir />
         {memoirs.map(memoir => <Memoir {...memoir} />)}
       </div>
     </PageAnimationWrapper>

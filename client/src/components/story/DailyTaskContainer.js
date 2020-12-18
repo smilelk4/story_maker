@@ -27,8 +27,8 @@ const DailyTaskContainer = () => {
 
   return (
     <PageAnimationWrapper>
+      <NewDailyTask />
       <div className="daily-task__container">
-        <NewDailyTask />
         {tasks.map(task => <DailyTask updateTitle={updateTitle} 
                   deleteTask={deleteTask} {...task} />)}
       </div>

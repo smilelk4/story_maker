@@ -50,23 +50,28 @@
   justify-content: space-around;
   padding: 2rem;
   overflow-y: scroll;
-  margin: 2rem;
+  margin: 0 2rem;
   border-radius: 2px;
   position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
 
   @include hide-scroll;
 
   &__container {
-    height: 100%;
+    @include calc("height", "100% - #{$basic-item-height}");
     overflow-y: scroll;
     @include custom-scroll();
+    margin-top: 3rem;
   }
 
   &__form {
     background: $gradient-darker-grey;
     color: white;
     margin: 0 2rem;
-    height: max-content;
+    height: $basic-item-height;
     padding: 2rem;
     display: flex;
     flex-direction: column;
