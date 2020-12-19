@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { getUpcomingDestinations } from '../../store/actions/destinationActions';
+import Frame from '../svg/Frame';
 
 const StoryHomeContainer = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const StoryHomeContainer = () => {
 
   return ( 
     <PageAnimationWrapper>
+      <Frame />
       <div className="storyhome__container">
         {hero && destinations.length && <StoryHome hero={hero} story={story} destinations={destinations}/>}
       </div>
