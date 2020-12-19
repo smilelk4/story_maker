@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from '../PageAnimationWrapper';
-import History from './History';
+import PastDestination from './PastDestination';
 import { getPastDestinations } from '../../store/actions/destinationActions';
 import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
@@ -20,9 +20,10 @@ const HistoryContainer = () => {
 
   return ( 
     <PageAnimationWrapper>
-      <div className="destination__container">
+      <div className="history__container">
         {destinations.map(destination => (
-            <History destination={destination} />))}
+          <PastDestination {...destination} />
+        ))}
       </div>
     </PageAnimationWrapper>
   );

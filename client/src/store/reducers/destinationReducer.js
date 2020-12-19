@@ -29,7 +29,7 @@ const destinationReducer = (state = [], action) => {
       const newState = [...state, ...newDestinations];
       newState.sort((a, b) => Date.parse(a.target_date) - Date.parse(b.target_date));
       
-      return [...newState];
+      return newState;
     }
     case REMOVE_DESTINATION: {
       const newState = state.filter(destination => {

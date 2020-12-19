@@ -5,6 +5,7 @@ import PageAnimationWrapper from './PageAnimationWrapper';
 import Destination from './Destination';
 import { getUpcomingDestinations, 
          completeDestination } from '../store/actions/destinationActions';
+import { clearDestinationsAction } from '../store/reducers/destinationReducer';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,15 @@ const DestinationContainer = () => {
 
   useEffect(() => {
     if (id && !destinations.length) {
-      return dispatch(getUpcomingDestinations(id));
+      dispatch(getUpcomingDestinations(id));
     }
-  }, [id, userId, destinations, dispatch]);
+  }, [id, destinations, dispatch]);
+  
+  useEffect(() => {
+    if (destinations.length && destinations[0].accomplished) {
+      dispatch(clearDestinationsAction());
+    }
+  }, [id, destinations, dispatch]);
 
   useEffect(() => {
     for (let story of stories) {
