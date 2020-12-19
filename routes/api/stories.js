@@ -36,12 +36,13 @@ asyncHandler(async (req, res) => {
   res.json({ story })
 }));
 
-router.get('/:id(\\d+)/destinations',
+router.get('/:id(\\d+)/destinations/?',
 asyncHandler(async (req, res) => {
+  const { state } = req.query;  
   const destinations = await Destination.findAll({
     where: {
       story_id: req.params.id,
-      accomplished: false
+      accomplished: state === 'accomplished',
     },
     order: [['target_date', 'ASC']]
   });

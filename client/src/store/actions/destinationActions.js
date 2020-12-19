@@ -17,9 +17,21 @@ const verifyData = async (res, dispatch) => {
   return data;
 };
 
-export const getDestinations = storyId => {
+export const getPastDestinations = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=accomplished`);
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(loadDestinationsAction(data.destinations));
+    }
+    return data;
+  }
+};
+
+export const getUpcomingDestinations = storyId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=not-accomplished`);
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {

@@ -3,7 +3,7 @@ import StoryHome from './StoryHome';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from '../PageAnimationWrapper';
-import { getDestinations } from '../../store/actions/destinationActions';
+import { getUpcomingDestinations } from '../../store/actions/destinationActions';
 
 const StoryHomeContainer = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const StoryHomeContainer = () => {
 
   useEffect(() => {
     if (id) {
-      return dispatch(getDestinations(id));
+      return dispatch(getUpcomingDestinations(id));
     }
   }, [id, dispatch]);
 

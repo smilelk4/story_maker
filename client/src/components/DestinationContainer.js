@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from './PageAnimationWrapper';
 import Destination from './Destination';
-import { getDestinations, 
+import { getUpcomingDestinations, 
          completeDestination } from '../store/actions/destinationActions';
 
 const DestinationContainer = () => {
@@ -15,14 +15,14 @@ const DestinationContainer = () => {
 
   useEffect(() => {
     if (id && !destinations.length) {
-      return dispatch(getDestinations(id));
+      return dispatch(getUpcomingDestinations(id));
     }
   }, [id, userId, destinations, dispatch]);
 
   useEffect(() => {
     for (let story of stories) {
       if (story) {
-        dispatch(getDestinations(story.id));
+        dispatch(getUpcomingDestinations(story.id));
       }
     }
   }, [stories, dispatch]);

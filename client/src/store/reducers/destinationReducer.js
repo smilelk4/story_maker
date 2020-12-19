@@ -1,8 +1,8 @@
-const LOAD_DESTINATIONS = 'LOAD_DESTINATIONS';
+const LOAD_UPCOMING_DESTINATIONS = 'LOAD_DESTINATIONS';
 const REMOVE_DESTINATION = 'REMOVE_DESTINATION';
 
 export const loadDestinationsAction = data => ({
-  type: LOAD_DESTINATIONS,
+  type: LOAD_UPCOMING_DESTINATIONS,
   destinations: data
 });
 
@@ -13,7 +13,7 @@ export const removeDestinationAction = data => ({
 
 const destinationReducer = (state = [], action) => {
   switch(action.type) {
-    case LOAD_DESTINATIONS: {
+    case LOAD_UPCOMING_DESTINATIONS: {
       const ids = state.map(s => s.id);
       
       const newDestinations = action.destinations.filter(d => {
