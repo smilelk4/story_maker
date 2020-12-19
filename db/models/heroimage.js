@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const HeroImage = sequelize.define('HeroImage', {
     image_url: {
       type: DataTypes.STRING(500),
-      unique: true
     },
   }, {});
   HeroImage.associate = function(models) {

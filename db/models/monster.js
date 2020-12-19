@@ -16,9 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     times_defeated: {
       type: DataTypes.INTEGER,
     },
+    image_id: {
+      type: Sequelize.INTEGER,
+    },
   }, {});
   Monster.associate = function(models) {
-    // associations can be defined here
+    Monster.belongsTo(models.MonsterImage, { foreignKey: 'image_id' });
   };
   return Monster;
 };

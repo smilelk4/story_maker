@@ -27,6 +27,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
+      image_id: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
+        references: {
+          model: 'MonsterImages'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
