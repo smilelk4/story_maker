@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     image_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
   }, {});
   Monster.associate = function(models) {

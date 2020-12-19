@@ -24,6 +24,7 @@ const monsterReducer = (state = [], action) => {
           name: monster.name,
           strength: monster.strength,
           timesDefeated: monster.timesDefeated,
+          image: monster.MonsterImage.image_url,
           createdAt: monster.createdAt
         }));
 

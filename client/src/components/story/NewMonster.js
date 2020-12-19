@@ -9,7 +9,7 @@ const NewMonster = () => {
   const heroId = useSelector(state => state.hero[0].id);
 
   const [name, setName] = useState(null);
-  const [strength, setStrength] = useState(0);
+  const [strength, setStrength] = useState(1);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const NewMonster = () => {
           <label for="strength">Strength</label>
           <input type="range" 
               value={strength} 
-              min="0" 
+              min="1" 
               max="10" 
               name="strength"
               step="1"
