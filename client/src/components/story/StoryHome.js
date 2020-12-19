@@ -77,7 +77,17 @@ const StoryHome = ({hero, story, destinations}) => {
           </div>
         </div>
       </div>
-      {/* {heroes.map(memoir => <Memoir {...memoir} />)} */}
+      <div className='storyhome__section'>
+        <div className="storyhome__calendar-container">
+          <h4 className='storyhome__title title'>This Month</h4>
+          <div className="storyhome__field">
+            <span>Total hours fought this month: <span>__ hours</span></span>
+          </div>
+          <div className="storyhome__field">
+            <span>Total tasks completed: <span>__ times</span></span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

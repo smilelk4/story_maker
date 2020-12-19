@@ -110,6 +110,10 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
+        <div>
+          Uncompleted Tasks today: 
+          Overdue Destination: 
+        </div>
         <NewDestination />
        </div>
       </div>
