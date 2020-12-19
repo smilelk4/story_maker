@@ -46,7 +46,6 @@ asyncHandler(async (req, res) => {
     },
     order: [['target_date', 'ASC']]
   });
-
     // if (!destinations.length) next(createError('No destinations found.'));
     res.json({ destinations })
 }));
