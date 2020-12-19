@@ -14,10 +14,10 @@ const DestinationContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    if (id) {
+    if (id && !destinations.length) {
       return dispatch(getDestinations(id));
     }
-  }, [id, userId, dispatch]);
+  }, [id, userId, destinations, dispatch]);
 
   useEffect(() => {
     for (let story of stories) {

@@ -15,8 +15,8 @@ import { getStory } from '../../store/actions/storyAction';
 const MyStory = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [currentDisplay, setCurrentDisplay] = useState(<DestinationContainer />);
-  const [currentTitle, setCurrentTitle] = useState("Upcoming destinations");
+  const [currentDisplay, setCurrentDisplay] = useState(<StoryHomeContainer />);
+  const [currentTitle, setCurrentTitle] = useState("Story Detail");
 
   useEffect(() => {
     dispatch(getStory(id))
