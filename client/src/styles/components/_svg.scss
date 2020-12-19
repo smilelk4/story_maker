@@ -1,0 +1,23 @@
+.svg {
+  &__rect {
+    display: inline;
+
+    &-container {
+      display: none;
+    }
+  }
+
+  &__path {
+    fill: $color-dark-lighter;
+  }
+}
+
+#frame {
+  position: absolute;
+  width: 100%;
+  top: -10rem;
+}
+
+#scroll {
+  text-anchor: middle;
+}

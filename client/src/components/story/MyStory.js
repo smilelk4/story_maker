@@ -12,6 +12,7 @@ import MonsterContainer from './MonsterContainer';
 import HistoryContainer from './HistoryContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import { getStory } from '../../store/actions/storyAction';
+import Frame from '../svg/Frame';
 
 const MyStory = () => {
   const dispatch = useDispatch();
@@ -110,7 +111,7 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
-        <div>
+        <div className="overview">
           Uncompleted Tasks today: 
           Overdue Destination: 
         </div>

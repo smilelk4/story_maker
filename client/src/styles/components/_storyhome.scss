@@ -6,6 +6,7 @@
     padding: 3rem;
     display: flex;
     justify-content: space-between;
+    position: relative;
     // align-items: space-around;
 
     img {
@@ -23,6 +24,7 @@
   &__field {   
     min-height: 3rem; 
     text-align: center;
+
     & > span {
       display: flex;
       align-items: center;
