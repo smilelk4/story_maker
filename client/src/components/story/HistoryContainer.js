@@ -12,7 +12,8 @@ const HistoryContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    if (destinations.length && !destinations[0].accomplished) {
+    if (destinations.length && 
+        destinations.some(destination => !destination.accomplished)) {
       dispatch(clearDestinationsAction());
       dispatch(getPastDestinations(id));
     }

@@ -68,7 +68,11 @@
   }
 
   &__form {
-    background: $gradient-darker-grey;
+    // background: $gradient-darker-grey;
+    background-image: 
+      $gradient-darker-grey,
+      url(https://story-maker-app.s3.amazonaws.com/house-1.png);
+    background-repeat: no-repeat;
     color: white;
     margin: 0 2rem;
     height: $basic-item-height;

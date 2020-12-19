@@ -10,9 +10,6 @@ const PastDestination = ({...props}) => {
        <p className="past-destination__title title">
          {title}
        </p>
-       <p className="past-destination__description">
-         {description}
-       </p>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-.memoir {
+.monster {
   height: $basic-item-height;
   background: $gradient-grey;
   display: flex;
@@ -42,12 +42,15 @@
   }
 
   &__form {
-    background: $gradient-darker-grey;
+    background-image: 
+      $gradient-darker-grey,
+      url(https://story-maker-app.s3.amazonaws.com/tree-1.png);
+    background-repeat: no-repeat;
     color: white;
     margin: 0 2rem;
     // height: max-content;
     // height: $basic-item-height;
-    @include calc("height", "1.5 * #{$basic-item-height}");
+    height: $basic-item-height;
     padding: 2rem;
     display: flex;
     flex-direction: column;

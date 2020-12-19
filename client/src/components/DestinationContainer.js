@@ -21,7 +21,8 @@ const DestinationContainer = () => {
   }, [id, destinations, dispatch]);
   
   useEffect(() => {
-    if (destinations.length && destinations[0].accomplished) {
+    if (destinations.length && 
+      destinations.some(destination => destination.accomplished)) {
       dispatch(clearDestinationsAction());
     }
   }, [id, destinations, dispatch]);
