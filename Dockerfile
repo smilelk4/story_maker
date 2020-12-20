@@ -1,7 +1,7 @@
 FROM node:12 AS front-end-build
 WORKDIR /react-app
 COPY client/ .
-RUN INLINE_RUNTIME_CHUNK=false
+RUN export INLINE_RUNTIME_CHUNK=false
 RUN npm install
 RUN npm run build
 

@@ -43,12 +43,23 @@ const ProgressHeader = () => {
   velocity={0}
   gravity={[0, -5, 0]} >
   {destinations.map(destination => {
-    x += 3;
-    return <Trees
+    x += 2;
+    return (
+      <>
+      {/* <Trees
+              destination={destination} 
+              active={active}
+              setActive={setActive}
+              // position={[x, 5, 0]} 
+              position={[x, 1, 0]} 
+              /> */}
+      <Node
               destination={destination} 
               active={active}
               setActive={setActive}
               position={[x, 5, 0]} />
+      </>
+      )
   })}
   <Hero hero={hero}
         active={active}
