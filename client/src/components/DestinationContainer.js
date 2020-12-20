@@ -61,7 +61,8 @@ const DestinationContainer = () => {
     <PageAnimationWrapper>
       <div className="destination__container">
         {destinations.map(destination => (
-            <Destination handleClick={onCompleted} {...destination} />))}
+          <Destination handleClick={onCompleted} {...destination} />
+        ))}
       </div>
     </PageAnimationWrapper>
   );

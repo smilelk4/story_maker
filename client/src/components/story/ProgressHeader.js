@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
 import { Sky } from 'drei';
 import { Vector3 } from 'three';
+import { useGLTF } from '@react-three/drei';
+import Trees from '../three/Trees';
 
 import Plane from '../three/Plane';
 import Node from '../three/Node';
@@ -32,7 +34,13 @@ const ProgressHeader = () => {
       <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
-        <Camera position={[0, 1, 20]}
+      <Suspense fallback={null}>
+        <Trees />
+      </Suspense>
+  )
+
+
+        {/* <Camera position={[0, 1, 20]}
                 reference={container.current}/>
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 15, 10]} angle={3} />
@@ -53,7 +61,7 @@ const ProgressHeader = () => {
                 setActive={setActive}
                 position={[-10, 5, 0]} />
           <Plane />
-        </Physics>
+        </Physics> */}
         {/* {active && (
           <Html>
             <div>Hiii</div>

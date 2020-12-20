@@ -3,11 +3,6 @@
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
 
-  & * {
-    // border: 1px solid black;
-    // background-color: white;
-  }
-
   &__contents {
     grid-column: 2 / -2;
     display: grid;

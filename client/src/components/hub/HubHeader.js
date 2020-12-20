@@ -6,16 +6,6 @@ import { Stars, OrbitControls } from 'drei';
 import { useGLTF, Loader } from '@react-three/drei';
 import Tavern from '../three/Tavern';
 
-// const Tavern = () => {
-//   const gltf = useGLTF('/scene.gltf', true);
-
-//   return (
-//     <group position={[0, -10, 0]} scale={[.1, .1, .1]}>
-//       <primitive object={gltf.scene} dispose={null}></primitive>
-//     </group>
-//   )
-// }
-
 const HubHeader = () => {
   return ( 
     <header className='header'>

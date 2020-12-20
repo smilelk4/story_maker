@@ -87,7 +87,6 @@
     cursor: pointer;
     width: 100%;
     text-align: center;
-    margin: 1.5rem;
     @include opacity-change-on-hover();
     display: flex;
     align-items: center;
@@ -95,9 +94,12 @@
 
   &__greet {
     font-weight: bolder;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    
+    span {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
 }
 
