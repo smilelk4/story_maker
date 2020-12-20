@@ -34,41 +34,60 @@ const ProgressHeader = () => {
       <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
-      <Suspense fallback={null}>
-        <Trees />
-      </Suspense>
+  <Camera position={[0, 1, 20]}
+        reference={container.current}/>
+<ambientLight intensity={0.5} />
+<spotLight position={[10, 15, 10]} angle={3} />
+<Sky sunPosition={new Vector3(10, 20, 100)}/>
+<Physics
+  velocity={0}
+  gravity={[0, -5, 0]} >
+  {destinations.map(destination => {
+    x += 3;
+    return <Trees
+              destination={destination} 
+              active={active}
+              setActive={setActive}
+              position={[x, 5, 0]} />
+  })}
+  <Hero hero={hero}
+        active={active}
+        setActive={setActive}
+        position={[-10, 5, 0]} />
+  <Plane />
+</Physics>
+      </Canvas>
   )
 
 
-        {/* <Camera position={[0, 1, 20]}
-                reference={container.current}/>
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 15, 10]} angle={3} />
-        <Sky sunPosition={new Vector3(10, 20, 100)}/>
-        <Physics
-          velocity={0}
-          gravity={[0, -5, 0]} >
-          {destinations.map(destination => {
-            x += 3;
-            return <Node
-                      destination={destination} 
-                      active={active}
-                      setActive={setActive}
-                      position={[x, 5, 0]} />
-          })}
-          <Hero hero={hero}
-                active={active}
-                setActive={setActive}
-                position={[-10, 5, 0]} />
-          <Plane />
-        </Physics> */}
-        {/* {active && (
-          <Html>
-            <div>Hiii</div>
-          </Html>
-        )} */}
-      </Canvas>
-  );
 }
 
+{/* <Camera position={[0, 1, 20]}
+        reference={container.current}/>
+<ambientLight intensity={0.5} />
+<spotLight position={[10, 15, 10]} angle={3} />
+<Sky sunPosition={new Vector3(10, 20, 100)}/>
+<Physics
+  velocity={0}
+  gravity={[0, -5, 0]} >
+  {destinations.map(destination => {
+    x += 3;
+    return <Node
+              destination={destination} 
+              active={active}
+              setActive={setActive}
+              position={[x, 5, 0]} />
+  })}
+  <Hero hero={hero}
+        active={active}
+        setActive={setActive}
+        position={[-10, 5, 0]} />
+  <Plane />
+</Physics> */}
+{/* {active && (
+  <Html>
+    <div>Hiii</div>
+  </Html>
+)} */}
+// );
 export default ProgressHeader;
