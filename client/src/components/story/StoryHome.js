@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
+import Line from '../svg/Line';
 
 const StoryHome = ({hero, story, destinations}) => {
   const { name, level, hp, xp, image } = hero;
@@ -50,8 +51,10 @@ const StoryHome = ({hero, story, destinations}) => {
         <img src="https://story-maker-app.s3.amazonaws.com/tower.png" 
              alt={story.id}/>
       </div>
+      <Line />
       <div className='storyhome__section'>
         <div className="storyhome__hero-container">
+          <h4 className='storyhome__title title'>Hero on Duty</h4>
           <div className="storyhome__hero-image">
             <img src={image} alt={hero.id} />
           </div>
@@ -77,6 +80,7 @@ const StoryHome = ({hero, story, destinations}) => {
           </div>
         </div>
       </div>
+      <Line />
       <div className='storyhome__section'>
         <div className="storyhome__calendar-container">
           <h4 className='storyhome__title title'>This Month</h4>
