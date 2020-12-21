@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
-import { Sky } from 'drei';
+import { Sky, Html } from 'drei';
 import { Vector3 } from 'three';
 import { useGLTF } from '@react-three/drei';
 import Trees from '../three/Trees';
@@ -30,7 +30,7 @@ const ProgressHeader = () => {
   const minHeroXPosition = -6.5;
   const maxHeroXPosition = 6;
   const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
-  let x = -8;
+  let x = -7;
 
   useEffect(() => {
     if (heroId) {
@@ -52,7 +52,7 @@ const ProgressHeader = () => {
       <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
-  <Camera position={[0, 1, 20]}
+  <Camera position={[0, 1, 25]}
         reference={container.current}/>
 <ambientLight intensity={0.5} />
 <spotLight position={[10, 15, 10]} angle={3} />
@@ -63,20 +63,21 @@ const ProgressHeader = () => {
   <Trees position={[-8, 5.28, 0]}/>
   <Castle position={[8.5, 5, 0]}/>
   {[0,0,0,0,0,0,0,0].map(destination => {
-    x += 1.72;
+    x += 1.5;
     return <Node
               destination={destination} 
               active={active}
               setActive={setActive}
-              position={[x, 5, 0]}/>
+              position={[x, 5, 3]}/>
   })}
   <Hero hero={hero}
         active={active}
         setActive={setActive}
         // position={[6, 5, 5]} 
-        position={[minHeroXPosition + heroPosition, 5, 5]} 
-
-        />
+        position={[minHeroXPosition + heroPosition, 5, 5]} />
+  <Html>
+    <div><p>Progress: {progress * 100}%</p></div>
+  </Html>
   <Plane />
 </Physics>
       </Canvas>
