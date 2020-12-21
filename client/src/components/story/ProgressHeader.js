@@ -43,8 +43,8 @@ const ProgressHeader = () => {
 <Physics
   velocity={0}
   gravity={[0, -10, 0]} >
-  <Trees position={[-10, .3, 0]}/>
-  <Castle position={[8.5, 0, 0]}/>
+  <Trees position={[-10, 5.28, 0]}/>
+  <Castle position={[8.5, 5, 0]}/>
   {/* {destinations.map(destination => {
     x += 2;
     return <Node
@@ -53,10 +53,10 @@ const ProgressHeader = () => {
               setActive={setActive}
               position={[x, 5, 0]}/>
   })} */}
-  {/* <Hero hero={hero}
+  <Hero hero={hero}
         active={active}
         setActive={setActive}
-        position={[-10, 5, 0]} /> */}
+        position={[0, 5, 0]} />
   <Plane />
 </Physics>
       </Canvas>
