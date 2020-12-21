@@ -22,8 +22,14 @@ const ProgressHeader = () => {
   const story = useSelector(state => state.story[0]);
   const hero = useSelector(state => state.hero[0]);
   const destinations = useSelector(state => state.destination);
+  const progress = useSelector(state => state.progress);
   const [active, setActive] = useState(null);
+  const [heroPosition, setHeroPosition] = useState(0);
   const container = useRef();
+  
+  const minHeroXPosition = -6.5;
+  const maxHeroXPosition = 6;
+  const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
   let x = -12;
 
   useEffect(() => {
@@ -38,6 +44,10 @@ const ProgressHeader = () => {
     }
   }, [story, dispatch]);
 
+  useEffect(() => {
+    setHeroPosition(maxHeroXPositionRange * progress);
+  }, [progress, dispatch])
+
   return ( 
       <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
@@ -50,7 +60,7 @@ const ProgressHeader = () => {
 <Physics
   velocity={0}
   gravity={[0, -10, 0]} >
-  <Trees position={[-10, 5.28, 0]}/>
+  <Trees position={[-8, 5.28, 0]}/>
   <Castle position={[8.5, 5, 0]}/>
   {/* {destinations.map(destination => {
     x += 2;
@@ -63,7 +73,10 @@ const ProgressHeader = () => {
   <Hero hero={hero}
         active={active}
         setActive={setActive}
-        position={[0, 5, 0]} />
+        // position={[6, 5, 5]} 
+        position={[minHeroXPosition + heroPosition, 5, 5]} 
+
+        />
   <Plane />
 </Physics>
       </Canvas>

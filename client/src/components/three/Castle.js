@@ -8,7 +8,7 @@ const Castle = ({...props}) => {
 
   return (
     <Suspense fallback={null}>
-      <group position={[7.5, 0, 2]} scale={[.2, .2, .2]}>
+      <group position={[5.5, 0, 2]} scale={[.2, .2, .2]}>
         <primitive ref={ref} object={castleGltf.scene} dispose={null}>
           <planeBufferGeometry attach="geometry" />
         </primitive>

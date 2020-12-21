@@ -8,7 +8,7 @@ const Trees = ({...props}) => {
 
   return (
     <Suspense fallback={null}>
-      <group position={[-10, .28, 0]} scale={[.05, .05, .05]}>
+      <group position={[-8, .28, 0]} scale={[.05, .05, .05]}>
         <primitive ref={ref} object={gltf.scene} dispose={null}>
           <planeBufferGeometry attach="geometry" />
         </primitive>
