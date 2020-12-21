@@ -2,14 +2,14 @@ import React, { Suspense } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useBox } from "@react-three/cannon";
 
-const Trees = ({...props}) => {
+const Castle = ({...props}) => {
   const [ref] = useBox(() => ({ mass: 1, ...props }));
-  const gltf = useGLTF('/gltf/trees/scene.gltf', true);
+  const castleGltf = useGLTF('/gltf/castle/scene.gltf', true);
 
   return (
     <Suspense fallback={null}>
-      <group {...props} scale={[.05, .05, .05]}>
-        <primitive ref={ref} object={gltf.scene} dispose={null}>
+      <group {...props} scale={[.2, .2, .2]}>
+        <primitive ref={ref} object={castleGltf.scene} dispose={null}>
           <planeBufferGeometry attach="geometry" />
         </primitive>
       </group>
@@ -17,4 +17,4 @@ const Trees = ({...props}) => {
   )
 }
 
-export default Trees;
+export default Castle;

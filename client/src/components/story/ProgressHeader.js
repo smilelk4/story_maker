@@ -6,6 +6,7 @@ import { Sky } from 'drei';
 import { Vector3 } from 'three';
 import { useGLTF } from '@react-three/drei';
 import Trees from '../three/Trees';
+import Castle from '../three/Castle';
 
 import Plane from '../three/Plane';
 import Node from '../three/Node';
@@ -41,15 +42,17 @@ const ProgressHeader = () => {
 <Sky sunPosition={new Vector3(10, 20, 100)}/>
 <Physics
   velocity={0}
-  gravity={[0, -5, 0]} >
-  {destinations.map(destination => {
+  gravity={[0, -10, 0]} >
+  <Trees position={[-10, .3, 0]}/>
+  <Castle position={[8.5, 0, 0]}/>
+  {/* {destinations.map(destination => {
     x += 2;
     return <Node
               destination={destination} 
               active={active}
               setActive={setActive}
               position={[x, 5, 0]}/>
-  })}
+  })} */}
   {/* <Hero hero={hero}
         active={active}
         setActive={setActive}
