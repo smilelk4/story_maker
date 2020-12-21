@@ -7,18 +7,19 @@ import { Vector3 } from 'three';
 import { useGLTF } from '@react-three/drei';
 import Trees from '../three/Trees';
 import Castle from '../three/Castle';
-
 import Plane from '../three/Plane';
 import Node from '../three/Node';
 import Camera from '../three/Camera';
 import Hero from '../three/Hero';
 
 import { getHero } from '../../store/actions/heroAction';
+import { getProgress } from '../../store/actions/progressAction';
 
 const ProgressHeader = () => {
   const dispatch = useDispatch();
   const heroId = useSelector(state => state.story[0] ? 
                   state.story[0].hero_id : null);
+  const story = useSelector(state => state.story[0]);
   const hero = useSelector(state => state.hero[0]);
   const destinations = useSelector(state => state.destination);
   const [active, setActive] = useState(null);
@@ -30,6 +31,12 @@ const ProgressHeader = () => {
       dispatch(getHero(heroId));
     }
   }, [heroId, dispatch]);
+
+  useEffect(() => {
+    if (story) {
+      dispatch(getProgress(story.id));
+    }
+  }, [story, dispatch]);
 
   return ( 
       <Canvas

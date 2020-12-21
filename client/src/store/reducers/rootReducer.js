@@ -5,6 +5,7 @@ import hero from './heroReducer';
 import story from './storyReducer';
 import memoir from './memoirReducer';
 import destination from './destinationReducer';
+import progress from './progressReducer';
 import activity from './activityReducer';
 import task from './dailyTaskReducer';
 import monster from './monsterReducer';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   hero,
   story,
   destination,
+  progress,
   memoir,
   activity,
   task,
