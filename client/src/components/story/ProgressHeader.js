@@ -30,7 +30,7 @@ const ProgressHeader = () => {
   const minHeroXPosition = -6.5;
   const maxHeroXPosition = 6;
   const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
-  let x = -12;
+  let x = -8;
 
   useEffect(() => {
     if (heroId) {
@@ -62,14 +62,14 @@ const ProgressHeader = () => {
   gravity={[0, -10, 0]} >
   <Trees position={[-8, 5.28, 0]}/>
   <Castle position={[8.5, 5, 0]}/>
-  {/* {destinations.map(destination => {
-    x += 2;
+  {[0,0,0,0,0,0,0,0].map(destination => {
+    x += 1.72;
     return <Node
               destination={destination} 
               active={active}
               setActive={setActive}
               position={[x, 5, 0]}/>
-  })} */}
+  })}
   <Hero hero={hero}
         active={active}
         setActive={setActive}
