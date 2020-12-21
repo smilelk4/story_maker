@@ -22,7 +22,7 @@ const ProgressHeader = () => {
   const destinations = useSelector(state => state.destination);
   const [active, setActive] = useState(null);
   const container = useRef();
-  let x = -10;
+  let x = -12;
 
   useEffect(() => {
     if (heroId) {
@@ -43,17 +43,17 @@ const ProgressHeader = () => {
   velocity={0}
   gravity={[0, -5, 0]} >
   {destinations.map(destination => {
-    x += 3;
-    return <Trees
+    x += 2;
+    return <Node
               destination={destination} 
               active={active}
               setActive={setActive}
-              position={[x, 5, 0]} />
+              position={[x, 5, 0]}/>
   })}
-  <Hero hero={hero}
+  {/* <Hero hero={hero}
         active={active}
         setActive={setActive}
-        position={[-10, 5, 0]} />
+        position={[-10, 5, 0]} /> */}
   <Plane />
 </Physics>
       </Canvas>
