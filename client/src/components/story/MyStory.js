@@ -11,6 +11,7 @@ import MemoirContainer from './MemoirContainer';
 import MonsterContainer from './MonsterContainer';
 import HistoryContainer from './HistoryContainer';
 import DailyTaskContainer from './DailyTaskContainer';
+import OverviewContainer from './OverviewContainer';
 import { getStory } from '../../store/actions/storyAction';
 import Frame from '../svg/Frame';
 
@@ -111,10 +112,7 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
-        <div className="overview">
-          Uncompleted Tasks today: 
-          Overdue Destination: 
-        </div>
+        <OverviewContainer />
         <NewDestination />
        </div>
       </div>

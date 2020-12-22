@@ -27,10 +27,10 @@ const ProgressHeader = () => {
   const [heroPosition, setHeroPosition] = useState(0);
   const container = useRef();
   
-  const minHeroXPosition = -6.5;
-  const maxHeroXPosition = 6;
+  const minHeroXPosition = -7;
+  const maxHeroXPosition = 7;
   const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
-  let x = -7;
+  let nodePosition = minHeroXPosition;
 
   useEffect(() => {
     if (heroId) {
@@ -49,38 +49,35 @@ const ProgressHeader = () => {
   }, [progress, dispatch])
 
   return ( 
-      <Canvas
+    <Canvas
         onCreated={({ gl }) => gl.setClearColor('lightblue')}
         colorManagement>
-  <Camera position={[0, 1, 25]}
-        reference={container.current}/>
-<ambientLight intensity={0.5} />
-<spotLight position={[10, 15, 10]} angle={3} />
-<Sky sunPosition={new Vector3(10, 20, 100)}/>
-<Physics
-  velocity={0}
-  gravity={[0, -10, 0]} >
-  <Trees position={[-8, 5.28, 0]}/>
-  <Castle position={[8.5, 5, 0]}/>
-  {[0,0,0,0,0,0,0,0].map(destination => {
-    x += 1.5;
-    return <Node
-              destination={destination} 
+      <Camera position={[0, 1, 25]}
+          reference={container.current}/>
+      <ambientLight intensity={0.5} />
+      <spotLight position={[10, 15, 10]} angle={3} />
+      <Sky sunPosition={new Vector3(10, 20, 100)}/>
+      <Physics
+        velocity={0}
+        gravity={[0, -10, 0]} >
+        <Trees position={[-8, 5.28, 0]}/>
+        <Castle position={[8.5, 5, 0]}/>
+        {[0,0,0,0,0,0,0,0].map(destination => {
+          nodePosition += 1.55;
+          return <Node
+                    destination={destination} 
+                    active={active}
+                    setActive={setActive}
+                    position={[nodePosition, 5, 3]}/>
+        })}
+        <Hero hero={hero}
               active={active}
               setActive={setActive}
-              position={[x, 5, 3]}/>
-  })}
-  <Hero hero={hero}
-        active={active}
-        setActive={setActive}
-        // position={[6, 5, 5]} 
-        position={[minHeroXPosition + heroPosition, 5, 5]} />
-  <Html>
-    <div><p>Progress: {progress * 100}%</p></div>
-  </Html>
-  <Plane />
-</Physics>
-      </Canvas>
+              // position={[6, 5, 5]} 
+              position={[minHeroXPosition + heroPosition, 5, 5]} />
+        <Plane />
+      </Physics>
+    </Canvas>
   )
 
 
