@@ -51,7 +51,7 @@ export const createMonster = inputtedInfo => {
   }
 };
 
-export const defeatMonster = monsterId => {
+export const updateTimesDefeated = monsterId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/monsters/${monsterId}`, {
       method: 'PUT',

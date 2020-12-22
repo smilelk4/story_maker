@@ -99,8 +99,6 @@ router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
   const accomplishedDestinationsCount = destinations.filter(
         destination => destination.accomplished).length;
 
-  console.log('!!!!', accomplishedDestinationsCount / destinations.length)
-
   res.json({ progress: accomplishedDestinationsCount / destinations.length });
 }));
 

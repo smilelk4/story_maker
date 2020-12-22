@@ -64,12 +64,31 @@ export const createHero = inputtedInfo => {
 
 export const raiseXP = (xp, heroId) => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}/stats`, {
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/?type=raise-xp`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({xp})
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(updateHeroAction(data.hero));
+    }
+    return data;
+  }
+};
+
+export const updateHp = (hp, heroId) => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/?type=update-hp`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ hp })
     });
 
     const data = await verifyData(res, dispatch);

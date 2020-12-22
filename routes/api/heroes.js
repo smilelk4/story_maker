@@ -48,9 +48,8 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
   res.json({ stories });
 }));
 
-router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
-  const xpRaise = req.body.xp;
-
+router.put('/:id(\\d+)/?', asyncHandler(async (req, res, next) => {
+  const { type } = req.query;
   const hero = await Hero.findOne({
     where: {
       id: req.params.id
@@ -58,25 +57,34 @@ router.put('/:id(\\d+)/stats', asyncHandler(async (req, res, next) => {
     include: [HeroImage]
   });
 
-  let heroXP = hero.xp;
-  let heroLV = hero.level;
-  const maxXP = Math.floor(100 ** (heroLV / 50) * 10);
+  if (type === 'raise-xp') {
+    const xpRaise = req.body.xp;
+  
+    let heroXP = hero.xp;
+    let heroLV = hero.level;
+    const maxXP = Math.floor(100 ** (heroLV / 50) * 10);
+  
+    if ((heroXP + xpRaise) < maxXP) {
+      await hero.update({
+        xp: heroXP + xpRaise
+      });
+    } else if ((heroXP + xpRaise) === maxXP) {
+      await hero.update({
+        level: heroLV + 1,
+        xp: 0
+      });
+    } else {
+      let xpDifference = (heroXP + xpRaise) - maxXP;
+      await hero.update({
+        level: heroLV + 1,
+        xp: xpDifference
+      });
+    }
+  }
 
-  if ((heroXP + xpRaise) < maxXP) {
-    await hero.update({
-      xp: heroXP + xpRaise
-    });
-  } else if ((heroXP + xpRaise) === maxXP) {
-    await hero.update({
-      level: heroLV + 1,
-      xp: 0
-    });
-  } else {
-    let xpDifference = (heroXP + xpRaise) - maxXP;
-    await hero.update({
-      level: heroLV + 1,
-      xp: xpDifference
-    });
+  if (type === 'update-hp') {
+    const hp = req.body.hp;
+    await hero.update({ hp: hero.hp + hp });
   }
 
   res.json({ hero: {

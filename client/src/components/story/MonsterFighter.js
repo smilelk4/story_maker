@@ -4,7 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
-import { getMonsters, defeatMonster } from '../../store/actions/monsterAction';
+import { getMonsters, updateTimesDefeated } from '../../store/actions/monsterAction';
+import { raiseXP, updateHp } from '../../store/actions/heroAction';
 import dateFormatter from '../../utils/dateFormatter';
 
 const MonsterFighter = ({clickHandler}) => {
@@ -12,7 +13,7 @@ const MonsterFighter = ({clickHandler}) => {
   const { id } = useParams();
   const history = useHistory();
   const heroContainer = useRef();
-  const heroes = useSelector(state => state.hero);
+  const hero = useSelector(state => state.hero[0]);
   const monsters = useSelector(state => state.monster);
   const errors = useSelector(state => state.errors);
 
@@ -85,11 +86,12 @@ const MonsterFighter = ({clickHandler}) => {
   }
 
   const handleDefeat = () => {
-    dispatch(defeatMonster(monster.id));
+    dispatch(updateTimesDefeated(monster.id));
+    dispatch(raiseXP(exp, hero.id));
     setPage(2);
-
   }
   const handleFlee = () => {
+    dispatch(updateHp(hp * -1, hero.id));
     setPage(3);
   }
   
