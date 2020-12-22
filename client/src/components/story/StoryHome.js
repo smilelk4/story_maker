@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import Line from '../svg/Line';
 
@@ -8,11 +9,23 @@ const StoryHome = ({hero, story, destinations}) => {
   const maxXP = Math.floor(100 ** (level / 50) * 10);
   const [hpPercentage, setHPPercentage] = useState("100%");
   const [xpPercentage, setXPPercentage] = useState("100%");
+  const memoir = useSelector(state => state.memoir);
+  const [totalHoursFought, setTotalHoursFought] = useState(0);
+  const currentMonth = moment().month() + 1;
 
   useEffect(() => {
     setHPPercentage(`${(hp / maxHP) * 100}%`);
     setXPPercentage(`${(xp / maxXP) * 100}%`);
   }, [hp, xp, maxHP, maxXP]);
+
+  useEffect(() => {
+    if (memoir.length) {
+      const hoursThisMonth = memoir.filter(m => moment(m.date).month() + 1 === currentMonth)
+                      .reduce((acc, m) => acc + m.hoursFought, 0);
+      setTotalHoursFought(hoursThisMonth);
+    }
+
+  }, [memoir]);
 
   const skullIcons = () => {
     const skulls = [];
@@ -94,12 +107,23 @@ const StoryHome = ({hero, story, destinations}) => {
       <div className='storyhome__section'>
         <div className="storyhome__calendar-container">
           <h4 className='storyhome__title title'>This Month</h4>
-          <div className="storyhome__field">
-            <span>Total hours fought this month: <span>__ hours</span></span>
-          </div>
-          <div className="storyhome__field">
-            <span>Total tasks completed: <span>__ times</span></span>
-          </div>
+
+          <p className='storyhome__field'>
+            <span>
+              <span className="label">Total hours fought this month: </span>
+              <span>
+                {totalHoursFought} hours
+              </span>
+            </span>
+          </p>
+          <p className='storyhome__field'>
+            <span>
+              <span className="label">Total tasks completed: </span>
+              <span>
+                __ times
+              </span>
+            </span>
+          </p>
         </div>
       </div>
     </div>
