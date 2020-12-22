@@ -1,9 +1,10 @@
 .storyhome {
   box-shadow: $shadow-2;
+  height: 100%;
   line-height: 3rem;
 
   &__section {
-    height: 30rem;
+    height: 25rem;
     padding: 5rem;
     display: flex;
     justify-content: space-between;
@@ -136,6 +137,6 @@
 
   &__calendar-container {
     width: 100%;
-    line-height: 6rem;
+    line-height: 5rem;
   }
 }

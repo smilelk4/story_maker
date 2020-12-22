@@ -64,25 +64,27 @@ const MonsterFighter = ({clickHandler}) => {
       <h2 className="modal__title title">{pageTitle}</h2>
       {page === 1 && monster && (
         <>
-          <div className="modal__field">
-            <img src={monster.image} alt={monster.id} />
+          <div className="modal__section">
+            <img src={monster.image} alt={monster.id} id="monster-image" />
             <p className="monster__name">{monster.name}</p>
             <p className="monster__strength">Strength: {monster.strength}</p>
           </div>
-          <div>
+          <div className="modal__fight-buttons">
             <button onClick={handleDefeat}>Defeat</button>
             <button onClick={handleFlee}>Flee</button>
           </div>
         </>
       )}
       {page === 2 && (
-        <div className="modal__page-container" ref={heroContainer}> 
+        <div className="modal__section" ref={heroContainer}> 
+          <p>The hero gained some experience.</p>
           <p>Gained EXP: {exp}</p>
           <button onClick={clickHandler}>Close</button>
         </div>
       )}
       {page === 3 && (
-        <div className="modal__page-container" ref={heroContainer}> 
+        <div className="modal__section" ref={heroContainer}> 
+          <p>The monster attacked you from behind.</p>
           <p>Lost HP: {hp}</p>
           <button onClick={clickHandler}>Close</button>
         </div>
