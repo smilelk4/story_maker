@@ -11,6 +11,7 @@ const StoryHome = ({hero, story, destinations}) => {
   const [xpPercentage, setXPPercentage] = useState("100%");
   const memoir = useSelector(state => state.memoir);
   const [totalHoursFought, setTotalHoursFought] = useState(0);
+  const [averageAccomplishmentLevel, setAverageAccomplishmentLevel] = useState(0);
   const currentMonth = moment().month() + 1;
 
   useEffect(() => {
@@ -20,11 +21,14 @@ const StoryHome = ({hero, story, destinations}) => {
 
   useEffect(() => {
     if (memoir.length) {
-      const hoursThisMonth = memoir.filter(m => moment(m.date).month() + 1 === currentMonth)
-                      .reduce((acc, m) => acc + m.hoursFought, 0);
+      const memoirsThisMonth = memoir.filter(m => moment(m.date).month() + 1 === currentMonth)
+      const hoursThisMonth = memoirsThisMonth.reduce((acc, m) => acc + m.hoursFought, 0);
+      const averageAccomplishmentLevelThisMonth = 
+            (memoirsThisMonth.reduce((acc, m) => acc + m.accomplishmentLevel, 0)
+            / memoirsThisMonth.length).toFixed(2);
       setTotalHoursFought(hoursThisMonth);
+      setAverageAccomplishmentLevel(averageAccomplishmentLevelThisMonth);
     }
-
   }, [memoir]);
 
   const skullIcons = () => {
@@ -118,9 +122,9 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
           <p className='storyhome__field'>
             <span>
-              <span className="label">Total tasks completed: </span>
+              <span className="label">Average accomplishment level: </span>
               <span>
-                __ times
+                {averageAccomplishmentLevel}
               </span>
             </span>
           </p>
