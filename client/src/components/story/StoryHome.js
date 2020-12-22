@@ -65,28 +65,28 @@ const StoryHome = ({hero, story, destinations}) => {
       <div className='storyhome__section'>
         <div className="storyhome__hero-container">
           <h4 className='storyhome__title title'>Hero on Duty</h4>
-          <div className="storyhome__hero-image">
-            <img src={image} alt={hero.id} />
-          </div>
-          <div className="storyhome__hero-info">
-            <div className="storyhome__hero-name">{name}</div>
-            <div className="storyhome__hero-level">{level}</div>
-            <div className="storyhome__hero-hp">
-            <span className="status-bar">
-              <span 
-                style={{width: hpPercentage }}
-                className="hp-meter"></span>
-            </span>
-            <span className="status-bar">
-              <span 
-              style={{width: xpPercentage }}
-              className="xp-meter"></span>
-            </span>
+          <div className="storyhome__hero">
+            <div className="storyhome__hero-image">
+              <img src={image} alt={hero.id} />
             </div>
-            <div className="storyhome__hero-xp">{hero.xp}</div>
-          </div>
-          <div className="storyhome__hero-stats">
-            Stats Here
+            <div className="storyhome__hero-info">
+              <div className="storyhome__hero-name">{name}</div>
+              <div className="storyhome__hero-level">Level: {level}</div>
+              <div className="storyhome__hero-hp">
+                <span className="status-bar">
+                  <span style={{width: hpPercentage }}
+                        className="hp-meter"></span>
+                </span>
+                <div className="storyhome__hero-hp">HP ({hero.hp} / {maxHP})</div>
+              </div>
+              <div className="storyhome__hero-xp">
+                <span className="status-bar">
+                  <span style={{width: xpPercentage }}
+                        className="xp-meter"></span>
+                </span>
+                <div className="storyhome__hero-xp">XP ({hero.xp} / {maxXP})</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
