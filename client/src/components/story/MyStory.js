@@ -12,6 +12,7 @@ import MonsterContainer from './MonsterContainer';
 import HistoryContainer from './HistoryContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import OverviewContainer from './OverviewContainer';
+import FightMonster from './FightMonster';
 import { getStory } from '../../store/actions/storyAction';
 import Frame from '../svg/Frame';
 
@@ -112,6 +113,7 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
+        <FightMonster />
         <OverviewContainer />
         <NewDestination />
        </div>

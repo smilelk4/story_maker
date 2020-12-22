@@ -17,11 +17,9 @@ const OverviewContainer = () => {
   },[id, dispatch]);
 
   return ( 
-    <PageAnimationWrapper>
-      <div className="overview__container">
-        <Overview progress={progress}/>
-      </div>
-    </PageAnimationWrapper>
+    <div className="overview__container">
+      <Overview progress={progress}/>
+    </div>
   );
 }
  

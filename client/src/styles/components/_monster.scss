@@ -86,4 +86,12 @@
       margin-top: 1rem;
     }
   }
+
+  &__fight-monster {
+    background-color: grey;
+    margin: 0 2rem;
+    height: $basic-item-height;
+    padding: 2rem;
+    display: flex;
+  }
 }
