@@ -7,7 +7,7 @@ import { createStory } from '../../store/actions/storyAction';
 import { getMonsters } from '../../store/actions/monsterAction';
 import dateFormatter from '../../utils/dateFormatter';
 
-const MonsterFighter = () => {
+const MonsterFighter = ({clickHandler}) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const history = useHistory();
@@ -28,6 +28,7 @@ const MonsterFighter = () => {
 
   const [monster, setMonster] = useState(monsters[0]);
   const [exp, setExp] = useState(0);
+  const [hp, setHp] = useState(0);
 
   useEffect(() => {
     dispatch(getMonsters(id));
@@ -42,8 +43,11 @@ const MonsterFighter = () => {
 
   useEffect(() => {
     if (monster) {
-      const exp = monster.strength * .2;
+      const exp = Math.floor((monster.strength * .01) / 2 * 100);
       setExp(exp);
+
+      const hp = Math.floor((monster.strength * .02) / 2 * 100);
+      setHp(hp);
     }
   },[monster, dispatch]);
 
@@ -51,7 +55,6 @@ const MonsterFighter = () => {
     if (page === 2) {
       if (heroContainer.current.children.length && monsterId) {
         heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-        // heroContainer.current.childNodes[monsterId - 1].classList.add('selected');
       }
     }
   }, [monsterId, page]);
@@ -60,9 +63,9 @@ const MonsterFighter = () => {
     if (page === 1) {
       setPageTitle('Wild Monster Appeared!');
     } else if (page === 2) {
-      setPageTitle('Select Your Hero');
+      setPageTitle('You\'ve Won!');
     } else {
-      setPageTitle('Set Your Destination');
+      setPageTitle('You Lost HP');
     }
   }, [page])
 
@@ -81,30 +84,9 @@ const MonsterFighter = () => {
     }
   }
 
-  const handleNext = () => {
-    if ((page === 1 && !title) || (page === 2 && !monsterId)) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['Please select/fill out to proceed.']
-      });
-    }
-    dispatch({ type: CLEAR_ERRORS });
-    setPage(page + 1);
-  }
-
-  const handleDefeat = () => {
-    setPage(2);
-  }
-
-  const handleFlee = () => {
-    setPage(3);
-  }
+  const handleDefeat = () => setPage(2);
+  const handleFlee = () => setPage(3);
   
-  const handleBack = () => {
-    setPage(page - 1);
-    dispatch({ type: CLEAR_ERRORS });
-  }
-
   return ( 
     <>
       <h2 className="modal__title title">{pageTitle}</h2>
@@ -113,6 +95,7 @@ const MonsterFighter = () => {
           <div className="modal__field">
             <img src={monster.image} alt={monster.id} />
             <p className="monster__name">{monster.name}</p>
+            <p className="monster__strength">Strength: {monster.strength}</p>
           </div>
           <div>
             <button onClick={handleDefeat}>Defeat</button>
@@ -123,46 +106,19 @@ const MonsterFighter = () => {
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
           <p>Gained EXP: {exp}</p>
+          <button onClick={clickHandler}>Close</button>
         </div>
       )}
       {page === 3 && (
-        <>
-          <div className="modal__field">
-            <label for="destination-title">Final Goal</label>
-            <input type="text" 
-              value={destinationTitle} 
-              name="destination-title"
-              onChange={e => setDestinationTitle(e.target.value)} />
-          </div>
-          <div className="modal__field">
-            <label for="target-date">Target Date</label>
-            <input type="date" 
-              value={targetDate} 
-              name="target-date"
-              onChange={e => setTargetDate(e.target.value)} />
-          </div>
-          <div className="modal__field">
-            <label for="importance">Importance</label>
-            <p>{importance}</p>
-            <input type="range" 
-              value={importance}
-              min="0" 
-              max="10" 
-              name="importance"
-              step=".01"
-              onChange={e => setImportance(e.target.value)} />
-          </div>
-          <button onClick={handleSubmit}>Create Story</button>
-        </>
+        <div className="modal__page-container" ref={heroContainer}> 
+          <p>Lost HP: {hp}</p>
+          <button onClick={clickHandler}>Close</button>
+        </div>
       )}
       <div className="modal__errors-container">
         {errors.map(error => (
           <div>{error}</div>
         ))}
-      </div>
-      <div className="modal__button-container">
-        <button disabled={page < 2} onClick={handleBack}>Back</button>
-        <button disabled={page > 2} onClick={handleNext}>Next</button>
       </div>
     </>
   );

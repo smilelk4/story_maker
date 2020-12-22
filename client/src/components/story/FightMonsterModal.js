@@ -6,7 +6,7 @@ const FightMonsterModal = ({clickHandler}) => {
   return ( 
     <ModalContainer>
       <div className="modal">
-        <MonsterFighter />
+        <MonsterFighter clickHandler={clickHandler}/>
       </div>
       <div className="modal__overlay" onClick={clickHandler}></div>
     </ModalContainer>
