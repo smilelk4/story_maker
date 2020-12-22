@@ -1,32 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { baseUrl } from '../../config';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
-import { createStory } from '../../store/actions/storyAction';
+import { useParams } from 'react-router-dom';
 import { getMonsters, updateTimesDefeated } from '../../store/actions/monsterAction';
 import { raiseXP, updateHp } from '../../store/actions/heroAction';
-import dateFormatter from '../../utils/dateFormatter';
 
 const MonsterFighter = ({clickHandler}) => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const history = useHistory();
   const heroContainer = useRef();
   const hero = useSelector(state => state.hero[0]);
   const monsters = useSelector(state => state.monster);
   const errors = useSelector(state => state.errors);
 
   const [page, setPage] = useState(1);
-  const [worlds, setWorlds] = useState([]);
-  const [worldId, setWorldId] = useState(null);
-  const [monsterId, setMonsterId] = useState(null);
-  const [title, setTitle] = useState('');
-  const [destinationTitle, setDestinationTitle] = useState('');
-  const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
-  const [importance, setImportance] = useState('0');
   const [pageTitle, setPageTitle] = useState('');
-
   const [monster, setMonster] = useState(monsters[0]);
   const [exp, setExp] = useState(0);
   const [hp, setHp] = useState(0);
@@ -53,14 +40,6 @@ const MonsterFighter = ({clickHandler}) => {
   },[monster, dispatch]);
 
   useEffect(() => {
-    if (page === 2) {
-      if (heroContainer.current.children.length && monsterId) {
-        heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-      }
-    }
-  }, [monsterId, page]);
-
-  useEffect(() => {
     if (page === 1) {
       setPageTitle('Wild Monster Appeared!');
     } else if (page === 2) {
@@ -68,22 +47,7 @@ const MonsterFighter = ({clickHandler}) => {
     } else {
       setPageTitle('You Lost HP');
     }
-  }, [page])
-
-  const handleSubmit = async e => {
-    if ( !monsterId || !title || !destinationTitle || !targetDate || !importance) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['There is at least one field with missing value.']
-      });
-    }
-    const data = await dispatch(createStory({ worldId, monsterId, title, 
-                                destinationTitle, targetDate, importance  }));
-
-    if(!data.errors) {
-      history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
-    }
-  }
+  }, [page]);
 
   const handleDefeat = () => {
     dispatch(updateTimesDefeated(monster.id));

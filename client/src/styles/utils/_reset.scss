@@ -42,6 +42,14 @@ a:visited {
   height: 100%;
 }
 
+.label {
+  color: $color-dark-lighter2;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
 select {
   border: none;
   border-radius: 2px;

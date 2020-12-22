@@ -28,22 +28,32 @@ const StoryHome = ({hero, story, destinations}) => {
         <div className="storyhome__story">
           <h4 className='storyhome__title title'>{story.title}</h4>
           <p className='storyhome__field'>
-            <span>Difficulty: <span>{skullIcons()}</span></span>
-          </p>
-          <p className='storyhome__field'>
-            <span>On adventure since: 
-              <span>{moment(story.start_date).format("MMM Do YYYY") + ' '}
-                    ({moment(story.start_date).startOf('day').fromNow()})</span>
+            <span>
+              <span className="label">Difficulty: </span>
+              <span>{skullIcons()}</span>
             </span>
           </p>
           <p className='storyhome__field'>
-            <span>Expected completion date: 
-              <span>{moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
-                    ({moment(destinations[destinations.length - 1].target_date).endOf('day').fromNow()})</span>
+            <span>
+              <span className="label">On adventure since: </span>
+              <span>
+                {moment(story.start_date).format("MMM Do YYYY") + ' '}
+                ({moment(story.start_date).startOf('day').fromNow()})
+              </span>
             </span>
           </p>
           <p className='storyhome__field'>
-            <span>Final destination: 
+            <span>
+              <span className="label">Expected completion date: </span> 
+              <span>
+                {moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
+                ({moment(destinations[destinations.length - 1].target_date).endOf('day').fromNow()})
+              </span>
+            </span>
+          </p>
+          <p className='storyhome__field'>
+            <span>
+              <span className="label">Final destination: </span>
               <span>{destinations[destinations.length - 1].title}</span>
             </span>
           </p>
