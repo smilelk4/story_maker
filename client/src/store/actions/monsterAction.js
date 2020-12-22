@@ -56,9 +56,9 @@ export const defeatMonster = monsterId => {
     const res = await fetch(`${baseUrl}/monsters/${monsterId}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(monsterId)
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     });
 
     const data = await verifyData(res, dispatch);

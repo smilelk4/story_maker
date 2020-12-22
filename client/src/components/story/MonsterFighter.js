@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
-import { getMonsters } from '../../store/actions/monsterAction';
+import { getMonsters, defeatMonster } from '../../store/actions/monsterAction';
 import dateFormatter from '../../utils/dateFormatter';
 
 const MonsterFighter = ({clickHandler}) => {
@@ -39,7 +39,7 @@ const MonsterFighter = ({clickHandler}) => {
       const randomIndex = Math.floor(Math.random() * monsters.length);
       setMonster(monsters[randomIndex]);
     }
-  },[id, dispatch]);
+  },[monsters, id, dispatch]);
 
   useEffect(() => {
     if (monster) {
@@ -85,7 +85,9 @@ const MonsterFighter = ({clickHandler}) => {
   }
 
   const handleDefeat = () => {
+    dispatch(defeatMonster(monster.id));
     setPage(2);
+
   }
   const handleFlee = () => {
     setPage(3);
@@ -94,7 +96,7 @@ const MonsterFighter = ({clickHandler}) => {
   return ( 
     <>
       <h2 className="modal__title title">{pageTitle}</h2>
-      {page === 1 && (
+      {page === 1 && monster && (
         <>
           <div className="modal__field">
             <img src={monster.image} alt={monster.id} />

@@ -34,4 +34,25 @@ router.post('/',
   }});
 }));
 
+router.put('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  // console.log(monsterId, typeof monsterId, '!!!!!')
+  const monster = await Monster.findByPk(id, {
+    include: [MonsterImage]
+  });
+
+  await monster.update({ times_defeated: monster.times_defeated + 1 });
+  
+  res.json({ monster: {
+    id: monster.id,
+    storyId: monster.story_id,
+    name: monster.name,
+    strength: monster.strength,
+    timesDefeated: monster.times_defeated,
+    image: monster.MonsterImage.image_url,
+    createdAt: monster.createdAt
+  }});
+}));
+
 module.exports = router;
