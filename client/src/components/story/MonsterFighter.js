@@ -43,10 +43,10 @@ const MonsterFighter = ({clickHandler}) => {
 
   useEffect(() => {
     if (monster) {
-      const exp = Math.floor((monster.strength * .01) / 2 * 100);
+      const exp = Math.ceil((monster.strength * .01) / 2 * 100);
       setExp(exp);
 
-      const hp = Math.floor((monster.strength * .02) / 2 * 100);
+      const hp = Math.ceil((monster.strength * .02) / 2 * 100);
       setHp(hp);
     }
   },[monster, dispatch]);
@@ -84,8 +84,12 @@ const MonsterFighter = ({clickHandler}) => {
     }
   }
 
-  const handleDefeat = () => setPage(2);
-  const handleFlee = () => setPage(3);
+  const handleDefeat = () => {
+    setPage(2);
+  }
+  const handleFlee = () => {
+    setPage(3);
+  }
   
   return ( 
     <>

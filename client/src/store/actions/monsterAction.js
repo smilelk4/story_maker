@@ -1,4 +1,5 @@
-import { loadMonsterAction, addMonsterAction } from '../reducers/monsterReducer';
+import { loadMonsterAction, addMonsterAction,
+         updateMonsterAction } from '../reducers/monsterReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -45,6 +46,25 @@ export const createMonster = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(addMonsterAction(data.monster));
+    }
+    return data;
+  }
+};
+
+export const defeatMonster = monsterId => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/monsters/${monsterId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(monsterId)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(updateMonsterAction(data.monster));
     }
     return data;
   }

@@ -1,5 +1,6 @@
 const LOAD_MONSTERS = 'LOAD_MONSTERS';
 const ADD_MONSTER = 'ADD_MONSTER';
+const UPDATE_MONSTER = 'UPDATE_MONSTER';
 
 export const loadMonsterAction = data => ({
   type: LOAD_MONSTERS,
@@ -8,6 +9,11 @@ export const loadMonsterAction = data => ({
 
 export const addMonsterAction = data => ({
   type: ADD_MONSTER,
+  monster: data
+});
+
+export const updateMonsterAction = data => ({
+  type: UPDATE_MONSTER,
   monster: data
 });
 
@@ -33,6 +39,12 @@ const monsterReducer = (state = [], action) => {
     case ADD_MONSTER: {
       const newState = [...state];
       newState.unshift(action.monster);
+      return newState;
+    }
+    case UPDATE_MONSTER: {
+      const newState = [...state];
+      const monsterIndex = newState.findIndex(monster => monster.id === action.monster.id);
+      newState.splice(monsterIndex, 1, action.monster);
       return newState;
     }
     default:
