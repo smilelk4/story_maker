@@ -38,6 +38,7 @@
   &__field {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     input {
       width: 50rem;
@@ -61,6 +62,7 @@
     flex-wrap: wrap;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     @include custom-scroll();
   }
 
@@ -84,5 +86,17 @@
     left: 17.5rem;
     text-align: center;
     width: 40rem;
+  }
+
+  &__monster {
+    width: 15rem;
+    line-height: 2rem;
+    padding: 1rem;
+    margin: 0 1rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

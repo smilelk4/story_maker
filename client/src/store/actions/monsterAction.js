@@ -22,6 +22,7 @@ export const getMonsters = storyId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/stories/${storyId}/monsters`);
     const data = await verifyData(res, dispatch);
+    // console.log('!!!!!!!!!!!!!!!')
 
     if (!data.errors) {
       dispatch(loadMonsterAction(data.monsters));

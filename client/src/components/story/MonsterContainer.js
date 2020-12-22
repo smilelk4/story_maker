@@ -13,7 +13,9 @@ const MonsterContainer = () => {
   const monsters = useSelector(state => state.monster);
 
   useEffect(() => {
-    dispatch(getMonsters(id));
+    if (!monsters.length) {
+      dispatch(getMonsters(id));
+    }
   },[id, dispatch]);
 
 

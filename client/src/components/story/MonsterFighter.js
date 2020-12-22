@@ -1,50 +1,64 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
+import { getMonsters } from '../../store/actions/monsterAction';
 import dateFormatter from '../../utils/dateFormatter';
 
 const MonsterFighter = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
   const history = useHistory();
   const heroContainer = useRef();
   const heroes = useSelector(state => state.hero);
+  const monsters = useSelector(state => state.monster);
   const errors = useSelector(state => state.errors);
 
   const [page, setPage] = useState(1);
   const [worlds, setWorlds] = useState([]);
   const [worldId, setWorldId] = useState(null);
-  const [heroId, setHeroId] = useState(null);
+  const [monsterId, setMonsterId] = useState(null);
   const [title, setTitle] = useState('');
   const [destinationTitle, setDestinationTitle] = useState('');
   const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
   const [importance, setImportance] = useState('0');
   const [pageTitle, setPageTitle] = useState('');
 
+  const [monster, setMonster] = useState(monsters[0]);
+  const [exp, setExp] = useState(0);
+
   useEffect(() => {
-    (async () => {
-      if (!worlds.length) {
-        const res = await fetch(`${baseUrl}/worlds`);
-        const data = await res.json();
-        setWorlds(data.worlds);
-      }
-    })();
-  }, [worlds]);
+    dispatch(getMonsters(id));
+  },[id, dispatch]);
+
+  useEffect(() => {
+    if (monsters.length) {
+      const randomIndex = Math.floor(Math.random() * monsters.length);
+      setMonster(monsters[randomIndex]);
+    }
+  },[id, dispatch]);
+
+  useEffect(() => {
+    if (monster) {
+      const exp = monster.strength * .2;
+      setExp(exp);
+    }
+  },[monster, dispatch]);
 
   useEffect(() => {
     if (page === 2) {
-      if (heroContainer.current.children.length && heroId) {
+      if (heroContainer.current.children.length && monsterId) {
         heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-        heroContainer.current.childNodes[heroId - 1].classList.add('selected');
+        // heroContainer.current.childNodes[monsterId - 1].classList.add('selected');
       }
     }
-  }, [heroId, page]);
+  }, [monsterId, page]);
 
   useEffect(() => {
     if (page === 1) {
-      setPageTitle('Set Your Story Name');
+      setPageTitle('Wild Monster Appeared!');
     } else if (page === 2) {
       setPageTitle('Select Your Hero');
     } else {
@@ -53,13 +67,13 @@ const MonsterFighter = () => {
   }, [page])
 
   const handleSubmit = async e => {
-    if ( !heroId || !title || !destinationTitle || !targetDate || !importance) {
+    if ( !monsterId || !title || !destinationTitle || !targetDate || !importance) {
       return dispatch({
         type: LOAD_ERRORS,
         errors: ['There is at least one field with missing value.']
       });
     }
-    const data = await dispatch(createStory({ worldId, heroId, title, 
+    const data = await dispatch(createStory({ worldId, monsterId, title, 
                                 destinationTitle, targetDate, importance  }));
 
     if(!data.errors) {
@@ -68,7 +82,7 @@ const MonsterFighter = () => {
   }
 
   const handleNext = () => {
-    if ((page === 1 && !title) || (page === 2 && !heroId)) {
+    if ((page === 1 && !title) || (page === 2 && !monsterId)) {
       return dispatch({
         type: LOAD_ERRORS,
         errors: ['Please select/fill out to proceed.']
@@ -76,6 +90,14 @@ const MonsterFighter = () => {
     }
     dispatch({ type: CLEAR_ERRORS });
     setPage(page + 1);
+  }
+
+  const handleDefeat = () => {
+    setPage(2);
+  }
+
+  const handleFlee = () => {
+    setPage(3);
   }
   
   const handleBack = () => {
@@ -89,24 +111,18 @@ const MonsterFighter = () => {
       {page === 1 && (
         <>
           <div className="modal__field">
-            <label for="title">Story Title</label>
-            <input type="text" 
-              value={title} 
-              name="title"
-              onChange={e => setTitle(e.target.value)} />
+            <img src={monster.image} alt={monster.id} />
+            <p className="monster__name">{monster.name}</p>
+          </div>
+          <div>
+            <button onClick={handleDefeat}>Defeat</button>
+            <button onClick={handleFlee}>Flee</button>
           </div>
         </>
       )}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
-          {heroes.length && heroes.map(hero => (
-            <div className="hero" onClick={() => {
-              setHeroId(hero.id);
-              setWorldId(hero.worldId) }}>
-              <img src={hero.image} alt={hero.id} />
-              <p className="hero__name">{hero.name}</p>
-            </div>
-          ))}
+          <p>Gained EXP: {exp}</p>
         </div>
       )}
       {page === 3 && (
