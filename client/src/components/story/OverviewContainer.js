@@ -9,8 +9,10 @@ import Overview from './Overview';
 const OverviewContainer = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.task);
+  const destinations = useSelector(state => state.destination);
   const progress = useSelector(state => state.progress);
   const [uncompletedTasks, setUncompletedTasks] = useState([]);
+  const [overdueDestinations, setOverdueDestinations] = useState([]);
   const { id } = useParams();
   const today = moment();
 
@@ -28,9 +30,19 @@ const OverviewContainer = () => {
     }
   },[tasks]);
 
+  useEffect(() => {
+    if (destinations.length) {
+      const overdueDestinations = destinations.filter(destination => (
+                moment(destination.target_date).isBefore(today, 'days')));
+      setOverdueDestinations(overdueDestinations);
+    }
+  },[destinations]);
+
   return ( 
     <div className="overview__container">
-      <Overview progress={progress} uncompletedTasks={uncompletedTasks}/>
+      <Overview progress={progress}
+                uncompletedTasks={uncompletedTasks}
+                overdueDestinations={overdueDestinations} />
     </div>
   );
 }
