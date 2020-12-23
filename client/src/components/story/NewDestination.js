@@ -52,7 +52,7 @@ const NewDestination = () => {
   return (
     <form onSubmit={handleSubmit} className="destination__form">
         <div className="destination__section">
-          <label for="destination-title">Destination title</label>
+          <label for="destination-title">Destination Title</label>
           <input type="text" 
             value={destinationTitle} 
             name="destination-title"

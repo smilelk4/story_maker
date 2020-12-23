@@ -31,6 +31,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 1rem;
+
+    & > * {
+      padding: 1rem 0;
+    }
   }
 
   &__info {
@@ -150,10 +154,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  line-height: 3rem;
 
   &__info {
     color: $color-dark-lighter2;
     font-size: 1.2rem;
+    width: 40%;
   }
   
   &:not(:last-child) {

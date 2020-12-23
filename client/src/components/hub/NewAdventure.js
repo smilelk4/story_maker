@@ -33,7 +33,7 @@ const NewAdventure = () => {
     <>
     {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
     <h3 
-      className="hub__new-adventure"
+      className="hub__new-adventure title"
       onMouseOver={animateSwords}
       onClick={clickHandler}>
       <p 

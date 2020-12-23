@@ -36,7 +36,7 @@ const FightMonster = () => {
       onMouseOver={animateSwords}
       onClick={clickHandler}>
       <p className="new-adventure__svg-container"></p>
-      <span>Fight a Monster</span>
+      <span className="title">Fight a Monster</span>
     </h3>
     </>
   );
