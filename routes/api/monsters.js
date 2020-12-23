@@ -7,12 +7,16 @@ router.post('/',
   const { storyId, name, strength } = req.body;
 
   let monsterImageId;
-  if (strength <= 3) {
-    monsterImageId = Math.ceil(Math.random() * 2);
+  if (strength === 1) {
+    monsterImageId = 1;
+  }
+  else if (strength <= 5) {
+    monsterImageId = (Math.ceil(Math.random() * 3) + 1);
   } else if (strength <= 7) {
     monsterImageId = 3;
+    monsterImageId = (Math.ceil(Math.random() * 2) + 4);
   } else {
-    monsterImageId = 4;
+    monsterImageId = (Math.ceil(Math.random() * 2) + 6);
   }
 
   const monsterImage = await MonsterImage.findByPk(monsterImageId);
