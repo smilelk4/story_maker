@@ -32,7 +32,6 @@ const Destination = ({handleClick, ...props}) => {
         <p className="destination__description">{description}</p>
         <div className="destination__stats">
           <div className="destination__days">
-            
             {isOverdue ? (
               <p className="destination__alert">Overdue</p>
             ) : (
@@ -40,10 +39,12 @@ const Destination = ({handleClick, ...props}) => {
             )}
             <p onClick={() => handleClick(id)} 
               className="destination__complete"><CheckIcon /> Mark as Accomplished</p>
-            <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
-            {path === '/my-hub' && (
-              <p className="destination__story">Story: {Story.title}</p>
-            )}
+            <div className="destination__info">
+              <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
+              {path === '/my-hub' && (
+                <p className="destination__story">Story: {Story.title}</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

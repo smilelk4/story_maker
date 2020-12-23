@@ -44,10 +44,14 @@ asyncHandler(async (req, res) => {
       story_id: req.params.id,
       accomplished: state === 'accomplished',
     },
-    include: {
+    include: [{
       model: Story,
       attributes: ['title']
-    },
+    },{
+      model: Destination,
+      as: 'ParentDestination',
+      attributes: ['title']
+    }],
     order: [['target_date', 'ASC']]
   });
     // if (!destinations.length) next(createError('No destinations found.'));
