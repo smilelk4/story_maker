@@ -1,3 +1,10 @@
 .overview {
   position: relative;
+  height: 10rem;
+  background: $gradient-grey;
+  border-radius: 3px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }

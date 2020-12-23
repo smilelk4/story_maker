@@ -41,7 +41,7 @@ const MonsterFighter = ({clickHandler}) => {
 
   useEffect(() => {
     if (page === 1) {
-      setPageTitle('Wild Monster Appeared!');
+      setPageTitle('A Wild Monster Appeared!');
     } else if (page === 2) {
       setPageTitle('You\'ve Won!');
     } else {

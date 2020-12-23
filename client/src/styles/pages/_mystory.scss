@@ -28,6 +28,10 @@
     grid-column: 6 / span 1;
     z-index: 1;
 
+    & > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
     select {
       width: 100%;
     }

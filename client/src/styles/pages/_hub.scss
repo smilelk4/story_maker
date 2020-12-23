@@ -84,12 +84,17 @@
 
   &__new-adventure {
     @include label-1($gradient-green-radial, white);
+    @include opacity-change-on-hover();
     cursor: pointer;
     width: 100%;
     text-align: center;
-    @include opacity-change-on-hover();
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    & > * {
+      margin: 0 1.5rem;
+    }
   }
 
   &__greet {
