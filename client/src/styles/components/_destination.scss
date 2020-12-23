@@ -147,6 +147,14 @@
   border-radius: 2px;
   padding: 2rem;
   margin-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__info {
+    color: $color-dark-lighter2;
+    font-size: 1.2rem;
+  }
   
   &:not(:last-child) {
     margin-bottom: 2rem;

@@ -42,7 +42,7 @@ const MyStory = () => {
           className="mystory__sidebar-menu" 
           onClick={() => {
             setCurrentDisplay(<StoryHomeContainer />);
-            setCurrentTitle("Story Home");
+            setCurrentTitle("Story Detail");
         }}>
           <img className="icon"
             src='/icons/map.png' alt={id}/>
