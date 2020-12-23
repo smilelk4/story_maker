@@ -6,6 +6,7 @@ import Destination from './Destination';
 import { getUpcomingDestinations, 
          completeDestination } from '../store/actions/destinationActions';
 import { clearDestinationsAction } from '../store/reducers/destinationReducer';
+import Line from './svg/Line';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,10 @@ const DestinationContainer = () => {
     <PageAnimationWrapper>
       <div className="destination__container">
         {destinations.map(destination => (
-          <Destination handleClick={onCompleted} {...destination} />
+          <>
+            {destinations[0] !== destination && <Line /> }
+            <Destination handleClick={onCompleted} {...destination} />
+          </>
         ))}
       </div>
     </PageAnimationWrapper>

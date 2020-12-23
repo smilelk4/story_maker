@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
 import dateFormatter from '../utils/dateFormatter';
-import Line from './svg/Line';
+import CheckIcon from '@material-ui/icons/Check';
 
 const Destination = ({handleClick, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
-        title, description, target_date: targetDate, importance } = props;
+        title, description, target_date: targetDate, importance, Story } = props;
   const [isOverdue, setIsOverDue] = useState(false);
+  const path = useLocation().pathname;
 
   const today = new Date();
   const target = new Date(targetDate);
@@ -22,7 +24,8 @@ const Destination = ({handleClick, ...props}) => {
 
   return ( 
     <>
-      <div className="destination">
+      <div className={`destination ${!parentDestinationId ?
+                      'destination__final' : ''}`}>
         <p className="destination__title title">
         {!parentDestinationId && <img className="icon"
             src='/icons/crown.png' alt={id}/>}{title}</p>
@@ -35,13 +38,15 @@ const Destination = ({handleClick, ...props}) => {
             ) : (
               <p className="destination__days-left">{dayDiff} Days Left</p>
             )}
-            <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
             <p onClick={() => handleClick(id)} 
-              className="destination__complete">Mark as Accomplished</p>
+              className="destination__complete"><CheckIcon /> Mark as Accomplished</p>
+            <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
+            {path === '/my-hub' && (
+              <p className="destination__story">Story: {Story.title}</p>
+            )}
           </div>
         </div>
       </div>
-      {parentDestinationId && <Line />}
     </>
   );
 }

@@ -7,10 +7,15 @@
   line-height: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  // border: 1px solid black;
+
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
 
   &:not(:last-child) {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 
   &__container {
@@ -34,25 +39,32 @@
     display: flex;
     align-items: flex-end;
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
 
     & > * {
       margin-right: 1rem;
     }
   }
-
   &__days-left {
     @include label-1($color-blue-light, $color-light);
     align-self: flex-end;
   }
 
+  &__description, &__story {
+    color: $color-dark-lighter2;
+  }
+
   &__alert {
     @include label-1($color-blue-dark, $color-light);
     align-self: flex-end;
+    margin-bottom: .5rem;
   }
 
   &__target-date {
     margin-top: 1rem;
     align-self: flex-end;
+    color: $color-dark-lighter2;
 
     &.alert {
       color: $color-pink;
@@ -73,10 +85,16 @@
 
   &__complete {
     font-weight: bolder;
-    text-align: end;
     font-size: 1.2rem;
     @include opacity-change-on-hover();
     cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__final {
+    background: $gradient-grey;
   }
 
   &__form {

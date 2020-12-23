@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Destination.associate = function(models) {
-    // associations can be defined here
+    Destination.belongsTo(models.Story, { foreignKey: 'story_id' });
   };
   return Destination;
 };
