@@ -7,8 +7,7 @@ const Node = ({destination, active, setActive, ...props}) => {
   const [ref] = useBox(() => ({ mass: 1, ...props }));
   const [hovered, setHovered] = useState(false);  
   const gltf = useGLTF('/gltf/trees/scene.gltf', true);
-  // const texture = useTexture('https://story-maker-app.s3.amazonaws.com/tree-2.png')
-  // const texture = useTexture(destination.parent_destination_id ? 'https://story-maker-app.s3.amazonaws.com/tree-2.png' : 'https://story-maker-app.s3.amazonaws.com/castle.png')
+  const texture = useTexture('https://story-maker-app.s3.amazonaws.com/hero-icons/17.png');
 
   return ( 
     <Suspense fallback={null}>
