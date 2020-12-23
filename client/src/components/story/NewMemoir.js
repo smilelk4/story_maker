@@ -48,27 +48,31 @@ const NewMemoir = () => {
         </div>
         <div className="memoir__form-section">
           <label for="hours">Hours Fought</label>
-          <input type="range" 
-              value={hoursFought} 
-              min="0" 
-              max="24" 
-              name="hours"
-              step="1"
-              className="small"
-            onChange={e => setHoursFought(e.target.value)} />
-            <span className="memoir__form-number-display">{hoursFought}</span>
+          <div className="form__slider">
+            <input type="range" 
+                value={hoursFought} 
+                min="0" 
+                max="24" 
+                name="hours"
+                step="1"
+                className="small"
+              onChange={e => setHoursFought(e.target.value)} />
+              <span className="form__number-display">{hoursFought}</span>
+          </div>
         </div>
         <div className="memoir__form-section">
           <label for="accomplishment">Accomplishment</label>
-          <input type="range" 
-              value={accomplishmentLevel}
-              min="0" 
-              max="10" 
-              name="accomplishment"
-              step=".1"
-              className="small"
-              onChange={e => setAccomplishmentLevel(e.target.value)} />
-            <span className="memoir__form-number-display">{accomplishmentLevel}</span>
+          <div className="form__slider">
+            <input type="range" 
+                value={accomplishmentLevel}
+                min="0" 
+                max="10" 
+                name="accomplishment"
+                step=".1"
+                className="small"
+                onChange={e => setAccomplishmentLevel(e.target.value)} />
+              <span className="form__number-display">{accomplishmentLevel}</span>
+          </div>
         </div>
         <button type="submit">Create a New Memoir</button>
     </form>

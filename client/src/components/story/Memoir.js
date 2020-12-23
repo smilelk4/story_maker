@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import DateFormatter from '../../utils/dateFormatter';
 
 const Memoir = ({...props}) => {
@@ -11,7 +12,7 @@ const Memoir = ({...props}) => {
       <p className="memoir__extra-info">
         <p className="memoir__hours">Hours Fought: {hoursFought}</p>
         <p className="memoir__accomplishment">Accomplishment Level: {accomplishmentLevel}</p>
-        <p className="memoir__date">Date: {DateFormatter(date)}</p>
+        <p className="memoir__date">Date: {moment(date).format('MM-DD-YYYY')}</p>
       </p>
     </div>
   );

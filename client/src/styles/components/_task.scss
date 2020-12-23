@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   padding: 2rem;
   overflow-y: scroll;
   margin: 0 2rem;
@@ -115,6 +116,9 @@
       width: 50rem;
       background: transparent;
     }
+    button {
+      margin-left: 2rem;
+    }
   }
 
   &__delete-form {
@@ -138,6 +142,7 @@
     display: flex;
     @include opacity-change-on-hover();
     font-size: 1.2rem;
+    color: $color-dark-lighter2;
 
     & > p {
       margin: 0 .5rem;
