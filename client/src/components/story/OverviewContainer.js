@@ -14,7 +14,7 @@ const OverviewContainer = () => {
   const [uncompletedTasks, setUncompletedTasks] = useState([]);
   const [overdueDestinations, setOverdueDestinations] = useState([]);
   const { id } = useParams();
-  const today = moment();
+  const today = moment().format("MM-DD-YYYY");
 
   useEffect(() => {
     dispatch(getMemoirs(id));
@@ -24,7 +24,7 @@ const OverviewContainer = () => {
   useEffect(() => {
     if (tasks.length) {
       const uncompletedTasks = tasks.filter(task => (
-                (moment(task.last_accomplished).diff(today, 'days')) < 0) ||
+                (moment(task.last_accomplished).format("MM-DD-YYYY")) < today) ||
                  !task.last_accomplished);
       setUncompletedTasks(uncompletedTasks);
     }
