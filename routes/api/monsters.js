@@ -20,11 +20,12 @@ router.post('/',
   }
 
   const monsterImage = await MonsterImage.findByPk(monsterImageId);
-        
+          
   const monster = await Monster.create({
     story_id: storyId,
     name,
-    strength
+    strength,
+    image_id: monsterImageId
   });
 
   res.status(201).json({ monster: {
