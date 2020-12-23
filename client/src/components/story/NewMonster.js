@@ -37,15 +37,17 @@ const NewMonster = () => {
         </div>
         <div className="monster__form-section">
           <label for="strength">Strength</label>
-          <input type="range" 
-              value={strength} 
-              min="1" 
-              max="10" 
-              name="strength"
-              step="1"
-              className="small"
-            onChange={e => setStrength(e.target.value)} />
-            <span className="monster__form-number-display">{strength}</span>
+          <div className="form__slider">
+            <input type="range" 
+                value={strength} 
+                min="1" 
+                max="10" 
+                name="strength"
+                step="1"
+                className="small"
+              onChange={e => setStrength(e.target.value)} />
+              <span className="form__number-display">{strength}</span>
+          </div>
         </div>
         <button type="submit">Create a New Monster</button>
     </form>

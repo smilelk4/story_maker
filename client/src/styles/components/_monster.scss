@@ -2,24 +2,33 @@
   height: $basic-item-height;
   background: $gradient-grey;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-around;
   padding: 2rem;
   overflow-y: scroll;
   margin: 0 2rem;
   border-radius: 2px;
+  @include hide-scroll;
   
   &:not(:last-child) {
     margin-bottom: 2rem;
   }
 
-  @include hide-scroll;
-  
   &__container {
     @include calc("height", "100% - 1.5 * #{$basic-item-height}");
     overflow-y: scroll;
     @include custom-scroll();
     margin-top: 3rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    & *:not(:first-child) {
+      color: $color-dark-lighter2;
+    }
   }
 
   &__title {
