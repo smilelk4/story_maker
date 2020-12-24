@@ -99,12 +99,12 @@
     height: 100%;
     cursor: pointer;
     width: 7rem;
-    // background: $gradient-green-radial;
     background: $gradient-green-radial;
     color: white;
     padding: 1rem;
     border-radius: 3px;
     line-height: 2rem;
     letter-spacing: .1rem;
+    z-index: 1;
   }
 }

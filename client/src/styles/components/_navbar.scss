@@ -25,7 +25,41 @@
   &__menu {
     display: flex;
     margin: 0 2rem;
-    width: 6%;
+    min-width: 6%;
+    max-width: 10%;
+    height: 100%;
     justify-content: space-between;
+
+    &-container {
+      height: 100%;
+      position: relative;
+    }
+  }
+
+  &__hamburger {
+    background-color: skyblue;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 3rem;
+    overflow: hidden;
+    cursor: pointer;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    background: white;
+    box-shadow: $shadow-2;
+    border-radius: 2px;
+    top: 6rem;
+    height: 20rem;
+    width: 15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
   }
 }

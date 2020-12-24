@@ -1,7 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import bodymovin from 'lottie-web';
+import hamburgerAnimation from '../animation/navHamburger';
 
 const NavBar = ({handleLogout, username, profileImage}) => {
+  const hamburgerContainer = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const initiateHamburger = () => {
+    bodymovin.loadAnimation({
+      wrapper: hamburgerContainer.current,
+      animType: 'svg',
+      loop: false,
+      path: '/svg/nav-hamburger.json',
+      name: 'hamburger'
+    });
+    bodymovin.goToAndStop(.01, false , 'hamburger');
+  }
+
+  const animateHamburger = () => {
+    hamburgerAnimation(hamburgerContainer.current);
+  };
+
+  useEffect(() => {
+    initiateHamburger();
+  });
+
+  useEffect(() => {
+    if (isModalOpen) {
+      animateHamburger();
+    }
+  }, [isModalOpen]);
+
   return ( 
     <nav className="navbar">
       <div className="navbar__logo title">
@@ -10,6 +40,14 @@ const NavBar = ({handleLogout, username, profileImage}) => {
       <div className="navbar__menu">
         <NavLink to='/my-hub'>Hub</NavLink>
         <p onClick={handleLogout}>Logout</p>
+        <div className="navbar__menu-container">
+          <div className="navbar__hamburger"
+              ref={hamburgerContainer}
+              onClick={() => setIsModalOpen(!isModalOpen)}
+              onMouseLeave={initiateHamburger}>
+          </div>
+          <div className="navbar__popup"></div>
+        </div>
       </div>
     </nav>
   );
