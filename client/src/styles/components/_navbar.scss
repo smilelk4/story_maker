@@ -50,17 +50,15 @@
     }
   }
 
-  &__popup {
+  &__popup, &__sub-popup {
     position: absolute;
-    background: white;
     box-shadow: $shadow-2;
     border-radius: 2px;
     top: 6rem;
-    height: 25rem;
     width: 18rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1;
+    z-index: 2;
     opacity: 0;
     display: flex;
     flex-direction: column;
@@ -69,6 +67,21 @@
 
     &.active {
       opacity: 1;
+    }
+  }
+
+  &__popup {
+    background: white;
+    height: 25rem;
+  }
+
+  &__sub-popup {
+    left: -50%;
+    background: $color-grey;
+
+    a {
+      width: 100%;
+      @include hide-overflowing-words;
     }
   }
 
