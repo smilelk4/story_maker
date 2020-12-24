@@ -38,7 +38,7 @@ const HeroContainer = () => {
             onClick={handleRightScroll}>&#9002;</div>
       {isModalOpen && <NewHeroModal clickHandler={clickHandler} />}
       <h4 
-        className="hero__new-hero"
+        className="hero__new-hero title"
         onClick={clickHandler}>Create a New Hero</h4>
       {heroes.map(hero => <Hero {...hero} />)}
     </div>

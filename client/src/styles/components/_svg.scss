@@ -12,9 +12,17 @@
     fill: $color-dark-lighter;
   }
 
+  &__shield {
+    fill: $color-light;
+    width: 14rem;
+    position: absolute;
+    top: -.5rem;
+  }
+
   &__container {
     display: flex;
     justify-content: center;
+    position: relative;
 
     svg {
       margin: 0 auto;

@@ -98,9 +98,13 @@
   &__new-hero {
     height: 100%;
     cursor: pointer;
-    background-color: $color-blue-light;
-    color: $color-light;
+    width: 7rem;
+    // background: $gradient-green-radial;
+    background: $gradient-green-radial;
+    color: white;
     padding: 1rem;
-    @include opacity-change-on-hover();
+    border-radius: 3px;
+    line-height: 2rem;
+    letter-spacing: .1rem;
   }
 }

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import plusOneAnimation from '../../animation/plusOne';
 
 const StatusContainer = ({status}) => {
-  debugger
   const svgContainer = useRef();
   let [lastActionCount, setLastActionCount] = useState(status[1]);
 

@@ -4,6 +4,10 @@
     overflow-y: scroll;
     height: 100%;
     @include custom-scroll();
+
+    & > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
   }
 
   &__field {

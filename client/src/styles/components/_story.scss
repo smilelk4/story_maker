@@ -3,10 +3,6 @@
   line-height: 2rem;
   padding: 1rem;
   height: 100%;
-
-  & > * {
-    margin: 1rem 0;
-  }
   
   &__container {
     display: flex;
@@ -53,12 +49,13 @@
     line-height: 1.2rem;
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
     align-items: center;
+    height: 100%;
     
     div {
-      background-color: rgba(255,255,255,.75);
       z-index: 1;
-      padding: 1rem;
+      padding: 1.5rem;
       color: $color-dark-lighter;
 
       & > p {
