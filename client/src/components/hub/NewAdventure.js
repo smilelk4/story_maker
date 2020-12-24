@@ -1,29 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import NewStoryModal from './NewStoryModal';
-import bodymovin from 'lottie-web';
+import swordAnimation from '../../animation/swordAnimation';
 
 const NewAdventure = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const animationCreator = () => {
-    bodymovin.loadAnimation({
-      wrapper: document.querySelector('.new-adventure__svg-container'),
-      animType: 'svg',
-      loop: false,
-      path: '/svg/swords.json',
-      name: 'swords'
-    });
-  };
-
    useEffect(() => {
-    animationCreator();
+    swordAnimation();
   }, []);
-
-  const animateSwords = () => {
-    bodymovin.destroy('swords');
-    animationCreator();
-  };
-
 
   const clickHandler = () => {
     setIsModalOpen(!isModalOpen);
@@ -34,7 +18,7 @@ const NewAdventure = () => {
     {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
     <h3 
       className="hub__new-adventure title"
-      onMouseOver={animateSwords}
+      onMouseOver={swordAnimation}
       onClick={clickHandler}>
       <p 
         className="new-adventure__svg-container"></p>
