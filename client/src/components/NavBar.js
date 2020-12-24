@@ -5,7 +5,8 @@ import hamburgerAnimation from '../animation/navHamburger';
 
 const NavBar = ({handleLogout, username, profileImage}) => {
   const hamburgerContainer = useRef();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const popUpContainer = useRef();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const initiateHamburger = () => {
     bodymovin.loadAnimation({
@@ -27,10 +28,14 @@ const NavBar = ({handleLogout, username, profileImage}) => {
   });
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (isPopupOpen) {
       animateHamburger();
+      popUpContainer.current.classList.add('active');
+    } else {
+      initiateHamburger();
+      popUpContainer.current.classList.remove('active');
     }
-  }, [isModalOpen]);
+  }, [isPopupOpen]);
 
   return ( 
     <nav className="navbar">
@@ -43,10 +48,9 @@ const NavBar = ({handleLogout, username, profileImage}) => {
         <div className="navbar__menu-container">
           <div className="navbar__hamburger"
               ref={hamburgerContainer}
-              onClick={() => setIsModalOpen(!isModalOpen)}
-              onMouseLeave={initiateHamburger}>
+              onClick={() => setIsPopupOpen(!isPopupOpen)}>
           </div>
-          <div className="navbar__popup"></div>
+          <div ref={popUpContainer} className="navbar__popup"></div>
         </div>
       </div>
     </nav>
