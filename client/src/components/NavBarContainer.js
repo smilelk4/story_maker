@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 
 const NavBarContainer = () => {
   const user = useSelector(state => state.user);
+  const stories = useSelector(state => state.story);
   const history = useHistory();
 
   const handleLogout = () => {
@@ -15,7 +16,7 @@ const NavBarContainer = () => {
 
   return ( 
     <nav className="navbar__container">
-      <NavBar handleLogout={handleLogout} {...user}/>
+      <NavBar handleLogout={handleLogout} user={user} stories={stories}/>
     </nav>
   );
 }

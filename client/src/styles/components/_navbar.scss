@@ -56,15 +56,40 @@
     box-shadow: $shadow-2;
     border-radius: 2px;
     top: 6rem;
-    height: 20rem;
-    width: 15rem;
+    height: 25rem;
+    width: 18rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     &.active {
       opacity: 1;
+    }
+  }
+
+  &__popup-top {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__profile-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    user-select: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
