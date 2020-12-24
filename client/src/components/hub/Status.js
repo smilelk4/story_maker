@@ -3,22 +3,26 @@ import { useSelector } from 'react-redux';
 import bodymovin from 'lottie-web';
 
 const StatusContainer = ({status}) => {
+  const animation = useSelector(state => state.animation);
   let [lastActionCount, setLastActionCount] = useState(status[1]);
 
+  const animationCreator = () => {
+    const plusOneAnimation = bodymovin.loadAnimation({
+      wrapper: document.querySelector('.status__svg-container'),
+      animType: 'svg',
+      loop: false,
+      path: '/svg/plus-one.json',
+    });
+
+    plusOneAnimation.addEventListener('complete', function(){
+      plusOneAnimation.destroy();
+    });
+  };
+
   useEffect(() => {
-    if (lastActionCount !== 10) {
-      const plusOneAnimation = bodymovin.loadAnimation({
-        wrapper: document.querySelector('.status__svg-container'),
-        animType: 'svg',
-        loop: false,
-        path: '/svg/plus-one.json',
-      });
-    
-      plusOneAnimation.addEventListener('complete', function(){
-        plusOneAnimation.destroy()
-      });
+    if (status[1] && lastActionCount && status[1] !== lastActionCount) {
+      animationCreator();
     }
-    setLastActionCount(status[1]);
   }, [status[1]]);
 
   return (
