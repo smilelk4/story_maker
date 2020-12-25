@@ -38,9 +38,6 @@ router.put('/',
     AT TIME ZONE '${tz}')
     LIMIT 1;`)
 
-    console.log('!!!!!!!!')
-    console.log(activity)
-
   // const activity = await ActivityLog.findOne({
   //   where: [
   //     {hero_id: heroId},

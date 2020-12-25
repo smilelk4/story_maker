@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion, useViewportScroll, useTransform, 
          useMotionValue } from 'framer-motion';
-import GitHubIcon from '@material-ui/icons/GitHub';import LoginForm from './LoginForm';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LoginForm from './LoginForm';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import SignupForm from './SignupForm';
 import { clearErrors } from '../../store/reducers/errorReducer';
@@ -78,7 +79,7 @@ const Splash = ({...props}) => {
                 <LinkedInIcon />
               </a>
           </div>
-          <p>Developed by Yuka Moribe</p>
+          <p>Developed & Designed by Yuka Moribe</p>
         </footer>
       </main>
       <div className="splash__container">
