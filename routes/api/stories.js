@@ -32,7 +32,9 @@ router.post('/',
 
 router.get('/:id(\\d+)',
 asyncHandler(async (req, res) => {
-  const story = await Story.findByPk(req.params.id);
+  const story = await Story.findByPk(req.params.id, {
+    include: [World]
+  });
   res.json({ story })
 }));
 

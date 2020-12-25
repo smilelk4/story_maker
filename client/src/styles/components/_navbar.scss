@@ -15,7 +15,7 @@
   a,
   a::before,
   a::after {
-    color: $color-light;
+    color: white;
   }
 
   &__logo {
@@ -39,6 +39,10 @@
     }
 
     svg {
+      height: 100%;
+    }
+
+    .svg__container {
       height: 100%;
     }
   }

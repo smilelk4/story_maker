@@ -17,8 +17,8 @@ const StatusContainer = ({status}) => {
       <div className="status__action">
         <div ref={svgContainer} className="status__svg-container"></div>
         {status[1] === 10 && <p className='alert'>{status[1]} actions</p>}
-        {status[1] === 0 && <p>{status[1]} action</p>}
-        {status[1] !== 0 && status[1] !== 10 && <p>{status[1]} actions</p>}
+        {(status[1] === 0 || status[1] === 1) && <p>{status[1]} action</p>}
+        {status[1] !== 0 && status[1] !== 1 && status[1] !== 10 && <p>{status[1]} actions</p>}
       </div>
       </div>
   )
