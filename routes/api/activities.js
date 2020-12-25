@@ -20,8 +20,9 @@ router.post('/',
 
 router.put('/', 
   asyncHandler(async (req, res, next) => {
-  const { heroId, userTime } = req.body;
-  const today = userTime.split('T')[0];
+    const { heroId, userTime } = req.body;
+    const { tz } = req.query;  
+    const today = userTime.split('T')[0];
 
   const timezoneOffset = userTime.slice(
     userTime.length - 6, userTime.length - 3);
@@ -31,8 +32,14 @@ router.put('/',
     WHERE "ActivityLog"."hero_id" = ${heroId}
     AND (date("createdAt") BETWEEN 
       '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
-    AT TIME ZONE 'UTC')
+    AT TIME ZONE '${tz}')
+    AND (date("updatedAt") BETWEEN 
+      '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
+    AT TIME ZONE '${tz}')
     LIMIT 1;`)
+
+    console.log('!!!!!!!!')
+    console.log(activity)
 
   // const activity = await ActivityLog.findOne({
   //   where: [

@@ -51,7 +51,7 @@ export const createActivity = (heroId, userTime) => {
 
 export const updateActivity = (heroId, userTime) => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/activities`, {
+    const res = await fetch(`${baseUrl}/activities/?tz=${Intl.DateTimeFormat().resolvedOptions().timeZone}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
