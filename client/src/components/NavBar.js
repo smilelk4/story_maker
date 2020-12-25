@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import SwordAndShield from './svg/SwordAndShield';
 import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
@@ -53,7 +54,9 @@ const NavBar = ({handleLogout, stories,
         <NavLink to='/'>Story Maker</NavLink>
       </div>
       <div className="navbar__menu">
-        <NavLink to='/my-hub'>Hub</NavLink>
+        <NavLink to='/my-hub'>
+          <SwordAndShield />
+        </NavLink>
         <div className="navbar__menu-container">
           <div className="navbar__hamburger"
               ref={hamburgerContainer}
@@ -72,7 +75,7 @@ const NavBar = ({handleLogout, stories,
                  onMouseLeave={hideStories}
                  >
                 View Stories
-                <div className="navbar__sub-popup active"
+                <div className="navbar__sub-popup"
                      ref={storiesContainer}>
                   {stories && stories.map(story => (
                     <NavLink to={`/stories/${story.id}`}>{story.title}</NavLink>
@@ -80,7 +83,8 @@ const NavBar = ({handleLogout, stories,
                 </div>
               </p>
             </div>
-            <p onClick={handleLogout}>Logout</p>
+            <p className="navbar__logout" 
+               onClick={handleLogout}>Logout</p>
           </div>
         </div>
       </div>
