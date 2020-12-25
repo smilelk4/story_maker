@@ -38,7 +38,6 @@ const NavBar = ({handleLogout, stories,
     }
   }, [isPopupOpen]);
 
-  debugger
   return ( 
     <nav className="navbar">
       <div className="navbar__logo title">
@@ -59,14 +58,14 @@ const NavBar = ({handleLogout, stories,
               <p>{username}</p>
             </div>
             <div>
-              <p>
+              <p className="navbar__stories">
                 View Stories
+                <div className="navbar__sub-popup active">
+                  {stories && stories.map(story => (
+                    <NavLink to={`/stories/${story.id}`}>{story.title}</NavLink>
+                  ))}
+                </div>
               </p>
-              <div className="navbar__sub-popup active">
-                {stories && stories.map(story => (
-                  <NavLink to={`/stories/${story.id}`}>{story.title}</NavLink>
-                ))}
-              </div>
             </div>
             <p onClick={handleLogout}>Logout</p>
           </div>

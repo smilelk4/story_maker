@@ -64,19 +64,27 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    
     &.active {
       opacity: 1;
     }
   }
-
+  
   &__popup {
     background: white;
     height: 25rem;
+    padding: 2rem;
+  }
+
+  &__stories {
+    position: relative;
+    padding: 1rem;
   }
 
   &__sub-popup {
-    left: -50%;
+    left: -133%;
+    top: 0;
+    // min-height: 20rem;
     background: $color-grey;
 
     a {
@@ -84,6 +92,7 @@
       @include hide-overflowing-words;
     }
   }
+
 
   &__popup-top {
     display: flex; 

@@ -12,13 +12,24 @@ const NavBarContainer = () => {
   const history = useHistory();
 
   useEffect(() => {
+    // debugger
     (async () => {
+      const heroes = [];
+      if (user.id) {
+        const res = await fetch(`${baseUrl}/users/${user.id}/heroes`);
+        const data = await res.json();
+        heroes.push(...data.heroes);
+      }
+
+      const stories = [];
       if (heroes.length) {
         for (let hero of heroes) {
           const res = await fetch(`${baseUrl}/heroes/${hero.id}/stories`);
           const data = await res.json();
-          setStories(...stories, ...data.stories);
+          debugger
+          stories.push(...data.stories);
         }
+        setStories(stories);
       }
     })();
   }, [heroes])
