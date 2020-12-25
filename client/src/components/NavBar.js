@@ -34,6 +34,11 @@ const NavBar = ({handleLogout, stories,
     storiesContainer.current.classList.remove('active');
   };
 
+  const hidePopup = () => {
+    popUpContainer.current.classList.remove('active');
+    setIsPopupOpen(false);
+  };
+
   useEffect(() => {
     initiateHamburger();
   });
@@ -60,9 +65,11 @@ const NavBar = ({handleLogout, stories,
         <div className="navbar__menu-container">
           <div className="navbar__hamburger"
               ref={hamburgerContainer}
-              onClick={() => setIsPopupOpen(!isPopupOpen)}>
+              onMouseOver={() => setIsPopupOpen(!isPopupOpen)}>
           </div>
-          <div ref={popUpContainer} className="navbar__popup active">
+          <div ref={popUpContainer} 
+               onMouseLeave={hidePopup}
+               className="navbar__popup">
             <div className="navbar__popup-top">
               <div className="navbar__profile-image">
                 <img src={profileImage} alt={username} />
