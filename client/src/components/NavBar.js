@@ -7,6 +7,7 @@ const NavBar = ({handleLogout, stories,
                  user: { username, profileImage }}) => {
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
+  const storiesContainer = useRef();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const initiateHamburger = () => {
@@ -22,6 +23,14 @@ const NavBar = ({handleLogout, stories,
 
   const animateHamburger = () => {
     hamburgerAnimation(hamburgerContainer.current);
+  };
+
+  const displayStories = () => {
+    storiesContainer.current.classList.add('active');
+  };
+
+  const hideStories = () => {
+    storiesContainer.current.classList.remove('active');
   };
 
   useEffect(() => {
@@ -57,10 +66,14 @@ const NavBar = ({handleLogout, stories,
               </div>
               <p>{username}</p>
             </div>
-            <div>
-              <p className="navbar__stories">
+            <div className="navbar__stories-container">
+              <p className="navbar__stories"
+                 onMouseOver={displayStories}
+                 onMouseLeave={hideStories}
+                 >
                 View Stories
-                <div className="navbar__sub-popup active">
+                <div className="navbar__sub-popup active"
+                     ref={storiesContainer}>
                   {stories && stories.map(story => (
                     <NavLink to={`/stories/${story.id}`}>{story.title}</NavLink>
                   ))}

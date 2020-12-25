@@ -73,22 +73,45 @@
   &__popup {
     background: white;
     height: 25rem;
-    padding: 2rem;
+    padding: 1.5rem 0;
+    color: $color-dark-lighter2;
   }
-
+  
   &__stories {
     position: relative;
     padding: 1rem;
+    width: 100%;
+    cursor: pointer;
+
+    &-container {
+      width: 100%;
+      text-align: center;
+    }
+
+    &:hover{ 
+      background: rgba(0,0,0,.05);
+    }
+
+    a {
+      color: $color-dark-lighter2;
+
+      &:hover {
+        background: $gradient-darker-grey;
+        color: $color-light;
+      }
+    }
+
   }
 
   &__sub-popup {
-    left: -133%;
+    left: -50%;
     top: 0;
-    // min-height: 20rem;
     background: $color-grey;
+    line-height: 3rem;
 
     a {
       width: 100%;
+      padding: 1rem;
       @include hide-overflowing-words;
     }
   }
