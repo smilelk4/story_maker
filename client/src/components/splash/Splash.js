@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { motion, useViewportScroll, useTransform, 
-         useMotionValue } from 'framer-motion';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LoginForm from './LoginForm';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import SignupForm from './SignupForm';
+import AnimatedSection from './AnimatedSection';
 import { clearErrors } from '../../store/reducers/errorReducer';
 
 const Splash = ({...props}) => {
@@ -13,24 +12,6 @@ const Splash = ({...props}) => {
   const errors = useSelector(state => state.errors);
   const [displayErrors, setDisplayErrors] = useState([]);
   const dispatch = useDispatch();
-  const descriptionContainer = useRef();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].intersectionRatio > 0) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }});
-
-    if (descriptionContainer.current) {
-      observer.observe(descriptionContainer.current);
-    }
-  
-    return () => observer.disconnect();
-  }, []);
-
 
   const changeForm = (component) => {
     setForm(component);
@@ -42,36 +23,31 @@ const Splash = ({...props}) => {
   }, [errors, dispatch]);
 
   return ( 
-    <motion.div className="splash"
+    <div className="splash"
                 initial="out"
                 animate="in"
                 exit="out"
                 variants={props}>
       <main className="splash__main">
-        <section className="splash__section">
+        <section>
           <h1 className="splash__title title">Story Maker</h1>
         </section>
         <section
-          ref={descriptionContainer} 
           className="splash__description">
-          <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .2 }}
-          >Create your own story.</motion.p>
-          <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .4 }}
-          >Build habits.</motion.p>
-          <motion.p
-            animate={{ x: isVisible ? 0 : -100,
-                      opacity: isVisible ? 1 : 0 }}
-            transition={{ ease: "easeOut", duration: 1, delay: .6 }}
-          >Achieve your goals.</motion.p>
+          <AnimatedSection>
+            <p>Create your own story.</p>
+            <p>Build habits.</p>
+            <p>Achieve your goals.</p>
+          </AnimatedSection>
+          <AnimatedSection>
+            Story Maker is a gamified habit and goal tracker that helps individuals 
+            keep track of their daily routines with the heroes they own.
+          </AnimatedSection>
         </section>
         <footer className="splash__footer">
-          <div>
+        <div className="footer__developed-by">
+          <p className="footer__name">Developed & Designed by Yuka Moribe</p>
+          <div className="footer__icon-container">
               <a target="_blank" href="https://github.com/smilelk4">
                 <GitHubIcon />
               </a>
@@ -79,7 +55,7 @@ const Splash = ({...props}) => {
                 <LinkedInIcon />
               </a>
           </div>
-          <p>Developed & Designed by Yuka Moribe</p>
+        </div>
         </footer>
       </main>
       <div className="splash__container">
@@ -96,7 +72,7 @@ const Splash = ({...props}) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
  

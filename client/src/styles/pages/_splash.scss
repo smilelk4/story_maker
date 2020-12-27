@@ -1,7 +1,7 @@
 .splash {
   width: 100vw;
   height: 200rem;
-  background-image: url('https://story-maker-app.s3.amazonaws.com/splash_map.png');
+  background-image: url('https://story-maker-app.s3.amazonaws.com/map.png');
   background-size: cover;
   background-position: center;
 
@@ -36,11 +36,18 @@
   &__description {
     font-size: 2rem;
     line-height: 5rem;
-    height: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
     p {
       margin: 3rem 0;
     }
+  }
+
+  &__section {
+    animation: slidein 1s ease-out;
   }
 
   &__container {
@@ -117,7 +124,6 @@
     justify-content: flex-end;
     color: $color-light;
     padding: 2rem;
-    line-height: 3rem;
 
     a,
     a:active,
@@ -129,5 +135,17 @@
     .MuiSvgIcon-root {
       font-size: 1.8rem;
     }
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }
