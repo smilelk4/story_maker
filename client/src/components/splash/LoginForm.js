@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../InputField';
 import { validateUser } from '../../store/actions/userAction';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +13,7 @@ const LoginForm = () => {
     const data = await dispatch(validateUser({ email, password }));
     
     if(!data.errors) {
-      history.push('/my-hub');
+      window.location.href = '/my-hub'
     }
   };
 
