@@ -38,6 +38,7 @@
     line-height: 5rem;
     height: 100%;
     display: flex;
+    margin-top: 10rem;
     flex-direction: column;
     justify-content: space-evenly;
 
@@ -47,7 +48,9 @@
   }
 
   &__section {
+    opacity: 0;
     animation: slidein 1s ease-out;
+    animation-delay: .3s;
   }
 
   &__container {
@@ -140,7 +143,7 @@
 
 @keyframes slidein {
   from {
-    transform: translateX(-50%);
+    transform: translateX(-10rem);
     opacity: 0;
   }
 
