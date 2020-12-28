@@ -108970,7 +108970,7 @@
   "buffers": [
     {
       "byteLength": 60016160,
-      "uri": "scene.bin"
+      "uri": "./scene.bin"
     }
   ],
   "images": [

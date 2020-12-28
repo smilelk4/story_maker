@@ -13490,7 +13490,7 @@
   "buffers": [
     {
       "byteLength": 3650424,
-      "uri": "scene.bin"
+      "uri": "./scene.bin"
     }
   ],
   "extensionsRequired": [
