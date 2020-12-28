@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useBox } from "@react-three/cannon";
+import path from 'path';
 
 const Trees = ({...props}) => {
   const [ref] = useBox(() => ({ mass: 1, ...props }));
-  const gltf = useGLTF('/gltf/trees/scene.gltf', true);
+  const gltf = useGLTF(path.resolve(__dirname, '/gltf/trees/scene.gltf'), true);
 
   return (
     <Suspense fallback={null}>

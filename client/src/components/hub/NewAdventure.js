@@ -15,14 +15,14 @@ const NewAdventure = () => {
 
   return (
     <>
-    {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
-    <h3 
-      className="hub__new-adventure title"
-      onMouseOver={swordAnimation}
-      onClick={clickHandler}>
-      <p 
-        className="new-adventure__svg-container"></p>
-      Start a New Adventure</h3>
+      {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
+      <h3 
+        className="hub__new-adventure title"
+        onMouseOver={swordAnimation}
+        onClick={clickHandler}>
+        <p className="new-adventure__svg-container"></p>
+        Start a New Adventure
+      </h3>
     </>
   );
 }

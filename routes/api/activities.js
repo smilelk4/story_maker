@@ -32,7 +32,7 @@ router.put('/',
     WHERE "ActivityLog"."hero_id" = ${heroId}
     AND (date("createdAt") BETWEEN 
       '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
-    AT TIME ZONE '${tz}')
+    AT TIME ZONE 'UTC')
     AND (date("updatedAt") BETWEEN 
       '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
     AT TIME ZONE 'UTC')

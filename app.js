@@ -18,12 +18,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser())
 
-app.use(cors({ origin: true }));
-app.use(helmet({ hsts: false }));
+const production = environment === 'production';
+if (!production) {
+  app.use(cors({ origin: true }));
+}
+app.use(helmet({ contentSecurityPolicy: false }));
 // app.use(csurf({
 //   cookie: {
-//     secure: process.env.NODE_ENV === 'production',
-//     sameSite: process.env.NODE_ENV === 'production',
+//     secure: production,
+//     sameSite: production && 'Lax',
 //     httpOnly: true
 //   }
 // }));

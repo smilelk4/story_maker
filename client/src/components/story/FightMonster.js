@@ -30,14 +30,14 @@ const FightMonster = () => {
 
   return (
     <>
-    {isModalOpen && <FightMonsterModal clickHandler={clickHandler} />}
-    <h3 
-      className="hub__new-adventure"
-      onMouseOver={animateSwords}
-      onClick={clickHandler}>
-      <p className="new-adventure__svg-container"></p>
-      <span className="title">Fight a Monster</span>
-    </h3>
+      {isModalOpen && <FightMonsterModal clickHandler={clickHandler} />}
+      <h3 
+        className="hub__new-adventure"
+        onMouseOver={animateSwords}
+        onClick={clickHandler}>
+        <p className="new-adventure__svg-container"></p>
+        Fight a Monster
+      </h3>
     </>
   );
 }

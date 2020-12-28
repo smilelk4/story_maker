@@ -5,8 +5,8 @@ import { validateUser } from '../../store/actions/userAction';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('demo_user@demo.com');
+  const [password, setPassword] = useState('password123');
 
   const handleLogin = async e => {
     e.preventDefault();
