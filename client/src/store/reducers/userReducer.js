@@ -1,6 +1,10 @@
 export const LOAD_USER = 'LOAD_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+export const clearUserAction = () => ({
+  type: LOGOUT_USER
+});
+
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case LOAD_USER: {

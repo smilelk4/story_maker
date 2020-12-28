@@ -1,5 +1,6 @@
 const LOAD_ACTIVITIES = 'LOAD_ACTIVITIES';
 const UPDATE_ACTIVITIES = 'UPDATE_ACTIVITIES';
+const CLEAR_ACTIVITIES = 'CLEAR_ACTIVITIES';
 
 export const loadActivitiesAction = data => ({
   type: LOAD_ACTIVITIES,
@@ -9,6 +10,10 @@ export const loadActivitiesAction = data => ({
 export const updateActivityAction = data => ({
   type: UPDATE_ACTIVITIES,
   activity: data
+});
+
+export const clearActivitiesAction = () => ({
+  type: CLEAR_ACTIVITIES,
 });
 
 const activityReducer = (state = {}, action) => {
@@ -25,6 +30,8 @@ const activityReducer = (state = {}, action) => {
 
       return newState;
     }
+    case CLEAR_ACTIVITIES:
+      return {};
     default:
       return state;
   }

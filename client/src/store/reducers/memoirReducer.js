@@ -1,5 +1,6 @@
 const LOAD_MEMOIRS = 'LOAD_MEMOIRS';
 const ADD_MEMOIR = 'ADD_MEMOIR';
+const CLEAR_MEMOIRS = 'CLEAR_MEMOIRS';
 
 export const loadMemoirsAction = data => ({
   type: LOAD_MEMOIRS,
@@ -9,6 +10,10 @@ export const loadMemoirsAction = data => ({
 export const addMemoirAction = data => ({
   type: ADD_MEMOIR,
   memoir: data
+});
+
+export const clearMemoirsAction = () => ({
+  type: CLEAR_MEMOIRS,
 });
 
 const memoirReducer = (state = [], action) => {
@@ -35,6 +40,9 @@ const memoirReducer = (state = [], action) => {
       const newState = [...state];
       newState.unshift(action.memoir);
       return newState;
+    }
+    case CLEAR_MEMOIRS: {
+      return []
     }
     default:
       return state;

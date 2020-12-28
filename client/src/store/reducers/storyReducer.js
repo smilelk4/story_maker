@@ -1,5 +1,6 @@
 const LOAD_STORY = 'LOAD_STORY';
 const LOAD_STORIES = 'LOAD_STORIES';
+const CLEAR_STORIES = 'CLEAR_STORIES';
 
 export const loadStoryAction = data => ({
   type: LOAD_STORY,
@@ -9,6 +10,10 @@ export const loadStoryAction = data => ({
 export const loadStoriesAction = data => ({
   type: LOAD_STORIES,
   stories: data
+});
+
+export const clearStoriesAction = () => ({
+  type: CLEAR_STORIES,
 });
 
 const storyReducer = (state = [], action) => {
@@ -24,6 +29,9 @@ const storyReducer = (state = [], action) => {
       });
       
       return [...state, ...newStories];
+    }
+    case CLEAR_STORIES: {
+      return [];
     }
     default:
       return state;

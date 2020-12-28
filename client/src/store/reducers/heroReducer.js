@@ -2,6 +2,7 @@ const LOAD_HERO = 'LOAD_HERO';
 const LOAD_HEROES = 'LOAD_HEROES';
 const ADD_HERO = 'ADD_HERO';
 const UPDATE_HERO = 'UPDATE_HERO';
+const CLEAR_HEROES = 'CLEAR_HEROES';
 
 export const loadHeroAction = data => ({
   type: LOAD_HERO,
@@ -21,6 +22,10 @@ export const addHeroAction = data => ({
 export const updateHeroAction = data => ({
   type: UPDATE_HERO,
   hero: data
+});
+
+export const clearHeroesAction = () => ({
+  type: CLEAR_HEROES,
 });
 
 const heroReducer = (state = [], action) => {
@@ -49,6 +54,9 @@ const heroReducer = (state = [], action) => {
       const heroIndexToModify = newState.findIndex(hero => hero.id === action.hero.id);
       newState.splice(heroIndexToModify, 1, action.hero);
       return newState;
+    }
+    case CLEAR_HEROES: {
+      return [];
     }
     default:
       return state;

@@ -2,6 +2,7 @@ const LOAD_TASKS = 'LOAD_TASKS';
 const ADD_TASK = 'ADD_TASK';
 const EDIT_TASK = 'EDIT_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
+const CLEAR_TASKS = 'CLEAR_TASKS';
 
 export const loadTasksAction = data => ({
   type: LOAD_TASKS,
@@ -21,6 +22,10 @@ export const editTaskAction = data => ({
 export const removeTaskAction = data => ({
   type: REMOVE_TASK,
   task: data
+});
+
+export const clearTasksAction = () => ({
+  type: CLEAR_TASKS,
 });
 
 const taskReducer = (state = [], action) => {
@@ -49,6 +54,9 @@ const taskReducer = (state = [], action) => {
     case REMOVE_TASK: {
       const newState = state.filter(task => task.id !== +action.task.id);
       return newState;
+    }
+    case CLEAR_TASKS: {
+      return [];
     }
     default:
       return state;

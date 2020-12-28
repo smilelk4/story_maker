@@ -12,9 +12,8 @@ export const removeDestinationAction = data => ({
   destination: data
 });
 
-export const clearDestinationsAction = data => ({
+export const clearDestinationsAction = () => ({
   type: CLEAR_DESTINATIONS,
-  destination: data
 });
 
 const destinationReducer = (state = [], action) => {

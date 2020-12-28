@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../InputField';
 import { createUser } from '../../store/actions/userAction';
-import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
 
 const SignupForm = () => {
   const dispatch = useDispatch();

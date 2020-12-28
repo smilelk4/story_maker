@@ -39,23 +39,6 @@ const DestinationContainer = () => {
   const onCompleted = async (destinationId) => {
     const data = await dispatch(completeDestination(destinationId));
     if (data.errors) return;
-
-    // dispatch(raiseXP(1, heroId));
-    
-    // const today = new Date();
-    // const month = today.getMonth() + 1;
-    // const date = today.getDate();
-    // const todaysActivity = activities[heroId][month][date - 1];
-
-    // if (todaysActivity || todaysActivity === 0) {
-      // dispatch(updateActivity(heroId));
-    // } else {
-      // dispatch(createActivity(heroId));
-    // }
-
-    // if (!container.current.children.length) {
-      // setAllCompleted(true);
-    // }
   };
 
   return ( 
