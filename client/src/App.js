@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import PageAnimationWrapper from './components/PageAnimationWrapper';
@@ -35,7 +35,11 @@ function App() {
         <PageAnimationWrapper>
           <Switch>
             <Route exact path='/'>
-              <Splash/>
+              {user.id ? (
+                <Redirect to='/my-hub' />
+              ) : (
+                <Splash />
+              )}
             </Route>
             <Route to='*'>
                 <RoutesContainer user={user.id} />

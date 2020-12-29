@@ -6,9 +6,7 @@ import HeaderContainer from './HeaderContainer';
 import Footer from './Footer';
 import ProtectedRoute from './ProtectedRoute';
 
-const RoutesContainer = ({user}) => {
-  const token = useSelector(state => state.token);
-
+const RoutesContainer = () => {
   return (
   <>
     <HeaderContainer />
