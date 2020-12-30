@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom';
 import bodymovin from 'lottie-web';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
@@ -14,17 +14,33 @@ import DailyTaskContainer from './DailyTaskContainer';
 import OverviewContainer from './OverviewContainer';
 import FightMonster from './FightMonster';
 import { getStory } from '../../store/actions/storyAction';
+import { getUpcomingDestinations } from '../../store/actions/destinationActions';
+import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
+import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
+import { clearActivitiesAction } from '../../store/reducers/activityReducer';
+import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
+import { clearProgressAction } from '../../store/reducers/progressReducer';
 import Frame from '../svg/Frame';
 
 const MyStory = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { id } = useParams();
   const [currentDisplay, setCurrentDisplay] = useState(<StoryHomeContainer />);
   const [currentTitle, setCurrentTitle] = useState("Story Detail");
+  const story = useSelector(state => state.story ? state.story[0] : null);
 
   useEffect(() => {
-    dispatch(getStory(id))
+    dispatch(getStory(id));
   }, [id, dispatch])
+
+  useEffect(() => {
+    dispatch(clearDestinationsAction());
+    dispatch(clearTasksAction());
+    dispatch(clearActivitiesAction());
+    dispatch(clearMemoirsAction());
+    dispatch(clearProgressAction());
+  }, [story, dispatch]);
 
   return (  
     <div className="mystory">

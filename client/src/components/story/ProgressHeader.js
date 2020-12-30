@@ -32,6 +32,16 @@ const ProgressHeader = () => {
   const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
   let nodePosition = minHeroXPosition;
 
+  // useEffect(() => {
+  //   if (heroId) {
+  //     dispatch(getHero(heroId));
+  //   }
+
+  //   if (story.id) {
+  //     dispatch(getProgress(story.id));
+  //   }
+  // }, [location])
+
   useEffect(() => {
     if (heroId) {
       dispatch(getHero(heroId));
