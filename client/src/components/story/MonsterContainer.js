@@ -4,6 +4,7 @@ import PageAnimationWrapper from '../PageAnimationWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getMonsters } from '../../store/actions/monsterAction';
+import { clearMonstersAction } from '../../store/reducers/monsterReducer';
 import Monster from './Monster';
 
 const MonsterContainer = () => {
@@ -13,9 +14,8 @@ const MonsterContainer = () => {
   const monsters = useSelector(state => state.monster);
 
   useEffect(() => {
-    if (!monsters.length) {
-      dispatch(getMonsters(id));
-    }
+    dispatch(clearMonstersAction());
+    dispatch(getMonsters(id));
   },[id, dispatch]);
 
 

@@ -4,6 +4,7 @@ import PageAnimationWrapper from '../PageAnimationWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getMemoirs } from '../../store/actions/memoirActions';
+import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
 import Memoir from './Memoir';
 
 const MemoirContainer = () => {
@@ -13,6 +14,7 @@ const MemoirContainer = () => {
   const memoirs = useSelector(state => state.memoir);
 
   useEffect(() => {
+    dispatch(clearMemoirsAction());
     dispatch(getMemoirs(id));
   },[id, dispatch]);
 

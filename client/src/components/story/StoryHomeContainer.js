@@ -13,6 +13,12 @@ const StoryHomeContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
+    if (!destinations.length) {
+      dispatch(getUpcomingDestinations(id));
+    }
+  }, [id, destinations, dispatch]);
+
+  useEffect(() => {
     if (id) {
       return dispatch(getUpcomingDestinations(id));
     }

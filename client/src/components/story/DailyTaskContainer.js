@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { getDailyTasks, deleteDailyTask,
          editDailyTask } from '../../store/actions/dailyTaskAction';
+import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const DailyTaskContainer = () => {
   const tasks = useSelector(state => state.task);
 
   useEffect(() => {
+    dispatch(clearTasksAction());
     dispatch(getDailyTasks(id));
   },[id, dispatch]);
 

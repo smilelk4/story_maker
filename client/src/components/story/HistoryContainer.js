@@ -12,12 +12,17 @@ const HistoryContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    if (destinations.length && 
-        destinations.some(destination => !destination.accomplished)) {
-      dispatch(clearDestinationsAction());
-      dispatch(getPastDestinations(id));
-    }
-  }, [id, destinations, dispatch]);
+    dispatch(clearDestinationsAction());
+    dispatch(getPastDestinations(id));
+  }, [id, dispatch]);
+
+  // useEffect(() => {
+  //   if (destinations.length && 
+  //       destinations.some(destination => !destination.accomplished)) {
+  //     dispatch(clearDestinationsAction());
+  //     dispatch(getPastDestinations(id));
+  //   }
+  // }, [id, destinations, dispatch]);
 
   return ( 
     <PageAnimationWrapper>

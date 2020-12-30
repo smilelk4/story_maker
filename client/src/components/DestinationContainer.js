@@ -16,10 +16,9 @@ const DestinationContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    if (id && !destinations.length) {
-      dispatch(getUpcomingDestinations(id));
-    }
-  }, [id, destinations, dispatch]);
+    dispatch(clearDestinationsAction());
+    dispatch(getUpcomingDestinations(id));
+  }, [id, dispatch]);
   
   useEffect(() => {
     if (destinations.length && 

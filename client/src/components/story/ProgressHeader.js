@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
@@ -11,7 +12,6 @@ import Plane from '../three/Plane';
 import Node from '../three/Node';
 import Camera from '../three/Camera';
 import Hero from '../three/Hero';
-
 import { getHero } from '../../store/actions/heroAction';
 import { getProgress } from '../../store/actions/progressAction';
 

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, Suspense, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
 import { Canvas } from 'react-three-fiber';
 import { Stars, OrbitControls } from 'drei';
 import { useGLTF } from '@react-three/drei';
@@ -12,7 +12,7 @@ const HeaderContainer = () => {
   const container = useRef();
   const { pathname } = useLocation();
   const [ currentGraphic, setCurrentGraphic ] = useState('myhub');
-
+  
   useEffect(() => {
     if (pathname === '/my-hub') {
       setCurrentGraphic('myhub');
