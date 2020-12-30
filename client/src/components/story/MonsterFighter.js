@@ -41,7 +41,11 @@ const MonsterFighter = ({clickHandler}) => {
 
   useEffect(() => {
     if (page === 1) {
-      setPageTitle('A Wild Monster Appeared!');
+      if (monsters.length) {
+        setPageTitle('A Wild Monster Appeared!');
+      } else {
+        setPageTitle('You don\'t have any monsters yet.');
+      }
     } else if (page === 2) {
       setPageTitle('You\'ve Won!');
     } else {
@@ -62,6 +66,11 @@ const MonsterFighter = ({clickHandler}) => {
   return ( 
     <>
       <h2 className="modal__title title">{pageTitle}</h2>
+      {!monsters.length && (
+        <div className="modal__section">
+          Please navigate to Monsters section to add some monsters.
+        </div>
+      )}
       {page === 1 && monster && (
         <>
           <div className="modal__section">

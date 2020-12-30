@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FightMonsterModal from './FightMonsterModal';
 import bodymovin from 'lottie-web';
 
 const FightMonster = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const monsters = useSelector(state => state.monster);
 
   const animationCreator = () => {
     bodymovin.loadAnimation({

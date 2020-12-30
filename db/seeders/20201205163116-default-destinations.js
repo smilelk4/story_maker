@@ -173,6 +173,28 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        story_id: 2,
+        parent_destination_id: null,
+        title: "Startup web app business",
+        description: `I need to think of a way to monetize the app.`,
+        target_date: new Date(2021, 12, 10),
+        accomplished: false,
+        importance: 10,
+        createdAt: new Date(2020, 11, 10),
+        updatedAt: new Date(2020, 11, 10)
+      },
+      {
+        story_id: 3,
+        parent_destination_id: null,
+        title: "Get an inquiry to develop full-stack application for a company",
+        description: `I need to first practice by creating a few full-stack apps.`,
+        target_date: new Date(2021, 10, 1),
+        accomplished: false,
+        importance: 10,
+        createdAt: new Date(2020, 11, 10),
+        updatedAt: new Date(2020, 11, 10)
+      },
     ], {})
   },
 

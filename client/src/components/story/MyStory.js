@@ -20,6 +20,7 @@ import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 import { clearActivitiesAction } from '../../store/reducers/activityReducer';
 import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
 import { clearProgressAction } from '../../store/reducers/progressReducer';
+import { clearMonstersAction } from '../../store/reducers/monsterReducer';
 import Frame from '../svg/Frame';
 
 const MyStory = () => {
@@ -40,6 +41,7 @@ const MyStory = () => {
     dispatch(clearActivitiesAction());
     dispatch(clearMemoirsAction());
     dispatch(clearProgressAction());
+    dispatch(clearMonstersAction());
   }, [story, dispatch]);
 
   return (  
