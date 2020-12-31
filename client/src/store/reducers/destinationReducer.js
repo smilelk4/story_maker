@@ -17,6 +17,7 @@ export const clearDestinationsAction = () => ({
 });
 
 const destinationReducer = (state = [], action) => {
+  // debugger
   switch(action.type) {
     case LOAD_DESTINATIONS: {
       const ids = state.map(s => s.id);
@@ -37,6 +38,7 @@ const destinationReducer = (state = [], action) => {
       return newState;
     }
     case CLEAR_DESTINATIONS: {
+      // debugger
       return [];
     }
     default:

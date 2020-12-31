@@ -14,7 +14,6 @@ import DailyTaskContainer from './DailyTaskContainer';
 import OverviewContainer from './OverviewContainer';
 import FightMonster from './FightMonster';
 import { getStory } from '../../store/actions/storyAction';
-import { getUpcomingDestinations } from '../../store/actions/destinationActions';
 import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 import { clearActivitiesAction } from '../../store/reducers/activityReducer';

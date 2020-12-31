@@ -7,7 +7,7 @@ import { createStory } from '../../store/actions/storyAction';
 import dateFormatter from '../../utils/dateFormatter';
 import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
-const StoryCreator = () => {
+const StoryCreator = ({clickHandler}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const heroContainer = useRef();
@@ -65,7 +65,8 @@ const StoryCreator = () => {
 
     if(!data.errors) {
       // dispatch(clearDestinationsAction());
-      history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
+      clickHandler();
+      // history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
     }
   }
 

@@ -6,7 +6,7 @@ const NewStoryModal = ({clickHandler}) => {
   return ( 
     <ModalContainer>
       <div className="modal">
-        <StoryCreator />
+        <StoryCreator clickHandler={clickHandler} />
       </div>
       <div className="modal__overlay" onClick={clickHandler}></div>
     </ModalContainer>

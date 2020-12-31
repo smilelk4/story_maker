@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import PageAnimationWrapper from './PageAnimationWrapper';
 import Destination from './Destination';
 import { getUpcomingDestinations, 
@@ -10,6 +10,7 @@ import Line from './svg/Line';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const destinations = useSelector(state => state.destination);
   const stories = useSelector(state => state.story);
   const userId = useSelector(state => state.user.id);
@@ -30,6 +31,7 @@ const DestinationContainer = () => {
   useEffect(() => {
     for (let story of stories) {
       if (story) {
+        // debugger
         dispatch(getUpcomingDestinations(story.id));
       }
     }

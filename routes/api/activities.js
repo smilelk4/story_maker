@@ -27,19 +27,20 @@ router.put('/',
   const timezoneOffset = userTime.slice(
     userTime.length - 6, userTime.length - 3);
 
-  const activity =  await sequelize.query(`
+    
+    const activity =  await sequelize.query(`
     SELECT * FROM "ActivityLogs" AS "ActivityLog" 
     WHERE "ActivityLog"."hero_id" = ${heroId}
     AND (date("createdAt") BETWEEN 
-      '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
+    '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
     AT TIME ZONE 'UTC')
     AND (date("updatedAt") BETWEEN 
-      '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
+    '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
     AT TIME ZONE 'UTC')
     LIMIT 1;`)
-
-  // const activity = await ActivityLog.findOne({
-  //   where: [
+    
+    // const activity = await ActivityLog.findOne({
+      //   where: [
   //     {hero_id: heroId},
       // sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
       // '=', `${y}-${m}-${d}`)

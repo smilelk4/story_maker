@@ -21,11 +21,13 @@ const StoryHomeContainer = () => {
 
   useEffect(() => {
     // if (!destinations.length) {
-      // debugger;
       dispatch(clearDestinationsAction());
       dispatch(getUpcomingDestinations(id));
-    // }
-  }, [id, location, dispatch]);
+      // }
+    }, [id, location, dispatch]);
+    
+  useEffect(() => {
+  }, [destinations])
 
   // useEffect(() => {
   //   // if (id) {
