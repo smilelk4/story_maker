@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getMemoirs } from '../../store/actions/memoirActions';
 import { getDailyTasks } from '../../store/actions/dailyTaskAction';
+import { getProgress } from '../../store/actions/progressAction';
 import Overview from './Overview';
 
 const OverviewContainer = () => {
@@ -14,11 +15,13 @@ const OverviewContainer = () => {
   const [uncompletedTasks, setUncompletedTasks] = useState([]);
   const [overdueDestinations, setOverdueDestinations] = useState([]);
   const { id } = useParams();
+  const [currentStoryId, setCurrentStoryId] = useState(id);
   const today = moment().format("MM-DD-YYYY");
 
   useEffect(() => {
     dispatch(getMemoirs(id));
     dispatch(getDailyTasks(id));
+    // dispatch(getProgress(id));
   },[id, dispatch]);
 
   useEffect(() => {

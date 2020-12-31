@@ -21,6 +21,9 @@ const RoutesContainer = () => {
   <>
     <HeaderContainer />
     <Switch>
+      {/* <Route path='/my-hub'>
+        <MyHub />
+      </Route> */}
       <ProtectedRoute component={<MyHub />} path='/my-hub'/>
       <ProtectedRoute component={<MyStory/>} path='/stories/:id'/>
       <Route to='*'>

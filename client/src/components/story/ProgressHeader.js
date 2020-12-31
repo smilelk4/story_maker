@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
 import { Sky, Html } from 'drei';
@@ -14,6 +14,7 @@ import Camera from '../three/Camera';
 import Hero from '../three/Hero';
 import { getHero } from '../../store/actions/heroAction';
 import { getProgress } from '../../store/actions/progressAction';
+import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
 const ProgressHeader = () => {
   const dispatch = useDispatch();
@@ -21,16 +22,20 @@ const ProgressHeader = () => {
                   state.story[0].hero_id : null);
   const story = useSelector(state => state.story[0]);
   const hero = useSelector(state => state.hero[0]);
-  const destinations = useSelector(state => state.destination);
   const progress = useSelector(state => state.progress);
   const [active, setActive] = useState(null);
   const [heroPosition, setHeroPosition] = useState(0);
   const container = useRef();
-  
+  const { id } = useParams();
+
   const minHeroXPosition = -7;
   const maxHeroXPosition = 7;
   const maxHeroXPositionRange = Math.abs(minHeroXPosition) + Math.abs(maxHeroXPosition);
   let nodePosition = minHeroXPosition;
+
+  useEffect(() => {
+    dispatch(clearDestinationsAction());
+  }, [])
 
   // useEffect(() => {
   //   if (heroId) {
@@ -52,7 +57,7 @@ const ProgressHeader = () => {
     if (story) {
       dispatch(getProgress(story.id));
     }
-  }, [story, dispatch]);
+  }, [story, id, dispatch]);
 
   useEffect(() => {
     setHeroPosition(maxHeroXPositionRange * progress);

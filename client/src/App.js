@@ -35,7 +35,7 @@ function App() {
         <PageAnimationWrapper>
           <Switch>
             <Route exact path='/'>
-              {user.id ? (
+              {token ? (
                 <Redirect to='/my-hub' />
               ) : (
                 <Splash />

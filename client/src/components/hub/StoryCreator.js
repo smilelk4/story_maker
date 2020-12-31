@@ -5,6 +5,7 @@ import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
 import dateFormatter from '../../utils/dateFormatter';
+import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
 const StoryCreator = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const StoryCreator = () => {
                                 destinationTitle, targetDate, importance  }));
 
     if(!data.errors) {
+      // dispatch(clearDestinationsAction());
       history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
     }
   }

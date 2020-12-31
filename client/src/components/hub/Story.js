@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import Shield from '../svg/Shield';
 
 const Story = (...props) => {
-  const { id, title, difficulty, World } = props[0];
+  const { id, title, World } = props[0];
   return ( 
     <Link to={`/stories/${id}`}>
       <div className="story">
         <p className="story__title title">{title}</p>
-        {/* <div className={`story__label-${difficulty}`}></div> */}
         {World && <p className="story__world-name">
-          {/* <img src='/icons/flag.png' alt={id}/> */}
           <Shield />
           <div>
             <p>World Name:</p><br /> 

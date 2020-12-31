@@ -10,28 +10,35 @@ const StoryHomeContainer = () => {
   const dispatch = useDispatch();
   const hero = useSelector(state => state.hero[0]);
   const story = useSelector(state => state.story[0]);
+  const { id } = useParams();  
   const destinations = useSelector(state => state.destination);
   const location = useLocation();
-  const { id } = useParams();  
+
+  // useEffect(() => {
+  //   dispatch(clearDestinationsAction());
+  //   dispatch(getUpcomingDestinations(id));
+  // }, [id, dispatch]);
 
   useEffect(() => {
-    if (!destinations.length) {
+    // if (!destinations.length) {
+      // debugger;
+      dispatch(clearDestinationsAction());
       dispatch(getUpcomingDestinations(id));
-    }
-  }, [id, destinations, dispatch]);
+    // }
+  }, [id, location, dispatch]);
 
-  useEffect(() => {
-    if (id) {
-      dispatch(getUpcomingDestinations(id));
-    }
-  }, [id, dispatch]);
+  // useEffect(() => {
+  //   // if (id) {
+  //     dispatch(getUpcomingDestinations(id));
+  //   // }
+  // }, [id, dispatch]);
 
-  useEffect(() => {
-    dispatch(clearDestinationsAction());
-    if (id) {
-      dispatch(getUpcomingDestinations(id));
-    }
-  }, [location])
+  // useEffect(() => {
+  //   dispatch(clearDestinationsAction());
+  //   if (id) {
+  //     dispatch(getUpcomingDestinations(id));
+  //   }
+  // }, [location])
 
   return ( 
     <PageAnimationWrapper>

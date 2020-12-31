@@ -36,7 +36,7 @@ const MyStory = () => {
   }, [id, dispatch])
 
   useEffect(() => {
-    dispatch(clearDestinationsAction());
+    // dispatch(clearDestinationsAction());
     dispatch(clearTasksAction());
     dispatch(clearActivitiesAction());
     dispatch(clearMemoirsAction());

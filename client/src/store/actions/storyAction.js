@@ -1,4 +1,5 @@
 import { loadStoryAction, loadStoriesAction } from '../reducers/storyReducer';
+import { clearDestinationsAction } from '../reducers/destinationReducer';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
@@ -55,6 +56,7 @@ export const createStory = inputtedInfo => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
+      dispatch(clearDestinationsAction());
       dispatch(loadStoriesAction(data.stories));
     }
     return data;
