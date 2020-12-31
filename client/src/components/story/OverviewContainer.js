@@ -18,27 +18,23 @@ const OverviewContainer = () => {
   const [currentStoryId, setCurrentStoryId] = useState(id);
   const today = moment().format("MM-DD-YYYY");
 
-  useEffect(() => {
-    dispatch(getMemoirs(id));
-    dispatch(getDailyTasks(id));
-    // dispatch(getProgress(id));
-  },[id, dispatch]);
+  // useEffect(() => {
+  //   dispatch(getMemoirs(id));
+  //   dispatch(getDailyTasks(id));
+  //   // dispatch(getProgress(id));
+  // },[id, dispatch]);
 
   useEffect(() => {
-    if (tasks.length) {
-      const uncompletedTasks = tasks.filter(task => (
-                (moment(task.last_accomplished).format("MM-DD-YYYY")) < today) ||
-                 !task.last_accomplished);
-      setUncompletedTasks(uncompletedTasks);
-    }
-  },[tasks]);
+    const uncompletedTasks = tasks.filter(task => (
+              (moment(task.last_accomplished).format("MM-DD-YYYY")) < today) ||
+                !task.last_accomplished);
+    setUncompletedTasks(uncompletedTasks);
+  },[id, tasks, dispatch]);
 
   useEffect(() => {
-    if (destinations.length) {
-      const overdueDestinations = destinations.filter(destination => (
-                moment(destination.target_date).isBefore(today, 'days')));
-      setOverdueDestinations(overdueDestinations);
-    }
+    const overdueDestinations = destinations.filter(destination => (
+              moment(destination.target_date).isBefore(today, 'days')));
+    setOverdueDestinations(overdueDestinations);
   },[destinations]);
 
   return ( 

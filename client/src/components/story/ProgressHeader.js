@@ -14,6 +14,8 @@ import Camera from '../three/Camera';
 import Hero from '../three/Hero';
 import { getHero } from '../../store/actions/heroAction';
 import { getProgress } from '../../store/actions/progressAction';
+import { getMemoirs } from '../../store/actions/memoirActions';
+import { getDailyTasks } from '../../store/actions/dailyTaskAction';
 import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
 const ProgressHeader = () => {
@@ -56,6 +58,8 @@ const ProgressHeader = () => {
   useEffect(() => {
     if (story) {
       dispatch(getProgress(story.id));
+      dispatch(getMemoirs(story.id));
+      dispatch(getDailyTasks(story.id));
     }
   }, [story, id, dispatch]);
 

@@ -99,7 +99,8 @@ router.get('/:id(\\d+)/monsters', asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
   const { id: finalDestinationId } = await Destination.findOne({
-    where: [{ parent_destination_id: null }]
+    where: [{ parent_destination_id: null,
+              story_id: req.params.id }]
   });
 
   const destinations = await Destination.findAll({
