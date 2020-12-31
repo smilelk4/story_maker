@@ -24,6 +24,20 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        story_id: 2,
+        title: 'Read a book',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 2,
+        title: 'Write down ideas',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
   },
 

@@ -185,6 +185,17 @@ module.exports = {
         updatedAt: new Date(2020, 11, 10)
       },
       {
+        story_id: 2,
+        parent_destination_id: 16,
+        title: "Take a class on e-commerce",
+        description: `I need to think of a way to monetize the app.`,
+        target_date: new Date(2021, 2, 15),
+        accomplished: false,
+        importance: 8,
+        createdAt: new Date(2020, 12, 10),
+        updatedAt: new Date(2020, 12, 10)
+      },
+      {
         story_id: 3,
         parent_destination_id: null,
         title: "Get an inquiry to develop full-stack application for a company",

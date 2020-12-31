@@ -8,6 +8,9 @@ import dateFormatter from '../../utils/dateFormatter';
 const NewDestination = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const finalDestination = useSelector(state => {
+    return state.destination.find(d => !d.parent_destination_id);
+  });
   const subDestinations = useSelector(state => {
     return state.destination.filter(d => d.parent_destination_id);
   });
@@ -36,7 +39,7 @@ const NewDestination = () => {
       importance: destinationType === 'majorDestination'
                   ? importance : null,
       parentDestinationId: destinationType === 'majorDestination'
-                  ? null : subDestinationId
+                  ? finalDestination.id : subDestinationId
     }));
 
     if (!data.errors) {

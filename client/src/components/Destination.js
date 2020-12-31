@@ -42,7 +42,7 @@ const Destination = ({handleClick, ...props}) => {
             <div className="destination__info">
               <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
               {path === '/my-hub' && (
-                <p className="destination__story">Story: {Story.title}</p>
+                <p className="destination__story">Story: {Story && Story.title}</p>
               )}
             </div>
           </div>
