@@ -19,7 +19,7 @@ module.exports = {
         name: "Art Hero",
         level: 2,
         xp: 9,
-        image_id: 20,
+        image_id: 22,
         createdAt: new Date(),
         updatedAt: new Date()
       },

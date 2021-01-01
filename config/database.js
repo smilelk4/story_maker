@@ -17,7 +17,8 @@ module.exports = {
     dialectOptions: {
       dateStrings: true,
       typeCast: true,
+      ssl:true
     },
-    timezone: 'UTC',
+    // timezone: 'UTC',
   }
 }
