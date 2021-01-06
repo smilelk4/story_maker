@@ -3,6 +3,7 @@
 Story Maker is a gamified habit and goal tracker that helps users keep track of daily routines and milestones towards their goal.
 
 Check out the app: ⚔️&nbsp; [Live Demo](https://storymaker-app.herokuapp.com/) ⚔️
+Deployed on: Heroku
 
 ![Story Maker main image](https://raw.githubusercontent.com/smilelk4/story_maker/main/client/public/storymaker.gif)
 
@@ -15,6 +16,7 @@ Check out the app: ⚔️&nbsp; [Live Demo](https://storymaker-app.herokuapp.com
 * SCSS
 * Sequelize
 * postgreSQL
+* Docker
 
 ## 🛡️&nbsp; Documentation
 
