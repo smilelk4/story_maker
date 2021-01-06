@@ -51,7 +51,7 @@ const MonsterFighter = ({clickHandler}) => {
     } else {
       setPageTitle('You Lost HP');
     }
-  }, [page]);
+  }, [page, monsters]);
 
   const handleDefeat = () => {
     dispatch(updateTimesDefeated(monster.id));

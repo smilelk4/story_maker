@@ -1,7 +1,12 @@
+
+
 FROM node:12 AS front-end-build
 WORKDIR /react-app
 COPY client/ .
-RUN INLINE_RUNTIME_CHUNK=false
+# RUN INLINE_RUNTIME_CHUNK=false
+
+ENV REACT_APP_BASE_URL=https://storymaker-app.herokuapp.com/api
+
 RUN npm install
 RUN npm run build
 
