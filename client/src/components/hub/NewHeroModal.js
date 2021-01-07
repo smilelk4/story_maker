@@ -2,13 +2,14 @@ import React from 'react';
 import HeroCreator from './HeroCreator';
 import ModalContainer from '../ModalContainer';
 
-const NewHeroModal = ({clickHandler}) => {
+const NewHeroModal = ({isModalOpen, setIsModalOpen}) => {
   return ( 
-    <ModalContainer>
+    <ModalContainer
+    isModalOpen={isModalOpen}
+    setIsModalOpen={setIsModalOpen}>
       <div className="modal">
-        <HeroCreator clickHandler={clickHandler}/>
+        <HeroCreator setIsModalOpen={setIsModalOpen} />
       </div>
-      <div className="modal__overlay" onClick={clickHandler}></div>
     </ModalContainer>
   );
 }

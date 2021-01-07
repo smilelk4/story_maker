@@ -26,20 +26,18 @@ const HeroContainer = () => {
     }
   }, [userId, dispatch]);
 
-  const clickHandler = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   return (
     <div className="hero__container" ref={container}>
       <div className="hero__container-left-scroll" 
             onClick={handleLeftScroll}>&#9001;</div>
       <div className="hero__container-right-scroll"
             onClick={handleRightScroll}>&#9002;</div>
-      {isModalOpen && <NewHeroModal clickHandler={clickHandler} />}
+      {isModalOpen && <NewHeroModal 
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen} />}
       <h4 
         className="hero__new-hero title"
-        onClick={clickHandler}>Create a New Hero</h4>
+        onClick={() => setIsModalOpen(true)}>Create a New Hero</h4>
       {heroes.map(hero => <Hero {...hero} />)}
     </div>
   );

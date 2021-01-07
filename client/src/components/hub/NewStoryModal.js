@@ -2,7 +2,7 @@ import React from 'react';
 import StoryCreator from './StoryCreator';
 import ModalContainer from '../ModalContainer';
 
-const NewStoryModal = ({isModalOpen, setIsModalOpen, clickHandler}) => {
+const NewStoryModal = ({isModalOpen, setIsModalOpen}) => {
   return ( 
     <ModalContainer
       isModalOpen={isModalOpen}

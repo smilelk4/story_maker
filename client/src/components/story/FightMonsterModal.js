@@ -2,13 +2,14 @@ import React from 'react';
 import MonsterFighter from './MonsterFighter';
 import ModalContainer from '../ModalContainer';
 
-const FightMonsterModal = ({clickHandler}) => {
+const FightMonsterModal = ({isModalOpen, setIsModalOpen}) => {
   return ( 
-    <ModalContainer>
+    <ModalContainer
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}>
       <div className="modal">
-        <MonsterFighter clickHandler={clickHandler}/>
+        <MonsterFighter setIsModalOpen={setIsModalOpen}/>
       </div>
-      <div className="modal__overlay" onClick={clickHandler}></div>
     </ModalContainer>
   );
 }

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getMonsters, updateTimesDefeated } from '../../store/actions/monsterAction';
 import { raiseXP, updateHp } from '../../store/actions/heroAction';
 
-const MonsterFighter = ({clickHandler}) => {
+const MonsterFighter = ({setIsModalOpen}) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const heroContainer = useRef();
@@ -88,14 +88,14 @@ const MonsterFighter = ({clickHandler}) => {
         <div className="modal__section" ref={heroContainer}> 
           <p>The hero gained some experience.</p>
           <p>Gained EXP: {exp}</p>
-          <button onClick={clickHandler}>Close</button>
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
         </div>
       )}
       {page === 3 && (
         <div className="modal__section" ref={heroContainer}> 
           <p>The monster attacked you from behind.</p>
           <p>Lost HP: {hp}</p>
-          <button onClick={clickHandler}>Close</button>
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
         </div>
       )}
       <div className="modal__errors-container">

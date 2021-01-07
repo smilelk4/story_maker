@@ -9,20 +9,15 @@ const NewAdventure = () => {
     swordAnimation();
   }, []);
 
-  const clickHandler = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   return (
     <>
       {isModalOpen && <NewStoryModal
         isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        clickHandler={clickHandler} />}
+        setIsModalOpen={setIsModalOpen} />}
       <h3 
         className="hub__new-adventure title"
         onMouseOver={swordAnimation}
-        onClick={clickHandler}>
+        onClick={() => setIsModalOpen(true)}>
         <p className="new-adventure__svg-container"></p>
         Start a New Adventure
       </h3>

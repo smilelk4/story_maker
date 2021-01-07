@@ -4,7 +4,7 @@ import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createHero } from '../../store/actions/heroAction';
 
-const HeroCreator = ({clickHandler}) => {
+const HeroCreator = ({setIsModalOpen}) => {
   const dispatch = useDispatch();
   const worldContainer = useRef();
   const heroContainer = useRef();
@@ -77,7 +77,7 @@ const HeroCreator = ({clickHandler}) => {
     const data = await dispatch(createHero({ userId, worldId, name, heroId }));
 
     if (!data.errors) {
-      clickHandler();
+      setIsModalOpen(false);
     }
   }
 

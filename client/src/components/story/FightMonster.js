@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import FightMonsterModal from './FightMonsterModal';
 import bodymovin from 'lottie-web';
 
 const FightMonster = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const monsters = useSelector(state => state.monster);
 
   const animationCreator = () => {
     bodymovin.loadAnimation({
@@ -26,17 +24,15 @@ const FightMonster = () => {
     animationCreator();
   };
 
-  const clickHandler = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   return (
     <>
-      {isModalOpen && <FightMonsterModal clickHandler={clickHandler} />}
+      {isModalOpen && <FightMonsterModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen} />}
       <h3 
         className="hub__new-adventure title"
         onMouseOver={animateSwords}
-        onClick={clickHandler}>
+        onClick={() => setIsModalOpen(true)}>
         <p className="new-adventure__svg-container"></p>
         Fight a Monster
       </h3>
