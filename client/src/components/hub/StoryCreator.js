@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
 import dateFormatter from '../../utils/dateFormatter';
-import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
 
-const StoryCreator = ({clickHandler}) => {
+const StoryCreator = ({setIsModalOpen}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const heroContainer = useRef();
   const heroes = useSelector(state => state.hero);
   const errors = useSelector(state => state.errors);
@@ -64,9 +61,7 @@ const StoryCreator = ({clickHandler}) => {
                                 destinationTitle, targetDate, importance  }));
 
     if(!data.errors) {
-      // dispatch(clearDestinationsAction());
-      clickHandler();
-      // history.push(`/stories/${data.stories[data.stories.length - 1].id}`);
+      setIsModalOpen(false);
     }
   }
 

@@ -9,7 +9,6 @@
   left: 50%;
   box-shadow: $shadow-1;
   transform: translate(-50%, -50%) scale(1);
-  transition: .2s ease-in-out;
   background-color: white;
   padding: 5rem;
   display: flex;
@@ -17,6 +16,7 @@
   justify-content: space-between;
   border-radius: 3px;
   font-size: 1.6rem;
+  outline: none;
 
   & > * {
     margin: 1rem;
@@ -30,9 +30,8 @@
     z-index: 5;
     top: 50%;
     left: 50%;
-    background-color: $color-light;
+    background: rgba(255, 255, 255, .5);
     transform: translate(-50%, -50%) scale(1);
-    transition: .2s ease-in-out;
   }
 
   &__field {
@@ -117,4 +116,18 @@
     text-align: center;
     width: 40rem;
   }
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
 }

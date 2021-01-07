@@ -15,7 +15,10 @@ const NewAdventure = () => {
 
   return (
     <>
-      {isModalOpen && <NewStoryModal clickHandler={clickHandler} />}
+      {isModalOpen && <NewStoryModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        clickHandler={clickHandler} />}
       <h3 
         className="hub__new-adventure title"
         onMouseOver={swordAnimation}
