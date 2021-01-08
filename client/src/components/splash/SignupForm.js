@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../InputField';
 import { createUser } from '../../store/actions/userAction';
 
 const SignupForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +14,8 @@ const SignupForm = () => {
     e.preventDefault();
     const data = await dispatch(createUser({ username, email, password, confirmPassword }));
     
-    if(!data.errors) {
-      history.push('/my-hub');
+    if(data && !data.errors) {
+      window.location.href = '/my-hub';
     }
   };
 

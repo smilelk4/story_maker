@@ -13,7 +13,7 @@ const LoginForm = () => {
     const data = await dispatch(validateUser({ email, password }));
     
     if(data && !data.errors) {
-      window.location.href = '/my-hub'
+      window.location.href = '/my-hub';
     }
   };
 
