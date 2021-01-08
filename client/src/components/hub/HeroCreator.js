@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../config';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
+import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
 import { createHero } from '../../store/actions/heroAction';
 
 const HeroCreator = ({setIsModalOpen}) => {
@@ -98,7 +98,6 @@ const HeroCreator = ({setIsModalOpen}) => {
         errors: ['Please select to proceed.']
       });
     }
-    dispatch({ type: CLEAR_ERRORS });
     setPage(page + 1);
   }
   

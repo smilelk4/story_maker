@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-
 import { Canvas } from 'react-three-fiber';
 import { Stars, OrbitControls } from 'drei';
 import { Loader } from '@react-three/drei';

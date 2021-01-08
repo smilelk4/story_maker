@@ -1,6 +1,6 @@
 import { loadTasksAction, addTaskAction, 
          editTaskAction, removeTaskAction } from '../reducers/dailyTaskReducer';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
+import { LOAD_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
@@ -12,10 +12,7 @@ const verifyData = async (res, dispatch) => {
       errors: data.errors
     });
     return data;
-  } else {
-    dispatch({ type: CLEAR_ERRORS });
-  }
-  
+  } 
   return data;
 };
 

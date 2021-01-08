@@ -30,8 +30,7 @@ const DestinationContainer = () => {
 
   useEffect(() => {
     for (let story of stories) {
-      if (story) {
-        // debugger
+      if (story.id) {
         dispatch(getUpcomingDestinations(story.id));
       }
     }
