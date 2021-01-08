@@ -36,7 +36,6 @@ export const validateUser = inputtedInfo => {
        },
       body: JSON.stringify(inputtedInfo)
     });
-    // debugger
     return await verifyData(res, dispatch);
   }
 };

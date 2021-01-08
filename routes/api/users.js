@@ -20,15 +20,15 @@ router.post('/auth', asyncHandler(async (req, res, next) => {
   try {
     res.locals.user = await User.findOne({ where: { email } });
   } catch (e) {
-    next(e);
+    return next(e);
   }
 
   const { user } = res.locals;
-  if (!user) next(createError('Invalid login.'));
+  if (!user) return next(createError('Invalid login.'));
 
   const isValidPassword = bcrypt.compareSync(password, user.hashed_password.toString());
   
-  if (!isValidPassword) next(createError('Invalid login.'));
+  if (!isValidPassword) return next(createError('Invalid login.'));
 
   const { token } = generateToken(user.id, user.username);
   return res.json({

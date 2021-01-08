@@ -12,7 +12,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(validateUser({ email, password }));
     
-    if(!data.errors) {
+    if(data && !data.errors) {
       window.location.href = '/my-hub'
     }
   };
