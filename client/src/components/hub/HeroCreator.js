@@ -144,7 +144,7 @@ const HeroCreator = ({setIsModalOpen}) => {
       )}
       <div className="modal__errors-container">
         {errors.map(error => (
-          <div>{error}</div>
+          <div key={error.message}>{error}</div>
         ))}
       </div>
       <div className="modal__button-container">

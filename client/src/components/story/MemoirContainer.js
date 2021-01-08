@@ -22,7 +22,7 @@ const MemoirContainer = () => {
     <PageAnimationWrapper>
       <NewMemoir />
       <div className="memoir__container">
-        {memoirs.map(memoir => <Memoir {...memoir} />)}
+        {memoirs.map(memoir => <Memoir {...memoir} key={memoir.id} />)}
       </div>
     </PageAnimationWrapper>
   );

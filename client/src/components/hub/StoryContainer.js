@@ -29,7 +29,7 @@ const StoryContainer = () => {
             onClick={handleLeftScroll}>&#9001;</div>
       <div className="hero__container-right-scroll" 
             onClick={handleRightScroll}>&#9002;</div>
-      {stories.map(story => <Story {...story} />)}
+      {stories.map(story => <Story {...story} key={story.id}/>)}
     </div>
   );
 }

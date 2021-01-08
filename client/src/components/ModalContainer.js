@@ -11,6 +11,7 @@ const ModalContainer = ({isModalOpen, setIsModalOpen, children}) => {
         overlayClassName="modal__overlay"
         shouldCloseOnOverlayClick={true}
         closeTimeoutMS={500}
+        ariaHideApp={false}
       >
       {children}
     </Modal>

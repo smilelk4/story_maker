@@ -84,6 +84,7 @@ const ProgressHeader = () => {
         {[0,0,0,0,0,0,0,0].map(destination => {
           nodePosition += 1.55;
           return <Node
+                    key={destination.id}
                     destination={destination} 
                     active={active}
                     setActive={setActive}

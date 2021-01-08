@@ -14,33 +14,13 @@ const StoryHomeContainer = () => {
   const destinations = useSelector(state => state.destination);
   const location = useLocation();
 
-  // useEffect(() => {
-  //   dispatch(clearDestinationsAction());
-  //   dispatch(getUpcomingDestinations(id));
-  // }, [id, dispatch]);
-
   useEffect(() => {
-    // if (!destinations.length) {
       dispatch(clearDestinationsAction());
       dispatch(getUpcomingDestinations(id));
-      // }
     }, [id, location, dispatch]);
     
   useEffect(() => {
   }, [destinations])
-
-  // useEffect(() => {
-  //   // if (id) {
-  //     dispatch(getUpcomingDestinations(id));
-  //   // }
-  // }, [id, dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(clearDestinationsAction());
-  //   if (id) {
-  //     dispatch(getUpcomingDestinations(id));
-  //   }
-  // }, [location])
 
   return ( 
     <PageAnimationWrapper>

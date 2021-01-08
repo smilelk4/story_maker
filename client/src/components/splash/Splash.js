@@ -67,7 +67,7 @@ const Splash = ({...props}) => {
           {form}
           <div className="splash__error-container">
             {displayErrors.map(error => (
-              <div>{error}</div>
+              <div key={error.message}>{error}</div>
             ))}
           </div>
         </div>

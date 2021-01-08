@@ -114,7 +114,7 @@ const NewDestination = () => {
             <select name="parent-destination" onChange={e =>(
                                               setSubDestinationId(e.target.value))}>
               {subDestinations.map(subDestination => (
-                <option value={subDestination.id}>{subDestination.title}</option>
+                <option key={subDestination.id} value={subDestination.id}>{subDestination.title}</option>
               ))}
             </select>
           </div>

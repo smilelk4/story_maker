@@ -85,7 +85,7 @@ const NavBar = ({handleLogout, stories,
                 <div className="navbar__sub-popup"
                      ref={storiesContainer}>
                   {stories && stories.map(story => (
-                    <NavLink to={`/stories/${story.id}`}>{story.title}</NavLink>
+                    <NavLink to={`/stories/${story.id}`} key={story.id}>{story.title}</NavLink>
                   ))}
                 </div>
               </p>

@@ -103,7 +103,7 @@ const StoryCreator = ({setIsModalOpen}) => {
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes.length && heroes.map(hero => (
-            <div className="hero" onClick={() => {
+            <div key={hero.id} className="hero" onClick={() => {
               setHeroId(hero.id);
               setWorldId(hero.worldId) }}>
               <img src={hero.image} alt={hero.id} />
@@ -144,7 +144,7 @@ const StoryCreator = ({setIsModalOpen}) => {
       )}
       <div className="modal__errors-container">
         {errors.map(error => (
-          <div>{error}</div>
+          <div key={error.message}>{error}</div>
         ))}
       </div>
       <div className="modal__button-container">

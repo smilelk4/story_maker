@@ -28,7 +28,7 @@ const StatusContainer = () => {
       <span className="status__title title">Today's activities</span>
     </div>
       {status && Object.entries(status).map(s => (
-        <Status status={s}/>
+        <Status status={s} key={s.id}/>
       ))}
     </div>
   );

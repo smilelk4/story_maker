@@ -23,7 +23,7 @@ const MonsterContainer = () => {
     <PageAnimationWrapper>
       <NewMonster />
       <div className="monster__container">
-        {monsters.map(monster => <Monster {...monster} />)}
+        {monsters.map(monster => <Monster {...monster} key={monster.id}/>)}
       </div>
     </PageAnimationWrapper>
   );

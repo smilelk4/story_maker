@@ -28,7 +28,7 @@ const HistoryContainer = () => {
     <PageAnimationWrapper>
       <div className="history__container">
         {destinations.map(destination => (
-          <PastDestination {...destination} />
+          <PastDestination {...destination} key={destination.id}/>
         ))}
       </div>
     </PageAnimationWrapper>

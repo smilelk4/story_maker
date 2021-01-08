@@ -31,8 +31,12 @@ const DailyTaskContainer = () => {
     <PageAnimationWrapper>
       <NewDailyTask />
       <div className="daily-task__container">
-        {tasks.map(task => <DailyTask updateTitle={updateTitle} 
-                  deleteTask={deleteTask} {...task} />)}
+        {tasks.map(task => (
+          <DailyTask
+            key={task.id}
+            updateTitle={updateTitle} 
+            deleteTask={deleteTask} {...task} />
+        ))}
       </div>
     </PageAnimationWrapper>
   );
