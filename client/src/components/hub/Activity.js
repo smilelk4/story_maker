@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { select, line, curveCardinal, axisBottom, scaleLinear } from 'd3';
+import { line, curveCardinal, scaleLinear } from 'd3';
 import randomColor from 'randomcolor';
 
 const Activity = ({activities}) => {
@@ -9,7 +9,7 @@ const Activity = ({activities}) => {
   const [colors, setColors] = useState({});
   const heroes = useSelector(state => state.hero);
 
-  const filterActivities = () => {
+  const filterActivities = useCallback(() => {
     let maxRange;
     if (+filter === 1) {
       maxRange = 30;
@@ -25,7 +25,7 @@ const Activity = ({activities}) => {
     const yScale = scaleLinear().domain([0, 10])
         .range([150, 10]);
 
-    let dataLine = line().x((value, index) => xScale(index))
+    let dataLine = line().x((_value, index) => xScale(index))
     .y(yScale)
     .curve(curveCardinal)
 
@@ -63,17 +63,17 @@ const Activity = ({activities}) => {
     } 
     setLines(pathData);
     setColors(colorData);
-  }
+  }, [activities, filter]);
 
   useEffect(() => {
-    filterActivities()
-  }, [filter]);
+    filterActivities();
+  }, [filter, filterActivities]);
   
   useEffect(() => {
     if (Object.keys(lines).length !== Object.keys(activities).length) {
       filterActivities();
     }
-  }, [activities, lines]);
+  }, [activities, lines, filterActivities]);
 
   return ( 
     <div className="activity">
