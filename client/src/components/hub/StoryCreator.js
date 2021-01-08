@@ -24,7 +24,12 @@ const StoryCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     (async () => {
       if (!worlds.length) {
-        const res = await fetch(`${baseUrl}/worlds`);
+        const res = await fetch(`${baseUrl}/worlds`, {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        });
         const data = await res.json();
         setWorlds(data.worlds);
       }

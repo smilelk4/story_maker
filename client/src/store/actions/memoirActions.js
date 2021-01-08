@@ -20,7 +20,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getMemoirs = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/memoirs`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/memoirs`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -35,7 +40,8 @@ export const createMemoir = inputtedInfo => {
     const res = await fetch(`${baseUrl}/memoirs`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });

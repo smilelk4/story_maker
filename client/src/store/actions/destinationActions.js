@@ -19,7 +19,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getPastDestinations = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=accomplished`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=accomplished`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -32,7 +37,12 @@ export const getPastDestinations = storyId => {
 export const getUpcomingDestinations = storyId => {
   // debugger
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=not-accomplished`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=not-accomplished`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -47,7 +57,8 @@ export const createDestination = inputtedInfo => {
     const res = await fetch(`${baseUrl}/destinations`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });

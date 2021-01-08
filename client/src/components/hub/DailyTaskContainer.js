@@ -70,7 +70,7 @@ const DailyTaskContainer = () => {
       <div ref={svgContainer.current} className="svg-container"></div>
       {tasks && tasks.map(task => (
         stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
-          <DailyTask task={task} handleClick={onChecked}/>
+          <DailyTask key={task.id} task={task} handleClick={onChecked}/>
         )
       ))}
       {/* {allCompleted ? (<p className="task__all-completed">All done!</p>) : ''} */}

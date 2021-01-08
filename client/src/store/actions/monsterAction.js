@@ -21,7 +21,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getMonsters = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/monsters`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/monsters`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -36,7 +41,8 @@ export const createMonster = inputtedInfo => {
     const res = await fetch(`${baseUrl}/monsters`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });

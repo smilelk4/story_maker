@@ -26,7 +26,12 @@ const NavBarContainer = () => {
     (async () => {
       const heroes = [];
       if (user.id) {
-        const res = await fetch(`${baseUrl}/users/${user.id}/heroes`);
+        const res = await fetch(`${baseUrl}/users/${user.id}/heroes`, {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        });
         const data = await res.json();
         heroes.push(...data.heroes);
       }
@@ -34,7 +39,12 @@ const NavBarContainer = () => {
       const stories = [];
       if (heroes.length) {
         for (let hero of heroes) {
-          const res = await fetch(`${baseUrl}/heroes/${hero.id}/stories`);
+          const res = await fetch(`${baseUrl}/heroes/${hero.id}/stories`, {
+            headers : { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+             }
+          });
           const data = await res.json();
           stories.push(...data.stories);
         }

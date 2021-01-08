@@ -21,7 +21,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getStories = heroId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}/stories`);
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/stories`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -33,7 +38,12 @@ export const getStories = heroId => {
 
 export const getStory = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -48,7 +58,8 @@ export const createStory = inputtedInfo => {
     const res = await fetch(`${baseUrl}/stories`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });

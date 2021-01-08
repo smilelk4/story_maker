@@ -19,7 +19,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getHeroes = userId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/users/${userId}/heroes`);
+    const res = await fetch(`${baseUrl}/users/${userId}/heroes`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
 
     const data = await verifyData(res, dispatch);
 
@@ -32,7 +37,12 @@ export const getHeroes = userId => {
 
 export const getHero = heroId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}`);
+    const res = await fetch(`${baseUrl}/heroes/${heroId}`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
 
     const data = await verifyData(res, dispatch);
 
@@ -48,7 +58,8 @@ export const createHero = inputtedInfo => {
     const res = await fetch(`${baseUrl}/heroes`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });
@@ -67,7 +78,8 @@ export const raiseXP = (xp, heroId) => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/?type=raise-xp`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({xp})
     });
@@ -86,7 +98,8 @@ export const updateHp = (hp, heroId) => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/?type=update-hp`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({ hp })
     });

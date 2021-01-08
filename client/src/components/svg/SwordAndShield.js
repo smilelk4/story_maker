@@ -3,7 +3,7 @@ import React from 'react';
 const SwordAndShield = () => {
   return ( 
     <div className="svg__container">
-<svg version="1.1" x="0px" y="0px" viewBox="0 0 62.2 64.1" enable-background="new 0 0 62.2 64.1">
+<svg version="1.1" x="0px" y="0px" viewBox="0 0 62.2 64.1" enableBackground="new 0 0 62.2 64.1">
 <g>
 	<g>
 		<path fill="#FFFFFF" d="M24,7.1c-0.3,2.3,0.3,4.2,1.8,5.9c0.9,1,0.4,2.4-0.9,2.9c-7,2.6-11.2,7.6-11.9,15c-0.7,6.9,2.2,12.5,7.9,16.5

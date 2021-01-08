@@ -21,7 +21,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getDailyTasks = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/tasks`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/tasks`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -36,7 +41,8 @@ export const createDailyTask = inputtedInfo => {
     const res = await fetch(`${baseUrl}/tasks`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(inputtedInfo)
     });

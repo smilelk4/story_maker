@@ -30,9 +30,10 @@ export const validateUser = inputtedInfo => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/users/auth`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify(inputtedInfo)
     });
     // debugger
@@ -44,9 +45,10 @@ export const createUser = inputtedInfo => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/users`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify(inputtedInfo)
     });
 
@@ -58,7 +60,9 @@ export const getUser = token => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/users/token`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
     });
 

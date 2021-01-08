@@ -22,7 +22,12 @@ const HeroCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     (async () => {
       if (heroes && !heroes.length) {
-        const res = await fetch(`${baseUrl}/heroes`);
+        const res = await fetch(`${baseUrl}/heroes`, {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        });
         const data = await res.json();
         setHeroes(data.heroImages);
       }
@@ -32,7 +37,12 @@ const HeroCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     (async () => {
       if (!worlds.length) {
-        const res = await fetch(`${baseUrl}/worlds`);
+        const res = await fetch(`${baseUrl}/worlds`, {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        });
         const data = await res.json();
         setWorlds(data.worlds);
       }

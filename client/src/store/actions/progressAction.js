@@ -20,7 +20,12 @@ const verifyData = async (res, dispatch) => {
 
 export const getProgress = storyId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/stories/${storyId}/progress`);
+    const res = await fetch(`${baseUrl}/stories/${storyId}/progress`, {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {

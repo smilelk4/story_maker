@@ -20,7 +20,13 @@ const verifyData = async (res, dispatch) => {
 
 export const getActivities = heroId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes/${heroId}/activities/?tz=${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
+    const res = await fetch(`${baseUrl}/heroes/${heroId}/activities/?tz=${
+                            Intl.DateTimeFormat().resolvedOptions().timeZone}`, {
+                              headers : { 
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                               }
+                            });
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
@@ -35,7 +41,8 @@ export const createActivity = (heroId, userTime) => {
     const res = await fetch(`${baseUrl}/activities`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({heroId, userTime: userTime.format()})
     });
@@ -55,6 +62,7 @@ export const updateActivity = (heroId, userTime) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({heroId, userTime: userTime.format()})
     });
