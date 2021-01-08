@@ -78,14 +78,14 @@ const Activity = ({activities}) => {
   return ( 
     <div className="activity">
       <svg>
-        {Object.entries(lines).map((line, i) => (
-          <path d={line[1]} fill='none' stroke={colors[line[0]]} />
+        {Object.entries(lines).map(line => (
+          <path d={line[1]} fill='none' stroke={colors[line[0]]} key={line} />
         ))}
       </svg>
       <div className="activity__filter-container">
           <div className="activity__category">
             {heroes.map(hero => (
-              <p className="activity__tag">
+              <p className="activity__tag" key={hero.id}>
                 <span className="circle" style={{color:colors[hero.id]}}>&#9673;</span>
                 <span>{hero.name}</span>
               </p>

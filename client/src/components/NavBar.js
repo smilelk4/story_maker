@@ -77,10 +77,9 @@ const NavBar = ({handleLogout, stories,
               <p>{username}</p>
             </div>
             <div className="navbar__stories-container">
-              <p className="navbar__stories"
+              <div className="navbar__stories"
                  onMouseOver={displayStories}
-                 onMouseLeave={hideStories}
-                 >
+                 onMouseLeave={hideStories}>
                 View Stories
                 <div className="navbar__sub-popup"
                      ref={storiesContainer}>
@@ -88,7 +87,7 @@ const NavBar = ({handleLogout, stories,
                     <NavLink to={`/stories/${story.id}`} key={story.id}>{story.title}</NavLink>
                   ))}
                 </div>
-              </p>
+              </div>
             </div>
             <p className="navbar__logout" 
                onClick={handleLogout}>Logout</p>

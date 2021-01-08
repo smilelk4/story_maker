@@ -38,7 +38,7 @@ const HeroContainer = () => {
       <h4 
         className="hero__new-hero title"
         onClick={() => setIsModalOpen(true)}>Create a New Hero</h4>
-      {heroes.map(hero => <Hero {...hero} />)}
+      {heroes.map(hero => <Hero {...hero} key={hero.id}/>)}
     </div>
   );
 }

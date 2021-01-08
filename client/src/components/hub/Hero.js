@@ -17,7 +17,7 @@ const Hero = (...props) => {
       <div className="hero__avatar">
         <img src={image} alt={id} />
       </div>
-      <p className="hero__stat">
+      <div className="hero__stat">
           <span className="hero__level">{level}</span>
           <p className="hero__status-bars-container">
             <span className="status-bar">
@@ -31,7 +31,7 @@ const Hero = (...props) => {
               className="xp-meter"></span>
             </span>
           </p>
-      </p>
+      </div>
       <p className="hero__name">{name}</p>
     </div>
   );

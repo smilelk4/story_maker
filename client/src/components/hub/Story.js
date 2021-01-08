@@ -8,13 +8,13 @@ const Story = (...props) => {
     <Link to={`/stories/${id}`}>
       <div className="story">
         <p className="story__title title">{title}</p>
-        {World && <p className="story__world-name">
+        {World && <div className="story__world-name">
           <Shield />
           <div>
             <p>World Name:</p><br /> 
             <p>{World.name}</p>
           </div>
-        </p>}
+        </div>}
       </div>
     </Link>
   );

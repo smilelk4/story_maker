@@ -35,7 +35,6 @@ export const getPastDestinations = storyId => {
 };
 
 export const getUpcomingDestinations = storyId => {
-  // debugger
   return async dispatch => {
     const res = await fetch(`${baseUrl}/stories/${storyId}/destinations/?state=not-accomplished`, {
       headers : { 

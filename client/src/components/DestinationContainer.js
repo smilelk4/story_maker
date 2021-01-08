@@ -15,8 +15,10 @@ const DestinationContainer = () => {
   const { id } = useParams();  
 
   useEffect(() => {
-    dispatch(clearDestinationsAction());
-    dispatch(getUpcomingDestinations(id));
+    if (id) {
+      dispatch(clearDestinationsAction());
+      dispatch(getUpcomingDestinations(id));
+    }
   }, [id, dispatch]);
   
   useEffect(() => {
@@ -44,10 +46,11 @@ const DestinationContainer = () => {
     <PageAnimationWrapper>
       <div className="destination__container">
         {destinations.map(destination => (
-          <>
+          <div key={destination.id}>
             {destinations[0] !== destination && <Line /> }
-            <Destination handleClick={onCompleted} {...destination} />
-          </>
+            <Destination key={destination.id} handleClick={onCompleted}
+                         {...destination} />
+          </div>
         ))}
       </div>
     </PageAnimationWrapper>
