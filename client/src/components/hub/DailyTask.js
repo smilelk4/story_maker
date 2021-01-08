@@ -1,6 +1,4 @@
 import React, { useRef } from 'react';
-import bodymovin from 'lottie-web';
-import { check } from 'express-validator';
 
 const DailyTask = ({task, handleClick}) => {
   const { id, title, Story } = task;

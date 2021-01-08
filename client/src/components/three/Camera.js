@@ -5,10 +5,10 @@ import CanvasScroll from './CanvasScroll';
 
 const Camera = (props) => {
   const [x] = CanvasScroll([1, 100], { domTarget: props.reference });
-  const ref = useRef()
-  const { setDefaultCamera } = useThree()
-  useEffect(() => void setDefaultCamera(ref.current), [])
-  useFrame(() => ref.current.updateMatrixWorld())
+  const ref = useRef();
+  const { setDefaultCamera } = useThree();
+  useEffect(() => void setDefaultCamera(ref.current), [setDefaultCamera]);
+  useFrame(() => ref.current.updateMatrixWorld());
 
   return ( 
     <a.perspectiveCamera ref={ref} {...props} 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LoginForm from './LoginForm';
@@ -48,10 +48,10 @@ const Splash = ({...props}) => {
         <div className="footer__developed-by">
           <p className="footer__name">Developed & Designed by Yuka Moribe</p>
           <div className="footer__icon-container">
-              <a target="_blank" href="https://github.com/smilelk4">
+              <a target="_blank" rel="noreferrer" href="https://github.com/smilelk4">
                 <GitHubIcon />
               </a>
-              <a target="_blank" href="https://www.linkedin.com/in/yuka-moribe-485962157/">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/yuka-moribe-485962157/">
                 <LinkedInIcon />
               </a>
           </div>

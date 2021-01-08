@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef, Suspense } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Canvas } from 'react-three-fiber';
 import { Physics } from "@react-three/cannon";
-import { Sky, Html } from 'drei';
+import { Sky } from 'drei';
 import { Vector3 } from 'three';
-import { useGLTF } from '@react-three/drei';
 import Trees from '../three/Trees';
 import Castle from '../three/Castle';
 import Plane from '../three/Plane';
@@ -37,17 +36,7 @@ const ProgressHeader = () => {
 
   useEffect(() => {
     dispatch(clearDestinationsAction());
-  }, [])
-
-  // useEffect(() => {
-  //   if (heroId) {
-  //     dispatch(getHero(heroId));
-  //   }
-
-  //   if (story.id) {
-  //     dispatch(getProgress(story.id));
-  //   }
-  // }, [location])
+  }, [dispatch])
 
   useEffect(() => {
     if (heroId) {
@@ -65,7 +54,7 @@ const ProgressHeader = () => {
 
   useEffect(() => {
     setHeroPosition(maxHeroXPositionRange * progress);
-  }, [progress, dispatch])
+  }, [progress, maxHeroXPositionRange, dispatch]);
 
   return ( 
     <Canvas
@@ -103,32 +92,4 @@ const ProgressHeader = () => {
 
 }
 
-{/* <Camera position={[0, 1, 20]}
-        reference={container.current}/>
-<ambientLight intensity={0.5} />
-<spotLight position={[10, 15, 10]} angle={3} />
-<Sky sunPosition={new Vector3(10, 20, 100)}/>
-<Physics
-  velocity={0}
-  gravity={[0, -5, 0]} >
-  {destinations.map(destination => {
-    x += 3;
-    return <Node
-              destination={destination} 
-              active={active}
-              setActive={setActive}
-              position={[x, 5, 0]} />
-  })}
-  <Hero hero={hero}
-        active={active}
-        setActive={setActive}
-        position={[-10, 5, 0]} />
-  <Plane />
-</Physics> */}
-{/* {active && (
-  <Html>
-    <div>Hiii</div>
-  </Html>
-)} */}
-// );
 export default ProgressHeader;

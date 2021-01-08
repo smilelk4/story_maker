@@ -73,7 +73,7 @@ const DailyTaskContainer = () => {
           <DailyTask key={task.id} task={task} handleClick={onChecked}/>
         )
       ))}
-      {/* {allCompleted ? (<p className="task__all-completed">All done!</p>) : ''} */}
+      {allCompleted ? (<p className="task__all-completed">All done!</p>) : ''}
     </div>
     </>
   );

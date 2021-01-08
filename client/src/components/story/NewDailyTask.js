@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createDailyTask } from '../../store/actions/dailyTaskAction';
 
 const NewDailyTask = () => {
   const dispatch = useDispatch();
   const { id: storyId } = useParams();
-
   const [title, setTitle] = useState(null);
-  const [description, setDescription] = useState(null);
-
 
   const handleSubmit = async e => {
     e.preventDefault();

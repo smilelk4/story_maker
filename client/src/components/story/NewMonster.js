@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createMonster } from '../../store/actions/monsterAction';
 
 const NewMonster = () => {
   const dispatch = useDispatch();
   const { id: storyId } = useParams();
-  const heroId = useSelector(state => state.hero[0].id);
-
   const [name, setName] = useState(null);
   const [strength, setStrength] = useState(1);
 

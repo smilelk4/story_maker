@@ -2,9 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 const PastDestination = ({...props}) => {
-  const { id, parent_destination_id: parentDestinationId, updatedAt,
-      title, target_date: targetDate, importance, ParentDestination } = props;
-
+  const { updatedAt, title, target_date: targetDate, ParentDestination } = props;
 
   return ( 
     <div className="past-destination">

@@ -29,7 +29,7 @@ const StoryHome = ({hero, story, destinations}) => {
       setTotalHoursFought(hoursThisMonth);
       setAverageAccomplishmentLevel(averageAccomplishmentLevelThisMonth);
     }
-  }, [memoir]);
+  }, [memoir, currentMonth]);
 
   const skullIcons = () => {
     const skulls = [];

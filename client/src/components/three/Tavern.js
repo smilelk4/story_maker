@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useGLTF } from '@react-three/drei';
 import path from 'path';
 

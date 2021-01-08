@@ -20,7 +20,7 @@ const StatusContainer = () => {
       setStatus(statusData);
     }
 
-  }, [activities, heroes]);
+  }, [activities, date, month, heroes]);
 
   return (
     <div className="status__container">

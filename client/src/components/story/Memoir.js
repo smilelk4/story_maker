@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import DateFormatter from '../../utils/dateFormatter';
 
 const Memoir = ({...props}) => {
   const { title, description, hoursFought, accomplishmentLevel, date } = props;

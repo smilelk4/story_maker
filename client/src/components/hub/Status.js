@@ -3,13 +3,13 @@ import plusOneAnimation from '../../animation/plusOne';
 
 const StatusContainer = ({status}) => {
   const svgContainer = useRef();
-  let [lastActionCount, setLastActionCount] = useState(status[1]);
+  let [lastActionCount] = useState(status[1]);
 
   useEffect(() => {
     if (status[1] && lastActionCount && status[1] !== lastActionCount) {
       plusOneAnimation(svgContainer.current);
     }
-  }, [status[1]]);
+  }, [lastActionCount, status]);
 
   return (
     <div className="status__field">

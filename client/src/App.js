@@ -23,7 +23,7 @@ function App() {
           localStorage.removeItem('user_id');
         }
     }})()
-  }, [token, user, dispatch]); 
+  }, [token, user, dispatch, history]); 
 
   return (
     <div className="app">
