@@ -38,24 +38,6 @@ router.put('/',
     '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
     AT TIME ZONE 'UTC')
     LIMIT 1;`)
-    
-    // const activity = await ActivityLog.findOne({
-      //   where: [
-  //     {hero_id: heroId},
-      // sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
-      // '=', `${y}-${m}-${d}`)
-      // {createdAt: {
-      //   [Op.iLike]: `${y}-${m}-${d}`
-      // }}
-      // , {
-      //   dialectOptions: {
-      //     dateStrings: true,
-      //     typeCast: true,
-      //   },
-      //   timezone: 'America/New_York'
-      // }
-  //   ],
-  // });
 
   if (activity[0][0].action < 10) {
     const data = await ActivityLog.findByPk(activity[0][0].id);

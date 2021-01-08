@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const { Story, World, Hero, HeroImage, ActivityLog } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
-const { sequelize } = require('../../db/models');
 const moment = require('moment');
-const url = require('url');
 
 const createError = msg => {
   const err = new Error(msg);
@@ -44,7 +42,6 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
     include: [World]
     });
 
-  // if (!stories.length) next(createError('No stories found.'));
   res.json({ stories });
 }));
 

@@ -51,7 +51,7 @@ const NavBarContainer = () => {
         setStories(stories);
       }
     })();
-  }, [heroes])
+  }, [heroes, user.id])
 
   const handleLogout = () => {
     localStorage.removeItem('user_id');

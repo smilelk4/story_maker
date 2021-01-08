@@ -10,10 +10,8 @@ import Line from './svg/Line';
 
 const DestinationContainer = () => {
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
   const destinations = useSelector(state => state.destination);
   const stories = useSelector(state => state.story);
-  const userId = useSelector(state => state.user.id);
   const { id } = useParams();  
 
   useEffect(() => {

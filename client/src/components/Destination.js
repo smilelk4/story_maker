@@ -5,7 +5,7 @@ import CheckIcon from '@material-ui/icons/Check';
 
 const Destination = ({handleClick, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
-        title, description, target_date: targetDate, importance, Story } = props;
+        title, description, target_date: targetDate, Story } = props;
   const [isOverdue, setIsOverDue] = useState(false);
   const path = useLocation().pathname;
 

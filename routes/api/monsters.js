@@ -42,7 +42,6 @@ router.post('/',
 router.put('/:id(\\d+)', 
   asyncHandler(async (req, res) => {
   const { id } = req.params;
-  // console.log(monsterId, typeof monsterId, '!!!!!')
   const monster = await Monster.findByPk(id, {
     include: [MonsterImage]
   });
