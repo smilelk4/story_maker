@@ -76,7 +76,8 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
         </div>
         <img src="https://story-maker-app.s3.amazonaws.com/tower.png" 
-             alt={story.id}/>
+             alt={story.id}
+             className="storyhome__castle"/>
       </div>
       <Line />
       <div className='storyhome__section'>

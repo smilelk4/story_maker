@@ -7,9 +7,7 @@ const NewHeroModal = ({isModalOpen, setIsModalOpen}) => {
     <ModalContainer
     isModalOpen={isModalOpen}
     setIsModalOpen={setIsModalOpen}>
-      <div className="modal">
-        <HeroCreator setIsModalOpen={setIsModalOpen} />
-      </div>
+      <HeroCreator setIsModalOpen={setIsModalOpen} />
     </ModalContainer>
   );
 }

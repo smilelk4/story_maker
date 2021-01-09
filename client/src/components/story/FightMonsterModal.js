@@ -7,9 +7,7 @@ const FightMonsterModal = ({isModalOpen, setIsModalOpen}) => {
     <ModalContainer
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}>
-      <div className="modal">
-        <MonsterFighter setIsModalOpen={setIsModalOpen}/>
-      </div>
+      <MonsterFighter setIsModalOpen={setIsModalOpen}/>
     </ModalContainer>
   );
 }
