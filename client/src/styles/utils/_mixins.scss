@@ -136,6 +136,7 @@
 }
 
 @mixin mystory-item($form-bg-image) {
+  @include hide-scroll;
   height: $basic-item-height;
   background: $gradient-grey;
   display: flex;
@@ -152,6 +153,7 @@
 
   &__container {
     @include custom-scroll;
+    @include calc("height", "100% - 1.5 * #{$basic-item-height}");
     overflow-y: scroll;
     margin-top: 3rem;
   }

@@ -1,17 +1,11 @@
 .memoir {
   @include mystory-item('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
-  @include hide-scroll;
-  
-  &__container {
-    @include calc("height", "100% - 1.5 * #{$basic-item-height}");
-  }
 
   &__extra-info {
     display: flex;
     justify-content: space-between;
     font-size: 1.2rem;
     color: $color-dark-lighter2;
-    opacity: .85;
   }
 
   &__description {
