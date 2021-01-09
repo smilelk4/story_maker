@@ -4,7 +4,7 @@
   line-height: 3rem;
 
   @include respond-large {
-   p {
+   p, div {
      font-size: 1.2rem;
    }
   }
@@ -115,7 +115,7 @@
     font-size: 2.5rem;
     margin-bottom: 2rem;
     position: relative;
-    min-width: 20rem;
+    min-width: max-content;
     max-width: 100%;
     line-height: 4rem;
 
@@ -158,6 +158,10 @@
       object-fit: contain;
       width: 100%;
     }
+
+    @include respond-medium {
+      display: none;
+    }
   }
 
   &__hero-name {
@@ -196,6 +200,10 @@
     align-items: center;
     font-size: 1.2rem;
     justify-content: flex-end;
+
+    @include respond-large {
+      font-size: .8rem;
+    }
   }
 
   &__hero-stats {

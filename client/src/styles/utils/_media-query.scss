@@ -5,7 +5,7 @@
 }
 
 @mixin respond-medium {
-  @media (max-width: 1200px) {
+  @media (max-width: 1500px) {
     @content;
   }
 }
