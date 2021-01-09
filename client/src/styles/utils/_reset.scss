@@ -52,6 +52,10 @@ a:visited {
 
 .form__slider {
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   .form__number-display {
     position: absolute;

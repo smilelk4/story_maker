@@ -53,8 +53,8 @@
     align-items: center;
     justify-content: space-around;
 
-    input, textarea {
-      width: 35rem;
+    input, textarea, .form__slider {
+      width: 100%;
     }
 
     &-section {
@@ -62,7 +62,12 @@
       margin: 1rem;
       display: flex;
       justify-content: space-between;
-      width: 50rem;
+      width: 80%;
+      background: pink;
+
+      label {
+        width: 20rem;
+      }
 
       .monster__form-number-display {
         position: absolute;
