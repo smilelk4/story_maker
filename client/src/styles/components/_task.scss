@@ -70,61 +70,23 @@
 
   &__form {
     @include mystory-form('https://story-maker-app.s3.amazonaws.com/house-1.png');
-    // background-image: 
-    //   $gradient-darker-grey,
-    //   url(https://story-maker-app.s3.amazonaws.com/house-1.png);
-
-    &-section {
-      position: relative;
-      margin: 1rem;
-      display: flex;
-      justify-content: space-between;
-      width: 80%;
-
-      label {
-        width: 20rem;
+  
+    &--edit {
+      input {
+        width: 50rem;
+        background: transparent;
+      }
+      button {
+        margin-left: 2rem;
       }
     }
 
-    
-    input {
-      width: 100%;
-    }
-    
-    & > div {
-      margin: .5rem;
+    &--delete {
       display: flex;
-      justify-content: space-between;
-    }
-    button {
-      margin-top: 1rem;
-    }
-  }
-
-  &__edit-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    input {
-      width: 50rem;
-      background: transparent;
-    }
-    button {
-      margin-left: 2rem;
-    }
-  }
-
-  &__delete-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-
-    input {
-      width: 50rem;
-      background: transparent;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
     }
   }
 

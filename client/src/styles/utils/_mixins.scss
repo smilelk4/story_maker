@@ -147,4 +147,20 @@
   border-radius: 2px;
   align-items: center;
   justify-content: space-around;
+
+  &-section {
+    position: relative;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+
+    label {
+      width: 20rem;
+    }
+
+    input, textarea, .form__slider {
+      width: 100%;
+    }
+  }
 }

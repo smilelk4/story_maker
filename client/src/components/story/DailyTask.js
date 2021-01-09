@@ -29,7 +29,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
         <>
           <p className="daily-task__menu" 
             onClick={() => {setViewMode('default')}}>Close</p>
-          <form className="daily-task__edit-form" 
+          <form className="daily-task__form--edit" 
                 onSubmit={handleEdit}>
             <input 
               type="text"
@@ -43,7 +43,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
         <>
           <p className="daily-task__menu" 
             onClick={() => {setViewMode('default')}}>Close</p>
-          <form className="daily-task__delete-form" 
+          <form className="daily-task__form--delete" 
                 onSubmit={handleDelete}>
             <p>Are you sure?</p>
             <p className="title">{title}</p>

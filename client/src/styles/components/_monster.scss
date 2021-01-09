@@ -54,37 +54,17 @@
   &__form {
     @include mystory-form('https://story-maker-app.s3.amazonaws.com/tree-1.png');
 
-    input, .form__slider {
-      width: 100%;
-    }
-
-    &-section {
-      position: relative;
-      margin: 1rem;
-      display: flex;
-      justify-content: space-between;
-      width: 80%;
-
-      label {
-        width: 20rem;
-      }
-
-      .memoir__form-number-display {
-        position: absolute;
-        right: -4rem;
-        top: -.3rem;
-        width: 3rem;
-        font-size: 1.2rem;
-        background: $gradient-grey;
-        text-align: center;
-        width: 2rem;
-        border-radius: 2px;
-      }
-    }
-
-    button {
-      margin-top: 1rem;
-    }
+    // .memoir__form-number-display {
+    //   position: absolute;
+    //   right: -4rem;
+    //   top: -.3rem;
+    //   width: 3rem;
+    //   font-size: 1.2rem;
+    //   background: $gradient-grey;
+    //   text-align: center;
+    //   width: 2rem;
+    //   border-radius: 2px;
+    // }
   }
 
   &__fight-monster {
