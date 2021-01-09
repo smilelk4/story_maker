@@ -52,21 +52,7 @@
   }
 
   &__form {
-    background-image: 
-      $gradient-darker-grey,
-      url(https://story-maker-app.s3.amazonaws.com/tree-1.png);
-    background-repeat: no-repeat;
-    color: white;
-    margin: 0 2rem;
-    // height: max-content;
-    // height: $basic-item-height;
-    height: $basic-item-height;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2px;
-    align-items: center;
-    justify-content: space-around;
+    @include mystory-form('https://story-maker-app.s3.amazonaws.com/tree-1.png');
 
     input, .form__slider {
       width: 100%;
