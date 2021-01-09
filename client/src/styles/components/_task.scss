@@ -88,19 +88,22 @@
       margin: 1rem;
       display: flex;
       justify-content: space-between;
-      width: 50rem;
+      width: 80%;
+
+      label {
+        width: 20rem;
+      }
     }
 
     
     input {
-      width: 35rem;
+      width: 100%;
     }
     
     & > div {
       margin: .5rem;
       display: flex;
       justify-content: space-between;
-      width: 50rem;
     }
     button {
       margin-top: 1rem;

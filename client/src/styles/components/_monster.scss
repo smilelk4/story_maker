@@ -68,8 +68,8 @@
     align-items: center;
     justify-content: space-around;
 
-    input, textarea {
-      width: 35rem;
+    input, .form__slider {
+      width: 100%;
     }
 
     &-section {
@@ -77,7 +77,11 @@
       margin: 1rem;
       display: flex;
       justify-content: space-between;
-      width: 50rem;
+      width: 80%;
+
+      label {
+        width: 20rem;
+      }
 
       .memoir__form-number-display {
         position: absolute;
