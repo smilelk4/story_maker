@@ -46,14 +46,14 @@ const StoryHome = ({hero, story, destinations}) => {
           <h4 className='storyhome__title title'>{story.title}</h4>
           <p className='storyhome__field'>
             <span>
-              <span className="label">Difficulty: </span>
-              <span>{skullIcons()}</span>
+              <span className="label storyhome__label">Difficulty: </span>
+              <span className="storyhome__data storyhome__skulls">{skullIcons()}</span>
             </span>
           </p>
           <p className='storyhome__field'>
             <span>
-              <span className="label">On adventure since: </span>
-              <span>
+              <span className="label storyhome__label">On adventure since: </span>
+              <span className="storyhome__data">
                 {moment(story.start_date).format("MMM Do YYYY") + ' '}
                 ({moment(story.start_date).startOf('day').fromNow()})
               </span>
@@ -61,8 +61,8 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
           <p className='storyhome__field'>
             <span>
-              <span className="label">Expected completion date: </span> 
-              <span>
+              <span className="label storyhome__label">Expected completion date: </span> 
+              <span className="storyhome__data">
                 {moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
                 ({moment(destinations[destinations.length - 1].target_date).endOf('day').fromNow()})
               </span>
@@ -70,8 +70,8 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
           <p className='storyhome__field'>
             <span>
-              <span className="label">Final destination: </span>
-              <span>{destinations[destinations.length - 1].title}</span>
+              <span className="label storyhome__label">Final destination: </span>
+              <span className="storyhome__data">{destinations[destinations.length - 1].title}</span>
             </span>
           </p>
         </div>
@@ -115,7 +115,7 @@ const StoryHome = ({hero, story, destinations}) => {
 
           <p className='storyhome__field'>
             <span>
-              <span className="label">Total hours fought this month: </span>
+              <span className="label storyhome__label">Total hours fought this month: </span>
               <span>
                 {totalHoursFought} hours
               </span>
@@ -123,7 +123,7 @@ const StoryHome = ({hero, story, destinations}) => {
           </p>
           <p className='storyhome__field'>
             <span>
-              <span className="label">Average accomplishment level: </span>
+              <span className="label storyhome__label">Average accomplishment level: </span>
               <span>
                 {averageAccomplishmentLevel}
               </span>

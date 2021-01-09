@@ -5,9 +5,9 @@
   background: pink;
 
   @include respond-large {
-    h4 {
-      font-size: 2.5rem;
-    }
+   p {
+     font-size: 1.2rem;
+   }
   }
 
   &__section {
@@ -29,11 +29,19 @@
     }
 
     @include respond-large {
-      height: 10rem;
+      // height: 10rem;
+      min-height: 10rem;
+      max-height: 25rem;
       background: orange;
       line-height: 2rem;
       padding: 3rem;
     }
+  }
+
+  &__castle {
+    width: 30%;
+    height: auto;
+    object-fit: contain;
   }
 
   &__story {
@@ -45,7 +53,7 @@
 
   &__field {   
     min-height: 3rem; 
-    text-align: center;
+    text-align: left;
 
     & > span {
       display: flex;
@@ -53,10 +61,40 @@
       justify-content: space-between;
 
       img {
-        width: 3rem;
+        // width: 3rem;
         &:not(:last-child) {
           margin-right: 1rem;
         }
+      }
+    }
+  }
+
+  &__label {
+    width: 15rem;
+    background: white;
+
+    @include respond-large {
+      width: 10rem;
+    }
+  }
+
+  &__data {
+    background: white;
+    max-width: 30rem;
+    min-width: min-content;
+
+    @include respond-large {
+      max-width: 15rem;
+      min-width: min-content;
+    }
+  }
+
+  &__skulls {
+    img {
+      width: 2.5rem;
+
+      @include respond-large {
+        width: 2rem;
       }
     }
   }
@@ -76,6 +114,7 @@
 
     @include respond-large {
       margin-bottom: 0;
+      font-size:2rem;
     }
   }
 
@@ -85,7 +124,7 @@
     width: 100%;
 
     @include respond-large {
-      height: 80%;
+      height: 10rem;
       background: white;
     }
   }
@@ -98,10 +137,6 @@
 
     @include respond-large {
       flex-direction: column;
-
-      & > h4, & > div {
-        height: 15rem;
-      }
     }
   }
 
