@@ -38,47 +38,18 @@
   }
 
   &__form {
-    background-image: 
-      $gradient-darker-grey,
-      url(https://story-maker-app.s3.amazonaws.com/bungalo-house.png);
-    background-repeat: no-repeat;
-    color: white;
-    margin: 0 2rem;
-    @include calc("height", "1.5 * #{$basic-item-height}");
-    background-position: left;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2px;
-    align-items: center;
-    justify-content: space-around;
+    @include mystory-form('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
 
-    input, textarea, .form__slider {
-      width: 100%;
-    }
-
-    &-section {
-      position: relative;
-      margin: 1rem;
-      display: flex;
-      justify-content: space-between;
-      width: 80%;
-
-      label {
-        width: 20rem;
-      }
-
-      .monster__form-number-display {
-        position: absolute;
-        right: -4rem;
-        top: -.3rem;
-        width: 3rem;
-        font-size: 1.2rem;
-        background: $gradient-grey;
-        text-align: center;
-        width: 2rem;
-        border-radius: 2px;
-      }
+    .monster__form-number-display {
+      position: absolute;
+      right: -4rem;
+      top: -.3rem;
+      width: 3rem;
+      font-size: 1.2rem;
+      background: $gradient-grey;
+      text-align: center;
+      width: 2rem;
+      border-radius: 2px;
     }
 
     button {

@@ -139,7 +139,8 @@
   background-image: $gradient-darker-grey, url($bg-image);
   color: white;
   margin: 0 2rem;
-  height: $basic-item-height;
+  min-height: $basic-item-height;
+  max-height: max-content;
   background-repeat: no-repeat;
   padding: 2rem;
   display: flex;

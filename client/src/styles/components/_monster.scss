@@ -53,18 +53,6 @@
 
   &__form {
     @include mystory-form('https://story-maker-app.s3.amazonaws.com/tree-1.png');
-
-    // .memoir__form-number-display {
-    //   position: absolute;
-    //   right: -4rem;
-    //   top: -.3rem;
-    //   width: 3rem;
-    //   font-size: 1.2rem;
-    //   background: $gradient-grey;
-    //   text-align: center;
-    //   width: 2rem;
-    //   border-radius: 2px;
-    // }
   }
 
   &__fight-monster {
