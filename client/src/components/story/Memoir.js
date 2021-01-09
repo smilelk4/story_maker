@@ -6,7 +6,7 @@ const Memoir = ({...props}) => {
 
   return ( 
     <div className="memoir">
-      <p className="memoir__title title">{title}</p>
+      <p className="mystory__title title">{title}</p>
       <p className="memoir__description">{description}</p>
       <p className="memoir__extra-info">
         <p className="memoir__hours">Hours Fought: {hoursFought}</p>

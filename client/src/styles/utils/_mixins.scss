@@ -165,3 +165,25 @@
     }
   }
 }
+
+@mixin mystory-item() {
+  height: $basic-item-height;
+  background: $gradient-grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  overflow-y: scroll;
+  border-radius: 2px;
+  margin: 0 2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__container {
+    @include custom-scroll;
+    overflow-y: scroll;
+    margin-top: 3rem;
+  }
+}

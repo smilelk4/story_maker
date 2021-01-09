@@ -43,29 +43,12 @@
 }
 
 .daily-task {
-  height: $basic-item-height;
-  background: $gradient-grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 2rem;
-  overflow-y: scroll;
-  margin: 0 2rem;
-  border-radius: 2px;
-  position: relative;
-
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-
+  @include mystory-item;
   @include hide-scroll;
+  position: relative;
 
   &__container {
     @include calc("height", "100% - #{$basic-item-height}");
-    overflow-y: scroll;
-    @include custom-scroll();
-    margin-top: 3rem;
   }
 
   &__form {

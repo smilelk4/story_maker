@@ -7,7 +7,7 @@ const Monster = ({...props}) => {
   return ( 
     <div className="monster">
       <div className="monster__info">
-        <p className="monster__title title">{name}</p>
+        <p className="mystory__title title">{name}</p>
         <p className="strength">Strength: {strength}</p>
         <p className="times-defeated">Times Defeated: {timesDefeated}</p>
         <p className="created-at">Battling Since: {moment(createdAt).format("MM-DD-YYYY")}</p>

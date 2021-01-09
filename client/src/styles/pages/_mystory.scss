@@ -3,6 +3,10 @@
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
 
+  &__title {
+    font-size: 2.2rem;
+  }
+
   &__contents {
     grid-column: 2 / -2;
     display: grid;
@@ -65,7 +69,6 @@
   &__sidebar-right {
     position: sticky;
     top: 0;
-    // background: pink;
   }
 
   &__scroll {

@@ -1,26 +1,11 @@
 .memoir {
-  height: $basic-item-height;
-  background: $gradient-grey;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 2rem;
-  overflow-y: scroll;
-  border-radius: 2px;
-  margin: 0 2rem;
-  
-  &:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-
+  @include mystory-item;
   @include hide-scroll;
   
   &__container {
     @include calc("height", "100% - 1.5 * #{$basic-item-height}");
-    overflow-y: scroll;
-    @include custom-scroll();
-    margin-top: 3rem;
   }
+
   &__extra-info {
     display: flex;
     justify-content: space-between;
@@ -29,31 +14,11 @@
     opacity: .85;
   }
 
-  &__title {
-    font-size: 2.2rem;
-  }
-
   &__description {
     color: $color-dark-lighter2;
   }
 
   &__form {
     @include mystory-form('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
-
-    .monster__form-number-display {
-      position: absolute;
-      right: -4rem;
-      top: -.3rem;
-      width: 3rem;
-      font-size: 1.2rem;
-      background: $gradient-grey;
-      text-align: center;
-      width: 2rem;
-      border-radius: 2px;
-    }
-
-    button {
-      margin-top: 1rem;
-    }
   }
 }
