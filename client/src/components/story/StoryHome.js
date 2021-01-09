@@ -45,13 +45,13 @@ const StoryHome = ({hero, story, destinations}) => {
         <div className="storyhome__story">
           <h4 className='storyhome__title title'>{story.title}</h4>
           <p className='storyhome__field'>
-            <span>
+            <span className="storyhome__line">
               <span className="label storyhome__label">Difficulty: </span>
               <span className="storyhome__data storyhome__skulls">{skullIcons()}</span>
             </span>
           </p>
           <p className='storyhome__field'>
-            <span>
+            <span className="storyhome__line">
               <span className="label storyhome__label">On adventure since: </span>
               <span className="storyhome__data">
                 {moment(story.start_date).format("MMM Do YYYY") + ' '}
@@ -60,7 +60,7 @@ const StoryHome = ({hero, story, destinations}) => {
             </span>
           </p>
           <p className='storyhome__field'>
-            <span>
+            <span className="storyhome__line">
               <span className="label storyhome__label">Expected completion date: </span> 
               <span className="storyhome__data">
                 {moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
@@ -69,7 +69,7 @@ const StoryHome = ({hero, story, destinations}) => {
             </span>
           </p>
           <p className='storyhome__field'>
-            <span>
+            <span className="storyhome__line">
               <span className="label storyhome__label">Final destination: </span>
               <span className="storyhome__data">{destinations[destinations.length - 1].title}</span>
             </span>

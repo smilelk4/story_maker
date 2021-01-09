@@ -2,7 +2,6 @@
   box-shadow: $shadow-2;
   height: 100%;
   line-height: 3rem;
-  background: pink;
 
   @include respond-large {
    p {
@@ -17,7 +16,6 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    background: slateblue;
 
     &:first-child {
       height: 40rem;
@@ -25,14 +23,12 @@
 
     img {
       height: 100%;
-      background: skyblue;
     }
 
     @include respond-large {
       // height: 10rem;
       min-height: 10rem;
-      max-height: 25rem;
-      background: orange;
+      max-height: max-content;
       line-height: 2rem;
       padding: 3rem;
     }
@@ -70,11 +66,14 @@
   }
 
   &__label {
-    width: 15rem;
+    min-width: max-content;
+    max-width: 15rem;
     background: white;
 
     @include respond-large {
-      width: 10rem;
+      // max-width: 1rem;
+      min-width: max-content;
+      max-width: 20rem;
     }
   }
 
@@ -85,7 +84,15 @@
 
     @include respond-large {
       max-width: 15rem;
-      min-width: min-content;
+      min-width: max-content;
+    }
+  }
+
+  &__line {
+    display: flex;
+
+    @include respond-large {
+      flex-direction: column;
     }
   }
 
@@ -122,16 +129,19 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    // height: 50%;
+    max-height: 15rem;
 
     @include respond-large {
-      height: 10rem;
+      max-height: 10rem;
       background: white;
     }
   }
 
   &__hero-container {
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height: max-content;
     display: flex;
     justify-content: space-between;
 
@@ -147,7 +157,6 @@
     img {
       object-fit: contain;
       width: 100%;
-      height: 100%;
     }
   }
 
