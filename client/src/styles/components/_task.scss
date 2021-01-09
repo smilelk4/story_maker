@@ -43,7 +43,7 @@
 }
 
 .daily-task {
-  @include mystory-item;
+  @include mystory-item('https://story-maker-app.s3.amazonaws.com/house-1.png');
   @include hide-scroll;
   position: relative;
 
@@ -51,9 +51,7 @@
     @include calc("height", "100% - #{$basic-item-height}");
   }
 
-  &__form {
-    @include mystory-form('https://story-maker-app.s3.amazonaws.com/house-1.png');
-  
+  &__form {  
     &--edit {
       input {
         width: 50rem;

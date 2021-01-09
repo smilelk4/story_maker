@@ -1,5 +1,5 @@
 .monster {
-  @include mystory-item;
+  @include mystory-item('https://story-maker-app.s3.amazonaws.com/tree-1.png');
   @include hide-scroll;
 
   flex-direction: row;
@@ -41,10 +41,6 @@
     font-size: 1.2rem;
     color: $color-dark-lighter;
     opacity: .85;
-  }
-
-  &__form {
-    @include mystory-form('https://story-maker-app.s3.amazonaws.com/tree-1.png');
   }
 
   &__fight-monster {

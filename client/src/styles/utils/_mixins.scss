@@ -135,38 +135,7 @@
   }
 }
 
-@mixin mystory-form($bg-image) {
-  background-image: $gradient-darker-grey, url($bg-image);
-  color: white;
-  margin: 0 2rem;
-  min-height: $basic-item-height;
-  max-height: max-content;
-  background-repeat: no-repeat;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  border-radius: 2px;
-  align-items: center;
-  justify-content: space-around;
-
-  &-section {
-    position: relative;
-    margin: 1rem;
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-
-    label {
-      width: 20rem;
-    }
-
-    input, textarea, .form__slider {
-      width: 100%;
-    }
-  }
-}
-
-@mixin mystory-item() {
+@mixin mystory-item($form-bg-image) {
   height: $basic-item-height;
   background: $gradient-grey;
   display: flex;
@@ -185,5 +154,36 @@
     @include custom-scroll;
     overflow-y: scroll;
     margin-top: 3rem;
+  }
+
+  &__form {
+    background-image: $gradient-darker-grey, url($form-bg-image);
+    color: white;
+    margin: 0 2rem;
+    min-height: $basic-item-height;
+    max-height: max-content;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    align-items: center;
+    justify-content: space-around;
+
+    &-section {
+      position: relative;
+      margin: 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+
+      label {
+        width: 20rem;
+      }
+
+      input, textarea, .form__slider {
+        width: 100%;
+      }
+    }
   }
 }

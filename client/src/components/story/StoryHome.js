@@ -43,7 +43,7 @@ const StoryHome = ({hero, story, destinations}) => {
     <div className="storyhome">
       <div className='storyhome__section'>
         <div className="storyhome__story">
-          <h4 className='storyhome__title title'>{story.title}</h4>
+          <h4 className='mystory__title title'>{story.title}</h4>
           <p className='storyhome__field'>
             <span className="storyhome__line">
               <span className="label storyhome__label">Difficulty: </span>
@@ -82,7 +82,7 @@ const StoryHome = ({hero, story, destinations}) => {
       <Line />
       <div className='storyhome__section'>
         <div className="storyhome__hero-container">
-          <h4 className='storyhome__title title'>Hero on Duty</h4>
+          <h4 className='mystory__title title'>Hero on Duty</h4>
           <div className="storyhome__hero">
             <div className="storyhome__hero-image">
               <img src={image} alt={hero.id} />
@@ -111,7 +111,7 @@ const StoryHome = ({hero, story, destinations}) => {
       <Line />
       <div className='storyhome__section'>
         <div className="storyhome__calendar-container">
-          <h4 className='storyhome__title title'>This Month</h4>
+          <h4 className='mystory__title title'>This Month</h4>
 
           <p className='storyhome__field'>
             <span>

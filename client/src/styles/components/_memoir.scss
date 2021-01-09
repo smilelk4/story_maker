@@ -1,5 +1,5 @@
 .memoir {
-  @include mystory-item;
+  @include mystory-item('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
   @include hide-scroll;
   
   &__container {
@@ -16,9 +16,5 @@
 
   &__description {
     color: $color-dark-lighter2;
-  }
-
-  &__form {
-    @include mystory-form('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
   }
 }
