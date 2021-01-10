@@ -15,7 +15,7 @@ const NewDestination = () => {
     return state.destination.filter(d => d.parent_destination_id);
   });
 
-  const [destinationTitle, setDestinationTitle] = useState(null);
+  const [destinationTitle, setDestinationTitle] = useState('');
   const [subDestinationId, setSubDestinationId] = useState(subDestinations[0] ?
                                                   subDestinations[0].id : null);
   const [description, setDescription] = useState(null);
@@ -33,7 +33,6 @@ const NewDestination = () => {
       });
     }
 
-    debugger
     const data = await dispatch(createDestination({
       destinationTitle, description, targetDate,
       storyId: id,
@@ -45,11 +44,11 @@ const NewDestination = () => {
 
     if (!data.errors) {
       setDestinationTitle('');
-      setSubDestinationId('');
+      setSubDestinationId(null);
       setDescription('');
-      setTargetDate('');
-      setImportance('');
-      setDestinationType('');
+      setTargetDate(moment());
+      setImportance(0);
+      setDestinationType(null);
     }
   };
 

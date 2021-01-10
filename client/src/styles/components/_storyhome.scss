@@ -81,6 +81,7 @@
     background: white;
     max-width: 30rem;
     min-width: min-content;
+    text-align: right;
 
     @include respond-large {
       max-width: 15rem;
