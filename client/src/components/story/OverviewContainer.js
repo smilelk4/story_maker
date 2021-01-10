@@ -22,9 +22,11 @@ const OverviewContainer = () => {
   },[id, tasks, today, dispatch]);
 
   useEffect(() => {
-    const overdueDestinations = destinations.filter(destination => (
+    if (destinations[0] && !destinations[0].accomplished) {
+      const overdueDestinations = destinations.filter(destination => (
               moment(destination.target_date).isBefore(today, 'days')));
-    setOverdueDestinations(overdueDestinations);
+      setOverdueDestinations(overdueDestinations);
+    }
   },[destinations, today]);
 
   return ( 
