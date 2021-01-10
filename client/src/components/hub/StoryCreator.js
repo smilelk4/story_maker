@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { baseUrl } from '../../config';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
+import { loadErrors, clearErrors } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
 
 const StoryCreator = ({setIsModalOpen}) => {
@@ -19,7 +19,7 @@ const StoryCreator = ({setIsModalOpen}) => {
   const [destinationTitle, setDestinationTitle] = useState('');
   const [targetDate, setTargetDate] = useState(moment());
   const [importance, setImportance] = useState('0');
-  const [pageTitle, setPageTitle] = useState('');
+  const [pageTitle, setPageTitle] = useState('You don\'t have any heroes yet.');
 
   useEffect(() => {
     (async () => {
@@ -47,21 +47,18 @@ const StoryCreator = ({setIsModalOpen}) => {
   }, [heroId, page]);
 
   useEffect(() => {
-    if (page === 1) {
+    if (page === 1 && heroes.length) {
       setPageTitle('Set Your Story Name');
-    } else if (page === 2) {
+    } else if (page === 2 && heroes.length) {
       setPageTitle('Select Your Hero');
-    } else {
+    } else if (page === 3 && heroes.length) {
       setPageTitle('Set Your Destination');
     }
-  }, [page])
+  }, [page, heroes.length])
 
   const handleSubmit = async e => {
     if ( !heroId || !title || !destinationTitle || !targetDate || !importance) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['There is at least one field with missing value.']
-      });
+      return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
     const data = await dispatch(createStory({ worldId, heroId, title, 
                                 destinationTitle, targetDate, importance  }));
@@ -73,25 +70,21 @@ const StoryCreator = ({setIsModalOpen}) => {
 
   const handleNext = () => {
     if ((page === 1 && !title) || (page === 2 && !heroId)) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['Please select/fill out to proceed.']
-      });
+      return dispatch(loadErrors(['Please select/fill out to proceed.']));
     }
-    dispatch({ type: CLEAR_ERRORS });
+    dispatch(clearErrors());
     setPage(page + 1);
   }
   
   const handleBack = () => {
     setPage(page - 1);
-    dispatch({ type: CLEAR_ERRORS });
+    dispatch(clearErrors());
   }
 
   return ( 
     <>
       <h2 className="modal__title title">{pageTitle}</h2>
-      {page === 1 && (
-        <>
+      {page === 1 && heroes.length ? (
           <div className="modal__field">
             <label for="title">Story Title</label>
             <input type="text" 
@@ -99,7 +92,8 @@ const StoryCreator = ({setIsModalOpen}) => {
               name="title"
               onChange={e => setTitle(e.target.value)} />
           </div>
-        </>
+      ) : (
+        <p>To create s story, first create a hero.</p>
       )}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 

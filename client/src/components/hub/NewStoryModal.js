@@ -7,7 +7,7 @@ const NewStoryModal = ({isModalOpen, setIsModalOpen}) => {
     <ModalContainer
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}>
-        <StoryCreator setIsModalOpen={setIsModalOpen} />
+      <StoryCreator setIsModalOpen={setIsModalOpen} />
     </ModalContainer>
   );
 }

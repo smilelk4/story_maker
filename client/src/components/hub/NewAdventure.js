@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import NewStoryModal from './NewStoryModal';
 import swordAnimation from '../../animation/swordAnimation';
+import { clearErrors } from '../../store/reducers/errorReducer';
 
 const NewAdventure = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-   useEffect(() => {
+  useEffect(() => {
     swordAnimation();
   }, []);
+
+  useEffect(() => {
+    dispatch(clearErrors());
+  }, [isModalOpen, dispatch])
 
   return (
     <>

@@ -5,6 +5,11 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
+export const loadErrors = errors => ({
+  type: LOAD_ERRORS,
+  errors
+});
+
 const errorReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_ERRORS:
