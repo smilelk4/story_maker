@@ -39,9 +39,11 @@ const StoryCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     if (page === 2) {
       if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.forEach(child => (
-          child.classList.remove('selected')));
-        heroContainer.current.childNodes[heroId - 1].classList.add('selected');
+        heroContainer.current.childNodes.htmlForEach(child => {
+          if (child) {
+            child.classList.remove('modal__content--selected');
+          }
+        });
       }
     }
   }, [heroId, page]);
@@ -84,9 +86,9 @@ const StoryCreator = ({setIsModalOpen}) => {
   return ( 
     <>
       <h2 className="modal__title title">{pageTitle}</h2>
-      {page === 1 && heroes.length ? (
+      {page === 1 && (heroes.length ? (
           <div className="modal__field">
-            <label for="title">Story Title</label>
+            <label htmlFor="title">Story Title</label>
             <input type="text" 
               value={title} 
               name="title"
@@ -96,13 +98,14 @@ const StoryCreator = ({setIsModalOpen}) => {
         <p className="modal__field--no-proceed">
           To create a story, first create a hero.
         </p>
-      )}
+      ))}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes.length && heroes.map(hero => (
-            <div key={hero.id} className="hero" onClick={() => {
+            <div key={hero.id} className="hero" onClick={e => {
               setHeroId(hero.id);
-              setWorldId(hero.worldId) }}>
+              setWorldId(hero.worldId)
+              e.target.classList.add('modal__content--selected')}}>
               <img src={hero.image} alt={hero.id} />
               <p className="hero__name">{hero.name}</p>
             </div>
@@ -112,21 +115,21 @@ const StoryCreator = ({setIsModalOpen}) => {
       {page === 3 && (
         <>
           <div className="modal__field">
-            <label for="destination-title">Final Goal</label>
+            <label htmlFor="destination-title">Final Goal</label>
             <input type="text" 
               value={destinationTitle} 
               name="destination-title"
               onChange={e => setDestinationTitle(e.target.value)} />
           </div>
           <div className="modal__field">
-            <label for="target-date">Target Date</label>
+            <label htmlFor="target-date">Target Date</label>
             <input type="date" 
               value={targetDate} 
               name="target-date"
               onChange={e => setTargetDate(e.target.value)} />
           </div>
           <div className="modal__field">
-            <label for="importance">Importance</label>
+            <label htmlFor="importance">Importance</label>
             <p>{importance}</p>
             <input type="range" 
               value={importance}
@@ -144,7 +147,7 @@ const StoryCreator = ({setIsModalOpen}) => {
           <div key={error.message}>{error}</div>
         ))}
       </div>
-      <div className={`modal__button-container${!heroes.length && '--no-proceed'}`}>
+      <div className={`modal__button-container${!heroes.length ? '--no-proceed' : ''}`}>
         {heroes.length ? (
           <>
             <button disabled={page < 2} onClick={handleBack}>Back</button>

@@ -52,17 +52,19 @@ const HeroCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     if (page === 2) {
       if (worldContainer.current.children.length && worldId) {
-        worldContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-        worldContainer.current.childNodes[worldId - 1].classList.add('selected');
+        worldContainer.current.childNodes.forEach(child => {
+          child.classList.remove('modal__content--selected');
+        });
       }
     }
   }, [worldId, page])
 
   useEffect(() => {
     if (page === 3) {
-      if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
-        heroContainer.current.childNodes[heroId - 1].classList.add('selected');
+      if (heroContainer.current.children.length && worldId) {
+        worldContainer.current.childNodes.forEach(child => {
+          child.classList.remove('modal__content--selected');
+        });
       }
     }
   }, [heroId, page]);
@@ -101,7 +103,7 @@ const HeroCreator = ({setIsModalOpen}) => {
 
   return ( 
     <>
-      <h2>{pageTitle}</h2>
+      <h2 className="title">{pageTitle}</h2>
       {page === 1 && (
         <>
         <div className="modal__field">
@@ -116,7 +118,10 @@ const HeroCreator = ({setIsModalOpen}) => {
       {page === 2 && (
         <div className="modal__page-container" ref={worldContainer}> 
           {worlds.length && worlds.map(world => (
-            <div className="world" onClick={() => setWorldId(world.id)}>
+            <div className="world" onClick={e => {
+              setWorldId(world.id);
+              e.target.classList.add('modal__content--selected');
+              }}>
               <div className="world__name">{world.name}</div>
             </div>
           ))}
@@ -126,7 +131,10 @@ const HeroCreator = ({setIsModalOpen}) => {
         <>
         <div className="modal__page-container" ref={heroContainer}> 
           {heroes && heroes.length && heroes.map(hero => (
-            <div className="hero" onClick={() => setHeroId(hero.id)}>
+            <div className="hero" onClick={e => {
+              setHeroId(hero.id);
+              e.target.classList.add('modal__content--selected');
+              }}>
               <img src={hero.image_url} alt={hero.id} />
               <p>{hero.name}</p>
             </div>

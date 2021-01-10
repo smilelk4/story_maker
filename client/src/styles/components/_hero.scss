@@ -33,6 +33,7 @@
   &__name {
     font-weight: bolder;
     width: 100%;
+    pointer-events: none;
     text-align: center;
     @include hide-overflowing-words();
   }

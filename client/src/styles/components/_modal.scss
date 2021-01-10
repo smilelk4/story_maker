@@ -86,8 +86,10 @@
     }
   }
 
-  .selected {
-    border: 3px double $color-green;
+  &__content {
+    &--selected {
+      border: 3px double $color-green;
+    }
   }
 
   &__page-container {
@@ -114,8 +116,6 @@
     font-size: 2.5rem;
     text-align: center;
   }
-
-
 
   &__errors-container {
     position: absolute;
