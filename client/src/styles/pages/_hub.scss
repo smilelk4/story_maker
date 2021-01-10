@@ -1,6 +1,5 @@
 .hub {
   background-color: $color-grey;
-  // background-image: url('https://story-maker-app.s3.amazonaws.com/antique_map.jpeg');
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
   
@@ -69,12 +68,13 @@
 
       @include respond-medium {
         margin-right: 0;
+        margin-bottom: 1rem;
       }
     }
 
-    // &:nth-child(2) {
-    //   width: 70%;
-    // }
+    &:nth-child(2) {
+      min-width: 50%;
+    }
   }
   &__section {
     height: $basic-item-height;
@@ -98,7 +98,6 @@
     @include label-1($gradient-green-radial, white);
     @include opacity-change-on-hover();
     cursor: pointer;
-    // width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -106,6 +105,13 @@
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: .1rem;
+
+    &-svg-container {
+      overflow: hidden;
+      height: 5rem;
+      width: 5rem;
+      pointer-events: none;
+    }
 
     h3 {
       width: 100%;
@@ -130,11 +136,4 @@
       flex-wrap: wrap;
     }
   }
-}
-
-.new-adventure__svg-container {
-  overflow: hidden;
-  // width: 5rem;
-  height: 5rem;
-  pointer-events: none;
 }

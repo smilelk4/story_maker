@@ -18,7 +18,7 @@ const NewAdventure = () => {
         className="hub__new-adventure title"
         onMouseOver={swordAnimation}
         onClick={() => setIsModalOpen(true)}>
-        <p className="new-adventure__svg-container"></p>
+        <p className="hub__new-adventure-svg-container"></p>
         Start a New Adventure
       </h3>
     </>

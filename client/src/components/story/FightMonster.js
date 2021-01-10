@@ -7,7 +7,7 @@ const FightMonster = () => {
 
   const animationCreator = () => {
     bodymovin.loadAnimation({
-      wrapper: document.querySelector('.new-adventure__svg-container'),
+      wrapper: document.querySelector('.hub__new-adventure-svg-container'),
       animType: 'svg',
       loop: false,
       path: '/svg/swords.json',
@@ -33,7 +33,7 @@ const FightMonster = () => {
         className="hub__new-adventure title"
         onMouseOver={animateSwords}
         onClick={() => setIsModalOpen(true)}>
-        <p className="new-adventure__svg-container"></p>
+        <p className="hub__new-adventure-svg-container"></p>
         Fight a Monster
       </h3>
     </>
