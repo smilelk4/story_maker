@@ -39,7 +39,7 @@ const StoryCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     if (page === 2) {
       if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.htmlForEach(child => {
+        heroContainer.current.childNodes.forEach(child => {
           if (child) {
             child.classList.remove('modal__content--selected');
           }

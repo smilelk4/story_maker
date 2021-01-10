@@ -67,11 +67,15 @@ const DailyTaskContainer = () => {
   return ( 
     <>
     <div ref={container} className="task__container">
-      <div ref={svgContainer.current} className="svg-container"></div>
-      {tasks && tasks.map(task => (
+      {tasks && (tasks.length ? tasks.map(task => (
         stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
           <DailyTask key={task.id} task={task} handleClick={onChecked}/>
         )
+      )) : (
+        <div className="hub__empty">
+          <p>There are no daily tasks yet.</p>
+          <p>Daily tasks can be added from story page.</p>
+        </div>
       ))}
       {allCompleted ? (<p className="task__all-completed">All done!</p>) : ''}
     </div>
