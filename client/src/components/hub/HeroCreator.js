@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../config';
-import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
+import { loadErrors } from '../../store/reducers/errorReducer';
 import { createHero } from '../../store/actions/heroAction';
 
 const HeroCreator = ({setIsModalOpen}) => {
@@ -79,10 +79,7 @@ const HeroCreator = ({setIsModalOpen}) => {
 
   const handleSubmit = async e => {
     if (!worldId || !heroId || !name) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['There is at least one field with missing value.']
-      });
+      return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
     const data = await dispatch(createHero({ userId, worldId, name, heroId }));
 
@@ -93,10 +90,7 @@ const HeroCreator = ({setIsModalOpen}) => {
 
   const handleNext = () => {
     if ((page === 1 && !name) || (page === 2 && !worldId)) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['Please select to proceed.']
-      });
+      return dispatch(loadErrors(['Please select to proceed.']));
     }
     setPage(page + 1);
   }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
-import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
+import { loadErrors } from '../../store/reducers/errorReducer';
 import { createDestination } from '../../store/actions/destinationActions';
 
 const NewDestination = () => {
@@ -27,10 +27,7 @@ const NewDestination = () => {
     e.preventDefault();
 
     if (!destinationTitle || !targetDate ) {
-      return dispatch({
-        type: LOAD_ERRORS,
-        errors: ['There is at least one field with missing value.']
-      });
+      return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
 
     const data = await dispatch(createDestination({

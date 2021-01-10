@@ -1,15 +1,12 @@
 import { LOAD_USER } from '../reducers/userReducer';
-import { LOAD_ERRORS, CLEAR_ERRORS } from '../reducers/errorReducer';
+import { loadErrors, clearErrors } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
 
   if (!res.ok) {
-    dispatch({
-      type: LOAD_ERRORS,
-      errors: data.errors || [data.title]
-    });
+    dispatch(loadErrors(data.errors || [data.title]));
     return data;
   }
 
@@ -18,7 +15,7 @@ const verifyData = async (res, dispatch) => {
   }
   localStorage.setItem('user_id', data.user.id);
 
-  dispatch({ type: CLEAR_ERRORS });
+  dispatch(clearErrors());
   dispatch({
     type: LOAD_USER,
     user: data.user

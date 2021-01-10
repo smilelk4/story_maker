@@ -1,5 +1,5 @@
-export const LOAD_ERRORS = 'ERROR';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+const LOAD_ERRORS = 'ERROR';
+const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const clearErrors = () => ({
   type: CLEAR_ERRORS

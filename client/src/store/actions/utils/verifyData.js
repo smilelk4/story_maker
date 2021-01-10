@@ -1,16 +1,12 @@
-import { LOAD_ERRORS } from '../../reducers/errorReducer';
+import { loadErrors } from '../../reducers/errorReducer';
 
 const verifyData = async (res, dispatch) => {
   const data = await res.json();
 
   if (!res.ok) {
-    dispatch({
-      type: LOAD_ERRORS,
-      errors: data.errors
-    });
+    dispatch(loadErrors(data.errors));
     return data;
   } 
-  
   return data;
 };
 
