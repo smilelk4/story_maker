@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { baseUrl } from '../../config';
 import { LOAD_ERRORS, CLEAR_ERRORS } from '../../store/reducers/errorReducer';
 import { createStory } from '../../store/actions/storyAction';
-import dateFormatter from '../../utils/dateFormatter';
 
 const StoryCreator = ({setIsModalOpen}) => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const StoryCreator = ({setIsModalOpen}) => {
   const [heroId, setHeroId] = useState(null);
   const [title, setTitle] = useState('');
   const [destinationTitle, setDestinationTitle] = useState('');
-  const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
+  const [targetDate, setTargetDate] = useState(moment());
   const [importance, setImportance] = useState('0');
   const [pageTitle, setPageTitle] = useState('');
 
@@ -39,7 +39,8 @@ const StoryCreator = ({setIsModalOpen}) => {
   useEffect(() => {
     if (page === 2) {
       if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.forEach(child => child.classList.remove('selected'));
+        heroContainer.current.childNodes.forEach(child => (
+          child.classList.remove('selected')));
         heroContainer.current.childNodes[heroId - 1].classList.add('selected');
       }
     }

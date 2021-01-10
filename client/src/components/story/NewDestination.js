@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import moment from 'moment';
 import { LOAD_ERRORS } from '../../store/reducers/errorReducer';
 import { createDestination } from '../../store/actions/destinationActions';
-import dateFormatter from '../../utils/dateFormatter';
 
 const NewDestination = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const NewDestination = () => {
   const [subDestinationId, setSubDestinationId] = useState(subDestinations[0] ?
                                                   subDestinations[0].id : null);
   const [description, setDescription] = useState(null);
-  const [targetDate, setTargetDate] = useState(dateFormatter(new Date()));
+  const [targetDate, setTargetDate] = useState(moment());
   const [importance, setImportance] = useState(0);
   const [destinationType, setDestinationType] = useState(null);
 
@@ -33,12 +33,13 @@ const NewDestination = () => {
       });
     }
 
+    debugger
     const data = await dispatch(createDestination({
       destinationTitle, description, targetDate,
       storyId: id,
       importance: destinationType === 'majorDestination'
                   ? importance : null,
-      parentDestinationId: destinationType === 'majorDestination'
+      parentDestinationId: (destinationType === 'majorDestination' && (finalDestination))
                   ? finalDestination.id : subDestinationId
     }));
 

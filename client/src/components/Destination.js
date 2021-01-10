@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
-import dateFormatter from '../utils/dateFormatter';
+import moment from 'moment';
 import CheckIcon from '@material-ui/icons/Check';
 
 const Destination = ({handleClick, ...props}) => {
@@ -38,11 +38,17 @@ const Destination = ({handleClick, ...props}) => {
               <p className="destination__days-left">{dayDiff} Days Left</p>
             )}
             <p onClick={() => handleClick(id)} 
-              className="destination__complete"><CheckIcon /> Mark as Accomplished</p>
+              className="destination__complete"><CheckIcon />
+                Mark as Accomplished
+            </p>
             <div className="destination__info">
-              <p className="destination__target-date">Target Date: {dateFormatter(targetDate)}</p>
+              <p className="destination__target-date">
+                Target Date: {moment(targetDate).format('MM-DD-YYYY')}
+              </p>
               {path === '/my-hub' && (
-                <p className="destination__story">Story: {Story && Story.title}</p>
+                <p className="destination__story">
+                  Story: {Story && Story.title}
+                </p>
               )}
             </div>
           </div>
