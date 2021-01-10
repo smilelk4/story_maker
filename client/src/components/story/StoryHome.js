@@ -27,7 +27,8 @@ const StoryHome = ({hero, story, destinations}) => {
             (memoirsThisMonth.reduce((acc, m) => acc + m.accomplishmentLevel, 0)
             / memoirsThisMonth.length).toFixed(2);
       setTotalHoursFought(hoursThisMonth);
-      setAverageAccomplishmentLevel(averageAccomplishmentLevelThisMonth);
+      setAverageAccomplishmentLevel(averageAccomplishmentLevelThisMonth === "NaN" ?
+                                    0 : averageAccomplishmentLevelThisMonth);
     }
   }, [memoir, currentMonth]);
 
