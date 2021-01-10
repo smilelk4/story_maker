@@ -42,6 +42,11 @@
     input {
       width: 50rem;
     }
+
+    &--no-proceed {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__section {
@@ -64,6 +69,11 @@
   &__button-container {
     display: flex;
     justify-content: space-between;
+
+    &--no-proceed {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__fight-buttons {

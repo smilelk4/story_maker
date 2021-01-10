@@ -93,7 +93,9 @@ const StoryCreator = ({setIsModalOpen}) => {
               onChange={e => setTitle(e.target.value)} />
           </div>
       ) : (
-        <p>To create s story, first create a hero.</p>
+        <p className="modal__field--no-proceed">
+          To create a story, first create a hero.
+        </p>
       )}
       {page === 2 && (
         <div className="modal__page-container" ref={heroContainer}> 
@@ -142,9 +144,15 @@ const StoryCreator = ({setIsModalOpen}) => {
           <div key={error.message}>{error}</div>
         ))}
       </div>
-      <div className="modal__button-container">
-        <button disabled={page < 2} onClick={handleBack}>Back</button>
-        <button disabled={page > 2} onClick={handleNext}>Next</button>
+      <div className={`modal__button-container${!heroes.length && '--no-proceed'}`}>
+        {heroes.length ? (
+          <>
+            <button disabled={page < 2} onClick={handleBack}>Back</button>
+            <button disabled={page > 2} onClick={handleNext}>Next</button>
+          </>
+        ) : (
+          <button onClick={() => setIsModalOpen(false)}>Close</button>
+        )}
       </div>
     </>
   );
