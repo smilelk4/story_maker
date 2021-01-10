@@ -16,20 +16,13 @@ const HistoryContainer = () => {
     dispatch(getPastDestinations(id));
   }, [id, dispatch]);
 
-  // useEffect(() => {
-  //   if (destinations.length && 
-  //       destinations.some(destination => !destination.accomplished)) {
-  //     dispatch(clearDestinationsAction());
-  //     dispatch(getPastDestinations(id));
-  //   }
-  // }, [id, destinations, dispatch]);
-
   return ( 
     <PageAnimationWrapper>
       <div className="history__container">
-        {destinations.map(destination => (
+        {destinations.length ? (destinations.map(destination => (
           <PastDestination {...destination} key={destination.id}/>
-        ))}
+        ))) : (<p className="mystory__none-display">
+                You haven't completed any destinations yet!</p>)}
       </div>
     </PageAnimationWrapper>
   );

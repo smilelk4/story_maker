@@ -31,12 +31,16 @@ const DailyTaskContainer = () => {
     <PageAnimationWrapper>
       <NewDailyTask />
       <div className="daily-task__container">
-        {tasks.map(task => (
+        {tasks.length ? (tasks.map(task => (
           <DailyTask
             key={task.id}
             updateTitle={updateTitle} 
             deleteTask={deleteTask} {...task} />
-        ))}
+        ))) : (
+          <p className="mystory__none-display">
+            You haven't added any daily tasks yet.
+          </p>
+        )}
       </div>
     </PageAnimationWrapper>
   );

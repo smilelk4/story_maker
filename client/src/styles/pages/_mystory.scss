@@ -46,6 +46,13 @@
     }
   }
 
+  &__none-display {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__sidebar-menu {
     display: flex;
     justify-content: space-between;

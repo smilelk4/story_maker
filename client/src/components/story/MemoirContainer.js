@@ -22,7 +22,12 @@ const MemoirContainer = () => {
     <PageAnimationWrapper>
       <NewMemoir />
       <div className="memoir__container">
-        {memoirs.map(memoir => <Memoir {...memoir} key={memoir.id} />)}
+        {memoirs.length ? (
+          memoirs.map(memoir => <Memoir {...memoir} key={memoir.id} />)) : (
+            <p className="mystory__none-display">
+                You haven't added any memoirs yet.
+            </p>
+        )}
       </div>
     </PageAnimationWrapper>
   );

@@ -23,7 +23,12 @@ const MonsterContainer = () => {
     <PageAnimationWrapper>
       <NewMonster />
       <div className="monster__container">
-        {monsters.map(monster => <Monster {...monster} key={monster.id}/>)}
+        {monsters.length ? (
+          monsters.map(monster => <Monster {...monster} key={monster.id}/>)) : (
+            <p className="mystory__none-display">
+              You haven't added any monsters yet.
+            </p>
+          )}
       </div>
     </PageAnimationWrapper>
   );
