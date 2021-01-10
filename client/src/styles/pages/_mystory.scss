@@ -59,11 +59,20 @@
     align-items: center;
     font-size: 1.6rem;
     line-height: 2.5rem;
-    // font-weight: bolder;
     letter-spacing: .2rem;
+
+    @include respond-medium {
+      font-size: 1.2rem;
+      line-height: 2rem;
+      letter-spacing: .1rem;
+    }
 
     img {
       width: 5rem;
+
+      @include respond-medium {
+        width: 4rem;
+      }
     }
 
     p {
@@ -110,6 +119,7 @@
     border-radius: 2px;
     padding: 1rem;
     transition: all .3s ease-out;
+    width: 100%;
 
     &:not(:last-child) {
       margin-bottom: 1rem;

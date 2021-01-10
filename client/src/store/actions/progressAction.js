@@ -1,20 +1,6 @@
 import { loadProgressAction } from '../reducers/progressReducer';
-import { LOAD_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
-
-const verifyData = async (res, dispatch) => {
-  const data = await res.json();
-
-  if (!res.ok) {
-    dispatch({
-      type: LOAD_ERRORS,
-      errors: data.errors
-    });
-    return data;
-  } 
-  
-  return data;
-};
+import verifyData from './utils/verifyData';
 
 export const getProgress = storyId => {
   return async dispatch => {

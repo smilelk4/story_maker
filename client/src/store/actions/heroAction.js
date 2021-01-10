@@ -1,19 +1,7 @@
 import { loadHeroesAction, loadHeroAction, addHeroAction,
          updateHeroAction } from '../reducers/heroReducer';
-import { LOAD_ERRORS } from '../reducers/errorReducer';
 import { baseUrl } from '../../config';
-
-const verifyData = async (res, dispatch) => {
-  const data = await res.json();
-
-  if (!res.ok) {
-    dispatch({
-      type: LOAD_ERRORS,
-      errors: data.errors || [data.title]
-    });
-  } 
-  return data;
-};
+import verifyData from './utils/verifyData';
 
 export const getHeroes = userId => {
   return async dispatch => {
