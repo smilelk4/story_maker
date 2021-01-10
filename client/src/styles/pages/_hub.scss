@@ -60,13 +60,21 @@
   }
 
   &__icon-holder {
-    &:first-child {
-      margin-right: 1rem;
+    @include respond-medium {
+      width: 100%;
     }
 
-    &:nth-child(2) {
-      margin-left: 1rem;
+    &:first-child {
+      margin-right: 2rem;
+
+      @include respond-medium {
+        margin-right: 0;
+      }
     }
+
+    // &:nth-child(2) {
+    //   width: 70%;
+    // }
   }
   &__section {
     height: $basic-item-height;
@@ -80,13 +88,17 @@
       top: -4.5rem;
       pointer-events: none;
     }
+
+    @include respond-medium {
+      flex-direction: column;
+    }
   }
 
   &__new-adventure {
     @include label-1($gradient-green-radial, white);
     @include opacity-change-on-hover();
     cursor: pointer;
-    width: 100%;
+    // width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -122,7 +134,7 @@
 
 .new-adventure__svg-container {
   overflow: hidden;
-  width: 5rem;
+  // width: 5rem;
   height: 5rem;
   pointer-events: none;
 }
