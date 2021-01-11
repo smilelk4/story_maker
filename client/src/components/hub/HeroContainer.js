@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import Hero from './Hero';
 import { getHeroes } from '../../store/actions/heroAction';
@@ -37,11 +38,11 @@ const HeroContainer = () => {
         setIsModalOpen={setIsModalOpen} />}
       <h4 
         className="hero__new-hero title"
-        onClick={() => setIsModalOpen(true)}>Create a New Hero</h4>
+        onClick={() => setIsModalOpen(true)}><AddCircleOutlineIcon /></h4>
       {heroes.length ? (heroes.map(hero => <Hero {...hero} key={hero.id}/>)) : (
         <div className="hub__content--empty">
           <p>There are no heroes yet.</p>
-          <p>Click the left button to create your first hero.</p>
+          <p>Click on + to create your first hero.</p>
         </div>
       )}
     </div>

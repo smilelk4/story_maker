@@ -10,7 +10,7 @@
     width: 100%;
     @include horizontal-scroll();
 
-    & > *:not(:last-child) {
+    & > *:not(:last-child):not(.hero__container-right-scroll) {
       margin-right: 2rem;
     }
   }
