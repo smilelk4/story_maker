@@ -30,15 +30,14 @@ const HeroContainer = () => {
   return (
     <div className="hero__container" ref={container}>
       <div className="hero__container-left-scroll" 
-            onClick={handleLeftScroll}>&#9001;</div>
+           onClick={handleLeftScroll}>&#9001;</div>
       <div className="hero__container-right-scroll"
-            onClick={handleRightScroll}>&#9002;</div>
-      {isModalOpen && <NewHeroModal 
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen} />}
-      <h4 
-        className="hero__new-hero"
-        onClick={() => setIsModalOpen(true)}><AddCircleOutlineIcon /></h4>
+           onClick={handleRightScroll}>&#9002;</div>
+      {isModalOpen && <NewHeroModal isModalOpen={isModalOpen}
+                                    setIsModalOpen={setIsModalOpen} />}
+      <p className="hero__new-hero" onClick={() => setIsModalOpen(true)}>
+         <AddCircleOutlineIcon />
+      </p>
       {heroes.length ? (heroes.map(hero => <Hero {...hero} key={hero.id}/>)) : (
         <div className="hub__content--empty">
           <p>There are no heroes yet.</p>

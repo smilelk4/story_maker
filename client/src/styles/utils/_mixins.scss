@@ -141,10 +141,13 @@
     width: max-content;
     height: 2rem;
     position: absolute;
-    left: -7.5rem;
+    left: -8.5rem;
+    line-height: 2rem;
+    letter-spacing: .1rem;
     opacity: 0;
     transform: translateX(-50%);
     transition: opacity .2s ease-in, transform .2s ease-in;
+    color: $color-grey;
   }
 
   &:hover {

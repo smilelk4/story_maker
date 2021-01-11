@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import CheckIcon from '@material-ui/icons/Check';
 
 const DailyTask = ({task, handleClick}) => {
   const { id, title, Story } = task;
@@ -7,10 +8,11 @@ const DailyTask = ({task, handleClick}) => {
   return ( 
     <div className="task">
       <p className="task__title">{title}</p>
-      <p className="task__complete"
-        ref={checkboxContainer}
-        onClick={e => handleClick(id, Story.hero_id)}>&#10003;
+      <div className="task__complete">
+        <p ref={checkboxContainer}
+           onClick={() => handleClick(id, Story.hero_id)}><CheckIcon />
         </p>
+      </div>
     </div>
   );
 }

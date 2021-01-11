@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 2px;
+  align-items: center;
   @include default-items();
 
   &__title {
@@ -23,15 +24,27 @@
   }
 
   &__complete {
-    border-radius: 50%;
-    border: 1.8px solid $color-grey-dark;
-    width: 2rem;
-    height: 2rem;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
     text-align: center;
-    color: $color-grey-dark;
     cursor: pointer;
-    @include opacity-change-on-hover();
-    @include popup-on-hover('Mark as complete');
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    @include simple-horizontal-animation('Mark complete');
+
+    .MuiSvgIcon-root {
+      width: 1.7rem;
+      height: 1.8rem;
+    }
+
+    p {
+      border-radius: 50%;
+      border: 2px solid $color-grey-dark;
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   &__all-completed {
