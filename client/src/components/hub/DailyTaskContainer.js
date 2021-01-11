@@ -2,21 +2,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import bodymovin from 'lottie-web';
 import moment from 'moment';
-import { getDailyTasks, completeDailyTask } from '../../store/actions/dailyTaskAction';
-import { createActivity, updateActivity } from '../../store/actions/activityAction';
+import { getDailyTasks, 
+         completeDailyTask } from '../../store/actions/dailyTaskAction';
+import { createActivity, 
+        updateActivity } from '../../store/actions/activityAction';
 import { raiseXP } from '../../store/actions/heroAction';
 import DailyTask from './DailyTask';
 
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
   const container = useRef();
-  const svgContainer = useRef();
   const [allCompleted, setAllCompleted] = useState(false);
   const stories = useSelector(state => state.story);
   const activities = useSelector(state => state.activity);
   const tasks = useSelector(state => state.task);
   const today = new Date();
-
   const stringifyDate = date => date.toDateString();
 
   useEffect(() => {
@@ -26,10 +26,14 @@ const DailyTaskContainer = () => {
       }
     }
     
+    if (container.current.children.length) {
+      setAllCompleted(false);
+    }
+
     if (!container.current.children.length) {
       setAllCompleted(true);
     }
-  }, [stories, dispatch]);
+  }, [stories, tasks, dispatch]);
 
   const onChecked = async (storyId, heroId) => {
     const checkmarkAnimation = bodymovin.loadAnimation({
@@ -65,12 +69,12 @@ const DailyTaskContainer = () => {
   };
 
   return ( 
-    <>
     <div ref={container} className="task__container">
       {tasks && (tasks.length ? tasks.map(task => (
-        stringifyDate(today) !== stringifyDate(new Date(task.last_accomplished)) && (
-          <DailyTask key={task.id} task={task} handleClick={onChecked}/>
-        )
+        stringifyDate(today) !== stringifyDate(
+          new Date(task.last_accomplished)) && (
+            <DailyTask key={task.id} task={task} handleClick={onChecked}/>
+          )
       )) : (
         <div className="hub__content--empty">
           <p>There are no daily tasks yet.</p>
@@ -79,7 +83,6 @@ const DailyTaskContainer = () => {
       ))}
       {allCompleted ? (<p className="task__all-completed">All done!</p>) : ''}
     </div>
-    </>
   );
 }
  
