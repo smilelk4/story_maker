@@ -1,23 +1,21 @@
 $color-dark: rgb(13, 6, 48);
-$color-dark-lighter: rgb(85, 85, 85);
-$color-dark-lighter2: rgb(122, 122, 122);
-$color-dark-light: rgb(183, 182, 189);
+$color-light: rgb(219, 219, 219);
+
+$color-grey-dark: rgb(85, 85, 85);
+$color-grey: rgb(122, 122, 122);
+$color-grey-light: rgb(183, 182, 189);
+
 $color-blue-dark: rgb(24, 49, 79);
 $color-blue-light: rgb(55, 77, 118);
 $color-green: rgb(139, 190, 178);
 $color-lime: rgb(230, 249, 175);
-$color-brown: rgb(163, 147, 117);
-$color-light: rgb(233, 230, 226);
-$color-grey: rgb(219, 219, 219);
 $color-pink: rgb(255, 96, 96);
-$basic-item-height: 20rem;
 
-$shadow-1: 3px 3px 5px rgba(13, 6, 48, .3);
-$shadow-2: 0 0 1.4rem rgba(226, 226, 226, .8);
+$shadow-1: 3px 3px 5px rgba($color-dark, .3);
+$shadow-2: 0 0 1.4rem rgba($color-light, .8);
 
-$gradient-green: linear-gradient(to right, $color-lime, $color-green);
 $gradient-green-radial: radial-gradient(ellipse at 500%, $color-lime, $color-green);
-$gradient-blue-radial: radial-gradient(ellipse at 100%, $color-blue-light, $color-blue-dark);
-$gradient-grey: linear-gradient(45deg, rgba(219, 219, 219, .5) 100%, rgba(219, 219, 219, 1) 10%);
-$gradient-darker-grey: linear-gradient(45deg, rgba(83, 81, 88, .5) 100%, rgba(83, 81, 88, 1) 10%);
-$gradient-black: linear-gradient(45deg, rgba(13, 6, 48, .5) 100%, rgba(13, 6, 48, 1) 10%);
+$gradient-grey: linear-gradient(45deg, rgba($color-light, .5) 100%, rgba($color-light, 1) 10%);
+$gradient-darker-grey: linear-gradient(45deg, rgba($color-grey-dark, .5) 100%, rgba($color-grey-dark, 1) 10%);
+
+$basic-item-height: 20rem;

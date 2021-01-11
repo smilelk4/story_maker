@@ -1,5 +1,5 @@
 .mystory {
-  background-color: $color-grey;
+  background-color: $color-light;
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
 
@@ -131,7 +131,7 @@
     }
 
     &:hover {
-      background-color: $color-grey;
+      background-color: $color-light;
     }
 
     &:hover > div > img {

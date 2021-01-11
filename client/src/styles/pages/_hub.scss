@@ -1,5 +1,5 @@
 .hub {
-  background-color: $color-grey;
+  background-color: $color-light;
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
   
@@ -29,7 +29,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: $color-dark-light;
+      color: $color-grey-light;
 
       &.half-height {
         height: 50%;

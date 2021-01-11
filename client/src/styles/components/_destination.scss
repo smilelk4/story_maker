@@ -59,7 +59,7 @@
   }
 
   &__description, &__story {
-    color: $color-dark-lighter2;
+    color: $color-grey;
   }
 
   &__alert {
@@ -70,7 +70,7 @@
 
   &__target-date {
     align-self: flex-end;
-    color: $color-dark-lighter2;
+    color: $color-grey;
 
     &.alert {
       color: $color-pink;
@@ -153,7 +153,7 @@
   line-height: 3rem;
 
   &__info {
-    color: $color-dark-lighter2;
+    color: $color-grey;
     font-size: 1.2rem;
     width: 40%;
   }

@@ -86,7 +86,7 @@
     background: white;
     height: 25rem;
     padding: 2rem 0;
-    color: $color-dark-lighter2;
+    color: $color-grey;
     user-select: none;
     transition: opacity .2s ease-in;
   }
@@ -109,7 +109,7 @@
     }
 
     a {
-      color: $color-dark-lighter2;
+      color: $color-grey;
       cursor: pointer;
 
       &:hover {

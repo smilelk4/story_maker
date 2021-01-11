@@ -129,7 +129,7 @@
 }
 
 @mixin default-items() {
-  &:not(:first-child):not(:last-child) {
+  &:not(:last-child) {
     margin-bottom: 1rem;
   }
 }

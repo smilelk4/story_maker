@@ -96,7 +96,7 @@ const StoryCreator = ({setIsModalOpen}) => {
           </div>
       ) : (
         <p className="modal__field--no-proceed">
-          To create a story, first create a hero.
+          To create a story, first create a hero from "Your Heroes" section.
         </p>
       ))}
       {page === 2 && (

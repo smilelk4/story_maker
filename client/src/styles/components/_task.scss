@@ -24,11 +24,11 @@
 
   &__complete {
     border-radius: 50%;
-    border: 1.8px solid $color-dark-lighter;
+    border: 1.8px solid $color-grey-dark;
     width: 2rem;
     height: 2rem;
     text-align: center;
-    color: $color-dark-lighter;
+    color: $color-grey-dark;
     cursor: pointer;
     @include opacity-change-on-hover();
     @include popup-on-hover('Mark as complete');
@@ -74,7 +74,7 @@
     display: flex;
     @include opacity-change-on-hover();
     font-size: 1.2rem;
-    color: $color-dark-lighter2;
+    color: $color-grey;
 
     & > p {
       margin: 0 .5rem;
