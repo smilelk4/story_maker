@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-
 import Hero from './Hero';
 import { getHeroes } from '../../store/actions/heroAction';
 import NewHeroModal from './NewHeroModal';
+import ScrollArrow from './ScrollArrow';
 
 const HeroContainer = () => {
   const dispatch = useDispatch();
@@ -29,10 +29,8 @@ const HeroContainer = () => {
 
   return (
     <div className="hero__container" ref={container}>
-      <div className="hero__container-left-scroll" 
-           onClick={handleLeftScroll}>&#9001;</div>
-      <div className="hero__container-right-scroll"
-           onClick={handleRightScroll}>&#9002;</div>
+      <ScrollArrow handleLeftScroll={handleLeftScroll}
+                   handleRightScroll={handleRightScroll}/>
       {isModalOpen && <NewHeroModal isModalOpen={isModalOpen}
                                     setIsModalOpen={setIsModalOpen} />}
       <p className="hero__new-hero" onClick={() => setIsModalOpen(true)}>

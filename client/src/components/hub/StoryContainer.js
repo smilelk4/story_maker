@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Story from './Story';
+import ScrollArrow from './ScrollArrow';
 import { getStories } from '../../store/actions/storyAction';
 
 const StoryContainer = () => {
@@ -25,10 +26,8 @@ const StoryContainer = () => {
 
   return (
     <div ref={container} className="story__container">
-      <div className="hero__container-left-scroll"
-            onClick={handleLeftScroll}>&#9001;</div>
-      <div className="hero__container-right-scroll" 
-            onClick={handleRightScroll}>&#9002;</div>
+      <ScrollArrow handleLeftScroll={handleLeftScroll}
+                   handleRightScroll={handleRightScroll}/>
       {stories.length ? (stories.map(story => <Story {...story} key={story.id}/>)) :
       (
         <div className="hub__content--empty">

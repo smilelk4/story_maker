@@ -45,44 +45,36 @@
   @include hide-scroll();
   scroll-behavior: smooth;
 
-  &-left-scroll {
-    content: '<';
-    width: 2rem;
+  &-left-scroll,
+  &-right-scroll {
+    width: max-content;
     height: max-content;
     position: absolute;
     cursor: pointer;
     top: 50%;
-    left: 0;
     text-align: center;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 2;
     user-select: none;
     font-size: 2rem;
     transition: color .2s ease-in;
+    display: flex;
 
     &:hover {
       color: $color-blue-light;
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 3rem;
     }
   }
 
+  &-left-scroll {
+    left: 0;
+  }
+  
   &-right-scroll {
-    content: '>';
-    width: 2rem;
-    height: max-content;
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
     right: 0;
-    text-align: center;
-    transform: translateY(-50%);
-    z-index: 1;
-    user-select: none;
-    font-size: 2rem;
-    transition: color .2s ease-in;
-
-    &:hover {
-      color: $color-blue-light;
-    }
   }
 }
 
