@@ -16,7 +16,7 @@
     width: inherit;
     height: inherit;
     position: absolute;
-    background-color: rgba(255, 255, 255, .4);
+    background-color: $color-transparent-light;
   }
 
   &__title {
@@ -120,7 +120,7 @@
   }
 
   &__footer {
-    background-color: rgba(0, 0, 0, .2);
+    background-color: $color-transparent-dark;
     height: max-content;
     display: flex;
     flex-direction: column;

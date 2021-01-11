@@ -214,7 +214,7 @@ input[type=range]::-ms-fill-upper  {
   pointer-events: none;
   
   svg {
-    background: rgba(255, 255, 255, .5);
+    background: $color-transparent-light;
     position: absolute;
     left: 0;
     bottom: 0;

@@ -1,5 +1,6 @@
 $color-dark: rgb(13, 6, 48);
 $color-light: rgb(219, 219, 219);
+$color-white: rgb(255, 255, 255);
 
 $color-grey-dark: rgb(85, 85, 85);
 $color-grey: rgb(122, 122, 122);
@@ -11,11 +12,17 @@ $color-green: rgb(139, 190, 178);
 $color-lime: rgb(230, 249, 175);
 $color-pink: rgb(255, 96, 96);
 
+$color-transparent-light: rgba($color-white, .5);
+$color-transparent-dark: rgba($color-grey-dark, .4);
+
 $shadow-1: 3px 3px 5px rgba($color-dark, .3);
 $shadow-2: 0 0 1.4rem rgba($color-light, .8);
 
-$gradient-green-radial: radial-gradient(ellipse at 500%, $color-lime, $color-green);
-$gradient-grey: linear-gradient(45deg, rgba($color-light, .5) 100%, rgba($color-light, 1) 10%);
-$gradient-darker-grey: linear-gradient(45deg, rgba($color-grey-dark, .5) 100%, rgba($color-grey-dark, 1) 10%);
+$gradient-green-radial: radial-gradient(ellipse at 500%, 
+                        $color-lime, $color-green);
+$gradient-grey: linear-gradient(45deg, 
+                rgba($color-light, .5) 100%, rgba($color-light, 1) 10%);
+$gradient-darker-grey: linear-gradient(45deg, rgba($color-grey-dark, .5) 100%,
+                       rgba($color-grey-dark, 1) 10%);
 
 $basic-item-height: 20rem;
