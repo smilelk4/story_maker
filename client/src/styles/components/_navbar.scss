@@ -114,7 +114,7 @@
 
       &:hover {
         background: $gradient-darker-grey;
-        color: $color-light;
+        color: $color-white;
       }
     }
 
@@ -123,7 +123,7 @@
   &__sub-popup {
     left: -50%;
     top: 0;
-    background: $color-grey;
+    background: $color-light;
     line-height: 3rem;
     transition: opacity .1s ease-in;
     

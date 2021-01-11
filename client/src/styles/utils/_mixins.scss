@@ -134,6 +134,29 @@
   }
 }
 
+@mixin simple-horizontal-animation($content) {
+  &::before {
+    content: $content;
+    font-size: 1rem;
+    width: max-content;
+    height: 2rem;
+    position: absolute;
+    left: -7.5rem;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity .2s ease-in, transform .2s ease-in;
+  }
+
+  &:hover {
+    color: $color-grey;
+
+    &::before {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
 @mixin mystory-item($form-bg-image) {
   @include hide-scroll;
   height: $basic-item-height;

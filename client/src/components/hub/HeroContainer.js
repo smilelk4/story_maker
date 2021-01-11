@@ -37,7 +37,7 @@ const HeroContainer = () => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen} />}
       <h4 
-        className="hero__new-hero title"
+        className="hero__new-hero"
         onClick={() => setIsModalOpen(true)}><AddCircleOutlineIcon /></h4>
       {heroes.length ? (heroes.map(hero => <Hero {...hero} key={hero.id}/>)) : (
         <div className="hub__content--empty">

@@ -109,6 +109,8 @@
     position: absolute;
     right: 0;
     top: 0;
+    transition: color .4s ease-in;
+    @include simple-horizontal-animation('Create a hero');
   }
 }
 
