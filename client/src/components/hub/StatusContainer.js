@@ -27,9 +27,13 @@ const StatusContainer = () => {
     <div className="status__field">
       <span className="status__title title">Today's activities</span>
     </div>
-      {status && Object.entries(status).map(s => (
+      {Object.entries(status).length ? (Object.entries(status).map(s => (
         <Status status={s} key={s}/>
-      ))}
+      ))) : (
+        <div className="hub__content--empty">
+          <p>There are no activities yet.</p>
+        </div>
+      )}
     </div>
   );
 }

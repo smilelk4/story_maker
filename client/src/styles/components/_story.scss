@@ -7,8 +7,8 @@
   &__container {
     display: flex;
     height: 100%;
+    width: 100%;
     @include horizontal-scroll();
-    // margin-right: 1rem;
 
     & > *:not(:last-child) {
       margin-right: 2rem;

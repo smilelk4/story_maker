@@ -38,7 +38,12 @@ const HeroContainer = () => {
       <h4 
         className="hero__new-hero title"
         onClick={() => setIsModalOpen(true)}>Create a New Hero</h4>
-      {heroes.map(hero => <Hero {...hero} key={hero.id}/>)}
+      {heroes.length ? (heroes.map(hero => <Hero {...hero} key={hero.id}/>)) : (
+        <div className="hub__content--empty">
+          <p>There are no heroes yet.</p>
+          <p>Click the left button to create your first hero.</p>
+        </div>
+      )}
     </div>
   );
 }

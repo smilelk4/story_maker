@@ -72,7 +72,7 @@ const DailyTaskContainer = () => {
           <DailyTask key={task.id} task={task} handleClick={onChecked}/>
         )
       )) : (
-        <div className="hub__empty">
+        <div className="hub__content--empty">
           <p>There are no daily tasks yet.</p>
           <p>Daily tasks can be added from story page.</p>
         </div>

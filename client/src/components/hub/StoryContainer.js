@@ -29,7 +29,13 @@ const StoryContainer = () => {
             onClick={handleLeftScroll}>&#9001;</div>
       <div className="hero__container-right-scroll" 
             onClick={handleRightScroll}>&#9002;</div>
-      {stories.map(story => <Story {...story} key={story.id}/>)}
+      {stories.length ? (stories.map(story => <Story {...story} key={story.id}/>)) :
+      (
+        <div className="hub__content--empty">
+          <p>There are no stories yet.</p>
+          <p>Once heroes are created, click on "Start a New Adventure" to create a story.</p>
+        </div>
+      )}
     </div>
   );
 }
