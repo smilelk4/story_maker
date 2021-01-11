@@ -11,7 +11,7 @@
     width: 90%;
     @include hide-overflowing-words();
   }
-  
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -86,7 +86,7 @@
     cursor: pointer;
     display: flex;
     @include opacity-change-on-hover();
-    font-size: 1.2rem;
+    font-size: $font-size-small;
     color: $color-grey;
 
     & > p {

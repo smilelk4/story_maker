@@ -45,7 +45,7 @@
   }
 
   &__title {
-    font-size: 2.5rem;
+    font-size: $font-size-large;
     margin-bottom: 2rem;
 
     & > * {
@@ -64,6 +64,7 @@
 
   &__alert {
     @include label-1($color-blue-dark, $color-light);
+    font-size: $font-size-small;
     align-self: flex-end;
     margin-bottom: 1rem;
   }
@@ -91,7 +92,7 @@
 
   &__complete {
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: $font-size-small;
     @include opacity-change-on-hover();
     cursor: pointer;
     display: flex;
@@ -154,7 +155,7 @@
 
   &__info {
     color: $color-grey;
-    font-size: 1.2rem;
+    font-size: $font-size-small;
     width: 40%;
   }
   

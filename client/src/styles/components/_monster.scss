@@ -14,7 +14,7 @@
     
     & *:not(:first-child) {
       color: $color-grey;
-      font-size: 1.2rem;
+      font-size: $font-size-small;
     }
   }
 

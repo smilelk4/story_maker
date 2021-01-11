@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 3px;
-  font-size: 1.6rem;
+  font-size: $font-size-medium;
   outline: none;
 
   & > * {
@@ -113,14 +113,14 @@
   &__title {
     width: 100%;
     top: 0;
-    font-size: 2.5rem;
+    font-size: $font-size-largest;
     text-align: center;
   }
 
   &__errors-container {
     position: absolute;
     color: $color-pink;
-    font-size: 1.4rem;
+    font-size: $font-size-default;
     bottom: 5.75rem;
     left: 17.5rem;
     text-align: center;

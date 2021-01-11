@@ -5,7 +5,7 @@
 }
 
 @mixin label-1($bg-color, $font-color) {
-  font-size: 1.4rem;
+  font-size: $font-size-default;
   background: $bg-color;
   color: $font-color;
   border-radius: 3px;
@@ -56,7 +56,7 @@
     transform: translateY(-50%);
     z-index: 2;
     user-select: none;
-    font-size: 2rem;
+    font-size: $font-size-large;
     transition: color .2s ease-in;
     display: flex;
 
@@ -103,7 +103,7 @@
       content: $message;
       background-color: $color-transparent-light;
       position: absolute;
-      font-size: 1rem;
+      font-size: $font-size-smallest;
       right: 2.5rem;
       top: -.2rem;
       width: max-content;
@@ -129,7 +129,7 @@
 @mixin simple-horizontal-animation($content) {
   &::before {
     content: $content;
-    font-size: 1rem;
+    font-size: $font-size-smallest;
     width: max-content;
     height: 2rem;
     position: absolute;

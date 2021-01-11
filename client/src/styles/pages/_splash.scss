@@ -34,7 +34,7 @@
     justify-content: space-between;
   }
   &__description {
-    font-size: 2rem;
+    font-size: $font-size-large;
     line-height: 5rem;
     height: 100%;
     display: flex;
@@ -136,7 +136,7 @@
     }
 
     .MuiSvgIcon-root {
-      font-size: 1.8rem;
+      font-size: $font-size-medium;
     }
   }
 }

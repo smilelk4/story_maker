@@ -4,7 +4,7 @@
   grid-template-columns: 15rem 1fr 15rem;
 
   &__title {
-    font-size: 2.2rem;
+    font-size: $font-size-largest;
     margin-bottom: 1rem;
 
     @include respond-large {
@@ -58,12 +58,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.6rem;
+    font-size: $font-size-medium;
     line-height: 2.5rem;
     letter-spacing: .2rem;
 
     @include respond-medium {
-      font-size: 1.2rem;
+      font-size: $font-size-small;
       line-height: 2rem;
       letter-spacing: .1rem;
     }
@@ -109,7 +109,7 @@
 
   &__destination {
     height: 20rem;
-    font-size: 2rem;
+    font-size: $font-size-large;
   }
   
   &__side-menu-field {
