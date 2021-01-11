@@ -77,11 +77,17 @@ const Activity = ({activities}) => {
 
   return ( 
     <div className="activity">
-      <svg>
-        {Object.entries(lines).map(line => (
-          <path d={line[1]} fill='none' stroke={colors[line[0]]} key={line} />
-        ))}
-      </svg>
+        {lines && Object.entries(lines).length ? (
+          <svg>
+            {Object.entries(lines).map(line => (
+            <path d={line[1]} fill='none' stroke={colors[line[0]]} key={line} />
+            ))}
+          </svg>
+        ) : (
+          <div className="hub__content--empty">
+            <p>There are no activities yet.</p>
+          </div>
+        )}
       <div className="activity__filter-container">
           <div className="activity__category">
             {heroes.map(hero => (

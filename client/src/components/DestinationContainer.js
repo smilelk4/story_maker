@@ -44,13 +44,17 @@ const DestinationContainer = () => {
   return ( 
     <PageAnimationWrapper>
       <div className="destination__container">
-        {destinations.map(destination => (
+        {destinations.length ? (destinations.map(destination => (
           <div key={destination.id}>
             {destinations[0] !== destination && <Line /> }
             <Destination key={destination.id} handleClick={onCompleted}
                          {...destination} />
           </div>
-        ))}
+        ))) : (
+        <div className="hub__content--empty">
+          <p>There are no destinations yet.</p>
+        </div>
+        )}
       </div>
     </PageAnimationWrapper>
   );

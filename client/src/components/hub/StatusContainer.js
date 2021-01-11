@@ -30,7 +30,7 @@ const StatusContainer = () => {
       {status && Object.entries(status).length ? (Object.entries(status).map(s => (
         <Status status={s} key={s}/>
       ))) : (
-        <div className="hub__content--empty">
+        <div className="hub__content--empty half-height">
           <p>There are no activities yet.</p>
         </div>
       )}

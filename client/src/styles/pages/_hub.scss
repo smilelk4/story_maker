@@ -30,7 +30,10 @@
       align-items: center;
       justify-content: center;
       color: $color-dark-light;
-      // background: pink;
+
+      &.half-height {
+        height: 50%;
+      }
     }
   }
   &__main {
