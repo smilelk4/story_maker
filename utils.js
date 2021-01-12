@@ -33,6 +33,10 @@ const createError = msg => {
   return err;
 }
 
+const subtractDate = days => {
+  return (d => new Date(d.setDate(d.getDate() - days)) )(new Date);
+};
+
 const activityLogsDataAutomator = (heroId) => {
   let dateCount = 0;
   let data = [];
@@ -57,5 +61,6 @@ module.exports = {
   handleValidationErrors,
   asyncHandler,
   createError,
+  subtractDate,
   activityLogsDataAutomator
 }

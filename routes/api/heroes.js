@@ -172,24 +172,4 @@ router.post('/',
   }});
 }));
 
-// router.post('/:id(\\d+)/activities', 
-//   asyncHandler(async (req, res) => {
-//   const { id } = req.params;
-
-//   const today = new Date();
-//   const year = today.getFullYear()
-//   const month = today.getMonth() + 1;
-//   const date = today.getDate()
-
-//   const activity = await ActivityLog.findOne({
-//     where: [
-//       {hero_id: id},
-//       sequelize.where(sequelize.fn('date', sequelize.col('createdAt')),
-//                                        '=', `${year}-${month}-${date}`)
-//     ]
-//   })
-
-//   // NOT COMPLETED
-// }));
-
 module.exports = router;

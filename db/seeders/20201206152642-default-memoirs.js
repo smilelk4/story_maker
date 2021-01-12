@@ -1,4 +1,5 @@
 'use strict';
+const { subtractDate } = require('../../utils');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -10,8 +11,8 @@ module.exports = {
         description: `I learned about const and let and how their scopes are different.`,
         hours_fought: 4.1,
         accomplishment_level: 7,
-        createdAt: new Date(2020, 11, 5),
-        updatedAt: new Date(2020, 11, 5)
+        createdAt: subtractDate(14),
+        updatedAt: subtractDate(14)
       },
       {
         hero_id: 1,
@@ -20,8 +21,8 @@ module.exports = {
         description: null,
         hours_fought: 4.4,
         accomplishment_level: 5.5,
-        createdAt: new Date(2020, 11, 7),
-        updatedAt: new Date(2020, 11, 7)
+        createdAt: subtractDate(12),
+        updatedAt: subtractDate(12)
       },
       {
         hero_id: 1,
@@ -30,8 +31,8 @@ module.exports = {
         description: null,
         hours_fought: 4.4,
         accomplishment_level: 1.8,
-        createdAt: new Date(2020, 11, 8),
-        updatedAt: new Date(2020, 11, 8)
+        createdAt: subtractDate(10),
+        updatedAt: subtractDate(10)
       },
       {
         hero_id: 1,
@@ -40,8 +41,8 @@ module.exports = {
         description: `I learned some new things today. Feeling pretty accomplished.`,
         hours_fought: 5.4,
         accomplishment_level: 9.6,
-        createdAt: new Date(2020, 11, 9),
-        updatedAt: new Date(2020, 11, 9)
+        createdAt: subtractDate(7),
+        updatedAt: subtractDate(7)
       },
       {
         hero_id: 1,
@@ -50,8 +51,8 @@ module.exports = {
         description: `Tomorrow, I will work harder.`,
         hours_fought: 1,
         accomplishment_level: 2,
-        createdAt: new Date(2020, 11, 12),
-        updatedAt: new Date(2020, 11, 12)
+        createdAt: subtractDate(6),
+        updatedAt: subtractDate(6)
       },
       {
         hero_id: 1,
@@ -60,8 +61,8 @@ module.exports = {
         description: `My brain is about to explode.`,
         hours_fought: 6.5,
         accomplishment_level: 8,
-        createdAt: new Date(2020, 11, 13),
-        updatedAt: new Date(2020, 11, 13)
+        createdAt: subtractDate(5),
+        updatedAt: subtractDate(5)
       },
       {
         hero_id: 1,
@@ -70,8 +71,8 @@ module.exports = {
         description: `Still get sometimes confused, but loops aren't too bad.`,
         hours_fought: 3,
         accomplishment_level: 5.4,
-        createdAt: new Date(2020, 11, 15),
-        updatedAt: new Date(2020, 11, 15)
+        createdAt: subtractDate(4),
+        updatedAt: subtractDate(4)
       },
       {
         hero_id: 1,
@@ -80,8 +81,8 @@ module.exports = {
         description: null,
         hours_fought: 5,
         accomplishment_level: 5.8,
-        createdAt: new Date(2020, 11, 17),
-        updatedAt: new Date(2020, 11, 17)
+        createdAt: subtractDate(3),
+        updatedAt: subtractDate(3)
       },
       {
         hero_id: 1,
@@ -90,8 +91,8 @@ module.exports = {
         description: null,
         hours_fought: 1,
         accomplishment_level: 2.8,
-        createdAt: new Date(2020, 11, 20),
-        updatedAt: new Date(2020, 11, 20)
+        createdAt: subtractDate(2),
+        updatedAt: subtractDate(2)
       },
       {
         hero_id: 1,
@@ -101,8 +102,8 @@ module.exports = {
         I gotta go back to some readings because I'm not totally clear yet.`,
         hours_fought: 5.7,
         accomplishment_level: 6.2,
-        createdAt: new Date(2020, 11, 26),
-        updatedAt: new Date(2020, 11, 26)
+        createdAt: subtractDate(1),
+        updatedAt: subtractDate(1)
       },
     ], {});
   },
