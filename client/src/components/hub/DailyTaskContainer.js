@@ -33,7 +33,7 @@ const DailyTaskContainer = () => {
     if (!container.current.children.length) {
       setAllCompleted(true);
     }
-  }, [stories, tasks, dispatch]);
+  }, [stories, dispatch]);
 
   const onChecked = async (storyId, heroId) => {
     const checkmarkAnimation = bodymovin.loadAnimation({

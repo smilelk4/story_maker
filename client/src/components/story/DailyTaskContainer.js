@@ -11,7 +11,6 @@ import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 const DailyTaskContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const tasks = useSelector(state => state.task);
 
   useEffect(() => {

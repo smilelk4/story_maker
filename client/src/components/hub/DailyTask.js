@@ -10,7 +10,10 @@ const DailyTask = ({task, handleClick}) => {
       <p className="task__title">{title}</p>
       <div className="task__complete">
         <p ref={checkboxContainer}
-           onClick={() => handleClick(id, Story.hero_id)}><CheckIcon />
+           onClick={() => {
+            //  debugger;
+             handleClick(id, Story.hero_id)}}>
+          <CheckIcon />
         </p>
       </div>
     </div>

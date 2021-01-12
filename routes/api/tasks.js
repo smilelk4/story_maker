@@ -1,19 +1,20 @@
 const router = require('express').Router();
-const { ActivityLog, DailyTask } = require('../../db/models');
+const { DailyTask, Story } = require('../../db/models');
 const { asyncHandler } = require('../../utils');
 
 router.post('/', 
   asyncHandler(async (req, res) => {
-  const { title, 
-          storyId } = req.body;
+  const { title, storyId } = req.body;
         
   const task = await DailyTask.create({
     story_id: storyId,
-    title
+    title,
   });
 
+  task.dataValues.Story = await Story.findByPk(task.story_id);
   res.status(201).json({task});
 }));
+
 
 router.put('/:id(\\d+)', 
 asyncHandler(async (req, res) => {
