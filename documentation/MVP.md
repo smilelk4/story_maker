@@ -4,14 +4,13 @@
 * Ability to create heroes and stories.
 
 ## Hero
-* Ability to grow stats and levels depending on daily accomplishments.
-* Ability to save daily journals.
+* Ability to grow stats and levels depending on daily activities/accomplishments.
+* Ability to save daily journals(memoir).
 
 ## Story
-* Belongs to a world.
-* Ability to create destinations(goals).
-* Ability to create monsters(constraints).
-* Ability to keep track of how many days the hero has left before it hits the target date set on final destination(final goal).
+* Ability to create goals(destinations).
+* Ability to create constraints(monsters).
+* Ability to keep track of deadlines for specific goals.
 
 ## Stretch Goals
 * Have the hero be able to hold skills and classes.
