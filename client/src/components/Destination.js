@@ -33,9 +33,9 @@ const Destination = ({handleClick, ...props}) => {
         <div className="destination__stats">
           <div className="destination__days">
             {isOverdue ? (
-              <p className="destination__alert">Overdue</p>
+              <p className="destination__alert--complete">Overdue</p>
             ) : (
-              <p className="destination__days-left">{dayDiff} Days Left</p>
+              <p className="destination__alert--incomplete">{dayDiff} Days Left</p>
             )}
             <p onClick={() => handleClick(id)} 
               className="destination__complete"><CheckIcon />

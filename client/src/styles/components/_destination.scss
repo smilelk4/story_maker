@@ -7,8 +7,6 @@
   line-height: 3rem;
   display: flex;
   flex-direction: column;
-  // justify-content: space-evenly;
-  // border: 1px solid black;
 
   &:not(:first-child) {
     margin-top: 3rem;
@@ -55,29 +53,34 @@
       margin-right: 1rem;
     }
   }
-  &__days-left {
-    @include label-1($color-blue-light, $color-light);
+
+  &__alert--complete,
+  &__alert--incomplete {
     align-self: flex-end;
     margin-bottom: 1rem;
+  }
+
+  &__alert {
+    &--complete {
+      @include label-1($color-blue-dark, $color-light);
+    }
+
+    &--incomplete {
+      @include label-1($color-blue-light, $color-light);
+    }
   }
 
   &__description, &__story {
     color: $color-grey;
   }
 
-  &__alert {
-    @include label-1($color-blue-dark, $color-light);
-    font-size: $font-size-small;
-    align-self: flex-end;
-    margin-bottom: 1rem;
-  }
 
   &__target-date {
     align-self: flex-end;
     color: $color-grey;
 
     &.alert {
-      color: $color-pink;
+      color: $color-error;
     }
   }
 

@@ -116,7 +116,7 @@
     width: 45rem;
     max-height: 6rem;
     overflow-y: scroll;
-    color: $color-pink;
+    color: $color-error;
     @include hide-scroll();
     font-size: $font-size-small;
     list-style: inside square;

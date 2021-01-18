@@ -33,9 +33,9 @@ module.exports = {
         story_id: 1,
         parent_destination_id: 2,
         title: "Learn about variables.",
-        description: null,
+        description: "Let, const, var",
         target_date: new Date(2020, 11, 8),
-        accomplished: false,
+        accomplished: true,
         importance: null,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -46,7 +46,29 @@ module.exports = {
         title: "Learn for and while loops.",
         description: null,
         target_date: new Date(2020, 11, 16),
-        accomplished: false,
+        accomplished: true,
+        importance: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 1,
+        parent_destination_id: 2,
+        title: "Study map and forEach",
+        description: null,
+        target_date: new Date(2020, 11, 18),
+        accomplished: true,
+        importance: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 1,
+        parent_destination_id: 2,
+        title: "Try out a problem on Code Wars",
+        description: null,
+        target_date: new Date(2020, 11, 22),
+        accomplished: true,
         importance: null,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -54,7 +76,7 @@ module.exports = {
       {
         story_id: 1,
         parent_destination_id: 1,
-        title: "Understand OOP",
+        title: "Study OOP",
         description: `Constructors, inheritance.`,
         target_date: new Date(2020, 12, 1),
         accomplished: false,
@@ -88,9 +110,9 @@ module.exports = {
       {
         story_id: 1,
         parent_destination_id: 1,
-        title: "Learn NodeJS",
+        title: "Create a Mini Project Using three NPM Packages",
         description: `What are npm packages?`,
-        target_date: new Date(2021, 1, 8),
+        target_date: new Date(2020, 12, 18),
         accomplished: false,
         importance: 6,
         createdAt: new Date(),
@@ -104,6 +126,17 @@ module.exports = {
         target_date: new Date(2020, 12, 27),
         accomplished: false,
         importance: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 1,
+        parent_destination_id: 1,
+        title: "Learn NodeJS",
+        description: `What are npm packages?`,
+        target_date: new Date(2021, 1, 8),
+        accomplished: false,
+        importance: 6,
         createdAt: new Date(),
         updatedAt: new Date()
       },
