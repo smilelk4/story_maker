@@ -65,11 +65,11 @@ const Splash = ({...props}) => {
             <span onClick={() => changeForm(<LoginForm />)}>Log In</span>
           </p>
           {form}
-          <div className="splash__error-container">
+          <ul className="splash__error-container">
             {displayErrors.map(error => (
-              <div key={error.message}>{error}</div>
+              <li key={error.message}>{error}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

@@ -116,7 +116,15 @@
     width: 45rem;
     max-height: 6rem;
     overflow-y: scroll;
+    color: $color-pink;
     @include hide-scroll();
+    font-size: $font-size-small;
+    list-style: inside square;
+
+    li {
+      padding: .5rem;
+      background: rgba(255, 255, 255, .2);
+    }
   }
 
   &__footer {

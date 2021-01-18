@@ -7,6 +7,7 @@ const InputField = ({type, placeholder, currentState, updateState}) => {
         type={type}
         value={currentState}
         placeholder={placeholder}
+        required={true}
         onChange={e => updateState(e.target.value)}
       />
     </div>
