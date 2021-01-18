@@ -61,8 +61,8 @@ const HeroCreator = ({setIsModalOpen}) => {
 
   useEffect(() => {
     if (page === 3) {
-      if (heroContainer.current.children.length && worldId) {
-        worldContainer.current.childNodes.forEach(child => {
+      if (heroContainer.current.children.length && heroId) {
+        heroContainer.current.childNodes.forEach(child => {
           child.classList.remove('modal__content--selected');
         });
       }
