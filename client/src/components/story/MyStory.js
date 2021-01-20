@@ -35,7 +35,6 @@ const MyStory = () => {
     dispatch(clearActivitiesAction());
     dispatch(clearMemoirsAction());
     dispatch(clearProgressAction());
-    dispatch(clearMonstersAction());
   }, [story, dispatch]);
 
   return (  

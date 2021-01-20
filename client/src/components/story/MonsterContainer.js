@@ -14,7 +14,7 @@ const MonsterContainer = () => {
   const monsters = useSelector(state => state.monster);
 
   useEffect(() => {
-    // dispatch(clearMonstersAction());
+    dispatch(clearMonstersAction());
     dispatch(getMonsters(id));
   },[id, dispatch]);
 

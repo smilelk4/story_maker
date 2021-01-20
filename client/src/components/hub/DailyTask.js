@@ -11,7 +11,6 @@ const DailyTask = ({task, handleClick}) => {
       <div className="task__complete">
         <p ref={checkboxContainer}
            onClick={() => {
-            //  debugger;
              handleClick(id, Story.hero_id)}}>
           <CheckIcon />
         </p>

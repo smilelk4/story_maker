@@ -26,7 +26,6 @@ const monsterReducer = (state = [], action) => {
   switch(action.type) {
     case LOAD_MONSTERS: {
       const ids = state.map(s => s.id);
-      
       const newMonsters = action.monsters
         .filter(m => !(m.id in ids))
         .map(monster => ({
