@@ -3,6 +3,10 @@
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
 
+  @include respond-large {
+    display: flex;
+  }
+
   &__title {
     font-size: $font-size-largest;
     margin-bottom: 1rem;
@@ -19,6 +23,13 @@
     grid-template-rows: 8rem 100rem 8rem;
     grid-gap: 5rem;
     background-color: white;
+
+    @include respond-medium {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 8vw;
+      width: 100vw;
+    }
   }
 
   &__main {
@@ -31,6 +42,11 @@
 
   &__sidebar-left {
     grid-column: 2 / span 1;
+
+    @include respond-medium {
+      order: 1;
+      display: flex;
+    }
   }
   
   &__sidebar-right {
@@ -91,6 +107,10 @@
   &__sidebar-right {
     position: sticky;
     top: 0;
+
+    @include respond-medium {
+      position: relative;
+    }
   }
 
   &__scroll {
