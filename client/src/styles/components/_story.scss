@@ -57,6 +57,8 @@
       z-index: 1;
       padding: 1.5rem;
       color: $color-grey-dark;
+      text-align: center;
+      white-space: nowrap;
 
       & > p {
         &:first-child {
