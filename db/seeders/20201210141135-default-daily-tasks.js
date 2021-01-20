@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         story_id: 2,
-        title: 'Read a book',
+        title: 'Read 10 pages of a book',
         last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
         createdAt: new Date(),
         updatedAt: new Date()
@@ -34,6 +34,41 @@ module.exports = {
       {
         story_id: 2,
         title: 'Write down ideas',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 2,
+        title: 'Meditate',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 3,
+        title: 'Work out to fresh out the brain',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 3,
+        title: 'Connect with a person on LinkedIn',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 3,
+        title: 'Study for at least an hour',
+        last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        story_id: 3,
+        title: 'Write out business tactics',
         last_accomplished: ( d => new Date(d.setDate(d.getDate()-1)) )(new Date),
         createdAt: new Date(),
         updatedAt: new Date()
