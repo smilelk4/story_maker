@@ -29,7 +29,7 @@ const MyHub = () => {
           </div>
         </main>
         <aside className="hub__sidebar">
-          <div className="hub__section">
+          <div className="hub__section hub__section--first">
             <div className="hub__icon-holder">
               <div className="hub__greet">
                 <Greeting {...user}/>

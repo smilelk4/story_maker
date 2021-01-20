@@ -84,6 +84,11 @@
       left: -7rem;
       top: -5rem;
       pointer-events: none;
+      width: 35rem;
+
+      @include respond-medium-small {
+        width: 30rem;
+      }
     }
   }
 
@@ -121,6 +126,17 @@
     @include respond-medium {
       flex-direction: column;
     }
+
+    &--first {
+      @include respond-medium-small {
+        height: 30rem;
+
+        .hub__icon-holder:nth-child(2) {
+          height: 100%;
+          margin-top: 3rem;
+        }
+      }
+    }
   }
 
   &__new-adventure {
@@ -134,6 +150,10 @@
     font-size: $font-size-medium;
     line-height: 2rem;
     letter-spacing: .1rem;
+
+    @include respond-medium-small {
+      width: 50%;
+    }
 
     &-svg-container {
       overflow: hidden;
@@ -154,6 +174,12 @@
 
   &__greet {
     font-weight: bolder;
+
+    @include respond-medium-small {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     & > *:not(:last-child) {
       margin-bottom: 1rem;

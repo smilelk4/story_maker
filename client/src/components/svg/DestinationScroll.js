@@ -3,8 +3,8 @@ import React from 'react';
 const DestinationScroll = () => {
   return ( 
 <svg version="1.2" baseProfile="tiny" x="0px" className="scroll_svg"
-	 y="0px" viewBox="0 0 127.9 48" overflow="visible" width="350">
-<g id="Layer_1" display="none">
+	 y="0px" viewBox="0 0 127.9 48" overflow="visible">
+<g display="none">
 	<rect x="-99" y="-6" fill="#FFFFFF" width="244.9" height="100"/>
 	<g display="inline">
 		<path fill="#333333" d="M101.91,69.85c0-1.91-1.99-3.2-5.6-3.2c-4.08,0-7.2,1.27-7.2,3.72c0,1.48,1.75,2.31,2.59,2.31
