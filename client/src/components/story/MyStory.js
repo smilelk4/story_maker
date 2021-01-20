@@ -17,7 +17,6 @@ import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 import { clearActivitiesAction } from '../../store/reducers/activityReducer';
 import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
 import { clearProgressAction } from '../../store/reducers/progressReducer';
-import { clearMonstersAction } from '../../store/reducers/monsterReducer';
 
 const MyStory = () => {
   const dispatch = useDispatch();
@@ -124,10 +123,8 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
-        <div className="mystory__sidebar-right-top-container">
           <FightMonster />
           <OverviewContainer />
-        </div>
         <NewDestination />
        </div>
       </div>
