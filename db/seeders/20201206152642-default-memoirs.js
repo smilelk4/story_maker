@@ -95,7 +95,7 @@ module.exports = {
         updatedAt: subtractDate(2)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: 'Things are going okay',
         description: `Slow, but things are going.`,
@@ -105,7 +105,7 @@ module.exports = {
         updatedAt: subtractDate(1)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: 'Had a productive day',
         description: `Today was great, need to keep it up!`,
@@ -115,7 +115,7 @@ module.exports = {
         updatedAt: subtractDate(2)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: `Couldn't focus well`,
         description: null,
@@ -125,7 +125,7 @@ module.exports = {
         updatedAt: subtractDate(10)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: 'Well-worked.',
         description: `I learned some new things today. Feeling pretty accomplished.`,
@@ -135,7 +135,7 @@ module.exports = {
         updatedAt: subtractDate(7)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: 'This book I read was great',
         description: `I was suggested to read this business book. It was amazing.`,
@@ -145,7 +145,7 @@ module.exports = {
         updatedAt: subtractDate(50)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 2,
         title: 'The guest speaker today was inspiring',
         description: `Mind-blown!`,
@@ -155,7 +155,7 @@ module.exports = {
         updatedAt: subtractDate(37)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         story_id: 3,
         title: 'Learned some good things',
         description: null,
@@ -165,8 +165,8 @@ module.exports = {
         updatedAt: subtractDate(12)
       },
       {
-        hero_id: 1,
-        story_id: 1,
+        hero_id: 2,
+        story_id: 3,
         title: `Couldn't focus well`,
         description: null,
         hours_fought: 4.4,
@@ -175,8 +175,8 @@ module.exports = {
         updatedAt: subtractDate(10)
       },
       {
-        hero_id: 1,
-        story_id: 1,
+        hero_id: 2,
+        story_id: 3,
         title: 'Well-worked.',
         description: `I learned some new things today. Feeling pretty accomplished.`,
         hours_fought: 5.4,
@@ -185,8 +185,8 @@ module.exports = {
         updatedAt: subtractDate(7)
       },
       {
-        hero_id: 1,
-        story_id: 1,
+        hero_id: 2,
+        story_id: 3,
         title: `Couldn't study much today.`,
         description: `Tomorrow, I will work harder.`,
         hours_fought: 1,
@@ -195,8 +195,8 @@ module.exports = {
         updatedAt: subtractDate(6)
       },
       {
-        hero_id: 1,
-        story_id: 1,
+        hero_id: 2,
+        story_id: 3,
         title: `So tired but feeling accomplished.`,
         description: `My brain is about to explode.`,
         hours_fought: 6.5,

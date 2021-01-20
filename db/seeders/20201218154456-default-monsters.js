@@ -69,14 +69,14 @@ module.exports = {
       {
         story_id: 2,
         name: 'Spending on Unnecessary Goods',
-        strength: 9,
-        image_id: 7,
+        strength: 6,
+        image_id: 6,
         times_defeated: 2,
         createdAt: new Date(2020, 11, 5),
         updatedAt: new Date(2020, 11, 5)
       },
       {
-        story_id: 3,
+        story_id: 2,
         name: 'Concentration Loss',
         strength: 10,
         image_id: 8,

@@ -16,7 +16,7 @@ module.exports = {
       {
         user_id: 1,
         world_id: 2,
-        name: "Art Hero",
+        name: "Business Hero",
         level: 2,
         xp: 9,
         image_id: 22,

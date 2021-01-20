@@ -13,7 +13,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         world_id: 2,
         title: "Side Business",
         difficulty: 7,
@@ -22,7 +22,7 @@ module.exports = {
         updatedAt: new Date(2020, 10, 15)
       },
       {
-        hero_id: 1,
+        hero_id: 2,
         world_id: 3,
         title: "Full-stack Road",
         difficulty: 5,

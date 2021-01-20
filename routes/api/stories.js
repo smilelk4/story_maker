@@ -59,7 +59,7 @@ asyncHandler(async (req, res) => {
     res.json({ destinations })
 }));
 
-router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)/tasks', asyncHandler(async (req, res) => {
   const tasks = await DailyTask.findAll({
     where: {
       story_id: req.params.id
