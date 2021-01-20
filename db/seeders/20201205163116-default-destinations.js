@@ -211,7 +211,7 @@ module.exports = {
         parent_destination_id: null,
         title: "Startup web app business",
         description: `I need to think of a way to monetize the app.`,
-        target_date: new Date(2021, 12, 10),
+        target_date: new Date(2022, 3, 10),
         accomplished: false,
         importance: 10,
         createdAt: new Date(2020, 11, 10),

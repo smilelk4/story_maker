@@ -10,6 +10,18 @@
   }
 }
 
+@mixin respond-medium-small {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin respond-medium-smaller {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
 @mixin respond-small {
   @media (max-width: 600px) {
     @content;

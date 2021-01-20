@@ -2,7 +2,7 @@
   background-color: $color-light;
   display: grid;
   grid-template-columns: 15rem 1fr 15rem;
-  
+
   &::before {
     content: '';
     width: 100%;
@@ -11,6 +11,9 @@
     background-color: $color-transparent-light;
   }
 
+  @include respond-medium {
+    display: flex;
+  }
   
   &__contents {
     grid-column: 2 / -2;
@@ -19,6 +22,12 @@
     grid-template-rows: 8rem 100rem 8rem;
     grid-gap: 5rem;
     background-color: white;
+
+    @include respond-medium-small {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 8vw;
+    }
   }
   
   &__content {
@@ -59,6 +68,10 @@
 
   &__destination-container {
     @include calc("height", "100% - #{$basic-item-height} - 7rem");
+
+    @include respond-medium-small {
+      height: 80vh;
+    }
   }
 
   .left-section {

@@ -10,7 +10,7 @@ const Story = (...props) => {
         <p className="story__title title">{title}</p>
         {World && <div className="story__world-name">
           <Shield />
-          <div>
+          <div className="story__">
             <p>World Name:</p><br /> 
             <p>{World.name}</p>
           </div>
