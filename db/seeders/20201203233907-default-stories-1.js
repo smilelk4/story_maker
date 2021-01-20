@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         hero_id: 1,
-        world_id: 1,
+        world_id: 2,
         title: "Side Business",
         difficulty: 7,
         start_date: new Date(2020, 10, 15),
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         hero_id: 1,
-        world_id: 1,
+        world_id: 3,
         title: "Full-stack Road",
         difficulty: 5,
         start_date: new Date(2020, 8, 22),
