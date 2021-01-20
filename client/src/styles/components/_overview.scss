@@ -9,9 +9,14 @@
   justify-content: space-evenly;
   line-height: 3rem;
 
+  @include respond-medium {
+    padding: 1rem;
+    line-height: 2rem;
+  }
+
   &__container {
     @include respond-medium {
-      width: 100%;
+      width: 50%;
     }
   }
 }

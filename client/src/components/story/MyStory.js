@@ -123,8 +123,10 @@ const MyStory = () => {
 
        </div>
        <div className="mystory__sidebar-right">
+        <div className="mystory__sidebar-right-top-container">
           <FightMonster />
           <OverviewContainer />
+        </div>
         <NewDestination />
        </div>
       </div>
