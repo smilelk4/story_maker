@@ -8,4 +8,10 @@
   flex-direction: column;
   justify-content: space-evenly;
   line-height: 3rem;
+
+  &__container {
+    @include respond-medium {
+      width: 20%;
+    }
+  }
 }

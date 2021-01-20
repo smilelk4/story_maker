@@ -60,6 +60,32 @@
     select {
       width: 100%;
     }
+
+    &-top-container {
+      & > *:first-child {
+        margin-bottom: 1rem;
+      }
+
+      @include respond-medium {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > * {
+          margin: 1rem;
+        }
+      }
+    }
+
+    @include respond-medium {
+      display: flex;
+      // flex-wrap: wrap;
+      // justify-content: space-between;
+      flex-direction: column;
+      // flex-wrap: wrap;
+      // height: 40rem;
+    }
   }
 
   &__none-display {
