@@ -48,27 +48,7 @@ const HeroCreator = ({setIsModalOpen}) => {
       }
     })();
   }, [worlds]);
-
-  useEffect(() => {
-    if (page === 2) {
-      if (worldContainer.current.children.length && worldId) {
-        worldContainer.current.childNodes.forEach(child => {
-          child.classList.remove('modal__content--selected');
-        });
-      }
-    }
-  }, [worldId, page])
-
-  useEffect(() => {
-    if (page === 3) {
-      if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.forEach(child => {
-          child.classList.remove('modal__content--selected');
-        });
-      }
-    }
-  }, [heroId, page]);
-
+  
   useEffect(() => {
     if (page === 1) {
       setPageTitle('Select Your Hero Name');
@@ -120,8 +100,7 @@ const HeroCreator = ({setIsModalOpen}) => {
           {worlds.length && worlds.map(world => (
             <div className="world" onClick={e => {
               setWorldId(world.id);
-              worldContainer.current.forEach(child => {
-                debugger;
+              worldContainer.current.childNodes.forEach(child => {
                 child.childNodes[0].classList.remove('modal__content--selected');
               });
               e.target.classList.add('modal__content--selected');
@@ -137,6 +116,9 @@ const HeroCreator = ({setIsModalOpen}) => {
           {heroes && heroes.length && heroes.map(hero => (
             <div className="hero" onClick={e => {
               setHeroId(hero.id);
+              heroContainer.current.childNodes.forEach(child => {
+                child.classList.remove('modal__content--selected');
+              });
               e.target.classList.add('modal__content--selected');
               }}>
               <img src={hero.image_url} alt={hero.id} />

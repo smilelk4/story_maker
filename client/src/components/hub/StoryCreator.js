@@ -47,7 +47,7 @@ const StoryCreator = ({setIsModalOpen}) => {
   }, [page, heroes.length])
 
   const handleSubmit = async e => {
-    if ( !heroId || !title || !destinationTitle || !targetDate || !importance) {
+    if (!heroId || !title || !destinationTitle || !targetDate || !importance) {
       return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
     const data = await dispatch(createStory({ worldId, heroId, title, 
@@ -120,7 +120,6 @@ const StoryCreator = ({setIsModalOpen}) => {
           </div>
           <div className="modal__field">
             <label htmlFor="importance">Importance</label>
-            {/* <p>{importance}</p> */}
             <div className="form__slider">
               <input type="range" 
                 value={importance}
