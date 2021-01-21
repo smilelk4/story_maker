@@ -4,13 +4,15 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Hero from './Hero';
 import { getHeroes } from '../../store/actions/heroAction';
 import NewHeroModal from './NewHeroModal';
+import ModifyHeroModal from './ModifyHeroModal';
 import ScrollArrow from './ScrollArrow';
 
 const HeroContainer = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.id);
   const heroes = useSelector(state => state.hero);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isModifyModalOpen, setIsModifyModalOpen] = useState(false);
   const container = useRef(null);
 
   const handleLeftScroll = () => {
@@ -31,12 +33,18 @@ const HeroContainer = () => {
     <div className="hero__container" ref={container}>
       <ScrollArrow handleLeftScroll={handleLeftScroll}
                    handleRightScroll={handleRightScroll}/>
-      {isModalOpen && <NewHeroModal isModalOpen={isModalOpen}
-                                    setIsModalOpen={setIsModalOpen} />}
-      <p className="hero__new-hero" onClick={() => setIsModalOpen(true)}>
+      {isCreateModalOpen && <NewHeroModal isModalOpen={isCreateModalOpen}
+                                    setIsModalOpen={setIsCreateModalOpen} />}
+      {isModifyModalOpen && <ModifyHeroModal isModalOpen={isModifyModalOpen}
+                                    setIsModalOpen={setIsModifyModalOpen} />}
+      <p className="hero__new-hero" onClick={() => setIsCreateModalOpen(true)}>
          <AddCircleOutlineIcon />
       </p>
-      {heroes.length ? (heroes.map(hero => <Hero {...hero} key={hero.id}/>)) : (
+      {heroes.length ? (heroes.map(hero => (
+          <div onClick={() => setIsModifyModalOpen(true)}>
+            <Hero {...hero} key={hero.id}/>
+          </div>
+        ))) : (
         <div className="hub__content--empty">
           <p>There are no heroes yet.</p>
           <p>Click on + to create your first hero.</p>

@@ -20,6 +20,10 @@ body {
   color: $color-grey-dark;
 }
 
+button {
+  user-select: none;
+}
+
 a,
 a:active,
 a:visited {
