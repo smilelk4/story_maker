@@ -120,6 +120,10 @@ const HeroCreator = ({setIsModalOpen}) => {
           {worlds.length && worlds.map(world => (
             <div className="world" onClick={e => {
               setWorldId(world.id);
+              worldContainer.current.forEach(child => {
+                debugger;
+                child.childNodes[0].classList.remove('modal__content--selected');
+              });
               e.target.classList.add('modal__content--selected');
               }}>
               <div className="world__name">{world.name}</div>

@@ -102,6 +102,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
     @include custom-scroll();
+
+    img {
+      pointer-events: none;
+    }
   }
 
   img {

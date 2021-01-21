@@ -37,18 +37,6 @@ const StoryCreator = ({setIsModalOpen}) => {
   }, [worlds]);
 
   useEffect(() => {
-    if (page === 2) {
-      if (heroContainer.current.children.length && heroId) {
-        heroContainer.current.childNodes.forEach(child => {
-          if (child) {
-            child.classList.remove('modal__content--selected');
-          }
-        });
-      }
-    }
-  }, [heroId, page]);
-
-  useEffect(() => {
     if (page === 1 && heroes.length) {
       setPageTitle('Set Your Story Name');
     } else if (page === 2 && heroes.length) {
@@ -105,6 +93,8 @@ const StoryCreator = ({setIsModalOpen}) => {
             <div key={hero.id} className="hero" onClick={e => {
               setHeroId(hero.id);
               setWorldId(hero.worldId)
+              heroContainer.current.childNodes.forEach(child => {
+              child.classList.remove('modal__content--selected')});
               e.target.classList.add('modal__content--selected')}}>
               <img src={hero.image} alt={hero.id} />
               <p className="hero__name">{hero.name}</p>
