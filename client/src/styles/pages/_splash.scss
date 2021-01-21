@@ -10,10 +10,6 @@
     height: 100vh;
   }
 
-  // @include respond-medium-smaller {
-  //   flex-direction: column;
-  // }
-
   input[type=text],
   input[type=email],
   input[type=password] {
@@ -41,7 +37,7 @@
     left: 20rem;
     top: 15rem;
     width: 30vw;
-    height: 170rem;
+    height: 160rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -57,7 +53,7 @@
   }
 
   &__top-container {
-
+    height: 100%;
     @include respond-medium {
       width: 57vw;
     }
@@ -78,9 +74,8 @@
 
     @include respond-medium-small {
       font-size: $font-size-default;
-      line-height: 1.5rem;
+      line-height: 2.5rem;
       margin-top: 0;
-      background: pink;
     }
   }
 
@@ -95,7 +90,6 @@
     height: 100vh;
     position: fixed;
     right: 0;
-    background: pink;
     display: flex;
     justify-content: center;
 
@@ -105,18 +99,14 @@
   }
 
   &__scroll {
-    // margin: 7% 0;
-    // width: 70rem;
     height: 100%;
     width: 100%;
-    background: skyblue;
-
-    // height: 80rem;
     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll.png');
     background-size: auto 45vw;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -127,8 +117,6 @@
   }
 
   &__form {
-    // position: absolute;
-    // left: 32%;
     right: 50%;
     top: 27%;
     height: 30rem;
@@ -139,7 +127,6 @@
     }
 
     @include respond-medium-small {
-      // left: 25%;
       top: 15rem;
     }
 
@@ -151,9 +138,6 @@
       margin-bottom: 1rem;
 
       @include respond-large {
-        font-size: 3.5rem;
-      }
-      @include respond-medium-small {
         font-size: 3rem;
       }
     }
@@ -171,15 +155,16 @@
   }
 
   &__toggle-tag {
-    position: absolute;
-    top: 18rem;
-    left: 20%;
-    
     & > span {
       cursor: pointer;
       margin: 0 1rem;
-      color: $color-grey-dark;
+      color: $color-grey;
       @include opacity-change-on-hover();
+    }
+
+    @include respond-medium-small {
+      position: absolute;
+      top: 5rem;
     }
   }
 
