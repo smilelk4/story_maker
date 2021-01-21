@@ -7,6 +7,7 @@
 
   @include respond-medium-small {
     display: flex;
+    height: 100vh;
   }
 
   // @include respond-medium-smaller {
@@ -94,6 +95,9 @@
     height: 100vh;
     position: fixed;
     right: 0;
+    background: pink;
+    display: flex;
+    justify-content: center;
 
     @include respond-medium-small {
       position: relative;
@@ -104,10 +108,17 @@
     // margin: 7% 0;
     // width: 70rem;
     height: 100%;
+    width: 100%;
+    background: skyblue;
+
     // height: 80rem;
     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll.png');
-    background-size: 90% auto;
+    background-size: auto 45vw;
     background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @include respond-medium-small {
       background-image: none;
@@ -116,14 +127,19 @@
   }
 
   &__form {
-    position: absolute;
-    left: 28%;
-    top: 20rem;
+    // position: absolute;
+    // left: 32%;
+    right: 50%;
+    top: 27%;
     height: 30rem;
     width: 25rem;
 
+    @include respond-large {
+      right: 38%;
+    }
+
     @include respond-medium-small {
-      left: 25%;
+      // left: 25%;
       top: 15rem;
     }
 
