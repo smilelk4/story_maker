@@ -32,31 +32,35 @@ const Splash = ({...props}) => {
         <section>
           <h1 className="splash__title title">Story Maker</h1>
         </section>
-        <section
-          className="splash__description">
-          <AnimatedSection>
-            <p>Create your own story.</p>
-            <p>Build habits.</p>
-            <p>Achieve your goals.</p>
-          </AnimatedSection>
-          <AnimatedSection>
-            Story Maker is a gamified habit and goal tracker that helps individuals 
-            keep track of their daily routines with the heroes they own.
-          </AnimatedSection>
-        </section>
-        <footer className="splash__footer">
-        <div className="footer__developed-by">
-          <p className="footer__name">Developed & Designed by Yuka Moribe</p>
-          <div className="footer__icon-container">
-              <a target="_blank" rel="noreferrer" href="https://github.com/smilelk4">
-                <GitHubIcon />
-              </a>
-              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/yuka-moribe-485962157/">
-                <LinkedInIcon />
-              </a>
+        <div className="splash__top-container">
+          <section
+            className="splash__description">
+            <AnimatedSection>
+              <p>Create your own story.</p>
+              <p>Build habits.</p>
+              <p>Achieve your goals.</p>
+            </AnimatedSection>
+            <AnimatedSection>
+              <p>
+                Story Maker is a gamified habit and goal tracker that helps individuals 
+                keep track of their daily routines with the heroes they own.
+              </p>
+            </AnimatedSection>
+          </section>
+          <footer className="splash__footer">
+          <div className="footer__developed-by">
+            <p className="footer__name">Developed & Designed by Yuka Moribe</p>
+            <div className="footer__icon-container">
+                <a target="_blank" rel="noreferrer" href="https://github.com/smilelk4">
+                  <GitHubIcon />
+                </a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/yuka-moribe-485962157/">
+                  <LinkedInIcon />
+                </a>
+            </div>
           </div>
+          </footer>
         </div>
-        </footer>
       </main>
       <div className="splash__container">
         <div className="splash__scroll">
