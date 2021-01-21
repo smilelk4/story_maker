@@ -2,13 +2,15 @@ import React from 'react';
 import HeroModifier from './HeroModifier';
 import ModalContainer from '../ModalContainer';
 
-const ModifyHeroModal = ({isModalOpen, setIsModalOpen, editingHeroName}) => {
+const ModifyHeroModal = ({isModalOpen, setIsModalOpen,
+                          editingHeroName, editingHeroId}) => {
   return ( 
     <ModalContainer
     isModalOpen={isModalOpen}
     setIsModalOpen={setIsModalOpen}>
       <HeroModifier setIsModalOpen={setIsModalOpen}
-                    editingHeroName={editingHeroName}/>
+                    editingHeroName={editingHeroName}
+                    editingHeroId={editingHeroId}/>
     </ModalContainer>
   );
 }

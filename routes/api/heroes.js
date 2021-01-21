@@ -46,6 +46,7 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
 }));
 
 router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const { worldId, name, heroId } = req.body;
   const hero = await Hero.findOne({
     where: {
       id: req.params.id

@@ -4,7 +4,7 @@ import { baseUrl } from '../../config';
 import { loadErrors } from '../../store/reducers/errorReducer';
 import { editHero } from '../../store/actions/heroAction';
 
-const HeroCreator = ({setIsModalOpen, editingHeroName}) => {
+const HeroCreator = ({setIsModalOpen, editingHeroName, editingHeroId: id}) => {
   const dispatch = useDispatch();
   const worldContainer = useRef();
   const heroContainer = useRef();
@@ -63,7 +63,7 @@ const HeroCreator = ({setIsModalOpen, editingHeroName}) => {
     if (!worldId || !heroId || !name) {
       return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
-    const data = await dispatch(editHero({ userId, worldId, name, heroId }));
+    const data = await dispatch(editHero({ id, userId, worldId, name, heroId }));
 
     if (!data.errors) {
       setIsModalOpen(false);

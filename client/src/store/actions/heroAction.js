@@ -61,7 +61,7 @@ export const createHero = inputtedInfo => {
 
 export const editHero = inputtedInfo => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/heroes`, {
+    const res = await fetch(`${baseUrl}/heroes/${inputtedInfo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
