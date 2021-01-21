@@ -10,7 +10,6 @@ const MonsterFighter = ({setIsModalOpen}) => {
   const heroContainer = useRef();
   const hero = useSelector(state => state.hero[0]);
   const monsters = useSelector(state => state.monster);
-  const errors = useSelector(state => state.errors);
 
   const [page, setPage] = useState(1);
   const [pageTitle, setPageTitle] = useState('');
@@ -98,11 +97,6 @@ const MonsterFighter = ({setIsModalOpen}) => {
           <button onClick={() => setIsModalOpen(false)}>Close</button>
         </div>
       )}
-      <div className="modal__errors-container">
-        {errors.map(error => (
-          <div>{error}</div>
-        ))}
-      </div>
     </>
   );
 }

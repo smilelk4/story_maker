@@ -129,13 +129,13 @@ const HeroCreator = ({setIsModalOpen}) => {
         <button onClick={handleSubmit}>Create Hero</button>
         </>
       )}
-      <div className="modal__errors-container">
-        {errors.map(error => (
-          <div key={error.message}>{error}</div>
-        ))}
-      </div>
       <div className="modal__button-container">
         <button disabled={page < 2} onClick={handleBack}>Back</button>
+        <div className="modal__errors-container">
+          {errors.map(error => (
+            <div key={error.message}>{error}</div>
+          ))}
+        </div>
         <button disabled={page > 2} onClick={handleNext}>Next</button>
       </div>
     </>

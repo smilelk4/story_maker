@@ -122,12 +122,13 @@
   }
 
   &__errors-container {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $color-error;
     font-size: $font-size-default;
     bottom: 5.75rem;
     left: 17.5rem;
-    text-align: center;
     width: 40rem;
   }
 }

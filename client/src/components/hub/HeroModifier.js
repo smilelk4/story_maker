@@ -51,7 +51,7 @@ const HeroCreator = ({setIsModalOpen, editingHeroName, editingHeroId: id}) => {
   
   useEffect(() => {
     if (page === 1) {
-      setPageTitle('Select Your Hero Name!');
+      setPageTitle('Edit Your Hero Name');
     } else if (page === 2) {
       setPageTitle('Select Your World');
     } else {
@@ -129,13 +129,13 @@ const HeroCreator = ({setIsModalOpen, editingHeroName, editingHeroId: id}) => {
         <button onClick={handleSubmit}>Edit Hero</button>
         </>
       )}
-      <div className="modal__errors-container">
-        {errors.map(error => (
-          <div key={error.message}>{error}</div>
-        ))}
-      </div>
       <div className="modal__button-container">
         <button disabled={page < 2} onClick={handleBack}>Back</button>
+        <div className="modal__errors-container">
+          {errors.map(error => (
+            <div key={error.message}>{error}</div>
+          ))}
+        </div>
         <button disabled={page > 2} onClick={handleNext}>Next</button>
       </div>
     </>
