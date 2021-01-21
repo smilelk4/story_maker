@@ -45,6 +45,29 @@ router.get('/:id(\\d+)/stories', asyncHandler(async (req, res, next) => {
   res.json({ stories });
 }));
 
+router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const hero = await Hero.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [HeroImage]
+    });
+    await hero.update({
+      name,
+      world_id: worldId,
+      image_id: heroId
+    });
+    res.json({ hero: {
+      id: hero.id,
+      worldId: hero.world_id,
+      name: hero.name,
+      level: hero.level,
+      hp: hero.hp,
+      xp: hero.xp,
+      image: hero.HeroImage.image_url  
+    }})
+}));
+
 router.put('/:id(\\d+)/?', asyncHandler(async (req, res, next) => {
   const { type } = req.query;
   const hero = await Hero.findOne({
@@ -53,6 +76,14 @@ router.put('/:id(\\d+)/?', asyncHandler(async (req, res, next) => {
     },
     include: [HeroImage]
   });
+
+  if (!type) {
+    await hero.update({
+      name,
+      world_id: worldId,
+      image_id: heroId
+    })
+  }
 
   if (type === 'raise-xp') {
     const xpRaise = req.body.xp;

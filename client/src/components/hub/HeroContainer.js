@@ -13,6 +13,8 @@ const HeroContainer = () => {
   const heroes = useSelector(state => state.hero);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isModifyModalOpen, setIsModifyModalOpen] = useState(false);
+  const [editingHeroName, setEditingHeroName] = useState(false);
+  const [editingHeroWorld, setEditingHeroWorld] = useState(null);
   const container = useRef(null);
 
   const handleLeftScroll = () => {
@@ -36,12 +38,16 @@ const HeroContainer = () => {
       {isCreateModalOpen && <NewHeroModal isModalOpen={isCreateModalOpen}
                                     setIsModalOpen={setIsCreateModalOpen} />}
       {isModifyModalOpen && <ModifyHeroModal isModalOpen={isModifyModalOpen}
-                                    setIsModalOpen={setIsModifyModalOpen} />}
+                                    setIsModalOpen={setIsModifyModalOpen}
+                                    editingHeroName={editingHeroName} />}
       <p className="hero__new-hero" onClick={() => setIsCreateModalOpen(true)}>
          <AddCircleOutlineIcon />
       </p>
       {heroes.length ? (heroes.map(hero => (
-          <div onClick={() => setIsModifyModalOpen(true)}>
+          <div onClick={() => {
+            setIsModifyModalOpen(true);
+            setEditingHeroName(hero.name);
+          }}>
             <Hero {...hero} key={hero.id}/>
           </div>
         ))) : (

@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { baseUrl } from '../../config';
 import { loadErrors } from '../../store/reducers/errorReducer';
-import { createHero } from '../../store/actions/heroAction';
+import { editHero } from '../../store/actions/heroAction';
 
-const HeroCreator = ({setIsModalOpen}) => {
+const HeroCreator = ({setIsModalOpen, editingHeroName}) => {
   const dispatch = useDispatch();
   const worldContainer = useRef();
   const heroContainer = useRef();
@@ -16,7 +16,7 @@ const HeroCreator = ({setIsModalOpen}) => {
   const [worlds, setWorlds] = useState([]);
   const [worldId, setWorldId] = useState(null);
   const [heroId, setHeroId] = useState(null);
-  const [name, setName] = useState('');
+  const [name, setName] = useState(editingHeroName);
   const [pageTitle, setPageTitle] = useState('');
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const HeroCreator = ({setIsModalOpen}) => {
     if (!worldId || !heroId || !name) {
       return dispatch(loadErrors(['There is at least one field with missing value.']));
     }
-    const data = await dispatch(createHero({ userId, worldId, name, heroId }));
+    const data = await dispatch(editHero({ userId, worldId, name, heroId }));
 
     if (!data.errors) {
       setIsModalOpen(false);
@@ -87,7 +87,7 @@ const HeroCreator = ({setIsModalOpen}) => {
       {page === 1 && (
         <>
         <div className="modal__field">
-          <label for="name">Hero Name</label>
+          <label htmlFor="name">Hero Name</label>
           <input type="text" 
               value={name} 
               name="name"
@@ -126,7 +126,7 @@ const HeroCreator = ({setIsModalOpen}) => {
             </div>
           ))}
         </div>
-        <button onClick={handleSubmit}>Create Hero</button>
+        <button onClick={handleSubmit}>Edit Hero</button>
         </>
       )}
       <div className="modal__errors-container">

@@ -59,6 +59,26 @@ export const createHero = inputtedInfo => {
   }
 };
 
+export const editHero = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/heroes`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(updateHeroAction(data.hero));
+    }
+    return data;
+  }
+};
+
 export const raiseXP = (xp, heroId) => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/heroes/${heroId}/?type=raise-xp`, {
