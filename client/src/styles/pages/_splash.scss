@@ -5,6 +5,11 @@
   background-size: cover;
   background-position: center;
 
+  // @include respond-large {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+
   input[type=text],
   input[type=email],
   input[type=password] {
@@ -21,17 +26,26 @@
 
   &__title {
     font-size: 10rem;
+
+    @include respond-medium-small {
+      font-size: 6rem;
+    }
   }
 
   &__main {
     position: absolute;
     left: 20rem;
     top: 15rem;
-    width: 60rem;
+    width: 30vw;
     height: 170rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include respond-medium-small {
+      position: relative;
+      height: max-content;
+    }
   }
   &__description {
     font-size: $font-size-large;
@@ -44,6 +58,11 @@
 
     p {
       margin: 3rem 0;
+    }
+
+    @include respond-medium-small {
+      background: pink;
+      height: 20rem;
     }
   }
 
@@ -58,12 +77,17 @@
     height: 100vh;
     position: fixed;
     right: 0;
+
+    @include respond-medium-small {
+      position: relative;
+    }
   }
 
   &__scroll {
-    margin: 7% 0;
-    width: 85rem;
-    height: 80rem;
+    // margin: 7% 0;
+    width: 70rem;
+    height: 100%;
+    // height: 80rem;
     background-image: url('https://story-maker-app.s3.amazonaws.com/scroll.png');
     background-size: 90% auto;
     background-repeat: no-repeat;
@@ -71,10 +95,15 @@
 
   &__form {
     position: absolute;
-    left: 28rem;
-    top: 25rem;
+    left: 28%;
+    top: 20rem;
     height: 30rem;
     width: 25rem;
+
+    @include respond-medium-small {
+      left: 25%;
+      top: 15rem;
+    }
 
     .title {
       font-size: 4rem;
@@ -82,6 +111,13 @@
       display: flex;
       justify-content: center;
       margin-bottom: 1rem;
+
+      @include respond-large {
+        font-size: 3.5rem;
+      }
+      @include respond-medium-small {
+        font-size: 3rem;
+      }
     }
 
     & > form {
@@ -98,8 +134,8 @@
 
   &__toggle-tag {
     position: absolute;
-    top: 22rem;
-    left: 20rem;
+    top: 18rem;
+    left: 20%;
     
     & > span {
       cursor: pointer;
