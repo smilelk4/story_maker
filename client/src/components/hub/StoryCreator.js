@@ -120,14 +120,17 @@ const StoryCreator = ({setIsModalOpen}) => {
           </div>
           <div className="modal__field">
             <label htmlFor="importance">Importance</label>
-            <p>{importance}</p>
-            <input type="range" 
-              value={importance}
-              min="0" 
-              max="10" 
-              name="importance"
-              step=".01"
-              onChange={e => setImportance(e.target.value)} />
+            {/* <p>{importance}</p> */}
+            <div className="form__slider">
+              <input type="range" 
+                value={importance}
+                min="0" 
+                max="10" 
+                name="importance"
+                step=".01"
+                onChange={e => setImportance(e.target.value)} />
+                <span className="form__number-display">{importance}</span>
+            </div>
           </div>
           <button onClick={handleSubmit}>Create Story</button>
         </>
