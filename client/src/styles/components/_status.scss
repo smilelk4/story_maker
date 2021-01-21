@@ -38,6 +38,10 @@
 
   &__action {
     display: flex;
+
+    p {
+      white-space: nowrap;
+    }
   }
 
   &__svg-container {

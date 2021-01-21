@@ -86,6 +86,10 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    @include respond-medium {
+      transform: translateX(-65%);
+    }
   }
   
   &__popup {
