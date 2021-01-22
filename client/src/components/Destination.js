@@ -8,6 +8,8 @@ const Destination = ({handleClick, ...props}) => {
         title, description, target_date: targetDate, Story } = props;
   const [isOverdue, setIsOverDue] = useState(false);
   const path = useLocation().pathname;
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [newDescription, setNewDescription] = useState(description);
 
   const today = new Date();
   const target = new Date(targetDate);
@@ -22,14 +24,26 @@ const Destination = ({handleClick, ...props}) => {
     }
   }, [targetDate, dayDiff])
 
+  const handleEdit = () => {
+
+  }
+
   return ( 
-    <>
+    <form className="destination__form--edit" onSubmit={handleEdit}>
       <div className={`destination ${!parentDestinationId ?
                       'destination__final' : ''}`}>
         <p className="destination__title title">
         {!parentDestinationId && <img className="icon"
             src='/icons/crown.png' alt={id}/>}{title}</p>
-        <p className="destination__description">{description}</p>
+        <span onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
+        {isEditMode ? (
+          <input 
+            type="text"
+            value={newDescription}
+            onChange={e => setNewDescription(e.target.value)}/>
+        ): (
+          <p className="destination__description">{description}</p>
+        )}
         <div className="destination__stats">
           <div className="destination__days">
             {isOverdue ? (
@@ -54,7 +68,8 @@ const Destination = ({handleClick, ...props}) => {
           </div>
         </div>
       </div>
-    </>
+      {isEditMode ? <button type="submit">Save Change</button> : ''}
+    </form>
   );
 }
  

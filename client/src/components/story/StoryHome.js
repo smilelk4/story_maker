@@ -9,6 +9,9 @@ const StoryHome = ({hero, story, destinations}) => {
   const maxXP = Math.floor(100 ** (level / 50) * 10);
   const [hpPercentage, setHPPercentage] = useState("100%");
   const [xpPercentage, setXPPercentage] = useState("100%");
+  const [completionDate, setCompletionDate] = useState(
+                      moment(destinations[destinations.length - 1].target_date));
+  const [isEditMode, setIsEditMode] = useState(false);
   const memoir = useSelector(state => state.memoir);
   const [totalHoursFought, setTotalHoursFought] = useState(0);
   const [averageAccomplishmentLevel, setAverageAccomplishmentLevel] = useState(0);
@@ -45,6 +48,7 @@ const StoryHome = ({hero, story, destinations}) => {
       <div className='storyhome__section'>
         <div className="storyhome__story">
           <h4 className='mystory__title title'>{story.title}</h4>
+          <span onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
           <p className='storyhome__field'>
             <span className="storyhome__line">
               <span className="label storyhome__label">Difficulty: </span>
@@ -63,10 +67,20 @@ const StoryHome = ({hero, story, destinations}) => {
           <p className='storyhome__field'>
             <span className="storyhome__line">
               <span className="label storyhome__label">Expected completion date: </span> 
-              <span className="storyhome__data">
-                {moment(destinations[destinations.length - 1].target_date).format("MMM Do YYYY") + ' '}
-                ({moment(destinations[destinations.length - 1].target_date).endOf('day').fromNow()})
-              </span>
+             {isEditMode ? (
+               <>
+                <input 
+                  type="date"
+                  value={completionDate}
+                  onChange={e => setCompletionDate(e.target.value)}/>
+                <button type="submit">Save Change</button>
+               </>
+             ) : (
+               <span className="storyhome__data">
+                {completionDate.format("MMM Do YYYY") + ' '}
+                ({completionDate.endOf('day').fromNow()})
+               </span>
+            )}
             </span>
           </p>
           <p className='storyhome__field'>
