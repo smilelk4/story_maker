@@ -4,14 +4,14 @@ import moment from 'moment';
 import CheckIcon from '@material-ui/icons/Check';
 import EditIcon from '@material-ui/icons/Edit';
 
-const Destination = ({handleClick, ...props}) => {
+const Destination = ({handleClick, editDestination, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
         title, description, target_date: targetDate, Story } = props;
   const [isOverdue, setIsOverDue] = useState(false);
   const path = useLocation().pathname;
   const [isEditMode, setIsEditMode] = useState(false);
-  const [newDescription, setNewDescription] = useState(description);
   const [newTitle, setNewTitle] = useState(title);
+  const [newDescription, setNewDescription] = useState(description);
   const [newTargetDate, setNewTargetDate] = useState(targetDate);
 
   const today = new Date();
@@ -27,8 +27,9 @@ const Destination = ({handleClick, ...props}) => {
     }
   }, [targetDate, dayDiff])
 
-  const handleEdit = () => {
-
+  const handleEdit = async e => {
+    e.preventDefault();
+    editDestination(id, newTitle, newDescription, newTargetDate);
   }
 
   return ( 

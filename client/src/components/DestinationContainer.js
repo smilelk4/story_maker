@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import PageAnimationWrapper from './PageAnimationWrapper';
 import Destination from './Destination';
 import { getUpcomingDestinations, 
-         completeDestination } from '../store/actions/destinationActions';
+         completeDestination,
+         editDestination } from '../store/actions/destinationActions';
 import { clearDestinationsAction } from '../store/reducers/destinationReducer';
 import Line from './svg/Line';
 
@@ -36,6 +37,10 @@ const DestinationContainer = () => {
     }
   }, [stories, dispatch]);
 
+  const editDestination = (...props) => {
+    editDestination(props);
+  }
+
   const onCompleted = async (destinationId) => {
     const data = await dispatch(completeDestination(destinationId));
     if (data.errors) return;
@@ -47,7 +52,9 @@ const DestinationContainer = () => {
         {destinations.length ? (destinations.map(destination => (
           <div key={destination.id}>
             {destinations[0] !== destination && <Line /> }
-            <Destination key={destination.id} handleClick={onCompleted}
+            <Destination key={destination.id}
+                         handleClick={onCompleted}
+                         editDestination={editDestination}
                          {...destination} />
           </div>
         ))) : (

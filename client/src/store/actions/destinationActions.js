@@ -57,6 +57,26 @@ export const createDestination = inputtedInfo => {
   }
 };
 
+export const editDestination = (taskId, inputtedIInfo) => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({inputtedIInfo})
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      // dispatch(editTaskAction(data.task));
+    }
+    return data;
+  }
+};
+
 export const completeDestination = (id) => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/destinations/${id}`, {
