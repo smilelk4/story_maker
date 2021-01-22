@@ -10,6 +10,8 @@ const Destination = ({handleClick, ...props}) => {
   const path = useLocation().pathname;
   const [isEditMode, setIsEditMode] = useState(false);
   const [newDescription, setNewDescription] = useState(description);
+  const [newTitle, setNewTitle] = useState(title);
+  const [newTargetDate, setNewTargetDate] = useState(targetDate);
 
   const today = new Date();
   const target = new Date(targetDate);
@@ -32,10 +34,18 @@ const Destination = ({handleClick, ...props}) => {
     <form className="destination__form--edit" onSubmit={handleEdit}>
       <div className={`destination ${!parentDestinationId ?
                       'destination__final' : ''}`}>
-        <p className="destination__title title">
-        {!parentDestinationId && <img className="icon"
-            src='/icons/crown.png' alt={id}/>}{title}</p>
         <span onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
+        {isEditMode ? (
+          <input 
+            type="text"
+            value={newTitle}
+            onChange={e => setNewTitle(e.target.value)}/>
+        ) : (
+          <p className="destination__title title">
+          {!parentDestinationId && <img className="icon"
+              src='/icons/crown.png' alt={id}/>}{title}
+          </p>
+        )}
         {isEditMode ? (
           <input 
             type="text"
@@ -57,7 +67,14 @@ const Destination = ({handleClick, ...props}) => {
             </p>
             <div className="destination__info">
               <p className="destination__target-date">
-                Target Date: {moment(targetDate).format('MM-DD-YYYY')}
+                {isEditMode ? (
+                  <input type="date" 
+                  value={newTargetDate} 
+                  name="target-date"
+                  onChange={e => setNewTargetDate(e.target.value)} />
+                ): (
+                  <p>Target Date: {moment(targetDate).format('MM-DD-YYYY')}</p>
+                )}
               </p>
               {path === '/my-hub' && (
                 <p className="destination__story">
