@@ -37,7 +37,7 @@ const DestinationContainer = () => {
     }
   }, [stories, dispatch]);
 
-  const editDestination = (...props) => {
+  const handleEdit = (...props) => {
     editDestination(props);
   }
 
@@ -54,7 +54,7 @@ const DestinationContainer = () => {
             {destinations[0] !== destination && <Line /> }
             <Destination key={destination.id}
                          handleClick={onCompleted}
-                         editDestination={editDestination}
+                         editDestination={handleEdit}
                          {...destination} />
           </div>
         ))) : (

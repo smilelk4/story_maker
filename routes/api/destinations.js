@@ -22,7 +22,7 @@ router.post('/',
 router.put('/:id(\\d+)', 
   asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { accomplished } = req.body;
+  const { accomplished, newTitle, newDescription, newTargetDate } = req.body;
         
   const destination = await Destination.findOne({
     where: { id }
@@ -31,6 +31,12 @@ router.put('/:id(\\d+)',
   if (accomplished) {
     await destination.update({
       accomplished
+    });
+  } else {
+    await destination.update({
+      title: newTitle,
+      description: newDescription,
+      target_date: newTargetDate
     });
   }
 

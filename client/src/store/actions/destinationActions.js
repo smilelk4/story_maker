@@ -57,15 +57,15 @@ export const createDestination = inputtedInfo => {
   }
 };
 
-export const editDestination = (taskId, inputtedIInfo) => {
+export const editDestination = inputtedInfo => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
+    const res = await fetch(`${baseUrl}/destinations/${inputtedInfo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({inputtedIInfo})
+      body: JSON.stringify({...inputtedInfo})
     });
 
     const data = await verifyData(res, dispatch);
