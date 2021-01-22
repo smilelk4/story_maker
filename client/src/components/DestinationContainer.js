@@ -37,8 +37,8 @@ const DestinationContainer = () => {
     }
   }, [stories, dispatch]);
 
-  const handleEdit = (...props) => {
-    editDestination(props);
+  const handleEdit = async inputtedInfo => {
+    return await dispatch(editDestination(inputtedInfo));
   }
 
   const onCompleted = async (destinationId) => {

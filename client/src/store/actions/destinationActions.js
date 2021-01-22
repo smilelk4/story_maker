@@ -1,4 +1,4 @@
-import { loadDestinationsAction, 
+import { loadDestinationsAction, editDestinationAction,
          removeDestinationAction } from '../reducers/destinationReducer';
 import { baseUrl } from '../../config';
 import verifyData from './utils/verifyData';
@@ -65,13 +65,13 @@ export const editDestination = inputtedInfo => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({...inputtedInfo})
+      body: JSON.stringify(inputtedInfo)
     });
 
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      // dispatch(editTaskAction(data.task));
+      dispatch(editDestinationAction(data.destination));
     }
     return data;
   }

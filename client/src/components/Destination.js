@@ -29,7 +29,10 @@ const Destination = ({handleClick, editDestination, ...props}) => {
 
   const handleEdit = async e => {
     e.preventDefault();
-    editDestination(id, newTitle, newDescription, newTargetDate);
+    const data = editDestination({id, newTitle, newDescription, newTargetDate});
+    if (!data.errors) {
+      setIsEditMode(false);
+    }
   }
 
   return ( 
