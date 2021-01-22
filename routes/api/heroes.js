@@ -53,11 +53,15 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     },
     include: [HeroImage]
     });
+
     await hero.update({
       name,
       world_id: worldId,
       image_id: heroId
     });
+
+    const heroImage = await HeroImage.findByPk(hero.image_id);
+
     res.json({ hero: {
       id: hero.id,
       worldId: hero.world_id,
@@ -65,7 +69,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
       level: hero.level,
       hp: hero.hp,
       xp: hero.xp,
-      image: hero.HeroImage.image_url  
+      image: heroImage.image_url  
     }})
 }));
 
