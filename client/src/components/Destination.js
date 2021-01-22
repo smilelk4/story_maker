@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import moment from 'moment';
 import CheckIcon from '@material-ui/icons/Check';
+import EditIcon from '@material-ui/icons/Edit';
 
 const Destination = ({handleClick, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
@@ -31,15 +32,20 @@ const Destination = ({handleClick, ...props}) => {
   }
 
   return ( 
-    <form className={isEditMode ? `destination__form--edit` : ''} onSubmit={handleEdit}>
+    <form className={isEditMode ? `destination__form--edit` : ''} 
+          onSubmit={handleEdit}>
       <div className={`destination ${!parentDestinationId ?
                       'destination__final' : ''}`}>
-        <span className="destination__tag--edit" onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
+        <span className="destination__tag--edit" onClick={() => {
+                        setIsEditMode(!isEditMode)}}><EditIcon /></span>
         {isEditMode ? (
-          <input 
-            type="text"
-            value={newTitle}
-            onChange={e => setNewTitle(e.target.value)}/>
+          <>
+            <span>Title: </span>
+            <input 
+              type="text"
+              value={newTitle}
+              onChange={e => setNewTitle(e.target.value)}/>
+          </>
         ) : (
           <p className="destination__title title">
           {!parentDestinationId && <img className="icon"
@@ -47,18 +53,24 @@ const Destination = ({handleClick, ...props}) => {
           </p>
         )}
         {isEditMode ? (
-          <textarea 
-            type="text"
-            value={newDescription}
-            onChange={e => setNewDescription(e.target.value)}/>
+          <>
+            <span>Description: </span>
+            <textarea 
+              type="text"
+              value={newDescription}
+              onChange={e => setNewDescription(e.target.value)}/>
+          </>
         ): (
           <p className="destination__description">{description}</p>
         )}
         {isEditMode ? (
-          <input type="date" 
-                    value={newTargetDate} 
-                    name="target-date"
-                    onChange={e => setNewTargetDate(e.target.value)} />
+          <>
+            <span>Target Date: </span>
+            <input type="date" 
+                      value={newTargetDate} 
+                      name="target-date"
+                      onChange={e => setNewTargetDate(e.target.value)} />
+          </>
         ) : (
           <div className="destination__stats">
             <div className="destination__days">
@@ -84,8 +96,8 @@ const Destination = ({handleClick, ...props}) => {
             </div>
           </div>
         )}
+        {isEditMode ? <button type="submit">Save Change</button> : ''}
       </div>
-      {isEditMode ? <button type="submit">Save Change</button> : ''}
     </form>
   );
 }

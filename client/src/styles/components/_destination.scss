@@ -7,6 +7,8 @@
   line-height: 3rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-right: 2rem;
 
   &:not(:first-child) {
     margin-top: 3rem;
@@ -113,6 +115,12 @@
   &__tag {
     &--edit {
       cursor: pointer;
+      position: absolute;
+      right: 3.8rem;
+
+      &:hover {
+
+      } 
     }
   }
 
@@ -126,11 +134,8 @@
     justify-content: space-around;
     border-radius: 3px;
 
-    &--edit {
-      background: $gradient-grey;
-      
+    &--edit {      
       input, textarea {
-        background: transparent;
         margin: 1rem 0;
       }
     }
