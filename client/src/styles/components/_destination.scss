@@ -112,16 +112,14 @@
     background: $gradient-grey;
   }
 
-  &__tag {
-    &--edit {
-      cursor: pointer;
-      position: absolute;
-      right: 3.8rem;
+  &__menu {
+    cursor: pointer;
+    position: absolute;
+    right: 3.8rem;
 
-      &:hover {
+    &:hover {
 
-      } 
-    }
+    } 
   }
 
   &__form {
@@ -137,6 +135,7 @@
     &--edit {      
       input, textarea {
         margin: 1rem 0;
+        background: transparent;
       }
     }
 
