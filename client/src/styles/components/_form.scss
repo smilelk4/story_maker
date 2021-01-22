@@ -1,0 +1,25 @@
+.form {  
+  // &--edit {
+  //   input {
+  //     width: 50rem;
+  //     background: transparent;
+  //   }
+  //   button {
+  //     margin-left: 2rem;
+  //   }
+  // }
+
+  &--edit {      
+    input, textarea {
+      margin: 1rem 0;
+      background: transparent;
+    }
+  }
+
+  &--delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

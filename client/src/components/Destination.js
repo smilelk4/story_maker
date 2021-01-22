@@ -37,14 +37,28 @@ const Destination = ({handleClick, editDestination, ...props}) => {
     }
   }
 
+  const handleDelete = async e => {
+    e.preventDefault();
+    const data = editDestination({id, newTitle, newDescription, newTargetDate});
+    if (!data.errors) {
+      setIsEditMode(false);
+    }
+  }
+
   return (
-    <form className={isEditMode ? `destination__form--edit` : ''} 
+    <form className={isEditMode ? `form--edit` : ''} 
           onSubmit={handleEdit}>
       <div className={`destination ${!parentDestinationId ?
                       'destination__final' : ''}`}>
         <span className="destination__menu">
-          <EditIcon onClick={() => {setIsEditMode(!isEditMode)}}/>
-          {parentDestinationId && <DeleteIcon onClick={() => {setIsDeleteMode(!isDeleteMode)}}/>}
+          <EditIcon onClick={() => {
+            setIsDeleteMode(false);
+            setIsEditMode(!isEditMode);
+            }}/>
+          {parentDestinationId && <DeleteIcon onClick={() => {
+            setIsEditMode(false);
+            setIsDeleteMode(!isDeleteMode)
+          }}/>}
         </span>
         {isEditMode && (
           <>
@@ -66,7 +80,12 @@ const Destination = ({handleClick, editDestination, ...props}) => {
           </>
         )}
         {isDeleteMode && (
-          <p>Delete</p>
+          <form className="form--delete" 
+                onSubmit={handleDelete}>
+            <p>Are you sure?</p>
+            <p className="title">{title}</p>
+            <button type="submit">Delete Destination</button>
+          </form>
         )}
         {!isEditMode && !isDeleteMode && (
           <>

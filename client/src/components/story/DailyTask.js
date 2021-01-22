@@ -43,7 +43,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
         <>
           <p className="daily-task__menu" 
             onClick={() => {setViewMode('default')}}>Close</p>
-          <form className="daily-task__form--delete" 
+          <form className="form--delete" 
                 onSubmit={handleDelete}>
             <p>Are you sure?</p>
             <p className="title">{title}</p>

@@ -59,25 +59,26 @@
   @include mystory-item('https://story-maker-app.s3.amazonaws.com/house-1.png');
   position: relative;
 
-  &__form {  
-    &--edit {
-      input {
-        width: 50rem;
-        background: transparent;
-      }
-      button {
-        margin-left: 2rem;
-      }
-    }
+  // &__form {  
+  //   &--edit {
+  //     input {
+  //       width: 50rem;
+  //       background: transparent;
+  //     }
+  //     button {
+  //       margin-left: 2rem;
+  //     }
+  //   }
 
-    &--delete {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      height: 100%;
-    }
-  }
+  //   &--delete {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: space-around;
+  //     align-items: center;
+  //     height: 100%;
+  //     background: pink;
+  //   }
+  // }
 
   &__menu {
     position: absolute;
