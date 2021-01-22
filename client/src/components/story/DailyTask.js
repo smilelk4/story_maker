@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const DailyTask = ({updateTitle, deleteTask, ...props}) => {
   const { id, title } = props;
@@ -29,7 +31,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
         <>
           <p className="daily-task__menu" 
             onClick={() => {setViewMode('default')}}>Close</p>
-          <form className="daily-task__form--edit" 
+          <form className="form--edit" 
                 onSubmit={handleEdit}>
             <input 
               type="text"
@@ -54,8 +56,8 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
       {viewMode === 'default' && (
         <>
           <div className="daily-task__menu">
-            <p onClick={() => setViewMode('edit')}>Edit</p>
-            <p onClick={() => setViewMode('delete')}>Delete</p>
+            <p onClick={() => setViewMode('edit')}><EditIcon /></p>
+            <p onClick={() => setViewMode('delete')}><DeleteIcon /></p>
           </div>
           <p className="daily-task__title">{title}</p>
         </>

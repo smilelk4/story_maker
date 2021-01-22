@@ -68,10 +68,6 @@
 
   &__destination-container {
     @include calc("height", "100% - #{$basic-item-height} - 7rem");
-
-    @include respond-medium-small {
-      height: 80vh;
-    }
   }
 
   .left-section {
