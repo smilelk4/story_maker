@@ -31,10 +31,10 @@ const Destination = ({handleClick, ...props}) => {
   }
 
   return ( 
-    <form className="destination__form--edit" onSubmit={handleEdit}>
+    <form className={isEditMode ? `destination__form--edit` : ''} onSubmit={handleEdit}>
       <div className={`destination ${!parentDestinationId ?
                       'destination__final' : ''}`}>
-        <span onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
+        <span className="destination__tag--edit" onClick={() => setIsEditMode(!isEditMode)}>Edit</span>
         {isEditMode ? (
           <input 
             type="text"
@@ -47,43 +47,43 @@ const Destination = ({handleClick, ...props}) => {
           </p>
         )}
         {isEditMode ? (
-          <input 
+          <textarea 
             type="text"
             value={newDescription}
             onChange={e => setNewDescription(e.target.value)}/>
         ): (
           <p className="destination__description">{description}</p>
         )}
-        <div className="destination__stats">
-          <div className="destination__days">
-            {isOverdue ? (
-              <p className="destination__alert--complete">Overdue</p>
-            ) : (
-              <p className="destination__alert--incomplete">{dayDiff} Days Left</p>
-            )}
-            <p onClick={() => handleClick(id)} 
-              className="destination__complete"><CheckIcon />
-                Mark as Accomplished
-            </p>
-            <div className="destination__info">
-              <p className="destination__target-date">
-                {isEditMode ? (
-                  <input type="date" 
-                  value={newTargetDate} 
-                  name="target-date"
-                  onChange={e => setNewTargetDate(e.target.value)} />
-                ): (
-                  <p>Target Date: {moment(targetDate).format('MM-DD-YYYY')}</p>
-                )}
-              </p>
-              {path === '/my-hub' && (
-                <p className="destination__story">
-                  Story: {Story && Story.title}
-                </p>
+        {isEditMode ? (
+          <input type="date" 
+                    value={newTargetDate} 
+                    name="target-date"
+                    onChange={e => setNewTargetDate(e.target.value)} />
+        ) : (
+          <div className="destination__stats">
+            <div className="destination__days">
+              {isOverdue ? (
+                <p className="destination__alert--complete">Overdue</p>
+              ) : (
+                <p className="destination__alert--incomplete">{dayDiff} Days Left</p>
               )}
+              <p onClick={() => handleClick(id)} 
+                className="destination__complete"><CheckIcon />
+                  Mark as Accomplished
+              </p>
+              <div className="destination__info">
+                <p className="destination__target-date">
+                  Target Date: {moment(targetDate).format('MM-DD-YYYY')}
+                </p>
+                {path === '/my-hub' && (
+                  <p className="destination__story">
+                    Story: {Story && Story.title}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       {isEditMode ? <button type="submit">Save Change</button> : ''}
     </form>

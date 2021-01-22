@@ -109,11 +109,22 @@ input[type=date], {
   background-color: white;
 }
 
-input:not([type=range]):not([type="submit"]),
 textarea {
   border: none;
-  border-bottom: 1.5px solid $color-green;
   border-radius: 2px;
+  padding: 1rem;
+  border: 1.5px solid $color-green;
+  @include hide-scroll();
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input:not([type=range]):not([type="submit"]) {
+  border: none;
+  border-radius: 2px;
+  border-bottom: 1.5px solid $color-green;
   
   &:focus {
     outline: none;

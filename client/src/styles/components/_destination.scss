@@ -110,6 +110,12 @@
     background: $gradient-grey;
   }
 
+  &__tag {
+    &--edit {
+      cursor: pointer;
+    }
+  }
+
   &__form {
     background: $gradient-grey;
     height: max-content;
@@ -119,6 +125,15 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 3px;
+
+    &--edit {
+      background: $gradient-grey;
+      
+      input, textarea {
+        background: transparent;
+        margin: 1rem 0;
+      }
+    }
 
     @include respond-medium {
       width: 100%;
