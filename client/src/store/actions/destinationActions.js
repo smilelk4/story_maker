@@ -96,3 +96,22 @@ export const completeDestination = (id) => {
     return data;
   }
 };
+
+export const deleteDestination = id => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/destinations/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeDestinationAction(data.destination));
+    }
+    return data;
+  }
+};

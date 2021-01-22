@@ -43,4 +43,16 @@ router.put('/:id(\\d+)',
   res.json({destination});
 }));
 
+router.delete('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+        
+  const destination = await Destination.findOne({
+    where: { id }
+  });
+
+  await destination.destroy();
+  res.status(200).json({ destination: { id } });
+}));
+
 module.exports = router;
