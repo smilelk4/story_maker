@@ -10,11 +10,10 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
         title, description, target_date: targetDate, Story } = props;
   const [isOverdue, setIsOverDue] = useState(false);
   const path = useLocation().pathname;
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [isDeleteMode, setIsDeleteMode] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newTargetDate, setNewTargetDate] = useState(targetDate);
+  const [viewMode, setViewMode] = useState('default');
 
   const today = new Date();
   const target = new Date(targetDate);
@@ -33,7 +32,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
     e.preventDefault();
     const data = editDestination({id, newTitle, newDescription, newTargetDate});
     if (!data.errors) {
-      setIsEditMode(false);
+      setViewMode('default');
     }
   }
 
@@ -41,7 +40,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
     e.preventDefault();
     const data = deleteDestination(id);
     if (!data.errors) {
-      setIsDeleteMode(false);
+      setViewMode('default');
     }
   }
 
@@ -49,16 +48,18 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
     <div className={`destination ${!parentDestinationId ?
                     'destination__final' : ''}`}>
       <span className="destination__menu">
-        <EditIcon onClick={() => {
-          setIsDeleteMode(false);
-          setIsEditMode(!isEditMode);
-          }}/>
-        {parentDestinationId && <DeleteIcon onClick={() => {
-          setIsEditMode(false);
-          setIsDeleteMode(!isDeleteMode)
-        }}/>}
+        {viewMode === 'default' ? (
+          <>
+            <EditIcon onClick={() => setViewMode('edit')}/>
+            {parentDestinationId && (
+              <DeleteIcon onClick={() => setViewMode('delete')}/>
+            )}
+          </>
+        ) : (
+          <p onClick={() => {setViewMode('default')}}>Close</p>
+        )}
       </span>
-      {isEditMode && (
+      {viewMode === 'edit' && (
         <form className='form--edit' onSubmit={handleEdit}>
           <span>Title: </span>
           <input 
@@ -78,7 +79,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
           <button type="submit">Save Change</button>
         </form>
       )}
-      {isDeleteMode && (
+      {viewMode === 'delete' && (
         <form className="form--delete" 
               onSubmit={handleDelete}>
           <p>Are you sure?</p>
@@ -86,7 +87,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
           <button type="submit">Delete Destination</button>
         </form>
       )}
-      {!isEditMode && !isDeleteMode && (
+      {viewMode === 'default' && (
         <>
           <p className="destination__title title">
           {!parentDestinationId && <img className="icon"
