@@ -1,4 +1,4 @@
-import { loadStoryAction, loadStoriesAction, 
+import { loadStoryAction, loadStoriesAction, removeStoryAction,
          editStoryAction } from '../reducers/storyReducer';
 import { clearDestinationsAction } from '../reducers/destinationReducer';
 import { baseUrl } from '../../config';
@@ -74,6 +74,25 @@ export const editStory = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(editStoryAction(data.story));
+    }
+    return data;
+  }
+};
+
+export const deleteStory = id => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/stories/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeStoryAction(id));
     }
     return data;
   }

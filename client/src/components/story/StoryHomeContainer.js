@@ -30,7 +30,7 @@ const StoryHomeContainer = () => {
   return ( 
     <PageAnimationWrapper>
       <div className="storyhome__container">
-        {hero && destinations.length && <StoryHome hero={hero} story={story} 
+        {hero && story && destinations.length && <StoryHome hero={hero} story={story} 
                                          destinations={destinations}
                                          editStory={handleEdit}/>}
       </div>

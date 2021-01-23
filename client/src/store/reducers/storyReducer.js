@@ -1,6 +1,7 @@
 const LOAD_STORY = 'LOAD_STORY';
 const LOAD_STORIES = 'LOAD_STORIES';
 const EDIT_STORY = 'EDIT_STORY';
+const REMOVE_STORY = 'REMOVE_STORY';
 const CLEAR_STORIES = 'CLEAR_STORIES';
 
 export const loadStoryAction = data => ({
@@ -15,6 +16,11 @@ export const loadStoriesAction = data => ({
 
 export const editStoryAction = data => ({
   type: EDIT_STORY,
+  story: data
+});
+
+export const removeStoryAction = data => ({
+  type: REMOVE_STORY,
   story: data
 });
 
@@ -42,6 +48,10 @@ const storyReducer = (state = [], action) => {
         story.id === action.story.id));
       newState.splice(indexOfEdittedStory, 1, action.story);
       return newState;
+    }
+    case REMOVE_STORY: {
+      debugger;
+      return state.filter(story => story.id !== +action.story);
     }
     case CLEAR_STORIES: {
       return [];

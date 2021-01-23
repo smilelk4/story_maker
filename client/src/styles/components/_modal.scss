@@ -139,7 +139,6 @@
   }
 
   &__delete {
-    color: $color-grey;
     display: flex;
     flex-direction: column;
 
@@ -149,7 +148,25 @@
     }
     button {
       background: $color-error;
+      animation: fadein 2s ease-in;
+      color: white;
+      @include opacity-change-on-hover;
     }
+  }
+
+  &__warn {
+    color: $color-grey;
+    font-size: $font-size-default;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

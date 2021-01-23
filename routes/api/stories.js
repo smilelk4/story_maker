@@ -112,7 +112,7 @@ router.get('/:id(\\d+)/monsters', asyncHandler(async (req, res) => {
 router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
   const { id: finalDestinationId } = await Destination.findOne({
     where: [{ parent_destination_id: null,
-              story_id: req.params.id }]
+              story_id: +req.params.id }]
   });
 
   const majorDestinations = await Destination.findAll({
@@ -124,5 +124,16 @@ router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
   res.json({ progress: accomplishedDestinationsCount / (majorDestinations.length + 1)});
 }));
 
+router.delete('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+        
+  const story = await Story.findOne({
+    where: { id }
+  });
+
+  await story.destroy();
+  res.status(200).json({ story: { id } });
+}));
 
 module.exports = router;

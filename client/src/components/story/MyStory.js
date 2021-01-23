@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Scroll2 from '../svg/Scroll2';
 import NewDestination from './NewDestination';
 import DestinationContainer from '../DestinationContainer';
@@ -13,7 +13,7 @@ import DailyTaskContainer from './DailyTaskContainer';
 import OverviewContainer from './OverviewContainer';
 import FightMonster from './FightMonster';
 import DeleteStoryModal from './DeleteStoryModal';
-import { getStory } from '../../store/actions/storyAction';
+import { getStory, deleteStory } from '../../store/actions/storyAction';
 import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 import { clearActivitiesAction } from '../../store/reducers/activityReducer';
 import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
@@ -26,6 +26,7 @@ const MyStory = () => {
   const [currentDisplay, setCurrentDisplay] = useState(<StoryHomeContainer />);
   const [currentTitle, setCurrentTitle] = useState("Story Detail");
   const story = useSelector(state => state.story ? state.story[0] : null);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getStory(id));
@@ -38,12 +39,21 @@ const MyStory = () => {
     dispatch(clearProgressAction());
   }, [story, dispatch]);
 
+  const handleDelete = async () => {
+    const res = await dispatch(deleteStory(id));
+    if (!res.errors) {
+      setIsModalOpen(false);
+      history.push('/my-hub');
+    }
+  }
+
   return (  
     <div className="mystory">
-      {isModalOpen && <DeleteStoryModal
+      {isModalOpen && story && <DeleteStoryModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        storyTitle={story.title}  
+        storyTitle={story.title}
+        handleDelete={handleDelete}
         />}
       <div className="mystory__contents">
        <div className="mystory__main">
