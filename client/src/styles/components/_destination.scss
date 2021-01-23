@@ -114,16 +114,6 @@
     background: $gradient-grey;
   }
 
-  &__menu {
-    cursor: pointer;
-    position: absolute;
-    right: 2.5rem;
-
-    & > svg {
-      margin: 0 .5rem;
-    }
-  }
-
   &__form {
     background: $gradient-grey;
     height: max-content;

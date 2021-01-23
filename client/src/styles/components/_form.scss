@@ -1,4 +1,18 @@
 .form {  
+
+  &__menu {
+    cursor: pointer;
+    position: absolute;
+    right: 2.5rem;
+    top: 2rem;
+    @include opacity-change-on-hover();
+    color: $color-grey;
+
+    & > svg {
+      margin: 0 .5rem;
+    }
+  }
+
   &--edit {
     display: flex;
     flex-direction: column;

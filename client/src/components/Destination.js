@@ -48,7 +48,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
   return ( 
     <div className={`destination ${!parentDestinationId ?
                     'destination__final' : ''}`}>
-      <span className="destination__menu">
+      <span className="form__menu">
         {viewMode === 'default' ? (
           <>
             <EditIcon onClick={() => setViewMode('edit')}/>

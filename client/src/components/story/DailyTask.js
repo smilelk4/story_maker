@@ -28,7 +28,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
 
   return ( 
     <div className="daily-task">
-      <span className="daily-task__menu">
+      <span className="form__menu">
       {viewMode === 'default' ? (
         <>
           <EditIcon onClick={() => setViewMode('edit')}/>

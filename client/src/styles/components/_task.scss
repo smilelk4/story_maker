@@ -58,19 +58,4 @@
 .daily-task {
   @include mystory-item('https://story-maker-app.s3.amazonaws.com/house-1.png');
   position: relative;
-
-  &__menu {
-    position: absolute;
-    right: 2rem;
-    top: 2rem;
-    cursor: pointer;
-    display: flex;
-    @include opacity-change-on-hover();
-    font-size: $font-size-small;
-    color: $color-grey;
-
-    & > svg {
-      margin: 0 .5rem;
-    }
-  }
 }

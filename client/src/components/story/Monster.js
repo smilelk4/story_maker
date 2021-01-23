@@ -29,7 +29,7 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
 
   return ( 
     <div className="monster">
-      <span className="destination__menu">
+      <span className="form__menu">
         {viewMode === 'default' ? (
           <>
             <EditIcon onClick={() => setViewMode('edit')}/>
