@@ -52,8 +52,7 @@ const taskReducer = (state = [], action) => {
       return newState;
     }
     case REMOVE_TASK: {
-      const newState = state.filter(task => task.id !== +action.task.id);
-      return newState;
+      return state.filter(task => task.id !== +action.task.id);
     }
     case CLEAR_TASKS: {
       return [];

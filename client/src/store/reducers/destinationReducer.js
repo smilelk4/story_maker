@@ -44,10 +44,7 @@ const destinationReducer = (state = [], action) => {
       return newState;
     }
     case REMOVE_DESTINATION: {
-      const newState = state.filter(destination => {
-        return destination.id !== +action.destination.id
-      });
-      return newState;
+       return state.filter(destination => destination.id !== +action.destination.id);
     }
     case CLEAR_DESTINATIONS: {
       return [];
