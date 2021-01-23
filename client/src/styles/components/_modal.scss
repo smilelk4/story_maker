@@ -13,10 +13,11 @@
   padding: 5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: 3px;
   font-size: $font-size-medium;
   outline: none;
+  line-height: 3rem;
 
   & > * {
     margin: 1rem;
@@ -41,6 +42,11 @@
 
     input {
       width: 50rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
     }
 
     &--no-proceed {
@@ -130,6 +136,20 @@
     bottom: 5.75rem;
     left: 17.5rem;
     width: 40rem;
+  }
+
+  &__delete {
+    color: $color-grey;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+      margin: 2rem 0;
+    }
+    button {
+      background: $color-error;
+    }
   }
 }
 

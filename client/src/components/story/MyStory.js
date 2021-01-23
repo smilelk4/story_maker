@@ -42,7 +42,9 @@ const MyStory = () => {
     <div className="mystory">
       {isModalOpen && <DeleteStoryModal
         isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen} />}
+        setIsModalOpen={setIsModalOpen}
+        storyTitle={story.title}  
+        />}
       <div className="mystory__contents">
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
@@ -134,7 +136,7 @@ const MyStory = () => {
         </div>
         <NewDestination />
         <div className="mystory__delete" onClick={() => setIsModalOpen(true)}>
-          Delete
+          <button>Delete Story</button>
         </div>
        </div>
       </div>
