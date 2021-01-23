@@ -5,7 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
 
 const Monster = ({ id, name, strength, image, timesDefeated, createdAt, 
-                   editMonster }) => {
+                   editMonster, deleteMonster }) => {
   const [viewMode, setViewMode] = useState('default');
   const [newName, setNewName] = useState(name);
   const [newStrength, setNewStrength] = useState(strength);
@@ -21,10 +21,10 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
 
   const handleDelete = async e => {
     e.preventDefault();
-    // const data = deleteDestination(id);
-    // if (!data.errors) {
-      // setViewMode('default');
-    // }
+    const data = deleteMonster(id);
+    if (!data.errors) {
+      setViewMode('default');
+    }
   }
 
   return ( 
@@ -56,6 +56,14 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
                 className="small"
               onChange={e => setNewStrength(e.target.value)} />
           <button type="submit">Save Change</button>
+        </form>
+      )}
+      {viewMode === 'delete' && (
+        <form className="form--delete" 
+              onSubmit={handleDelete}>
+          <p>Are you sure?</p>
+          <p className="title">{name}</p>
+          <button type="submit">Delete Task</button>
         </form>
       )}
       {viewMode === 'default' && (

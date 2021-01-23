@@ -92,7 +92,6 @@ router.put('/:id(\\d+)/?', asyncHandler(async (req, res) => {
 
   if (type === 'raise-xp') {
     const xpRaise = req.body.xp;
-    // console.log('HIHIHIHIHIHI');
   
     let heroXP = hero.xp;
     let heroLV = hero.level;

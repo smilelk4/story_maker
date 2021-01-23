@@ -1,5 +1,6 @@
 const LOAD_MONSTERS = 'LOAD_MONSTERS';
 const ADD_MONSTER = 'ADD_MONSTER';
+const REMOVE_MONSTER = 'REMOVE_MONSTER';
 const UPDATE_MONSTER = 'UPDATE_MONSTER';
 const CLEAR_MONSTERS = 'CLEAR_MONSTERS';
 
@@ -16,6 +17,11 @@ export const addMonsterAction = data => ({
 export const updateMonsterAction = data => ({
   type: UPDATE_MONSTER,
   monster: data
+});
+
+export const removeMonsterAction = data => ({
+  type: REMOVE_MONSTER,
+  destination: data
 });
 
 export const clearMonstersAction = () => ({

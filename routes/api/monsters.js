@@ -69,4 +69,16 @@ router.put('/:id(\\d+)/?',
   }});
 }));
 
+router.delete('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+        
+  const monster = await Monster.findOne({
+    where: { id }
+  });
+
+  await monster.destroy();
+  res.status(200).json({ monster: { id } });
+}));
+
 module.exports = router;

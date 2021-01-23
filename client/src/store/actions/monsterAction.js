@@ -1,4 +1,4 @@
-import { loadMonsterAction, addMonsterAction,
+import { loadMonsterAction, addMonsterAction, removeMonsterAction,
          updateMonsterAction } from '../reducers/monsterReducer';
 import { baseUrl } from '../../config';
 import verifyData from './utils/verifyData';
@@ -62,7 +62,6 @@ export const editMonster = inputtedInfo => {
 
 export const updateTimesDefeated = monsterId => {
   return async dispatch => {
-    // debugger;
     const res = await fetch(`${baseUrl}/monsters/${monsterId}/?query=defeat`, {
       method: 'PUT',
       headers: {
@@ -75,6 +74,25 @@ export const updateTimesDefeated = monsterId => {
 
     if (!data.errors) {
       dispatch(updateMonsterAction(data.monster));
+    }
+    return data;
+  }
+};
+
+export const deleteMonster = id => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/monsters/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeMonsterAction(data.monster));
     }
     return data;
   }
