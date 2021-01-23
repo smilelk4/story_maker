@@ -1,6 +1,5 @@
 .destination {
-  min-height: $basic-item-height;
-  max-height: max-content;
+  @include calc("height", "1.5 * #{$basic-item-height}");
   padding: 3rem;
   margin-right: 2rem;
   max-width: 100%;

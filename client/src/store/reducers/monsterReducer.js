@@ -52,7 +52,7 @@ const monsterReducer = (state = [], action) => {
       return newState;
     }
     case REMOVE_MONSTER: {
-      return state.filter(monster => monster.id !== action.monster.id);
+      return state.filter(monster => monster.id !== +action.monster.id);
     }
     case UPDATE_MONSTER: {
       const newState = [...state];

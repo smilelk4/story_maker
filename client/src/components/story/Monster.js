@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+import DeleteForm from '../DeleteForm';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
@@ -59,12 +60,7 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
         </form>
       )}
       {viewMode === 'delete' && (
-        <form className="form--delete" 
-              onSubmit={handleDelete}>
-          <p>Are you sure?</p>
-          <p className="title">{name}</p>
-          <button type="submit">Delete Task</button>
-        </form>
+        <DeleteForm handleDelete={handleDelete} title={name}/>
       )}
       {viewMode === 'default' && (
         <>

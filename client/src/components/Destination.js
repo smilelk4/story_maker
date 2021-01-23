@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import moment from 'moment';
+import DeleteForm from './DeleteForm';
 import CheckIcon from '@material-ui/icons/Check';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -81,12 +82,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
         </form>
       )}
       {viewMode === 'delete' && (
-        <form className="form--delete" 
-              onSubmit={handleDelete}>
-          <p>Are you sure?</p>
-          <p className="title">{title}</p>
-          <button type="submit">Delete Destination</button>
-        </form>
+        <DeleteForm handleDelete={handleDelete} title={title}/>
       )}
       {viewMode === 'default' && (
         <>

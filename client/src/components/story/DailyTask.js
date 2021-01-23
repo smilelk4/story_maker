@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DeleteForm from '../DeleteForm';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
@@ -51,12 +52,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
         </>
       )}
       {viewMode === 'delete' && (
-        <form className="form--delete" 
-              onSubmit={handleDelete}>
-          <p>Are you sure?</p>
-          <p className="title">{title}</p>
-          <button type="submit">Delete Task</button>
-        </form>
+        <DeleteForm handleDelete={handleDelete} title={title}/>
       )}
       {viewMode === 'default' && (
         <p className="daily-task__title">{title}</p>
