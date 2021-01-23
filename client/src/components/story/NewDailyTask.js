@@ -22,7 +22,7 @@ const NewDailyTask = () => {
   return ( 
     <form onSubmit={handleSubmit} className="daily-task__form">
         <div className="daily-task__form-section">
-          <label for="title">Title</label>
+          <label htmlFor="title">Title</label>
           <input type="text" 
             value={title} 
             name="title"

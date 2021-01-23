@@ -110,15 +110,18 @@ router.get('/:id(\\d+)/monsters', asyncHandler(async (req, res) => {
 }));
 
 router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
-  const {id} = req.params;
-  const destinations = await Destination.findAll({where: {
-    story_id: id
-  }});
+  const { id: finalDestinationId } = await Destination.findOne({
+    where: [{ parent_destination_id: null,
+              story_id: req.params.id }]
+  });
 
-  const accomplishedDestinationsCount = destinations.filter(
-        destination => destination.accomplished).length;
+  const majorDestinations = await Destination.findAll({
+    where: [ { parent_destination_id: finalDestinationId }],
+  });
 
-  res.json({ progress: accomplishedDestinationsCount / destinations.length });
+  const accomplishedDestinationsCount = majorDestinations.filter(destination => destination.accomplished).length;
+
+  res.json({ progress: accomplishedDestinationsCount / (majorDestinations.length + 1)});
 }));
 
 

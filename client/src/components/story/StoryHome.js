@@ -6,7 +6,6 @@ import Line from '../svg/Line';
 import InputField from '../InputField';
 
 const StoryHome = ({hero, story, destinations, editStory}) => {
-  const dispatch = useDispatch();
   const { name, level, hp, xp, image } = hero;
   const maxHP = 100;
   const maxXP = Math.floor(100 ** (level / 50) * 10);

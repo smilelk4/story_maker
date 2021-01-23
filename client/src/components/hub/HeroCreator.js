@@ -87,7 +87,7 @@ const HeroCreator = ({setIsModalOpen}) => {
       {page === 1 && (
         <>
         <div className="modal__field">
-          <label for="name">Hero Name</label>
+          <label htmlFor="name">Hero Name</label>
           <input type="text" 
               value={name} 
               name="name"

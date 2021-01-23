@@ -32,7 +32,7 @@ const NewMemoir = () => {
   return ( 
     <form onSubmit={handleSubmit} className="memoir__form">
         <div className="memoir__form-section">
-          <label for="title">Title</label>
+          <label htmlFor="title">Title</label>
           <input type="text" 
             value={title} 
             name="title"
@@ -40,14 +40,14 @@ const NewMemoir = () => {
             onChange={e => setTitle(e.target.value)} />
         </div>
         <div className="memoir__form-section">
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
             value={description} 
             name="description"
             onChange={e => setDescription(e.target.value)} />
         </div>
         <div className="memoir__form-section">
-          <label for="hours">Hours Fought</label>
+          <label htmlFor="hours">Hours Fought</label>
           <div className="form__slider">
             <input type="range" 
                 value={hoursFought} 
@@ -61,7 +61,7 @@ const NewMemoir = () => {
           </div>
         </div>
         <div className="memoir__form-section">
-          <label for="accomplishment">Accomplishment</label>
+          <label htmlFor="accomplishment">Accomplishment</label>
           <div className="form__slider">
             <input type="range" 
                 value={accomplishmentLevel}

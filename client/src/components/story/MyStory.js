@@ -12,6 +12,7 @@ import HistoryContainer from './HistoryContainer';
 import DailyTaskContainer from './DailyTaskContainer';
 import OverviewContainer from './OverviewContainer';
 import FightMonster from './FightMonster';
+import DeleteStoryModal from './DeleteStoryModal';
 import { getStory } from '../../store/actions/storyAction';
 import { clearTasksAction } from '../../store/reducers/dailyTaskReducer';
 import { clearActivitiesAction } from '../../store/reducers/activityReducer';
@@ -21,6 +22,7 @@ import { clearProgressAction } from '../../store/reducers/progressReducer';
 const MyStory = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentDisplay, setCurrentDisplay] = useState(<StoryHomeContainer />);
   const [currentTitle, setCurrentTitle] = useState("Story Detail");
   const story = useSelector(state => state.story ? state.story[0] : null);
@@ -38,6 +40,9 @@ const MyStory = () => {
 
   return (  
     <div className="mystory">
+      {isModalOpen && <DeleteStoryModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen} />}
       <div className="mystory__contents">
        <div className="mystory__main">
          <Scroll2 text={currentTitle} className="mystory__scroll" 
@@ -128,6 +133,9 @@ const MyStory = () => {
           <OverviewContainer />
         </div>
         <NewDestination />
+        <div className="mystory__delete" onClick={() => setIsModalOpen(true)}>
+          Delete
+        </div>
        </div>
       </div>
     </div>

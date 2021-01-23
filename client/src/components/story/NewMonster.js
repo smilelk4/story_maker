@@ -26,7 +26,7 @@ const NewMonster = () => {
   return ( 
     <form onSubmit={handleSubmit} className="monster__form">
         <div className="monster__form-section">
-          <label for="name">Name</label>
+          <label htmlFor="name">Name</label>
           <input type="text" 
             value={name} 
             name="name"
@@ -34,7 +34,7 @@ const NewMonster = () => {
             onChange={e => setName(e.target.value)} />
         </div>
         <div className="monster__form-section">
-          <label for="strength">Strength</label>
+          <label htmlFor="strength">Strength</label>
           <div className="form__slider">
             <input type="range" 
                 value={strength} 
