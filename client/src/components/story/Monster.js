@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import DeleteForm from '../DeleteForm';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloseIcon from '@material-ui/icons/Close';
+import FormMenu from '../FormMenu';
 
 const Monster = ({ id, name, strength, image, timesDefeated, createdAt, 
                    editMonster, deleteMonster }) => {
@@ -30,16 +28,7 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
 
   return ( 
     <div className="monster">
-      <span className="form__menu">
-        {viewMode === 'default' ? (
-          <>
-            <EditIcon onClick={() => setViewMode('edit')}/>
-            <DeleteIcon onClick={() => setViewMode('delete')}/>
-          </>
-        ) : (
-          <p onClick={() => {setViewMode('default')}}><CloseIcon /></p>
-        )}
-      </span>
+      <FormMenu viewMode={viewMode} setViewMode={setViewMode}/>
       {viewMode === 'edit' && (
         <form className='form--edit' onSubmit={handleEdit}>
           <span>Name: </span>

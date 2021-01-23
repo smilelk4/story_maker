@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import moment from 'moment';
 import DeleteForm from './DeleteForm';
+import FormMenu from './FormMenu';
 import CheckIcon from '@material-ui/icons/Check';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloseIcon from '@material-ui/icons/Close';
 
 const Destination = ({handleClick, editDestination, deleteDestination, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
@@ -49,18 +47,8 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
   return ( 
     <div className={`destination ${!parentDestinationId ?
                     'destination__final' : ''}`}>
-      <span className="form__menu">
-        {viewMode === 'default' ? (
-          <>
-            <EditIcon onClick={() => setViewMode('edit')}/>
-            {parentDestinationId && (
-              <DeleteIcon onClick={() => setViewMode('delete')}/>
-            )}
-          </>
-        ) : (
-          <p onClick={() => {setViewMode('default')}}><CloseIcon /></p>
-        )}
-      </span>
+      <FormMenu viewMode={viewMode} setViewMode={setViewMode}
+                deletable={parentDestinationId}/>
       {viewMode === 'edit' && (
         <form className='form--edit' onSubmit={handleEdit}>
           <span>Title: </span>

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import DeleteForm from '../DeleteForm';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloseIcon from '@material-ui/icons/Close';
+import FormMenu from '../FormMenu';
 
 const DailyTask = ({updateTitle, deleteTask, ...props}) => {
   const { id, title } = props;
@@ -29,16 +27,7 @@ const DailyTask = ({updateTitle, deleteTask, ...props}) => {
 
   return ( 
     <div className="daily-task">
-      <span className="form__menu">
-      {viewMode === 'default' ? (
-        <>
-          <EditIcon onClick={() => setViewMode('edit')}/>
-          <DeleteIcon onClick={() => setViewMode('delete')}/>
-        </>
-      ): (
-        <p onClick={() => {setViewMode('default')}}><CloseIcon /></p>
-      )}
-      </span>
+      <FormMenu viewMode={viewMode} setViewMode={setViewMode}/>
       {viewMode === 'edit' && (
         <>
           <form className="form--edit" 
