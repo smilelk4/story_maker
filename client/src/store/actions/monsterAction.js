@@ -62,6 +62,7 @@ export const editMonster = inputtedInfo => {
 
 export const updateTimesDefeated = monsterId => {
   return async dispatch => {
+    // debugger;
     const res = await fetch(`${baseUrl}/monsters/${monsterId}/?query=defeat`, {
       method: 'PUT',
       headers: {

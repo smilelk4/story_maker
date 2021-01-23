@@ -153,6 +153,8 @@
 
   &__hero-name {
     font-weight: bolder;
+    @include hide-overflowing-words;
+    width: 100%;
   }
 
   &__hero-info {

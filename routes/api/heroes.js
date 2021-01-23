@@ -73,7 +73,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     }})
 }));
 
-router.put('/:id(\\d+)/?', asyncHandler(async (req, res, next) => {
+router.put('/:id(\\d+)/?', asyncHandler(async (req, res) => {
   const { type } = req.query;
   const hero = await Hero.findOne({
     where: {
@@ -92,6 +92,7 @@ router.put('/:id(\\d+)/?', asyncHandler(async (req, res, next) => {
 
   if (type === 'raise-xp') {
     const xpRaise = req.body.xp;
+    // console.log('HIHIHIHIHIHI');
   
     let heroXP = hero.xp;
     let heroLV = hero.level;

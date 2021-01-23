@@ -65,13 +65,17 @@ router.put('/:id(\\d+)',
 
 router.put('/:id(\\d+)/?', 
   asyncHandler(async (req, res) => {
+    console.log('!HIHODI#HIO!H!O#IH')
   const { id } = req.params;
   const monster = await Monster.findByPk(id, {
     include: [MonsterImage]
   });
 
+  console.log(1, monster)
+  
   await monster.update({ times_defeated: monster.times_defeated + 1 });
-
+  
+  console.log(2, monster)
   res.json({ monster: {
     id: monster.id,
     storyId: monster.story_id,
