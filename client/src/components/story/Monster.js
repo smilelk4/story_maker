@@ -13,6 +13,7 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
   const handleEdit = async e => {
     e.preventDefault();
     const data = editMonster({id, newName, newStrength});
+
     if (!data.errors) {
       setViewMode('default');
     }

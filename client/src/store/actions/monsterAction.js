@@ -54,7 +54,7 @@ export const editMonster = inputtedInfo => {
     const data = await verifyData(res, dispatch);
 
     if (!data.errors) {
-      // dispatch(editDestinationAction(data.destination));
+      dispatch(updateMonsterAction(data.monster));
     }
     return data;
   }
@@ -62,7 +62,7 @@ export const editMonster = inputtedInfo => {
 
 export const updateTimesDefeated = monsterId => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/monsters/${monsterId}`, {
+    const res = await fetch(`${baseUrl}/monsters/${monsterId}/?query=defeat`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
