@@ -1,5 +1,6 @@
 .memoir {
   @include mystory-item('https://story-maker-app.s3.amazonaws.com/bungalo-house.png');
+  position: relative;
 
   &__extra-info {
     display: flex;

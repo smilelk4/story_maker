@@ -154,7 +154,8 @@
 
 @mixin mystory-item($form-bg-image) {
   @include hide-scroll;
-  height: $basic-item-height;
+  min-height: $basic-item-height;
+  max-height: max-content;
   background: $gradient-grey;
   display: flex;
   flex-direction: column;
