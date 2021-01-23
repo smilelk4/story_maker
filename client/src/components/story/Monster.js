@@ -4,17 +4,18 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloseIcon from '@material-ui/icons/Close';
 
-const Monster = ({ id, name, strength, image, timesDefeated, createdAt }) => {
+const Monster = ({ id, name, strength, image, timesDefeated, createdAt, 
+                   editMonster }) => {
   const [viewMode, setViewMode] = useState('default');
   const [newName, setNewName] = useState(name);
   const [newStrength, setNewStrength] = useState(strength);
 
   const handleEdit = async e => {
     e.preventDefault();
-    // const data = editDestination({id, newTitle, newDescription, newTargetDate});
-    // if (!data.errors) {
-    //   setViewMode('default');
-    // }
+    const data = editMonster({id, newName, newStrength});
+    if (!data.errors) {
+      setViewMode('default');
+    }
   }
 
   const handleDelete = async e => {

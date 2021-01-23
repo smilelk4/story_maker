@@ -3,7 +3,7 @@ import NewMonster from './NewMonster';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getMonsters } from '../../store/actions/monsterAction';
+import { getMonsters, editMonster } from '../../store/actions/monsterAction';
 import { clearMonstersAction } from '../../store/reducers/monsterReducer';
 import Monster from './Monster';
 
@@ -18,12 +18,18 @@ const MonsterContainer = () => {
     dispatch(getMonsters(id));
   },[id, dispatch]);
 
+  const handleEdit = async inputtedInfo => {
+    return await dispatch(editMonster(inputtedInfo));
+  }
+
   return ( 
     <PageAnimationWrapper>
       <NewMonster />
       <div className="monster__container">
         {monsters.length ? (
-          monsters.map(monster => <Monster {...monster} key={monster.id}/>)) : (
+          monsters.map(monster => <Monster  key={monster.id}
+                                            editMonster={handleEdit}
+                                            {...monster}/>)) : (
             <p className="mystory__none-display">
               You haven't added any monsters yet.
             </p>

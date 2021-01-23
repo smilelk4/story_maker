@@ -40,6 +40,26 @@ export const createMonster = inputtedInfo => {
   }
 };
 
+export const editMonster = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/monsters/${inputtedInfo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      // dispatch(editDestinationAction(data.destination));
+    }
+    return data;
+  }
+};
+
 export const updateTimesDefeated = monsterId => {
   return async dispatch => {
     const res = await fetch(`${baseUrl}/monsters/${monsterId}`, {
