@@ -36,8 +36,8 @@ router.put('/:id(\\d+)',
   asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { newTitle: title, newDescription: description, 
-          newHoursFought: hours_fought,
-          newAccomplishmentLevel: accomplishment_level } = req.body;
+          newHoursFought: hoursFought,
+          newAccomplishmentLevel: accomplishmentLevel } = req.body;
         
   const memoir = await Memoir.findOne({
     where: { id }
@@ -46,11 +46,32 @@ router.put('/:id(\\d+)',
   await memoir.update({
     title,
     description,
-    hours_fought: +hours_fought,
-    accomplishment_level: +accomplishment_level
+    hours_fought: +hoursFought,
+    accomplishment_level: +accomplishmentLevel
   });
 
-  res.json({memoir});
+  res.json({ memoir: {
+    id: memoir.id,
+    heroId: memoir.hero_id,
+    storyId: memoir.story_id,
+    title: memoir.title,
+    description: memoir.description,
+    hoursFought: memoir.hours_fought,
+    accomplishmentLevel: memoir.accomplishment_level,
+    date: memoir.createdAt
+  }});
+}));
+
+router.delete('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+        
+  const memoir = await Memoir.findOne({
+    where: { id }
+  });
+
+  await memoir.destroy();
+  res.status(200).json({ memoir: { id } });
 }));
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import { loadMemoirsAction, 
+import { loadMemoirsAction, removeMemoirAction,
          addMemoirAction, editMemoirAction } from '../reducers/memoirReducer';
 import { baseUrl } from '../../config';
 import verifyData from './utils/verifyData';
@@ -55,6 +55,25 @@ export const editMemoir = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(editMemoirAction(data.memoir));
+    }
+    return data;
+  }
+};
+
+export const deleteMemoir = id => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/memoirs/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(removeMemoirAction(data.memoir));
     }
     return data;
   }

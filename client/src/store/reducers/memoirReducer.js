@@ -1,5 +1,6 @@
 const LOAD_MEMOIRS = 'LOAD_MEMOIRS';
 const ADD_MEMOIR = 'ADD_MEMOIR';
+const REMOVE_MEMOIR = 'REMOVE_MEMOIR';
 const EDIT_MEMOIR = 'EDIT_MEMOIR';
 const CLEAR_MEMOIRS = 'CLEAR_MEMOIRS';
 
@@ -10,6 +11,11 @@ export const loadMemoirsAction = data => ({
 
 export const addMemoirAction = data => ({
   type: ADD_MEMOIR,
+  memoir: data
+});
+
+export const removeMemoirAction = data => ({
+  type: REMOVE_MEMOIR,
   memoir: data
 });
 
@@ -53,6 +59,9 @@ const memoirReducer = (state = [], action) => {
       const newState = [...state];
       newState.unshift(action.memoir);
       return newState;
+    }
+    case REMOVE_MEMOIR: {
+      return state.filter(memoir => memoir.id !== +action.memoir.id);
     }
     case CLEAR_MEMOIRS: {
       return []
