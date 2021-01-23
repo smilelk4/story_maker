@@ -21,7 +21,7 @@ export const updateMonsterAction = data => ({
 
 export const removeMonsterAction = data => ({
   type: REMOVE_MONSTER,
-  destination: data
+  monster: data
 });
 
 export const clearMonstersAction = () => ({
@@ -50,6 +50,9 @@ const monsterReducer = (state = [], action) => {
       const newState = [...state];
       newState.unshift(action.monster);
       return newState;
+    }
+    case REMOVE_MONSTER: {
+      return state.filter(monster => monster.id !== action.monster.id);
     }
     case UPDATE_MONSTER: {
       const newState = [...state];

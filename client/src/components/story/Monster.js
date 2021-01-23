@@ -21,7 +21,7 @@ const Monster = ({ id, name, strength, image, timesDefeated, createdAt,
 
   const handleDelete = async e => {
     e.preventDefault();
-    const data = deleteMonster(id);
+    const data = await deleteMonster(id);
     if (!data.errors) {
       setViewMode('default');
     }
