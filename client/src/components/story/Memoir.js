@@ -47,24 +47,30 @@ const Memoir = ({...props}) => {
             <div className="form__slider">
               <input type="range" 
                   value={newHoursFought} 
+                  defaultValue={hoursFought} 
                   min="0" 
                   max="24" 
                   name="hours"
                   step="1"
                   className="small"
                 onChange={e => setNewHoursFought(e.target.value)} />
-              <span className="form__number-display">{hoursFought}</span>
+              <span className="form__number-display">
+                {newHoursFought || hoursFought}
+              </span>
             </div>
             <div className="form__slider">
               <input type="range" 
                   value={newAccomplishmentLevel}
+                  defaultValue={accomplishmentLevel} 
                   min="0" 
                   max="10" 
                   name="accomplishment"
                   step=".1"
                   className="small"
                   onChange={e => setNewAccomplishmentLevel(e.target.value)} />
-                <span className="form__number-display">{accomplishmentLevel}</span>
+                <span className="form__number-display">
+                  {newAccomplishmentLevel || accomplishmentLevel}
+                </span>
             </div>
             <button type="submit">Save Change</button>
           </form>

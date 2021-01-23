@@ -54,27 +54,6 @@ a:visited {
   font-weight: bolder;
 }
 
-.form__slider {
-  position: relative;
-  width: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .form__number-display {
-    position: absolute;
-    background: $color-grey-dark;
-    height: 2rem;
-    width: 2.5rem;
-    right: -3rem;
-    padding: .25rem;
-    text-align: center;
-    border-radius: 2px;
-    color: $color-light;
-    font-size: $font-size-smallest;
-  }
-}
-
 select {
   border: none;
   border-radius: 2px;
