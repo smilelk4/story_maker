@@ -39,43 +39,25 @@ router.post('/',
   }});
 }));
 
-router.put('/:id(\\d+)', 
-  asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const { newName: name, newStrength: strength } = req.body;
-  const monster = await Monster.findByPk(id, {
-    include: [MonsterImage]
-  });
-
-  await monster.update({
-    name,
-    strength
-  });
-
-  res.json({ monster: {
-    id: monster.id,
-    storyId: monster.story_id,
-    name: monster.name,
-    strength: monster.strength,
-    timesDefeated: monster.times_defeated,
-    image: monster.MonsterImage.image_url,
-    createdAt: monster.createdAt
-  }});
-}));
-
 router.put('/:id(\\d+)/?', 
   asyncHandler(async (req, res) => {
-    console.log('!HIHODI#HIO!H!O#IH')
   const { id } = req.params;
+  const { query } = req.query;
+  const { newName: name, newStrength: strength } = req.body;
+
   const monster = await Monster.findByPk(id, {
     include: [MonsterImage]
   });
 
-  console.log(1, monster)
-  
-  await monster.update({ times_defeated: monster.times_defeated + 1 });
-  
-  console.log(2, monster)
+  if (query && query === 'defeat') {
+    await monster.update({ times_defeated: monster.times_defeated + 1 });
+  } else {
+    await monster.update({
+      name,
+      strength
+    });
+  }
+
   res.json({ monster: {
     id: monster.id,
     storyId: monster.story_id,
