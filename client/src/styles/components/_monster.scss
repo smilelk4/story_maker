@@ -2,6 +2,7 @@
   @include mystory-item('https://story-maker-app.s3.amazonaws.com/tree-1.png');
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
   
   &:not(:last-child) {
     margin-bottom: 2rem;
