@@ -22,8 +22,6 @@ const Memoir = ({ id, title, description, hoursFought,
       newAccomplishmentLevel
     });
 
-    debugger;
-
     if (!data.errors) {
       setViewMode('default');
     }

@@ -5,6 +5,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { getUpcomingDestinations } from '../../store/actions/destinationActions';
 import { clearDestinationsAction } from '../../store/reducers/destinationReducer';
+import { editStory } from '../../store/actions/storyAction';
 
 const StoryHomeContainer = () => {
   const dispatch = useDispatch();
@@ -20,12 +21,18 @@ const StoryHomeContainer = () => {
     }, [id, location, dispatch]);
     
   useEffect(() => {
-  }, [destinations])
+  }, [destinations]);
+
+  const handleEdit = async (id, newTitle) => {
+    return await dispatch(editStory({id, newTitle}));
+  };
 
   return ( 
     <PageAnimationWrapper>
       <div className="storyhome__container">
-        {hero && destinations.length && <StoryHome hero={hero} story={story} destinations={destinations}/>}
+        {hero && destinations.length && <StoryHome hero={hero} story={story} 
+                                         destinations={destinations}
+                                         editStory={handleEdit}/>}
       </div>
     </PageAnimationWrapper>
   );

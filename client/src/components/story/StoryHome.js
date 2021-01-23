@@ -4,9 +4,8 @@ import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
 import Line from '../svg/Line';
 import InputField from '../InputField';
-import { editStory } from '../../store/actions/storyAction';
 
-const StoryHome = ({hero, story, destinations}) => {
+const StoryHome = ({hero, story, destinations, editStory}) => {
   const dispatch = useDispatch();
   const { name, level, hp, xp, image } = hero;
   const maxHP = 100;
@@ -28,9 +27,10 @@ const StoryHome = ({hero, story, destinations}) => {
 
   const handleEdit = async e => {
     e.preventDefault();
-    const res = await dispatch(editStory({id: story.id, newTitle: newStoryTitle}));
 
-    if (!res.errors) {
+    const data = await editStory(story.id, newStoryTitle);
+
+    if (!data.errors) {
       setIsEditMode(false);
     }    
   };
