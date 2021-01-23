@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import EditIcon from '@material-ui/icons/Edit';
 import Line from '../svg/Line';
+import InputField from '../InputField';
 
 const StoryHome = ({hero, story, destinations}) => {
   const { name, level, hp, xp, image } = hero;
@@ -9,6 +11,8 @@ const StoryHome = ({hero, story, destinations}) => {
   const maxXP = Math.floor(100 ** (level / 50) * 10);
   const [hpPercentage, setHPPercentage] = useState("100%");
   const [xpPercentage, setXPPercentage] = useState("100%");
+  const [newStoryTitle, setNewStoryTitle] = useState(story.title);
+  const [isEditMode, setIsEditMode] = useState(false);
   const completionDate = moment(destinations[destinations.length - 1].target_date);
   const memoir = useSelector(state => state.memoir);
   const [totalHoursFought, setTotalHoursFought] = useState(0);
@@ -45,7 +49,21 @@ const StoryHome = ({hero, story, destinations}) => {
     <div className="storyhome">
       <div className='storyhome__section'>
         <div className="storyhome__story">
-          <h4 className='mystory__title title'>{story.title}</h4>
+          {isEditMode ? (
+            <div className="storyhome__title form--inline">
+              <InputField
+                  type="text"
+                  currentState={newStoryTitle}
+                  updateState={setNewStoryTitle}
+              />
+              <button type="submit">Save Change</button>
+            </div>
+          ) : (
+            <div className="storyhome__title">
+              <h4 className='mystory__title title'>{story.title}</h4>
+              <EditIcon onClick={() => setIsEditMode(!isEditMode)}/>
+            </div>
+          )}
           <p className='storyhome__field'>
             <span className="storyhome__line">
               <span className="label storyhome__label">Difficulty: </span>

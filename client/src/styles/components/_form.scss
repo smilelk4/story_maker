@@ -61,4 +61,16 @@
     min-height: inherit;
     padding: 2rem;
   }
+
+  &--inline {
+    input {
+      width: 100%;
+    }
+    
+    button {
+      font-size: $font-size-smallest;
+      white-space: nowrap;
+      margin-left: 2rem;
+    }
+  }
 }

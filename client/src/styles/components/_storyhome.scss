@@ -26,11 +26,19 @@
     }
 
     @include respond-large {
-      // height: 10rem;
       min-height: 10rem;
       max-height: max-content;
       line-height: 2rem;
       padding: 3rem;
+    }
+  }
+
+  &__title {
+    display: flex;
+    
+    svg {
+      margin: .5rem;
+      cursor: pointer;
     }
   }
 
