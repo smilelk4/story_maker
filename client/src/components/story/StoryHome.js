@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
 import Line from '../svg/Line';
 import InputField from '../InputField';
+import { editStory } from '../../store/actions/storyAction';
 
 const StoryHome = ({hero, story, destinations}) => {
+  const dispatch = useDispatch();
   const { name, level, hp, xp, image } = hero;
   const maxHP = 100;
   const maxXP = Math.floor(100 ** (level / 50) * 10);
@@ -23,6 +25,15 @@ const StoryHome = ({hero, story, destinations}) => {
     setHPPercentage(`${(hp / maxHP) * 100}%`);
     setXPPercentage(`${(xp / maxXP) * 100}%`);
   }, [hp, xp, maxHP, maxXP]);
+
+  const handleEdit = async e => {
+    e.preventDefault();
+    const res = await dispatch(editStory({id: story.id, newTitle: newStoryTitle}));
+
+    if (!res.errors) {
+      setIsEditMode(false);
+    }    
+  };
 
   useEffect(() => {
     if (memoir.length) {
@@ -50,14 +61,16 @@ const StoryHome = ({hero, story, destinations}) => {
       <div className='storyhome__section'>
         <div className="storyhome__story">
           {isEditMode ? (
-            <div className="storyhome__title form--inline">
-              <InputField
-                  type="text"
-                  currentState={newStoryTitle}
-                  updateState={setNewStoryTitle}
-              />
-              <button type="submit">Save Change</button>
-            </div>
+            <form onSubmit={handleEdit}>
+              <div className="storyhome__title form--inline">
+                  <InputField
+                      type="text"
+                      currentState={newStoryTitle}
+                      updateState={setNewStoryTitle}
+                  />
+                <button type="submit">Save Change</button>
+              </div>
+            </form>
           ) : (
             <div className="storyhome__title">
               <h4 className='mystory__title title'>{story.title}</h4>

@@ -38,6 +38,19 @@ asyncHandler(async (req, res) => {
   res.json({ story })
 }));
 
+router.put('/:id(\\d+)', 
+  asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const {newTitle: title } = req.body;
+        
+  const story = await Story.findOne({
+    where: { id }
+  });
+
+  await story.update({title});
+  res.json({ story });
+}));
+
 router.get('/:id(\\d+)/destinations/?',
 asyncHandler(async (req, res) => {
   const { state } = req.query;  
@@ -111,5 +124,6 @@ router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
 
   res.json({ progress: accomplishedDestinationsCount / destinations.length });
 }));
+
 
 module.exports = router;

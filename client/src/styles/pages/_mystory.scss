@@ -11,6 +11,7 @@
     font-size: $font-size-largest;
     margin-bottom: 1rem;
     white-space: nowrap;
+    @include hide-overflowing-words;
 
     @include respond-large {
       font-size: 2rem;
