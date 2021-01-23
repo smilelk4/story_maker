@@ -3,21 +3,28 @@ import moment from 'moment';
 import DeleteForm from '../DeleteForm';
 import FormMenu from '../FormMenu';
 
-const Memoir = ({...props}) => {
-  const { title, description, hoursFought, accomplishmentLevel, date } = props;
+const Memoir = ({ id, title, description, hoursFought, 
+                  accomplishmentLevel, date, editMemoir }) => {
   const [viewMode, setViewMode] = useState('default');
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newHoursFought, setNewHoursFought] = useState(description);
-  const [newAccomplishmentLevel, setNewAccomplishmentLevel] = useState(description);
+  const [newHoursFought, setNewHoursFought] = useState(hoursFought);
+  const [newAccomplishmentLevel, setNewAccomplishmentLevel] = useState(accomplishmentLevel);
 
   const handleEdit = async e => {
     e.preventDefault();
-    // const data = await updateTitle(id, newTitle);
 
-    // if (!data.errors) {
-    //   setViewMode('default');
-    // }
+    const data = await editMemoir({
+      id,
+      newTitle,
+      newDescription,
+      newHoursFought,
+      newAccomplishmentLevel
+    });
+
+    if (!data.errors) {
+      setViewMode('default');
+    }
   };
 
   const handleDelete = async e => {
@@ -34,20 +41,18 @@ const Memoir = ({...props}) => {
       <FormMenu viewMode={viewMode} setViewMode={setViewMode}/>
       {viewMode === 'edit' && (
         <>
-          <form className="form--edit" 
-                onSubmit={handleEdit}>
+          <form className="form--edit" onSubmit={handleEdit}>
             <input 
               type="text"
               value={newTitle}
               onChange={e => setNewTitle(e.target.value)}/>
             <textarea
-              value={newDescription} 
               name="description"
+              value={description}
               onChange={e => setNewDescription(e.target.value)} />
             <div className="form__slider">
               <input type="range" 
                   value={newHoursFought} 
-                  defaultValue={hoursFought} 
                   min="0" 
                   max="24" 
                   name="hours"
@@ -55,13 +60,12 @@ const Memoir = ({...props}) => {
                   className="small"
                 onChange={e => setNewHoursFought(e.target.value)} />
               <span className="form__number-display">
-                {newHoursFought || hoursFought}
+                {newHoursFought}
               </span>
             </div>
             <div className="form__slider">
               <input type="range" 
                   value={newAccomplishmentLevel}
-                  defaultValue={accomplishmentLevel} 
                   min="0" 
                   max="10" 
                   name="accomplishment"
@@ -69,7 +73,7 @@ const Memoir = ({...props}) => {
                   className="small"
                   onChange={e => setNewAccomplishmentLevel(e.target.value)} />
                 <span className="form__number-display">
-                  {newAccomplishmentLevel || accomplishmentLevel}
+                  {newAccomplishmentLevel}
                 </span>
             </div>
             <button type="submit">Save Change</button>
@@ -80,11 +84,11 @@ const Memoir = ({...props}) => {
         <>
           <p className="mystory__title title">{title}</p>
           <p className="memoir__description">{description}</p>
-          <p className="memoir__extra-info">
-            <p className="memoir__hours">Hours Fought: {hoursFought}</p>
-            <p className="memoir__accomplishment">Accomplishment Level: {accomplishmentLevel}</p>
+          <div className="memoir__extra-info">
+            <p className="memoir__hours">Hours Fought: {newHoursFought}</p>
+            <p className="memoir__accomplishment">Accomplishment Level: {newAccomplishmentLevel}</p>
             <p className="memoir__date">Date: {moment(date).format('MM-DD-YYYY')}</p>
-          </p>
+          </div>
         </>
       )}
     </div>

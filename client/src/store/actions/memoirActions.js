@@ -1,4 +1,5 @@
-import { loadMemoirsAction, addMemoirAction } from '../reducers/memoirReducer';
+import { loadMemoirsAction, 
+         addMemoirAction, editMemoirAction } from '../reducers/memoirReducer';
 import { baseUrl } from '../../config';
 import verifyData from './utils/verifyData';
 
@@ -34,6 +35,26 @@ export const createMemoir = inputtedInfo => {
 
     if (!data.errors) {
       dispatch(addMemoirAction(data.memoir));
+    }
+    return data;
+  }
+};
+
+export const editMemoir = inputtedInfo => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/memoirs/${inputtedInfo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(inputtedInfo)
+    });
+
+    const data = await verifyData(res, dispatch);
+
+    if (!data.errors) {
+      dispatch(editMemoirAction(data.memoir));
     }
     return data;
   }

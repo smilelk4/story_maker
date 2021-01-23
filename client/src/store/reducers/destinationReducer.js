@@ -10,7 +10,7 @@ export const loadDestinationsAction = data => ({
 
 export const editDestinationAction = data => ({
   type: EDIT_DESTINATION,
-  task: data
+  destination: data
 });
 
 export const removeDestinationAction = data => ({
@@ -39,8 +39,8 @@ const destinationReducer = (state = [], action) => {
     case EDIT_DESTINATION: {
       const newState = [...state];
       const indexOfEdittedDestination = newState.findIndex(destination => (
-        destination.id === action.task.id));
-      newState.splice(indexOfEdittedDestination, 1, action.task);
+        destination.id === action.destination.id));
+      newState.splice(indexOfEdittedDestination, 1, action.destination);
       return newState;
     }
     case REMOVE_DESTINATION: {

@@ -3,7 +3,7 @@ import NewMemoir from './NewMemoir';
 import PageAnimationWrapper from '../PageAnimationWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getMemoirs } from '../../store/actions/memoirActions';
+import { getMemoirs, editMemoir } from '../../store/actions/memoirActions';
 import { clearMemoirsAction } from '../../store/reducers/memoirReducer';
 import Memoir from './Memoir';
 
@@ -18,12 +18,23 @@ const MemoirContainer = () => {
     dispatch(getMemoirs(id));
   },[id, dispatch]);
 
+  // const deleteTask = async id => {
+  //   return await dispatch(deleteDailyTask(id));
+  // };
+
+  const handleEdit = async data => {
+    return await dispatch(editMemoir(data));
+  };
+
   return ( 
     <PageAnimationWrapper>
       <NewMemoir />
       <div className="memoir__container">
         {memoirs.length ? (
-          memoirs.map(memoir => <Memoir {...memoir} key={memoir.id} />)) : (
+          memoirs.map(memoir => <Memoir 
+              editMemoir={handleEdit}    
+              key={memoir.id}
+              {...memoir}  />)) : (
             <p className="mystory__none-display">
                 You haven't added any memoirs yet.
             </p>

@@ -1,5 +1,6 @@
 const LOAD_MEMOIRS = 'LOAD_MEMOIRS';
 const ADD_MEMOIR = 'ADD_MEMOIR';
+const EDIT_MEMOIR = 'EDIT_MEMOIR';
 const CLEAR_MEMOIRS = 'CLEAR_MEMOIRS';
 
 export const loadMemoirsAction = data => ({
@@ -9,6 +10,11 @@ export const loadMemoirsAction = data => ({
 
 export const addMemoirAction = data => ({
   type: ADD_MEMOIR,
+  memoir: data
+});
+
+export const editMemoirAction = data => ({
+  type: EDIT_MEMOIR,
   memoir: data
 });
 
@@ -35,6 +41,13 @@ const memoirReducer = (state = [], action) => {
         }));
 
       return [...state, ...newMemoirs];
+    }
+    case EDIT_MEMOIR: {
+      const newState = [...state];
+      const indexOfEdittedMemoir = newState.findIndex(memoir => (
+        memoir.id === action.memoir.id));
+      newState.splice(indexOfEdittedMemoir, 1, action.memoir);
+      return newState;
     }
     case ADD_MEMOIR: {
       const newState = [...state];
