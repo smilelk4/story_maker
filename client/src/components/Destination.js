@@ -4,6 +4,7 @@ import moment from 'moment';
 import CheckIcon from '@material-ui/icons/Check';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import CloseIcon from '@material-ui/icons/Close';
 
 const Destination = ({handleClick, editDestination, deleteDestination, ...props}) => {
   const { id, parent_destination_id: parentDestinationId,
@@ -56,7 +57,7 @@ const Destination = ({handleClick, editDestination, deleteDestination, ...props}
             )}
           </>
         ) : (
-          <p onClick={() => {setViewMode('default')}}>Close</p>
+          <p onClick={() => {setViewMode('default')}}><CloseIcon /></p>
         )}
       </span>
       {viewMode === 'edit' && (

@@ -118,11 +118,11 @@
   &__menu {
     cursor: pointer;
     position: absolute;
-    right: 3.8rem;
+    right: 2.5rem;
 
-    &:hover {
-
-    } 
+    & > svg {
+      margin: 0 .5rem;
+    }
   }
 
   &__form {

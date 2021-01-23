@@ -1,22 +1,13 @@
 .form {  
-  // &--edit {
-  //   input {
-  //     width: 50rem;
-  //     background: transparent;
-  //   }
-  //   button {
-  //     margin-left: 2rem;
-  //   }
-  // }
+  &--edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  &--edit {      
     input, textarea {
       margin: 1rem 0;
       background: transparent;
-      width: 100%;
-    }
-
-    button {
       width: 100%;
     }
   }
