@@ -53,6 +53,16 @@
     }
   }
 
+  &__error {
+    &-container {
+      font-size: $font-size-smallest;
+      height: 5rem;
+      overflow: scroll;
+      list-style: inside square;
+      color: $color-error;
+    }
+  }
+
   &--delete {
     display: flex;
     flex-direction: column;

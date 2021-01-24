@@ -108,7 +108,8 @@ router.put('/:id(\\d+)',
     const passwordValidation = await passwordValidator[0].run(req)
     const confirmPasswordValidation = await passwordValidator[1].run(req);
 
-    if (passwordValidation.errors.length || confirmPasswordValidation.errors.length) {
+    if (passwordValidation.errors.length || 
+        confirmPasswordValidation.errors.length) {
       return res.status(400).json(
         {errors: [...passwordValidation.errors, ...confirmPasswordValidation.errors]}
       )

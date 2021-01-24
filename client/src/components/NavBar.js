@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
-import CloseIcon from '@material-ui/icons/Close';
 import SwordAndShield from './svg/SwordAndShield';
 import InputField from './InputField';
 import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
 const NavBar = ({handleLogout, stories, user: { username, profileImage}, 
-                handlePasswordChange, handleProfImageChange }) => {
+                 errors, handlePasswordChange, handleProfImageChange }) => {
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
   const storiesContainer = useRef();
@@ -133,6 +132,15 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                       updateState={setConfirmNewPassword}
                   />
                   <button type="submit">Save Change</button>
+                  {errors.length ? (
+                    <ul className="form__error-container">
+                      {errors.map(error => (
+                        <li className="form__error">
+                          {error.msg}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : ''}
                 </form>
               ) : (
                 <p onClick={() => setIsChangePasswordMode(true)}>

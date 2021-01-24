@@ -10,6 +10,7 @@ const NavBarContainer = () => {
   const [ stories, setStories ] = useState([]);
   const user = useSelector(state => state.user);
   const heroes = useSelector(state => state.hero);
+  const errors = useSelector(state => state.errors);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -68,6 +69,7 @@ const NavBarContainer = () => {
               handleLogout={handleLogout} 
               user={user} 
               stories={stories}
+              errors={errors}
               />
     </nav>
   );
