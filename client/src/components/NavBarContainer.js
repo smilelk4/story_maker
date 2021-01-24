@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
 import { baseUrl } from '../config';
+import { updateProfileImage } from '../store/actions/userAction';
 import { clearActivitiesAction } from '../store/reducers/activityReducer';
 import { clearTasksAction } from '../store/reducers/dailyTaskReducer';
 import { clearDestinationsAction } from '../store/reducers/destinationReducer';
@@ -57,6 +58,7 @@ const NavBarContainer = () => {
   const changeProfImage = imageData => {
     const data = new FormData();
     data.append('file', imageData);
+    dispatch(updateProfileImage(user.id, data));
   }
 
   const handleLogout = () => {

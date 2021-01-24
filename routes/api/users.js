@@ -85,11 +85,11 @@ router.post('/',
 router.put('/:id(\\d+)', 
   upload.any(),
   asyncHandler(async (req, res) => {
+  const { id } = req.params;
   const file = req.files[0];
   const user = await User.findByPk(id);
 
   if (file) {
-    fileFilter(file);
     const params = {
       Bucket: 'story-maker-app',
       Key: Date.now().toString() + file.originalname,

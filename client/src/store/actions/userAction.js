@@ -66,15 +66,11 @@ export const getUser = token => {
   }
 }
 
-export const updateProfileImage = data => {
+export const updateProfileImage = (id, data) => {
   return async dispatch => {
-    const res = await fetch(`${baseUrl}/users`, {
+    const res = await fetch(`${baseUrl}/users/${id}`, {
       method: 'PUT',
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       },
-       body: data
+      body: data
     });
 
     return await verifyData(res, dispatch);
