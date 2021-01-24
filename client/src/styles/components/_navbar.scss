@@ -188,6 +188,17 @@
     }
   }
 
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+
+    & > * {
+      margin: .25rem 0;
+    }
+  }
+
   &__profile-image {
     width: 5rem;
     height: 5rem;

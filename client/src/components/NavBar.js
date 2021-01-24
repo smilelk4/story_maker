@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import CloseIcon from '@material-ui/icons/Close';
 import SwordAndShield from './svg/SwordAndShield';
+import InputField from './InputField';
 import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
@@ -11,6 +13,9 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
   const popUpContainer = useRef();
   const storiesContainer = useRef();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isChangePasswordMode, setIsChangePasswordMode] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   const updateProfileImage = e => {
     handleProfImageChange(e.target.files[0]);
@@ -106,8 +111,28 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                   </div>
                 </div>
               </div>
-
-              {/* <p>Change Password</p> */}
+              {isChangePasswordMode ? (
+                <div className="navbar__form" 
+                     onMouseLeave={() => setIsChangePasswordMode(false)}>
+                  <InputField
+                      type="password"
+                      placeholder="Password"
+                      currentState={newPassword}
+                      updateState={setNewPassword}
+                  />
+                  <InputField
+                      type="password"
+                      placeholder="Confirm Password"
+                      currentState={confirmNewPassword}
+                      updateState={setConfirmNewPassword}
+                  />
+                  <button type="submit">Save Change</button>
+                </div>
+              ) : (
+                <p onClick={() => setIsChangePasswordMode(true)}>
+                  Change Password
+                </p>
+              )}
               <p className="navbar__logout" onClick={handleLogout}>
                 Logout
               </p>
