@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
+const upload = multer();
 const { User, Hero, HeroImage, Story } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
@@ -23,6 +24,8 @@ const createError = msg => {
   err.errors = [err.message];
   return err;
 }
+
+const s3 = new AWS.S3();
 
 router.post('/auth', asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
@@ -77,6 +80,34 @@ router.post('/',
   const { token } = generateToken(user.id, user.username);
 
   res.status(201).json({ token, user });
+}));
+
+router.put('/:id(\\d+)', 
+  upload.any(),
+  asyncHandler(async (req, res) => {
+  const file = req.files[0];
+  const user = await User.findByPk(id);
+
+  if (file) {
+    fileFilter(file);
+    const params = {
+      Bucket: 'story-maker-app',
+      Key: Date.now().toString() + file.originalname,
+      Body: file.buffer,
+      ACL: 'public-read',
+      ContentType: file.mimetype
+    }
+
+    const promise = s3.upload(params).promise();
+    const uploadedImage = await promise;
+    const imageUrl = uploadedImage.Location;
+
+    await user.update({
+      profile_image: imageUrl
+    });
+  }
+
+  res.status(200).json({ user });
 }));
 
 router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
