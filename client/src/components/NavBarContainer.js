@@ -15,6 +15,7 @@ import { clearProgressAction } from '../store/reducers/progressReducer';
 import { clearTokenAction } from '../store/reducers/tokenReducer';
 import { clearErrors } from '../store/reducers/errorReducer';
 
+
 const NavBarContainer = () => {
   const [ stories, setStories ] = useState([]);
   const user = useSelector(state => state.user);
@@ -53,8 +54,9 @@ const NavBarContainer = () => {
     })();
   }, [heroes, user.id])
 
-  const changeProfImage = () => {
-
+  const changeProfImage = imageData => {
+    const data = new FormData();
+    data.append('file', imageData);
   }
 
   const handleLogout = () => {
@@ -79,7 +81,8 @@ const NavBarContainer = () => {
       <NavBar handleProfImageChange={changeProfImage} 
               handleLogout={handleLogout} 
               user={user} 
-              stories={stories}/>
+              stories={stories}
+              />
     </nav>
   );
 }

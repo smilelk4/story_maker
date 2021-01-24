@@ -5,24 +5,17 @@ import SwordAndShield from './svg/SwordAndShield';
 import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
-const NavBar = ({handleLogout, stories,
-                 user: { username, profileImage, handleProfImageChange }}) => {
+const NavBar = ({handleLogout, stories, user: { username, profileImage}, 
+                 handleProfImageChange }) => {
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
   const storiesContainer = useRef();
-  // const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const [image, setImage] = useState('');
 
   const updateProfileImage = e => {
-    e.preventDefault();
-    // const data = new FormData();
-    // data.append('file', e.target.files[0]);
-    // handleProfImageChange(data);
-    // console.log('!!!', e.target.files[0])
-    // setImage(e.target.files[0])
+    handleProfImageChange(e.target.files[0]);
   }
-
+  
   const initiateHamburger = () => {
     bodymovin.loadAnimation({
       wrapper: hamburgerContainer.current,
@@ -92,7 +85,7 @@ const NavBar = ({handleLogout, stories,
                   name="profile-image"
                   accept="image/*"
                   className="hide"
-                  onChange={e => setImage(e.target.files[0])} />
+                  onChange={updateProfileImage} />
                 <label htmlFor="profile-image">
                   <PhotoCameraIcon/>
                 </label>
