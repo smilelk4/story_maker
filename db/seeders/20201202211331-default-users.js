@@ -7,7 +7,7 @@ module.exports = {
       username: "demo_user",
       email: "demo_user@demo.com", 
       profile_image: "https://story-maker-app.s3.amazonaws.com/profile.png",
-      hashed_password: "$2b$10$bTXgso5bqIsnQevfe92QpuPCL8DfEXiY6jY5IVilJR0.OGHlfsV6.",
+      hashed_password: "$2a$10$d/MyGooikJ.Vs.J5qrsmB.hRQe9UyLVIuYGo0Q1v3XMShfi9EwRji",
       createdAt: new Date(),
       updatedAt: new Date()
     }
