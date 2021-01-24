@@ -8,10 +8,11 @@ export const clearUserAction = () => ({
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case LOAD_USER: {
+      debugger
       return {
         id: action.user.id,
         username: action.user.username,
-        profileImage: action.user.profileImage
+        profileImage: action.user.profileImage || action.user.profile_image
       };
     }
     case LOGOUT_USER:
