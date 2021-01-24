@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 const upload = multer();
+const uuid = require('uuid');
 const { User, Hero, HeroImage, Story } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
@@ -91,16 +92,26 @@ router.put('/:id(\\d+)',
 
   if (file) {
     const params = {
-      Bucket: 'story-maker-app',
-      Key: Date.now().toString() + file.originalname,
+      Bucket: 'story-maker-app/profile-images',
+      Key: file.originalname + '-' + uuid(),
       Body: file.buffer,
       ACL: 'public-read',
       ContentType: file.mimetype
     }
 
-    const promise = s3.upload(params).promise();
-    const uploadedImage = await promise;
+    const uploadedImage = await s3.upload(params).promise();
     const imageUrl = uploadedImage.Location;
+    
+    s3.deleteObject({
+      Bucket: 'story-maker-app/profile-images',
+      Key: user.profile_image.split('/profile-images/')[1],
+    }, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Deleted')
+      }
+    })
 
     await user.update({
       profile_image: imageUrl
