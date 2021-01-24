@@ -1,15 +1,25 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import SwordAndShield from './svg/SwordAndShield';
 import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
 const NavBar = ({handleLogout, stories,
-                 user: { username, profileImage }}) => {
+                 user: { username, profileImage, handleProfImageChange }}) => {
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
   const storiesContainer = useRef();
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+  const [image, setImage] = useState('');
+
+  const changeProfImage = e => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('file', image);
+    handleProfImageChange(data);
+  }
 
   const initiateHamburger = () => {
     bodymovin.loadAnimation({
@@ -65,7 +75,7 @@ const NavBar = ({handleLogout, stories,
         <div className="navbar__menu-container">
           <div className="navbar__hamburger"
               ref={hamburgerContainer}
-              onMouseOver={() => setIsPopupOpen(!isPopupOpen)}>
+              onClick={() => setIsPopupOpen(!isPopupOpen)}>
           </div>
           <div ref={popUpContainer} 
                onMouseLeave={hidePopup}
@@ -73,7 +83,12 @@ const NavBar = ({handleLogout, stories,
             <div className="navbar__popup-top">
               <div className="navbar__profile-image">
                 <img src={profileImage} alt={username} />
+                {/* <input
+                  type="file"
+                  placeholder="Upload an image"
+                  onChange={e => setImage(e.target.files[0])} /> */}
               </div>
+              <PhotoCameraIcon />
               <p>{username}</p>
             </div>
             <div className="navbar__stories-container">

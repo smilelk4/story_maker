@@ -53,6 +53,10 @@ const NavBarContainer = () => {
     })();
   }, [heroes, user.id])
 
+  const changeProfImage = () => {
+
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('token');
@@ -72,7 +76,10 @@ const NavBarContainer = () => {
 
   return ( 
     <nav className="navbar__container">
-      <NavBar handleLogout={handleLogout} user={user} stories={stories}/>
+      <NavBar handleProfImageChange={changeProfImage} 
+              handleLogout={handleLogout} 
+              user={user} 
+              stories={stories}/>
     </nav>
   );
 }

@@ -161,6 +161,7 @@
     align-items: center;
     width: 100%;
     padding: 0 1rem;
+    position: relative;
     
     &::after {
       content: '';
@@ -168,6 +169,17 @@
       height: 1px;
       background: $color-lime;
       margin-top: 1rem;
+    }
+
+    svg {
+      background: white;
+      box-shadow: $shadow-2;
+      height: 2rem;
+      width: 2rem;
+      padding: .25rem;
+      border-radius: 50%;
+      position: absolute;
+      right: 6rem;
     }
   }
 
@@ -183,6 +195,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    input {
+      background: pink;
+      // position: absolute;
     }
   }
 }
