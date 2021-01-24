@@ -8,7 +8,7 @@ import bodymovin from 'lottie-web';
 import hamburgerAnimation from '../animation/navHamburger';
 
 const NavBar = ({handleLogout, stories, user: { username, profileImage}, 
-                 handleProfImageChange }) => {
+                handlePasswordChange, handleProfImageChange }) => {
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
   const storiesContainer = useRef();
@@ -47,6 +47,11 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
   const hidePopup = () => {
     popUpContainer.current.classList.remove('active');
     setIsPopupOpen(false);
+  };
+
+  const handleChangePassword = e => {
+    e.preventDefault();
+    handlePasswordChange(newPassword, confirmNewPassword);
   };
 
   useEffect(() => {
@@ -112,8 +117,9 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                 </div>
               </div>
               {isChangePasswordMode ? (
-                <div className="navbar__form" 
-                     onMouseLeave={() => setIsChangePasswordMode(false)}>
+                <form className="navbar__form"
+                      onSubmit={handleChangePassword}
+                      onMouseLeave={() => setIsChangePasswordMode(false)}>
                   <InputField
                       type="password"
                       placeholder="Password"
@@ -127,7 +133,7 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                       updateState={setConfirmNewPassword}
                   />
                   <button type="submit">Save Change</button>
-                </div>
+                </form>
               ) : (
                 <p onClick={() => setIsChangePasswordMode(true)}>
                   Change Password

@@ -83,12 +83,37 @@ router.post('/',
   res.status(201).json({ token, user });
 }));
 
+router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
+  const heroes = await Hero.findAll({ 
+    where: { 
+      user_id: req.params.id,
+    },
+    include: [HeroImage],
+    order: ['id']
+  });
+
+  res.json({ heroes });
+}));
+
 router.put('/:id(\\d+)', 
   upload.any(),
-  asyncHandler(async (req, res) => {
+  handleValidationErrors,
+  asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  const file = req.files[0];
+  const file = req.files ? req.files[0] : '';
   const user = await User.findByPk(id);
+
+  if (req.body.password) {
+    const passwordValidator = userValidation[2];
+    const passwordValidation = await passwordValidator[0].run(req)
+    const confirmPasswordValidation = await passwordValidator[1].run(req);
+
+    if (passwordValidation.errors.length || confirmPasswordValidation.errors.length) {
+      return res.status(400).json(
+        {errors: [...passwordValidation.errors, ...confirmPasswordValidation.errors]}
+      )
+    }
+  }
 
   if (file) {
     const params = {
@@ -101,7 +126,7 @@ router.put('/:id(\\d+)',
 
     const uploadedImage = await s3.upload(params).promise();
     const imageUrl = uploadedImage.Location;
-    
+
     s3.deleteObject({
       Bucket: 'story-maker-app/profile-images',
       Key: user.profile_image.split('/profile-images/')[1],
@@ -117,20 +142,8 @@ router.put('/:id(\\d+)',
       profile_image: imageUrl
     });
   }
-
+  
   res.status(200).json({ user });
-}));
-
-router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
-  const heroes = await Hero.findAll({ 
-    where: { 
-      user_id: req.params.id,
-    },
-    include: [HeroImage],
-    order: ['id']
-  });
-
-  res.json({ heroes });
 }));
 
 module.exports = router;

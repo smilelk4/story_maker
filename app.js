@@ -72,7 +72,6 @@ app.use((err, _req, res, _next) => {
   
   console.error(errorData);
   res.json(errorData);
-
 });
 
 module.exports = app;

@@ -76,3 +76,18 @@ export const updateProfileImage = (id, data) => {
     return await verifyData(res, dispatch);
   }
 }
+
+export const updatePassword = (id, data) => {
+  return async dispatch => {
+    const res = await fetch(`${baseUrl}/users/${id}`, {
+      method: 'PUT',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
+      body: JSON.stringify(data)
+    });
+
+    return await verifyData(res, dispatch);
+  }
+}

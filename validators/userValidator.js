@@ -1,4 +1,4 @@
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 const { User } = require('../db/models');
 
 const usernameValidation = [
@@ -39,7 +39,7 @@ const emailValidation = [
 ];
 
 const passwordValidation = [
-  check('password')
+  body('password')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a valid password.')
     .isLength({ min: 8 })

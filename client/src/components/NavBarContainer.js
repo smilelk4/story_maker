@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
 import { baseUrl } from '../config';
-import { updateProfileImage } from '../store/actions/userAction';
+import { updateProfileImage, updatePassword } from '../store/actions/userAction';
 import { destroySessionAction } from '../store/reducers/rootReducer';
 
 const NavBarContainer = () => {
@@ -50,6 +50,10 @@ const NavBarContainer = () => {
     dispatch(updateProfileImage(user.id, data));
   }
 
+  const changePassword = (password, confirmPassword) => {
+    dispatch(updatePassword(user.id, {password, confirmPassword}));
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('token');
@@ -60,6 +64,7 @@ const NavBarContainer = () => {
   return ( 
     <nav className="navbar__container">
       <NavBar handleProfImageChange={changeProfImage} 
+              handlePasswordChange={changePassword}
               handleLogout={handleLogout} 
               user={user} 
               stories={stories}
