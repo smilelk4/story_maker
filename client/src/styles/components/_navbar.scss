@@ -47,9 +47,6 @@
 
     .svg__container {
       height: 100%;
-      // @include respond-medium-small {
-      //   height: 4.5rem;
-      // }
     }
   }
 
@@ -123,7 +120,7 @@
   }
 
   &__sub-popup {
-    @include calc("left", "-50% - 2rem");
+    left: -50%;
     top: -1rem;
     background: $color-light;
     line-height: 3rem;
@@ -179,7 +176,7 @@
 
     & > * {
       cursor: pointer;
-      padding: 1rem;
+      padding: 1rem 0;
       display: flex;
       justify-content: center;
       transition: all .1s ease-in;

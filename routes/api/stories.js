@@ -44,7 +44,8 @@ router.put('/:id(\\d+)',
   const {newTitle: title } = req.body;
         
   const story = await Story.findOne({
-    where: { id }
+    where: { id },
+    include: [World]
   });
 
   await story.update({title});

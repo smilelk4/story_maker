@@ -106,7 +106,8 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                   </div>
                 </div>
               </div>
-              <p>Change Password</p>
+
+              {/* <p>Change Password</p> */}
               <p className="navbar__logout" onClick={handleLogout}>
                 Logout
               </p>
