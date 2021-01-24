@@ -60,6 +60,7 @@
       overflow: scroll;
       list-style: inside square;
       color: $color-error;
+      @include hide-scroll();
     }
   }
 

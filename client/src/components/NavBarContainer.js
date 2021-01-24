@@ -51,8 +51,8 @@ const NavBarContainer = () => {
     dispatch(updateProfileImage(user.id, data));
   }
 
-  const changePassword = (password, confirmPassword) => {
-    dispatch(updatePassword(user.id, {password, confirmPassword}));
+  const changePassword = async (password, confirmPassword) => {
+    return await dispatch(updatePassword(user.id, {password, confirmPassword}));      
   }
 
   const handleLogout = () => {

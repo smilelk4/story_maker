@@ -48,9 +48,13 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
     setIsPopupOpen(false);
   };
 
-  const handleChangePassword = e => {
+  const handleChangePassword = async e => {
     e.preventDefault();
-    handlePasswordChange(newPassword, confirmNewPassword);
+    const res = await handlePasswordChange(newPassword, confirmNewPassword);
+
+    if (!res.errors) {
+      setIsChangePasswordMode(false);
+    }
   };
 
   useEffect(() => {

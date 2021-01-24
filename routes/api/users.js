@@ -98,8 +98,10 @@ router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
 router.put('/:id(\\d+)', 
   upload.any(),
   handleValidationErrors,
-  asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res) => {
   const { id } = req.params;
+  const { password, confirmPassword } = req.body;
+
   const file = req.files ? req.files[0] : '';
   const user = await User.findByPk(id);
 
@@ -112,8 +114,12 @@ router.put('/:id(\\d+)',
         confirmPasswordValidation.errors.length) {
       return res.status(400).json(
         {errors: [...passwordValidation.errors, ...confirmPasswordValidation.errors]}
-      )
+      );
     }
+
+    await user.update({
+      hashed_password: await hashPassword(password.trim())
+    })
   }
 
   if (file) {
