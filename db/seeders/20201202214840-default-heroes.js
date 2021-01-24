@@ -23,6 +23,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        user_id: 1,
+        world_id: 5,
+        name: "Art Hero",
+        level: 1,
+        xp: 0,
+        image_id: 14,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ], {});
   },
 
