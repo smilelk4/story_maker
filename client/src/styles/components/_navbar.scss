@@ -180,6 +180,13 @@
       border-radius: 50%;
       position: absolute;
       right: 6rem;
+      bottom: 3rem;
+      cursor: pointer;
+      transition: background .2s ease-in;
+
+      &:hover {
+        background: $color-light;
+      }
     }
   }
 
@@ -196,10 +203,5 @@
       height: 100%;
       object-fit: cover;
     }
-
-    input {
-      background: pink;
-      // position: absolute;
-    }
-  }
+  }  
 }

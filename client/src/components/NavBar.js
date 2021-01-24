@@ -14,11 +14,13 @@ const NavBar = ({handleLogout, stories,
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [image, setImage] = useState('');
 
-  const changeProfImage = e => {
+  const updateProfileImage = e => {
     e.preventDefault();
-    const data = new FormData();
-    data.append('file', image);
-    handleProfImageChange(data);
+    // const data = new FormData();
+    // data.append('file', e.target.files[0]);
+    // handleProfImageChange(data);
+    // console.log('!!!', e.target.files[0])
+    // setImage(e.target.files[0])
   }
 
   const initiateHamburger = () => {
@@ -83,12 +85,18 @@ const NavBar = ({handleLogout, stories,
             <div className="navbar__popup-top">
               <div className="navbar__profile-image">
                 <img src={profileImage} alt={username} />
-                {/* <input
+                <input
                   type="file"
-                  placeholder="Upload an image"
-                  onChange={e => setImage(e.target.files[0])} /> */}
+                  id="profile-image"
+                  inputId="profile-image"
+                  name="profile-image"
+                  accept="image/*"
+                  className="hide"
+                  onChange={e => setImage(e.target.files[0])} />
+                <label htmlFor="profile-image">
+                  <PhotoCameraIcon/>
+                </label>
               </div>
-              <PhotoCameraIcon />
               <p>{username}</p>
             </div>
             <div className="navbar__stories-container">
