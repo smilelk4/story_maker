@@ -1,10 +1,20 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
 const { User, Hero, HeroImage, Story } = require('../../db/models');
 const { generateToken, checkIfAuthenticated } = require('../../auth');
 const { hashPassword } = require('../../utils');
 const userValidation = require('../../validators/userValidator');
 const { handleValidationErrors, asyncHandler } = require('../../utils');
+
+const AWS = require('aws-sdk');
+const { awsKeys } = require('../../config');
+
+AWS.config.update({
+  secretAccessKey: awsKeys.secretAccessKey,
+  accessKeyId: awsKeys.accessKeyId,
+  region: awsKeys.region
+});
 
 const createError = msg => {
   const err = new Error(msg);
