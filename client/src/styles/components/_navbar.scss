@@ -94,7 +94,7 @@
   
   &__popup {
     background: white;
-    height: 25rem;
+    height: max-content;
     padding: 2rem 0;
     color: $color-grey;
     user-select: none;
@@ -103,19 +103,12 @@
   
   &__stories {
     position: relative;
-    padding: 1rem;
     width: 100%;
     cursor: pointer;
-    transition: all .1s ease-in;
 
     &-container {
       width: 100%;
       text-align: center;
-    }
-
-    &:hover{ 
-      background: $color-transparent-dark;
-      color: $color-dark;
     }
 
     a {
@@ -127,12 +120,11 @@
         color: $color-white;
       }
     }
-
   }
 
   &__sub-popup {
-    left: -50%;
-    top: 0;
+    @include calc("left", "-50% - 2rem");
+    top: -1rem;
     background: $color-light;
     line-height: 3rem;
     transition: opacity .1s ease-in;
@@ -144,16 +136,6 @@
     }
   }
 
-  &__logout {
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
-
-    &:hover {
-      color: $color-dark;
-    }
-  }
-
   &__popup-top {
     display: flex; 
     flex-direction: column;
@@ -162,6 +144,7 @@
     width: 100%;
     padding: 0 1rem;
     position: relative;
+    margin-bottom: 1rem;
     
     &::after {
       content: '';
@@ -186,6 +169,24 @@
 
       &:hover {
         background: $color-light;
+      }
+    }
+  }
+
+  &__popup-bottom {
+    width: 100%;
+    height: 100%;
+
+    & > * {
+      cursor: pointer;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      transition: all .1s ease-in;
+
+      &:hover{ 
+        background: $color-transparent-dark;
+        color: $color-dark;
       }
     }
   }

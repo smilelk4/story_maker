@@ -10,7 +10,7 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
   const hamburgerContainer = useRef();
   const popUpContainer = useRef();
   const storiesContainer = useRef();
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const updateProfileImage = e => {
     handleProfImageChange(e.target.files[0]);
@@ -92,21 +92,25 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
               </div>
               <p>{username}</p>
             </div>
-            <div className="navbar__stories-container">
-              <div className="navbar__stories"
-                 onMouseOver={displayStories}
-                 onMouseLeave={hideStories}>
-                View Stories
-                <div className="navbar__sub-popup"
-                     ref={storiesContainer}>
-                  {stories && stories.map(story => (
-                    <NavLink to={`/stories/${story.id}`} key={story.id}>{story.title}</NavLink>
-                  ))}
+            <div className="navbar__popup-bottom">
+              <div className="navbar__stories-container">
+                <div className="navbar__stories"
+                  onMouseOver={displayStories}
+                  onMouseLeave={hideStories}>
+                  <p>View Stories</p>
+                  <div className="navbar__sub-popup"
+                      ref={storiesContainer}>
+                    {stories && stories.map(story => (
+                      <NavLink to={`/stories/${story.id}`} key={story.id}>{story.title}</NavLink>
+                    ))}
+                  </div>
                 </div>
               </div>
+              <p>Change Password</p>
+              <p className="navbar__logout" onClick={handleLogout}>
+                Logout
+              </p>
             </div>
-            <p className="navbar__logout" 
-               onClick={handleLogout}>Logout</p>
           </div>
         </div>
       </div>
