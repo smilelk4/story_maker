@@ -50,7 +50,6 @@ const storyReducer = (state = [], action) => {
       return newState;
     }
     case REMOVE_STORY: {
-      debugger;
       return state.filter(story => story.id !== +action.story);
     }
     case CLEAR_STORIES: {

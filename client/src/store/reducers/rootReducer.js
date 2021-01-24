@@ -11,7 +11,13 @@ import task from './dailyTaskReducer';
 import monster from './monsterReducer';
 import errors from './errorReducer';
 
-const rootReducer = combineReducers({
+const DESTROY_SESSION = "DESTROY_SESSION";
+
+export const destroySessionAction = () => ({
+  type: DESTROY_SESSION
+})
+
+const appReducer = combineReducers({
   token,
   user,
   hero,
@@ -24,5 +30,12 @@ const rootReducer = combineReducers({
   monster,
   errors
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === DESTROY_SESSION) {
+    state = undefined;
+  }
+  return appReducer(state, action);
+}
 
 export default rootReducer;

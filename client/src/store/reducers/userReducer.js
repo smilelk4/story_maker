@@ -8,7 +8,6 @@ export const clearUserAction = () => ({
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case LOAD_USER: {
-      debugger
       return {
         id: action.user.id,
         username: action.user.username,
