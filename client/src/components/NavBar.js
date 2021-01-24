@@ -139,9 +139,7 @@ const NavBar = ({handleLogout, stories, user: { username, profileImage},
                   {errors.length ? (
                     <ul className="form__error-container">
                       {errors.map(error => (
-                        <li className="form__error">
-                          {error.msg}
-                        </li>
+                        <li className="form__error">{error}</li>
                       ))}
                     </ul>
                   ) : ''}

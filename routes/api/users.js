@@ -20,7 +20,7 @@ AWS.config.update({
 
 const createError = msg => {
   const err = new Error(msg);
-  err.title = 'Invalid Login';
+  err.title = msg;
   err.status = 401;
   err.errors = [err.message];
   return err;
@@ -98,9 +98,9 @@ router.get('/:id(\\d+)/heroes', asyncHandler(async (req, res) => {
 router.put('/:id(\\d+)', 
   upload.any(),
   handleValidationErrors,
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  const { password, confirmPassword } = req.body;
+  const { password } = req.body;
 
   const file = req.files ? req.files[0] : '';
   const user = await User.findByPk(id);
@@ -113,8 +113,13 @@ router.put('/:id(\\d+)',
     if (passwordValidation.errors.length || 
         confirmPasswordValidation.errors.length) {
       return res.status(400).json(
-        {errors: [...passwordValidation.errors, ...confirmPasswordValidation.errors]}
+        {errors: [...passwordValidation.errors.map(e => e.msg), 
+                  ...confirmPasswordValidation.errors.map(e => e.msg)]}
       );
+    }
+
+    if (user.id === 1) {
+      return next(createError('Cannot change password for demo user.'));
     }
 
     await user.update({

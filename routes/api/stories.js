@@ -126,7 +126,7 @@ router.get('/:id(\\d+)/progress', asyncHandler(async (req, res) => {
 }));
 
 router.delete('/:id(\\d+)', 
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
   const { id } = req.params;
         
   const story = await Story.findOne({
