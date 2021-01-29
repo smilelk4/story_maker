@@ -23,6 +23,7 @@
 
   &__number-display {
     position: absolute;
+    line-height: initial;
     background: $color-grey-dark;
     height: 2rem;
     width: 2.5rem;
