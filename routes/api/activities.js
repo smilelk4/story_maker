@@ -26,7 +26,6 @@ router.put('/',
 
   const timezoneOffset = userTime.slice(
     userTime.length - 6, userTime.length - 3);
-
     
     const activity =  await sequelize.query(`
     SELECT * FROM "ActivityLogs" AS "ActivityLog" 
@@ -37,7 +36,7 @@ router.put('/',
     AND (date("updatedAt") BETWEEN 
     '${today} 00:00:00${timezoneOffset}' AND '${today} 23:59:59${timezoneOffset}'
     AT TIME ZONE 'UTC')
-    LIMIT 1;`)
+    LIMIT 1;`);
 
   if (activity[0][0].action < 10) {
     const data = await ActivityLog.findByPk(activity[0][0].id);

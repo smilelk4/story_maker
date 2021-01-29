@@ -23,13 +23,6 @@ if (!production) {
   app.use(cors({ origin: true }));
 }
 app.use(helmet({ contentSecurityPolicy: false }));
-// app.use(csurf({
-//   cookie: {
-//     secure: production,
-//     sameSite: production && 'Lax',
-//     httpOnly: true
-//   }
-// }));
 
 app.use(routes);
 
